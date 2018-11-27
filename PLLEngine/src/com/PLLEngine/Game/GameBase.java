@@ -13,4 +13,5 @@ public interface GameBase {
 	public void lateupdate();
 
 	public void close();
+	
 }

@@ -2,15 +2,20 @@ package test;
 
 import com.PLLEngine.Game.Game;
 
-public class TestEntry {
+public class TestEntry extends Game {
 
 	public static void main(String[] args) {
-		new Game() {
-			public void setup() {
-				sysout("this function is called once per game start");
+		new TestEntry() {
+			//Hier kommt der Game code rein, zur übersicht lohnt sich diese schribweise
+			// Alternativ kann man das auch in der klasse selbst machen
+			
+			public void preinit() {
+				this.createGameWindow("nam1");
 			}
+			
+			
+			
+			
 		};
-
 	}
-
 }
