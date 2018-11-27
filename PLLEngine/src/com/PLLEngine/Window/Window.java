@@ -1,11 +1,19 @@
 package com.PLLEngine.Window;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import com.PLLEngine.Scene.Scene;
 
 public class Window extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String WindowName;
 	private Dimension screenSize;
 
@@ -21,6 +29,7 @@ public class Window extends JFrame {
 		this.setBounds(x, y, width, height);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.add(new defaultWindowScene());
 	}
 
 	private void initDefaultWindowSize() {
@@ -39,5 +48,19 @@ public class Window extends JFrame {
 		} catch (NullPointerException e) {
 			System.err.println("screenSize has not been initialisiert");
 		}
+	}
+	
+	protected class defaultWindowScene extends Scene{
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		
+		public defaultWindowScene() {
+			this.setBackground(Color.WHITE);
+			this.add(new JLabel("This is the default WindowScene"));
+		}
+		
 	}
 }

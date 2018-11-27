@@ -1,6 +1,7 @@
 package test;
 
 import com.PLLEngine.Game.Game;
+import com.PLLEngine.Scene.Scene;
 
 public class TestEntry extends Game {
 
@@ -10,7 +11,9 @@ public class TestEntry extends Game {
 			// Alternativ kann man das auch in der klasse selbst machen
 			
 			public void preinit() {
+				this.setWindowsLook();
 				this.createGameWindow("nam1");
+				//this.addScene(new Scene());
 			}
 			
 			
