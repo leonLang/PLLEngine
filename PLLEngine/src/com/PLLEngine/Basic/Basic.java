@@ -1,5 +1,5 @@
 package com.PLLEngine.Basic;
 
-public class Basic implements BasicInterface{
+public class Basic extends Thread implements BasicInterface{
 	
 }

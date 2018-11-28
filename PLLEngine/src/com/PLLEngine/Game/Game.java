@@ -1,12 +1,17 @@
 package com.PLLEngine.Game;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.PLLEngine.Basic.Basic;
 import com.PLLEngine.Scene.Scene;
 import com.PLLEngine.Window.Window;
 
-public class Game extends Basic implements GameBase, Runnable {
+public class Game extends Basic implements GameBase {
 
 	public static GameWindow gwindow;
+	public static Map<String, Scene> SceneMap;
+	public static Scene currenScene;
 
 	public Game() {
 		setup();
@@ -21,7 +26,7 @@ public class Game extends Basic implements GameBase, Runnable {
 
 	@Override
 	public void setup() {
-		// TODO Auto-generated method stub
+		SceneMap = new HashMap<String, Scene>();
 	}
 
 	@Override
@@ -58,11 +63,20 @@ public class Game extends Basic implements GameBase, Runnable {
 		gwindow = new GameWindow(name);
 	}
 
-	public void addScene(Scene scene) {
-		try {
-			gwindow.add(scene);
-		} catch (NullPointerException e) {
-			System.err.println("Cant add scene too GameWindow because: \n" + e);
+	public void addScene(String sceneName, Scene scene) {
+		SceneMap.put(sceneName, scene);
+	}
+
+	public void loadScene(String scene) {
+		currenScene = SceneMap.get(scene);
+		if (currenScene != null) {
+			try {
+				gwindow.add(currenScene);
+			} catch (NullPointerException e) {
+				System.err.println("Cant add scene too GameWindow because: \n" + e);
+			}
+		} else {
+			System.err.println("No Scene found with name of: \n" + scene);
 		}
 	}
 
