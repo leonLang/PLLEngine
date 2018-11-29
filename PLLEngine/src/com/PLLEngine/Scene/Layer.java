@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.PLLEngine.Scene.SceneComponents.LayerComponent;
+import com.PLLEngine.Scene.layerComponents.LayerComponent;
 
 
 public class Layer {

@@ -21,7 +21,7 @@ public class TestEntry extends Game {
 				this.createGameWindow("nam1");
 				this.addScene("Zene1",new Scene());
 				this.loadScene("Zene1");
-				this.getScene("Zene1").addLayer("test", new Layer());
+				this.getScene("Zene1").addLayer("test", new Layer(),0);
 			}
 		};
 		entry.start();
