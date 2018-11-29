@@ -9,3 +9,4 @@ public class Enemy extends Entitiy{
 		g.drawRect(100, 50, 300, 300);
 	}
 }
+

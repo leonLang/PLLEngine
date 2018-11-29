@@ -11,5 +11,6 @@ public class Entitiy extends LayerComponent{
 		// TODO Auto-generated method stub
 		g.drawRect(100, 50, 300, 300);
 	}
+	
 
 }
