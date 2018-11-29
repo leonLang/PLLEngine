@@ -46,11 +46,16 @@ public class Game extends Basic implements GameBase {
 		// TODO Auto-generated method stub
 
 	}
-
+	@Deprecated
 	@Override
 	public void lateupdate() {
 		// TODO Auto-generated method stub
 
+	}
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -65,6 +70,9 @@ public class Game extends Basic implements GameBase {
 
 	public void addScene(String sceneName, Scene scene) {
 		SceneMap.put(sceneName, scene);
+	}
+	public Scene getScene(String sceneName) {
+		return SceneMap.get(sceneName);
 	}
 
 	public void loadScene(String scene) {

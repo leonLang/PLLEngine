@@ -1,6 +1,11 @@
 package com.PLLEngine.Scene;
 
+import java.awt.Graphics;
+
+import javax.swing.JComponent;
 import javax.swing.JPanel;
+
+import com.PLLEngine.Scene.SceneComponents.SceneComponent;
 
 public class Scene extends JPanel{
 	/**
@@ -10,5 +15,12 @@ public class Scene extends JPanel{
 
 	public Scene() {
 		
+	}
+	@Override
+	protected void paintComponent(Graphics g) {
+		
+	}
+	public void addSceneComponent(JComponent component) {
+		this.add(component);
 	}
 }

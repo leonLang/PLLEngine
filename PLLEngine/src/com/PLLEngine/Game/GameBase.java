@@ -11,6 +11,9 @@ public interface GameBase {
 	public void update();
 
 	public void lateupdate();
+	
+	@Deprecated
+	public void draw();
 
 	public void close();
 	

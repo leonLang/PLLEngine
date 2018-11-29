@@ -2,6 +2,7 @@ package test;
 
 import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.Scene;
+import com.PLLEngine.Scene.SceneComponents.Text;
 
 public class TestEntry extends Game {
 	public static TestEntry entry;
@@ -19,6 +20,7 @@ public class TestEntry extends Game {
 			public void init() {
 				this.createGameWindow("nam1");
 				this.addScene("Zene1",new Scene());
+				this.getScene("Zene1").addSceneComponent(new Text("hello"));
 				this.loadScene("Zene1");
 			}
 		};
