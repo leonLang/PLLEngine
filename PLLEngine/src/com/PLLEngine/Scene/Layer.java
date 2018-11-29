@@ -17,6 +17,8 @@ public class Layer {
 		LayerComponents.put(name, lComponent);
 	}
 	public void draw(Graphics g) {
-		
+		for(LayerComponent value : LayerComponents.values()) {
+			value.draw(g);
+		}
 	}
 }
