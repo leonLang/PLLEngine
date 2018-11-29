@@ -9,7 +9,7 @@ public class entitiy extends LayerComponent{
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		
+		g.drawRect(100, 50, 300, 300);
 	}
 
 }
