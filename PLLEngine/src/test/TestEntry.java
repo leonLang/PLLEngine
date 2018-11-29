@@ -1,5 +1,7 @@
 package test;
 
+import javax.swing.SwingUtilities;
+
 import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.Layer;
 import com.PLLEngine.Scene.Scene;
@@ -18,7 +20,15 @@ public class TestEntry extends Game {
 			}
 
 			public void init() {
-				this.createGameWindow("nam1");
+				SwingUtilities.invokeLater(new Runnable() {
+
+
+					public void run() {
+						createGameWindow("nam1");
+						
+					}
+					
+				});
 				this.addScene("Zene1",new Scene());
 				this.loadScene("Zene1");
 				this.getScene("Zene1").LayerCount(4);
