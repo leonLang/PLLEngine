@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 import com.PLLEngine.Scene.layerComponents.LayerComponent;
 
-public class entitiy extends LayerComponent{
+public class Entitiy extends LayerComponent{
 
 	@Override
 	public void draw(Graphics g) {
