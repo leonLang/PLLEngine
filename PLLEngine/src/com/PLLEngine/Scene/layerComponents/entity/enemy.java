@@ -1,5 +1,5 @@
 package com.PLLEngine.Scene.layerComponents.entity;
 
-public class enemy {
+public class enemy extends entitiy{
 
 }
