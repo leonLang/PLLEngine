@@ -17,8 +17,8 @@ public class Window extends JFrame {
 	protected String WindowName;
 	private Dimension screenSize;
 
-	private int width;
-	private int height;
+	public  int width;
+	public  int height;
 	private int x, y;
 
 	public Window() {
