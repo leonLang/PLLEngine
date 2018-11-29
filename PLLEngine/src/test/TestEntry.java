@@ -9,7 +9,7 @@ public class TestEntry extends Game {
 
 	public static void main(String[] args) {
 		entry = new TestEntry() {
-			// Hier kommt der Game code rein, zur übersicht lohnt sich diese schribweise
+			// Hier kommt der Game code rein, zur ï¿½bersicht lohnt sich diese schribweise
 			// Alternativ kann man das auch in der klasse selbst machen
 
 			public void preinit() {
