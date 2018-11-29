@@ -1,14 +1,12 @@
 package com.PLLEngine.Scene;
 
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JPanel;
 
-public class Scene extends JPanel implements MouseListener {
+public class Scene extends JPanel {
 	/**
 	 * 
 	 */
@@ -19,7 +17,7 @@ public class Scene extends JPanel implements MouseListener {
 
 	public Scene() {
 		Scenelayers = new HashMap<String, Layer>();
-
+		LayerOrder = new String[0];
 	}
 
 	public void LayerCount(int i) {
@@ -35,13 +33,13 @@ public class Scene extends JPanel implements MouseListener {
 
 	public void addLayer(String componentName, Layer layer, int index) {
 		Scenelayers.put(componentName, layer);
-		relocateLayer(componentName,index);
+		relocateLayer(componentName, index);
 	}
 
 	public void relocateLayer(String componentName, int index) {
 		try {
-		LayerOrder[index] = componentName;
-		} catch(Exception e) {
+			LayerOrder[index] = componentName;
+		} catch (Exception e) {
 			System.err.println(new ArrayIndexOutOfBoundsException());
 		}
 	}
@@ -52,38 +50,7 @@ public class Scene extends JPanel implements MouseListener {
 				Scenelayers.get(LayerOrder[i]).draw(g);
 			}
 		} catch (NullPointerException e) {
-			System.err.println("can not find layer with index");
 
 		}
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 }

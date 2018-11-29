@@ -27,6 +27,7 @@ public class Game extends Basic implements GameBase {
 	@Override
 	public void setup() {
 		SceneMap = new HashMap<String, Scene>();
+		
 	}
 
 	@Override
