@@ -25,14 +25,14 @@ public class TestEntry extends Game {
 
 					public void run() {
 						createGameWindow("nam1");
+						addScene("Zene1",new Scene());
+						loadScene("Zene1");
+						getScene("Zene1").LayerCount(4);
+						getScene("Zene1").addLayer("test", new Layer(),0);
 						
 					}
 					
 				});
-				this.addScene("Zene1",new Scene());
-				this.loadScene("Zene1");
-				this.getScene("Zene1").LayerCount(4);
-				this.getScene("Zene1").addLayer("test", new Layer(),0);
 			}
 		};
 		entry.start();
