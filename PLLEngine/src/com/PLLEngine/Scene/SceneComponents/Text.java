@@ -1,12 +1,21 @@
 package com.PLLEngine.Scene.SceneComponents;
 
-import javax.swing.JLabel;
+import java.awt.Graphics;
 
-public class Text extends JLabel implements SceneComponent {
-	public Text(String message) {
-		super(message);
+public class Text extends LayerComponent {
+	private String message;
+	private int x, y;
+
+	public Text(String message, int x, int y) {
+		this.message = message;
+		this.x = x;
+		this.y = y;
+
 	}
 
-	private static final long serialVersionUID = 1L;
+	@Override
+	public void draw(Graphics g) {
+		g.drawString(message, x, y);
+	}
 
 }

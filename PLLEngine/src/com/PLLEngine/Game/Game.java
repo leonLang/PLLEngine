@@ -10,7 +10,7 @@ import com.PLLEngine.Window.Window;
 public class Game extends Basic implements GameBase {
 
 	public static GameWindow gwindow;
-	public static Map<String, Scene> SceneMap;
+	public  Map<String, Scene> SceneMap;
 	public static Scene currenScene;
 
 	public Game() {
