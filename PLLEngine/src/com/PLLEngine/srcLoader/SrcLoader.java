@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class SrcLoader {
-	public BufferedImage Image(String src) throws IOException {
+	public static BufferedImage Image(String src) throws IOException {
 		BufferedImage returnImage;
 		returnImage = ImageIO.read(new File(src));
 		return returnImage;

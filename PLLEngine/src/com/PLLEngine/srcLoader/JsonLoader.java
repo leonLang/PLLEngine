@@ -17,4 +17,11 @@ public class JsonLoader {
 		map = objectMapper.readValue(jsonData, Map.class);
 		return map;
 	}
+	public static RefrenceJson[] loadRefrence(String Path) throws JsonParseException, JsonMappingException, IOException {
+		RefrenceJson[] refrenceJson;
+		byte[] jsonData = Files.readAllBytes(Paths.get(Path));
+		ObjectMapper objectMapper = new ObjectMapper();
+		refrenceJson = objectMapper.readValue(jsonData, RefrenceJson[].class);
+		return refrenceJson;
+	}
 }

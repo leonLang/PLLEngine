@@ -24,8 +24,12 @@ public class Grid extends LayerComponent {
 	public void draw(Graphics g) {
 		for (int x = 0; x < cellCountX; x++) {
 			for (int y = 0; y < cellCountY; y++) {
-				g.drawRect(x * cellX - cellX / 2, y * cellY - cellY / 2, cellX, cellY);
-
+				try {
+				g.drawImage(map.getLoadedsrc()[map.getMap()[x][y]].getImg(), x * cellX - cellX / 2, y * cellY - cellY / 2,null);
+				//g.drawRect(x * cellX - cellX / 2, y * cellY - cellY / 2, cellX, cellY);
+				} catch(Exception e) {
+					
+				}
 			}
 		}
 
@@ -38,6 +42,9 @@ public class Grid extends LayerComponent {
 			System.err.println("Can not load map because of: " + e);
 			e.printStackTrace();
 		}
+	}
+	public void loadMap() {
+		map.loadMap();
 	}
 
 }
