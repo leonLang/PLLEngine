@@ -10,9 +10,9 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonLoader {
-	public Map loadMap() throws JsonParseException, JsonMappingException, IOException {
+	public static Map loadMap(String Path) throws JsonParseException, JsonMappingException, IOException {
 		Map map;
-		byte[] jsonData = Files.readAllBytes(Paths.get(""));
+		byte[] jsonData = Files.readAllBytes(Paths.get(Path));
 		ObjectMapper objectMapper = new ObjectMapper();
 		map = objectMapper.readValue(jsonData, Map.class);
 		return map;

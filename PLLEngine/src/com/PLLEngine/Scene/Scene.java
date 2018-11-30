@@ -43,6 +43,7 @@ public class Scene extends JPanel {
 			System.err.println(new ArrayIndexOutOfBoundsException());
 		}
 	}
+	
 
 	public void drawLayer(Graphics g) {
 		try {
