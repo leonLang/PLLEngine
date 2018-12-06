@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.PLLEngine.Basic.Basic;
+import com.PLLEngine.Control.Control;
 import com.PLLEngine.Scene.Scene;
 import com.PLLEngine.Window.Window;
 
@@ -12,6 +13,7 @@ public class Game extends Basic implements GameBase {
 	public static GameWindow gwindow;
 	public  Map<String, Scene> SceneMap;
 	public static Scene currenScene;
+	public static double deltaX,deltaY;
 
 	public Game() {
 		setup();
@@ -88,7 +90,14 @@ public class Game extends Basic implements GameBase {
 			System.err.println("No Scene found with name of: \n" + scene);
 		}
 	}
-
+	public void addKeyListener(Control controler) {
+		try {
+			gwindow.addKeyListener(controler);
+		} catch(NullPointerException e) {
+			System.err.println("You cant add a control component without createing a Window first");
+		}
+		
+	}
 	public class GameWindow extends Window {
 		/**
 		 * 

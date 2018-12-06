@@ -15,7 +15,7 @@ public class Map {
 		try {
 			loadedsrc = JsonLoader.loadRefrence(refrencePath);
 			for(int i = 0;i < loadedsrc.length;i++) {
-				//loadedsrc[i].setImg(SrcLoader.Image(loadedsrc[i].getPath()));
+				loadedsrc[i].setImg(SrcLoader.Image(loadedsrc[i].getPath()));
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
