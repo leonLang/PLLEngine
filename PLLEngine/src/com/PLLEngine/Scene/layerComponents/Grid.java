@@ -34,30 +34,31 @@ public class Grid extends LayerComponent {
 							y * cellY - cellY / 2, cellX, cellY, null);
 					// g.drawRect(x * cellX - cellX / 2, y * cellY - cellY / 2, cellX, cellY);
 				} catch (Exception e) {
-					
+
 				}
 			}
 		}
 	}
 
 	public void addMap(String path) {
+		new Thread(() -> {
 
-		try {
-			map = JsonLoader.loadMap(path);
-		} catch (IOException e) {
-			System.err.println("Can not load map because of: " + e);
-			e.printStackTrace();
-		}
-
-	}
-	public void addMap(Map map) {
-
-		map = map;
-
+			try {
+				map = JsonLoader.loadMap(path);
+				map.loadMap();
+			} catch (IOException e) {
+				System.err.println("Can not load map because of: " + e);
+				e.printStackTrace();
+			}
+		}).start();
 	}
 
 	public void loadMap() {
+		try {
 		map.loadMap();
+		} catch( Exception e) {
+			System.err.println("Map has not been loaded yet");
+		}
 	}
 
 }

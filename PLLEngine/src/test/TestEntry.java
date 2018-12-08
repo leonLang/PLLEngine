@@ -10,6 +10,7 @@ import com.PLLEngine.Scene.Scene;
 import com.PLLEngine.Scene.layerComponents.Background;
 import com.PLLEngine.Scene.layerComponents.Grid;
 import com.PLLEngine.Scene.layerComponents.entity.Enemy;
+import com.PLLEngine.srcLoader.JsonLoader;
 
 public class TestEntry extends Game {
 	public static TestEntry entry;
@@ -38,7 +39,6 @@ public class TestEntry extends Game {
 				addScene("Zene1", new Scene()); // Solange die Scene nicht geladen ist passiert nix
 				getScene("Zene1").LayerCount(4);
 				grid1.addMap("testmap.json");
-				grid1.loadMap();
 				layer1.addLayerComponents("background", new Background("Skyline.jpg"));
 				layer1.addLayerComponents("olaf", new Enemy(100, 100));
 				layer1.addLayerComponents("Grid", grid1);

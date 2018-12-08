@@ -3,7 +3,6 @@ package com.PLLEngine.Game;
 import java.util.HashMap;
 import java.util.Map;
 
-
 import com.PLLEngine.Basic.Basic;
 import com.PLLEngine.Control.Control;
 import com.PLLEngine.Scene.Scene;
@@ -12,9 +11,9 @@ import com.PLLEngine.Window.Window;
 public class Game extends Basic implements GameBase {
 
 	public static GameWindow gwindow;
-	public  Map<String, Scene> SceneMap;
+	public Map<String, Scene> SceneMap;
 	public static Scene currenScene;
-	public static double deltaX,deltaY;
+	public static double deltaX, deltaY;
 
 	public Game() {
 		setup();
@@ -30,7 +29,7 @@ public class Game extends Basic implements GameBase {
 	@Override
 	public void setup() {
 		SceneMap = new HashMap<String, Scene>();
-		
+
 	}
 
 	@Override
@@ -50,16 +49,18 @@ public class Game extends Basic implements GameBase {
 		// TODO Auto-generated method stub
 
 	}
+
 	@Deprecated
 	@Override
 	public void lateupdate() {
 		// TODO Auto-generated method stub
 
 	}
+
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -73,8 +74,9 @@ public class Game extends Basic implements GameBase {
 	}
 
 	public void addScene(String sceneName, Scene scene) {
-		SceneMap.put(sceneName, scene);
+			SceneMap.put(sceneName, scene);
 	}
+
 	public Scene getScene(String sceneName) {
 		return SceneMap.get(sceneName);
 	}
@@ -91,14 +93,16 @@ public class Game extends Basic implements GameBase {
 			System.err.println("No Scene found with name of: \n" + scene);
 		}
 	}
+
 	public void addKeyListener(Control controler) {
 		try {
 			gwindow.addKeyListener(controler);
-		} catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			System.err.println("You cant add a control component without createing a Window first");
 		}
-		
+
 	}
+
 	public class GameWindow extends Window {
 		/**
 		 * 

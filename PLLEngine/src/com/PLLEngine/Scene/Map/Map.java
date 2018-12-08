@@ -10,17 +10,19 @@ public class Map {
 	private String refrencePath;
 	public RefrenceJson[] loadedsrc;
 	private int[][] map;
-	
+
 	public void loadMap() {
-		try {
-			loadedsrc = JsonLoader.loadRefrence(refrencePath);
-			for(int i = 0;i < loadedsrc.length;i++) {
-				loadedsrc[i].setImg(SrcLoader.Image(loadedsrc[i].getPath()));
+		new Thread(() -> {
+			try {
+				loadedsrc = JsonLoader.loadRefrence(refrencePath);
+				for (int i = 0; i < loadedsrc.length; i++) {
+					loadedsrc[i].setImg(SrcLoader.Image(loadedsrc[i].getPath()));
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		}).start();
 	}
 
 	public String getRefrencePath() {
@@ -46,6 +48,5 @@ public class Map {
 	public void setMap(int[][] map) {
 		this.map = map;
 	}
-
 
 }

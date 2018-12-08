@@ -26,19 +26,4 @@ public class JsonLoader {
 		refrenceJson = objectMapper.readValue(jsonData, RefrenceJson[].class);
 		return refrenceJson;
 	}
-
-	public static class ThreadLoader extends Thread {
-		private String path;
-		public ThreadLoader(String path) throws JsonParseException, JsonMappingException, IOException {
-			this.path = path;
-		}
-		public void run() {
-			try {
-				JsonLoader.loadMap(path);
-			} catch (IOException e) {
-				System.err.println("could not load map as Thread");
-				e.printStackTrace();
-			}
-		}
-	}
 }
