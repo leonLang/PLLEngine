@@ -41,7 +41,7 @@ public class TestEntry extends Game {
 						grid1.addMap("testmap.json");
 						grid1.loadMap();
 						layer1.addLayerComponents("background", new Background("Skyline.jpg"));
-						layer1.addLayerComponents("olaf", new Enemy());
+						layer1.addLayerComponents("olaf", new Enemy(100,100));
 						layer1.addLayerComponents("Grid", grid1);
 						getScene("Zene1").addLayer("test",layer1 , 0);
 						addKeyListener(new Control());
