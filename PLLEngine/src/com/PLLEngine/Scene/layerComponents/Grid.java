@@ -13,12 +13,10 @@ public class Grid extends LayerComponent {
 	private int cellX, cellY;
 	private int cellCountX, cellCountY;
 	private Map map;
-	private int testx;
 
 	public Grid(int cellX, int cellY) {
 		this.cellX = cellX;
 		this.cellY = cellY;
-		testx = 0;
 		try {
 			cellCountX = Game.gwindow.width / cellX + 1;
 			cellCountY = Game.gwindow.height / cellY + 1;
@@ -50,6 +48,11 @@ public class Grid extends LayerComponent {
 			System.err.println("Can not load map because of: " + e);
 			e.printStackTrace();
 		}
+
+	}
+	public void addMap(Map map) {
+
+		map = map;
 
 	}
 
