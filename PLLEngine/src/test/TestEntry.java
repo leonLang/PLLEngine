@@ -36,12 +36,16 @@ public class TestEntry extends Game {
 				// man sollte objecte die teil des Window sind auch immer erst danach erstellen
 				Layer layer1 = new Layer();
 				Grid grid1 = new Grid(32, 32);
-				Enemy enm = new Enemy(100, 100);
+				Enemy enm = new Enemy(1000, 100);
+				Enemy enm1 = new Enemy(100,50);
 				addScene("Zene1", new Scene()); // Solange die Scene nicht geladen ist passiert nix
 				getScene("Zene1").LayerCount(4);
 				grid1.addMap("testmap.json");
 				layer1.addLayerComponents("background", new Background("Skyline.jpg"));
-				layer1.addLayerComponents("olaf", enm);
+				layer1.addLayerComponents("enemTwo", enm);
+				//namen mit zahlen hintendran scheinen nicht zu funktionieren
+				//bsp. name war enemy1
+				layer1.addLayerComponents("enemZwei", enm1);
 				layer1.addLayerComponents("Grid", grid1);
 				getScene("Zene1").addLayer("test", layer1, 0);
 				addKeyListener(new Control());
