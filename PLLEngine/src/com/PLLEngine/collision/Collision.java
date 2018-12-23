@@ -1,4 +1,4 @@
-package com.PLLEngine.Scene.layerComponents.entity.collision;
+package com.PLLEngine.collision;
 
 public class Collision {
 

@@ -1,4 +1,4 @@
-package com.PLLEngine.Scene.layerComponents.entity.collision;
+package com.PLLEngine.collision;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
 
