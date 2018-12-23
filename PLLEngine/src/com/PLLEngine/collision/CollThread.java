@@ -14,11 +14,11 @@ public class CollThread extends Thread {
 			try {
 				int counter = 0;
 				for (int i = 0; i < Entitiy.entityNumberAll; i++) {
-					for (int j = counter+1; j < Entitiy.entityNumberAll; j++) {
-						Collision cl = new Collision(Entitiy.arrX[counter], Entitiy.arrY[counter], 300, 300, Entitiy.arrX[j], Entitiy.arrY[j], 300,
-								300);
+					for (int j = counter + 1; j < Entitiy.entityNumberAll; j++) {
+						Collision cl = new Collision(Entitiy.arrX[counter], Entitiy.arrY[counter], 20, 20,
+								Entitiy.arrX[j], Entitiy.arrY[j], 20, 20);
 						if (cl.Coll1()) {
-							//System.out.println("Collision");
+							System.out.println("Collision");
 						}
 					}
 

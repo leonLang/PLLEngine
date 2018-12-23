@@ -7,12 +7,22 @@ import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
 public class Enemy extends Entitiy {
 	int x = 0, y = 0;
 	public static boolean richtungAll;
-	private boolean richtungOwn;
+	private boolean richtungOwn, once;
+	int width = 20;
+	int height = 20;
 
 	public Enemy(int startX, int startY) {
 		dx = startX;
 		dy = startY;
 		System.out.println(dx);
+		if (!richtungAll) {
+			richtungAll = true;
+			richtungOwn = true;
+			once = true;
+		} else if (richtungAll) {
+			richtungAll = false;
+			once = true;
+		}
 
 	}
 
@@ -24,7 +34,7 @@ public class Enemy extends Entitiy {
 		arrX[entityNumberOwn] = dx;
 		arrY[entityNumberOwn] = dy;
 
-		g.drawRect(dx, dy, 300, 300);
+		g.drawRect(dx, dy, width, height);
 
 	}
 
@@ -37,10 +47,7 @@ public class Enemy extends Entitiy {
 	}
 
 	private void enemyMovement() {
-		if (!richtungAll) {
-			richtungAll = true;
-			richtungOwn = true;
-		}
+
 		if (richtungOwn) {
 			dx++;
 		} else {

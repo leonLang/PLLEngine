@@ -40,9 +40,11 @@ public class TestEntry extends Game {
 				Grid grid1 = new Grid(32, 32);
 
 				Enemy enm1 = new Enemy(100, 50);
-
-				Enemy enm2 = new Enemy(500, 50);
-				Enemy enm3 = new Enemy(1000, 10);
+				Enemy enm2 = new Enemy(200, 50);
+				Enemy enm3 = new Enemy(300, 10);
+				Enemy enm4 = new Enemy(400, 50);
+				Enemy enm5 = new Enemy(500, 50);
+				Enemy enm6 = new Enemy(600, 10);
 
 				addScene("Zene1", new Scene()); // Solange die Scene nicht geladen ist passiert nix
 				getScene("Zene1").LayerCount(4);
@@ -54,9 +56,12 @@ public class TestEntry extends Game {
 				layer1.addLayerComponents("Grid", grid1);
 				getScene("Zene1").addLayer("test", layer1, 0);
 
-				layer1.addLayerComponents("enemZwei", enm1);
-				layer1.addLayerComponents("enemThree", enm2);
-				layer1.addLayerComponents("enemDrei", enm3);
+				layer1.addLayerComponents("enemOne", enm1);
+				layer1.addLayerComponents("enemTwo", enm2);
+				layer1.addLayerComponents("enemThree", enm3);
+				layer1.addLayerComponents("enemFour", enm4);
+				layer1.addLayerComponents("enemFive", enm5);
+				layer1.addLayerComponents("enemSix", enm6);
 				addKeyListener(new Control() {
 					// provisorischer controll versuch
 

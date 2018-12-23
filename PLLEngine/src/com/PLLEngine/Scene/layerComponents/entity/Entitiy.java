@@ -3,7 +3,7 @@ package com.PLLEngine.Scene.layerComponents.entity;
 import java.awt.Graphics;
 
 import com.PLLEngine.Scene.layerComponents.LayerComponent;
-import com.PLLEngine.Scene.layerComponents.entity.collision.CollThread;
+import com.PLLEngine.collision.CollThread;
 
 public class Entitiy extends LayerComponent {
 	int x12 = 100;
@@ -15,7 +15,8 @@ public class Entitiy extends LayerComponent {
 	public int dx, dy;
 
 	public Entitiy() {
-		// der player muss immer als erstes erstellt werden, dmait er array nummer 0 ist.
+		// der player muss immer als erstes erstellt werden, dmait er array nummer 0
+		// ist.
 		entityNumberOwn = entityNumberAll;
 		entityNumberAll++;
 		System.out.println(entityNumberAll);
