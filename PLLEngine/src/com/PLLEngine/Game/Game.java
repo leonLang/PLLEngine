@@ -74,7 +74,7 @@ public class Game extends Basic implements GameBase {
 	}
 
 	public void addScene(String sceneName, Scene scene) {
-			SceneMap.put(sceneName, scene);
+		SceneMap.put(sceneName, scene);
 	}
 
 	public Scene getScene(String sceneName) {
@@ -104,13 +104,12 @@ public class Game extends Basic implements GameBase {
 	}
 
 	public class GameWindow extends Window {
-		/**
-		 * 
-		 */
+
 		private static final long serialVersionUID = 1L;
 
 		public GameWindow(String name) {
 			WindowName = name;
+			this.setTitle(name);
 		}
 	}
 }

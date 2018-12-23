@@ -3,8 +3,6 @@ package com.PLLEngine.Scene.layerComponents;
 import java.awt.Graphics;
 import java.io.IOException;
 
-import javax.swing.SwingUtilities;
-
 import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.Map.Map;
 import com.PLLEngine.srcLoader.JsonLoader;
@@ -13,10 +11,16 @@ public class Grid extends LayerComponent {
 	private int cellX, cellY;
 	private int cellCountX, cellCountY;
 	private Map map;
+	public int dx,dy;
+	public int dcx,dcy;
 
 	public Grid(int cellX, int cellY) {
 		this.cellX = cellX;
 		this.cellY = cellY;
+		this.dx = 0;
+		this.dy = 0;
+		this.dcx = 0;
+		this.dcy = 0;
 		try {
 			cellCountX = Game.gwindow.width / cellX + 1;
 			cellCountY = Game.gwindow.height / cellY + 1;
@@ -30,8 +34,9 @@ public class Grid extends LayerComponent {
 		for (int x = 0; x < cellCountX; x++) {
 			for (int y = 0; y < cellCountY; y++) {
 				try {
-					g.drawImage(map.getLoadedsrc()[map.getMap()[x][y]].getImg(), x * cellX - cellX / 2,
-							y * cellY - cellY / 2, cellX, cellY, null);
+					// for some reason x and y have to be switched
+					g.drawImage(map.getLoadedsrc()[map.getMap()[y + dcy][x + dcx]].getImg(), x * cellX - cellX / 2 + dx,
+							y * cellY - cellY / 2 + dy, cellX, cellY, null);
 					// g.drawRect(x * cellX - cellX / 2, y * cellY - cellY / 2, cellX, cellY);
 				} catch (Exception e) {
 

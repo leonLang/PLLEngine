@@ -7,6 +7,25 @@ public class RefrenceJson {
 	private int id;
 	private boolean collision;
 	private BufferedImage img;
+	private int spriteX;
+	private int spriteY;
+	
+	
+	public int getSpriteX() {
+		return spriteX;
+	}
+
+	public void setSpriteX(int spriteX) {
+		this.spriteX = spriteX;
+	}
+
+	public int getSpriteY() {
+		return spriteY;
+	}
+
+	public void setSpriteY(int spriteY) {
+		this.spriteY = spriteY;
+	}
 
 	public String getPath() {
 		return path;

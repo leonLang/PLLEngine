@@ -1,7 +1,16 @@
 [
   {
     "id": 1,
-    "path": "tree1.jpg"
-
+    "path": "_sprite_1.png",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
+  },
+  {
+    "id": 2,
+    "path": "_sprite_2.png",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
   }
 ]

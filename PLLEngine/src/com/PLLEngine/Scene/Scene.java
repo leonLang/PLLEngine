@@ -27,6 +27,8 @@ public class Scene extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		//repaint of window effects Scene as well
+		
 		drawLayer(g);
 
 	}

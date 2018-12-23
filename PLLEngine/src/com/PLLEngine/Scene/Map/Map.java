@@ -8,10 +8,12 @@ import com.PLLEngine.srcLoader.SrcLoader;
 
 public class Map {
 	private String refrencePath;
-	public RefrenceJson[] loadedsrc;
+	private RefrenceJson[] loadedsrc;
 	private int[][] map;
+	private int entryX, entryY;
 
 	public void loadMap() {
+		// Load all images for the refrecnes
 		new Thread(() -> {
 			try {
 				loadedsrc = JsonLoader.loadRefrence(refrencePath);
@@ -47,6 +49,22 @@ public class Map {
 
 	public void setMap(int[][] map) {
 		this.map = map;
+	}
+
+	public int getEntryX() {
+		return entryX;
+	}
+
+	public void setEntryX(int entryX) {
+		this.entryX = entryX;
+	}
+
+	public int getEntryY() {
+		return entryY;
+	}
+
+	public void setEntryY(int entryY) {
+		this.entryY = entryY;
 	}
 
 }

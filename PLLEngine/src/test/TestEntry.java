@@ -1,5 +1,7 @@
 package test;
 
+import java.awt.event.KeyEvent;
+
 import javax.swing.SwingUtilities;
 
 import com.PLLEngine.Control.Control;
@@ -45,17 +47,38 @@ public class TestEntry extends Game {
 				addScene("Zene1", new Scene()); // Solange die Scene nicht geladen ist passiert nix
 				getScene("Zene1").LayerCount(4);
 				grid1.addMap("testmap.json");
-				layer1.addLayerComponents("background", new Background("Skyline.jpg"));
 
 				// namen mit zahlen hintendran scheinen nicht zu funktionierens
 				// bsp. name war enemy1
 
+				layer1.addLayerComponents("Grid", grid1);
+				getScene("Zene1").addLayer("test", layer1, 0);
+
 				layer1.addLayerComponents("enemZwei", enm1);
 				layer1.addLayerComponents("enemThree", enm2);
 				layer1.addLayerComponents("enemDrei", enm3);
-				layer1.addLayerComponents("Grid", grid1);
-				getScene("Zene1").addLayer("test", layer1, 0);
-				addKeyListener(new Control());
+				addKeyListener(new Control() {
+					// provisorischer controll versuch
+
+					@Override
+					public void keyPressed(KeyEvent e) {
+						grid1.dx++;
+						if (grid1.dx % 32 == 0) {
+							grid1.dcx--;
+							grid1.dx = 0;
+						}
+					}
+
+					@Override
+					public void keyReleased(KeyEvent e) {
+
+					}
+
+					@Override
+					public void keyTyped(KeyEvent e) {
+
+					}
+				});
 				loadScene("Zene1");
 				loop.start();
 			}
@@ -67,5 +90,6 @@ public class TestEntry extends Game {
 	@Override
 	public void update() {
 		gwindow.repaint();
+
 	}
 }
