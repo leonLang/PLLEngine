@@ -17,8 +17,6 @@ public class Grid extends LayerComponent {
 	public Grid(int cellX, int cellY) {
 		this.cellX = cellX;
 		this.cellY = cellY;
-		this.dx = 0;
-		this.dy = 0;
 		this.dcx = 0;
 		this.dcy = 0;
 		try {
@@ -30,7 +28,7 @@ public class Grid extends LayerComponent {
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics g,int dx, int dy) {
 		for (int x = 0; x < cellCountX; x++) {
 			for (int y = 0; y < cellCountY; y++) {
 				try {

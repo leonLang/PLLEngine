@@ -8,6 +8,10 @@ import com.PLLEngine.Scene.layerComponents.LayerComponent;
 
 
 public class Layer {
+	
+	public int dx,dy;
+	
+	
 	private Map<String, LayerComponent> LayerComponents;
 
 	public Layer() {
@@ -18,7 +22,7 @@ public class Layer {
 	}
 	public void draw(Graphics g) {
 		for(LayerComponent value : LayerComponents.values()) {
-			value.draw(g);
+			value.draw(g,dx,dy);
 		}
 	}
 }

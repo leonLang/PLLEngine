@@ -23,7 +23,7 @@ public class Background extends LayerComponent {
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics g,int dx,int dy) {
 			g.drawImage(bImage, 0, 0, Game.gwindow.width,Game.gwindow.height, null);
 
 	}

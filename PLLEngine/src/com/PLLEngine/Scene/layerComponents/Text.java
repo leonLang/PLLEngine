@@ -14,7 +14,7 @@ public class Text extends LayerComponent {
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics g,int dx,int dy) {
 		g.drawString(message, x, y);
 	}
 

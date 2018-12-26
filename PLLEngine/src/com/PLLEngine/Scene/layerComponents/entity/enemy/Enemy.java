@@ -27,7 +27,7 @@ public class Enemy extends Entitiy {
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Graphics g,int dx,int dy) {
 		// Initialize kamera Movement first or there could be problems
 		cameraMovement();
 		enemyMovement();
