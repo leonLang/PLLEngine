@@ -18,7 +18,7 @@ public class CollThread extends Thread {
 						Collision cl = new Collision(Entitiy.arrX[counter], Entitiy.arrY[counter], 20, 20,
 								Entitiy.arrX[j], Entitiy.arrY[j], 20, 20);
 						if (cl.Coll1()) {
-							System.out.println("Collision");
+							//System.out.println("Collision");
 						}
 					}
 

@@ -17,6 +17,7 @@ import com.PLLEngine.srcLoader.JsonLoader;
 public class TestEntry extends Game {
 	public static TestEntry entry;
 	public static GameLoop loop;
+	public static int dx,dy;
 
 	public static void main(String[] args) {
 		entry = new TestEntry();
@@ -27,12 +28,17 @@ public class TestEntry extends Game {
 		// Hier nur settings reinmachen, die alle vor dem eigentlichen gam geladen
 		// werden sollen zb. WindowsLook
 		this.setWindowsLook();
+		dx = 0;
+		dy = 0;
 		loop = new GameLoop(this);
 	}
 
 	public void init() {
 		SwingUtilities.invokeLater(new Runnable() {
 
+			/* (non-Javadoc)
+			 * @see java.lang.Runnable#run()
+			 */
 			public void run() {
 				createGameWindow("nam1");
 				// man sollte objecte die teil des Window sind auch immer erst danach erstellen
@@ -55,7 +61,6 @@ public class TestEntry extends Game {
 
 				layer1.addLayerComponents("Grid", grid1);
 				getScene("Zene1").addLayer("test", layer1, 0);
-
 				layer1.addLayerComponents("enemOne", enm1);
 				layer1.addLayerComponents("enemTwo", enm2);
 				layer1.addLayerComponents("enemThree", enm3);
@@ -67,11 +72,8 @@ public class TestEntry extends Game {
 
 					@Override
 					public void keyPressed(KeyEvent e) {
-						grid1.dx++;
-						if (grid1.dx % 32 == 0) {
-							grid1.dcx--;
-							grid1.dx = 0;
-						}
+						dx ++;
+						layer1.dx =dx;
 					}
 
 					@Override

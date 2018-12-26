@@ -36,9 +36,7 @@ public class Grid extends LayerComponent {
 					g.drawImage(map.getLoadedsrc()[map.getMap()[y + dcy][x + dcx]].getImg(), x * cellX - cellX / 2 + dx,
 							y * cellY - cellY / 2 + dy, cellX, cellY, null);
 					// g.drawRect(x * cellX - cellX / 2, y * cellY - cellY / 2, cellX, cellY);
-				} catch (Exception e) {
-
-				}
+				} catch (Exception e) {				}
 			}
 		}
 	}
@@ -61,6 +59,11 @@ public class Grid extends LayerComponent {
 		map.loadMap();
 		} catch( Exception e) {
 			System.err.println("Map has not been loaded yet");
+		}
+	}
+	public void update() {
+		if(true) {
+			//add update to optimized map movment
 		}
 	}
 
