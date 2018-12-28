@@ -10,9 +10,10 @@ public class Entitiy extends LayerComponent {
 	public static int[] arrX = new int[100000];
 	public static int[] arrY = new int[100000];
 	public static int entityNumberAll;
+	public static boolean[] synchronize = new boolean[100000];
 	public int entityNumberOwn;
 	private static boolean onlyOnce = false;
-	public int dx, dy;
+	public int px, py;
 
 	public Entitiy() {
 		// der player muss immer als erstes erstellt werden, dmait er array nummer 0
@@ -29,9 +30,15 @@ public class Entitiy extends LayerComponent {
 	}
 
 	@Override
-	public void draw(Graphics g,int dx,int dy) {
+	public void draw(Graphics g, int dx, int dy) {
+		System.out.println("hi");
 		// TODO Auto-generated method stub
 		g.drawRect(100, 50, 300, 300);
+	}
+
+	public void cameraMovement(int x, int y, int dx, int dy) {
+		px = x + dx;
+		py = y + dy;
 	}
 
 }

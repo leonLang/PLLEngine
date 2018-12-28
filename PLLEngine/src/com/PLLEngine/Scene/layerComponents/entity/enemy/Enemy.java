@@ -3,18 +3,19 @@ package com.PLLEngine.Scene.layerComponents.entity.enemy;
 import java.awt.Graphics;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
+import com.PLLEngine.collision.CollThread;
 
 public class Enemy extends Entitiy {
-	int x = 0, y = 0;
 	public static boolean richtungAll;
 	private boolean richtungOwn, once;
+	int x, y;
 	int width = 20;
 	int height = 20;
 
 	public Enemy(int startX, int startY) {
-		dx = startX;
-		dy = startY;
-		System.out.println(dx);
+		x = startX;
+		y = startY;
+		System.out.println(px);
 		if (!richtungAll) {
 			richtungAll = true;
 			richtungOwn = true;
@@ -27,38 +28,41 @@ public class Enemy extends Entitiy {
 	}
 
 	@Override
-	public void draw(Graphics g,int dx,int dy) {
+	public void draw(Graphics g, int dx, int dy) {
 		// Initialize kamera Movement first or there could be problems
-		cameraMovement();
-		enemyMovement();
-		arrX[entityNumberOwn] = dx;
-		arrY[entityNumberOwn] = dy;
+		cameraMovement(x, y, dx, dy);
+		synchronize();
+		setEntitiyNumber();
+		g.drawRect(px, py, width, height);
 
-		g.drawRect(dx, dy, width, height);
-
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public void setY(int y) {
-		this.y = y;
 	}
 
 	private void enemyMovement() {
 
 		if (richtungOwn) {
-			dx++;
+			x++;
 		} else {
-			dx--;
+			x--;
 		}
 	}
 
-	private void cameraMovement() {
-		dx = dx - x;
-		dy = dy - y;
-		x = 0;
-		y = 0;
+	private void synchronize() {
+		if (Entitiy.synchronize[entityNumberOwn]) {
+			Entitiy.synchronize[entityNumberOwn] = false;
+			if (CollThread.collLeft[entityNumberOwn]) {
+
+			} else if (CollThread.collRight[entityNumberOwn]) {
+
+			} else {
+				enemyMovement();
+			}
+
+		}
 	}
+
+	private void setEntitiyNumber() {
+		arrX[entityNumberOwn] = px;
+		arrY[entityNumberOwn] = py;
+	}
+
 }
