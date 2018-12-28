@@ -24,7 +24,7 @@ public class CollThread extends Thread {
 					for (int j = counter + 1; j < Entitiy.entityNumberAll; j++) {
 						Collision cl = new Collision(Entitiy.arrX[counter], Entitiy.arrY[counter], 20, 20,
 								Entitiy.arrX[j], Entitiy.arrY[j], 20, 20);
-						if (cl.CollLinkss()) {
+						if (cl.CollLinks()) {
 							// j is the right and counter is the opposite
 							collLeft[counter] = true;
 							collRight[j] = true;
