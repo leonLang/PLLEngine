@@ -47,7 +47,7 @@ public class TestEntry extends Game {
 				// man sollte objecte die teil des Window sind auch immer erst danach erstellen
 				Layer layer1 = new Layer();
 				Grid grid1 = new Grid(32, 32);
-				Player pl = new Player(50, 50);
+				Player pl = new Player(500, 300);
 				Enemy enm1 = new Enemy(100, 50);
 				Enemy enm2 = new Enemy(200, 50);
 				Enemy enm3 = new Enemy(300, 10);

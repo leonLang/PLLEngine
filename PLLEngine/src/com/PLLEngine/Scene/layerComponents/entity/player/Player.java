@@ -5,13 +5,13 @@ import java.awt.Graphics;
 import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
 import com.PLLEngine.collision.CollThread;
 
-public class Player extends Entitiy{
+public class Player extends Entitiy {
 	private static boolean richtungAll;
 	private boolean richtungOwn, once;
 	int x, y;
-	int width = 20;
-	int height = 20;
-	
+	int width = 50;
+	int height = 50;
+
 	public Player(int startX, int startY) {
 		x = startX;
 		y = startY;
@@ -26,17 +26,17 @@ public class Player extends Entitiy{
 		}
 
 	}
-	
-	
+
 	@Override
 	public void draw(Graphics g, int dx, int dy) {
 		// Initialize kamera Movement first or there could be problems
 		cameraMovement(x, y, dx, dy);
-		//synchronize();
+		// synchronize();
 		setEntitiyNumber();
-		g.drawRect(px, py, width, height);
+		g.drawRect(x, y, width, height);
 
 	}
+
 	private void enemyMovement() {
 
 		if (richtungOwn) {
@@ -45,7 +45,7 @@ public class Player extends Entitiy{
 			x--;
 		}
 	}
-	
+
 	private void synchronize() {
 		if (Entitiy.synchronize[entityNumberOwn]) {
 			Entitiy.synchronize[entityNumberOwn] = false;
