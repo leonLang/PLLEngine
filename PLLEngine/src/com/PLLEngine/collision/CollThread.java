@@ -1,7 +1,5 @@
 package com.PLLEngine.collision;
 
-import java.util.Arrays;
-
 import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
 
 public class CollThread extends Thread {
@@ -18,6 +16,7 @@ public class CollThread extends Thread {
 
 	private void runAlways() {
 		while (0 == 0) {
+			playerVSEnemy();
 			enemyVSEnemy();
 			stopForPerformance(10);
 		}
@@ -34,35 +33,65 @@ public class CollThread extends Thread {
 
 	private void enemyVSEnemy() {
 		int cntr = 1; // counter starts with 1 because 0 is the player
+		int counterPL = 0;
 		int amntObjcts = Entitiy.entityNumberAll;
 		int arrX[] = Entitiy.arrX;
 		int arrY[] = Entitiy.arrY;
+
 		compareAllObjekts(cntr, amntObjcts, arrX, arrY);
 
 	}
 
 	private void playerVSEnemy() {
+		int counterPL = 0;
+		int amntObjcts = Entitiy.entityNumberAll;
+		int arrX[] = Entitiy.arrX;
+		int arrY[] = Entitiy.arrY;
+
+		comparePlayerToEnemy(counterPL, amntObjcts, arrX, arrY);
 
 	}
 
-	private void compareAllObjekts(int counter, int amountObjekts, int arrX[], int arrY[]) {
-		// starts with 1 because 0 is the player
-		// combines two for to check each avaible option if there is any Collision.
-		for (int i = counter; i < amountObjekts; i++) {
-			for (int j = counter + 1; j < amountObjekts; j++) {
-				Collision cl = new Collision(arrX[counter], arrY[counter], 20, 20, arrX[j], arrY[j], 20, 20);
-				if (cl.CollRechtsP()) {
-					// j is the right and counter is the opposite
-					collLeft[counter] = true;
-					collRight[j] = true;
-				} else {
+	private void comparePlayerToEnemy(int counterPL, int amountObjects, int arrX[], int arrY[]) {
+		for (int i = counterPL; i < amountObjects; i++) {
+			checkEnmyPlyrCollision(i, arrX, arrY);
+		}
+	}
 
-				}
+	private void checkEnmyPlyrCollision(int forI, int arrX[], int arrY[]) {
+		Collision cl = new Collision(500, 300, 50, 50, arrX[forI], arrY[forI], 20, 20);
+		if (cl.CollRechtsP()) {
+			collRight[forI] = true;
+		} else {
+
+		}
+	}
+
+	private void compareAllObjekts(int counter, int amountObjects, int arrX[], int arrY[]) {
+		// combines two for to check each avaible option if there is any Collision.
+		for (int i = counter; i < amountObjects; i++) {
+			for (int j = counter + 1; j < amountObjects; j++) {
+				whatToDoBetweenComparison(counter, j, amountObjects, arrX, arrY);
 			}
-			Entitiy.synchronize[counter] = true;
-			// if the collision check is ready the enemys can move
+			setSynchronization(counter);
 			counter++;
 		}
+	}
+
+	private void whatToDoBetweenComparison(int counter, int j, int amountObjekts, int arrX[], int arrY[]) {
+		Collision cl = new Collision(arrX[counter], arrY[counter], 20, 20, arrX[j], arrY[j], 20, 20);
+		if (cl.CollRechtsP()) {
+			// j is the right and counter is the opposite
+			collLeft[counter] = true;
+			collRight[j] = true;
+		} else {
+
+		}
+	}
+
+	private void setSynchronization(int counter) {
+		Entitiy.synchronize[counter] = true;
+		// if the collision check is ready the enemys can move
 	}
 
 }

@@ -31,7 +31,7 @@ public class Player extends Entitiy {
 	public void draw(Graphics g, int dx, int dy) {
 		// Initialize kamera Movement first or there could be problems
 		cameraMovement(x, y, dx, dy);
-		// synchronize();
+		synchronize();
 		setEntitiyNumber();
 		g.drawRect(x, y, width, height);
 
@@ -54,7 +54,7 @@ public class Player extends Entitiy {
 			} else if (CollThread.collRight[entityNumberOwn]) {
 
 			} else {
-				enemyMovement();
+				// enemyMovement();
 			}
 
 		}
@@ -63,5 +63,6 @@ public class Player extends Entitiy {
 	private void setEntitiyNumber() {
 		arrX[entityNumberOwn] = px;
 		arrY[entityNumberOwn] = py;
+		// Player don't need this
 	}
 }

@@ -53,7 +53,7 @@ public class TestEntry extends Game {
 				Enemy enm3 = new Enemy(300, 10);
 				Enemy enm4 = new Enemy(400, 50);
 				Enemy enm5 = new Enemy(500, 50);
-				Enemy enm6 = new Enemy(600, 10);
+				Enemy enm6 = new Enemy(800, 300);
 
 				addScene("Zene1", new Scene()); // Solange die Scene nicht geladen ist passiert nix
 				getScene("Zene1").LayerCount(4);
