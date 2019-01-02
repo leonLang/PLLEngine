@@ -12,12 +12,13 @@ import com.PLLEngine.Scene.Scene;
 import com.PLLEngine.Scene.layerComponents.Background;
 import com.PLLEngine.Scene.layerComponents.Grid;
 import com.PLLEngine.Scene.layerComponents.entity.enemy.Enemy;
+import com.PLLEngine.Scene.layerComponents.entity.player.Player;
 import com.PLLEngine.srcLoader.JsonLoader;
 
 public class TestEntry extends Game {
 	public static TestEntry entry;
 	public static GameLoop loop;
-	public static int dx,dy;
+	public static int dx, dy;
 
 	public static void main(String[] args) {
 		entry = new TestEntry();
@@ -36,7 +37,9 @@ public class TestEntry extends Game {
 	public void init() {
 		SwingUtilities.invokeLater(new Runnable() {
 
-			/* (non-Javadoc)
+			/*
+			 * (non-Javadoc)
+			 * 
 			 * @see java.lang.Runnable#run()
 			 */
 			public void run() {
@@ -44,7 +47,7 @@ public class TestEntry extends Game {
 				// man sollte objecte die teil des Window sind auch immer erst danach erstellen
 				Layer layer1 = new Layer();
 				Grid grid1 = new Grid(32, 32);
-
+				Player pl = new Player(50, 50);
 				Enemy enm1 = new Enemy(100, 50);
 				Enemy enm2 = new Enemy(200, 50);
 				Enemy enm3 = new Enemy(300, 10);
@@ -61,6 +64,7 @@ public class TestEntry extends Game {
 
 				layer1.addLayerComponents("Grid", grid1);
 				getScene("Zene1").addLayer("test", layer1, 0);
+				layer1.addLayerComponents("aPlayer", pl);
 				layer1.addLayerComponents("enemOne", enm1);
 				layer1.addLayerComponents("enemTwo", enm2);
 				layer1.addLayerComponents("enemThree", enm3);
@@ -72,8 +76,8 @@ public class TestEntry extends Game {
 
 					@Override
 					public void keyPressed(KeyEvent e) {
-						dx ++;
-						layer1.dx =dx;
+						dx++;
+						layer1.dx = dx;
 					}
 
 					@Override

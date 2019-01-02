@@ -6,7 +6,7 @@ import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
 import com.PLLEngine.collision.CollThread;
 
 public class Enemy extends Entitiy {
-	public static boolean richtungAll;
+	private static boolean richtungAll;
 	private boolean richtungOwn, once;
 	int x, y;
 	int width = 20;
