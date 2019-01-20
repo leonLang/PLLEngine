@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import com.PLLEngine.Scene.Scene;
 
@@ -27,9 +28,10 @@ public class Window extends JFrame {
 
 		this.setVisible(true);
 		this.setBounds(x, y, width, height);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.add(new defaultWindowScene());
+		//defaultWindowScene causes issues with the layer
+		//this.add(new defaultWindowScene());
 	}
 
 	private void initDefaultWindowSize() {
@@ -43,13 +45,16 @@ public class Window extends JFrame {
 
 	public void relocateWindow() {
 		try {
-			x = (int) (screenSize.getWidth() - width) / 2;
+			x = (int) (screenSize.getWidth() -  width)  / 2;
 			y = (int) (screenSize.getHeight() - height) / 2;
 		} catch (NullPointerException e) {
 			System.err.println("screenSize has not been initialisiert");
 		}
 	}
+
 	
+	
+	@Deprecated
 	protected class defaultWindowScene extends Scene{
 
 		/**

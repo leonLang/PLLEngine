@@ -21,7 +21,7 @@ public class GameLoop extends Thread {
 			game.update();
 			timestamp = System.currentTimeMillis();
 			if (timestamp - oldTimestamp > maxLoopTime) {
-				
+				System.out.println("update to late");
 				continue;
 			}
 			game.draw();

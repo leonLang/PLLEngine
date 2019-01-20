@@ -12,5 +12,12 @@
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
+  },
+  {
+    "id": 3,
+    "path": "tree1.jpg",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
   }
 ]

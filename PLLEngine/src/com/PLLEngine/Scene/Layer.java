@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+
 import com.PLLEngine.Scene.layerComponents.LayerComponent;
 
 

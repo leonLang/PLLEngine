@@ -15,13 +15,13 @@ import com.PLLEngine.Scene.layerComponents.entity.enemy.Enemy;
 import com.PLLEngine.Scene.layerComponents.entity.player.Player;
 import com.PLLEngine.srcLoader.JsonLoader;
 
-public class TestEntry extends Game {
-	public static TestEntry entry;
+public class TestEntryy extends Game {
+	public static TestEntryy entry;
 	public static GameLoop loop;
 	public static int dx, dy;
 
 	public static void main(String[] args) {
-		entry = new TestEntry();
+		entry = new TestEntryy();
 		entry.start();
 	}
 

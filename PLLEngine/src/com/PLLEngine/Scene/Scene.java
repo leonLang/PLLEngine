@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class Scene extends JPanel {
@@ -18,6 +19,7 @@ public class Scene extends JPanel {
 	public Scene() {
 		Scenelayers = new HashMap<String, Layer>();
 		LayerOrder = new String[0];
+		this.setVisible(true);
 	}
 
 	public void LayerCount(int i) {
@@ -44,6 +46,9 @@ public class Scene extends JPanel {
 		} catch (Exception e) {
 			System.err.println(new ArrayIndexOutOfBoundsException());
 		}
+	}
+	public void addJSceneComponents(JComponent component) {
+		add(component);
 	}
 	
 
