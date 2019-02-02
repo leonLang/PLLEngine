@@ -13,6 +13,7 @@ import com.PLLEngine.Scene.layerComponents.Background;
 import com.PLLEngine.Scene.layerComponents.Grid;
 import com.PLLEngine.Scene.layerComponents.entity.enemy.Enemy;
 import com.PLLEngine.Scene.layerComponents.entity.player.Player;
+import com.PLLEngine.images.Spritesheet;
 import com.PLLEngine.srcLoader.JsonLoader;
 
 public class TestEntryy extends Game {
@@ -48,6 +49,7 @@ public class TestEntryy extends Game {
 				Layer layer1 = new Layer();
 				Grid grid1 = new Grid(32, 32);
 				Player pl = new Player(500, 300);
+				Spritesheet sp = new Spritesheet();
 				Enemy enm1 = new Enemy(100, 50);
 				Enemy enm2 = new Enemy(200, 50);
 				Enemy enm3 = new Enemy(300, 10);
@@ -71,6 +73,7 @@ public class TestEntryy extends Game {
 				layer1.addLayerComponents("enemFour", enm4);
 				layer1.addLayerComponents("enemFive", enm5);
 				layer1.addLayerComponents("enemSix", enm6);
+				layer1.addLayerComponents("firstsprite", sp);
 				addKeyListener(new Control() {
 					// provisorischer controll versuch
 
