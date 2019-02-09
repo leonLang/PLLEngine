@@ -28,7 +28,7 @@ public class Window extends JFrame {
 
 		this.setVisible(true);
 		this.setBounds(x, y, width, height);
-		this.setResizable(true);
+		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//defaultWindowScene causes issues with the layer
 		//this.add(new defaultWindowScene());

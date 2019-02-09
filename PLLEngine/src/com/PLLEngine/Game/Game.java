@@ -1,5 +1,6 @@
 package com.PLLEngine.Game;
 
+import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ public class Game extends Basic implements GameBase {
 	public Map<String, Scene> SceneMap;
 	public static Scene currenScene;
 	public static double deltaX, deltaY;
+	private Control controler;
 
 	public Game() {
 		setup();
@@ -30,7 +32,7 @@ public class Game extends Basic implements GameBase {
 	@Override
 	public void setup() {
 		SceneMap = new HashMap<String, Scene>();
-
+		controler = new Control(this);
 	}
 
 	@Override
@@ -81,10 +83,13 @@ public class Game extends Basic implements GameBase {
 	public Scene getScene(String sceneName) {
 		return SceneMap.get(sceneName);
 	}
-
+	public void addDefaultController() {
+		this.gwindow.addKeyListener(controler);
+	}
 	public void loadScene(String scene) {
+		//try catch to avoid error when no scene is loading. Always fired when game starts
 		try {
-		gwindow.remove(currenScene);
+		gwindow.remove(currenScene);		
 		} catch(Exception e) {
 			System.err.println("There is not Scene loaded at the moment to replace,\n ignore this message if printed at the start of execution\n");
 		}
@@ -92,7 +97,8 @@ public class Game extends Basic implements GameBase {
 		if (currenScene != null) {
 			try {
 				gwindow.add(currenScene);
-				gwindow.revalidate();
+				gwindow.revalidate();	//without layout errors may appear
+				gwindow.requestFocus();	//without focus controll maynot work
 			} catch (NullPointerException e) {
 				System.err.println("Cant add scene too GameWindow because: \n" + e);
 			}
@@ -124,5 +130,23 @@ public class Game extends Basic implements GameBase {
 		addScene(SceneName, new Scene());
 		getScene(SceneName).LayerCount(LayerCount);
 		getScene(SceneName).addLayer(LayerName, layer, Layerindex);
+	}
+
+	@Override
+	public void KeyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void KeyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void KeyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

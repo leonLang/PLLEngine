@@ -39,6 +39,14 @@ public class Scene extends JPanel {
 		Scenelayers.put(componentName, layer);
 		relocateLayer(componentName, index);
 	}
+	public Layer getLayer(String LayerName) {
+		try {
+		return Scenelayers.get(LayerName);
+		} catch(NullPointerException e) {
+			System.err.println("could not found Layer with name:" + LayerName + "\n" + e );
+			return null;
+		}
+	}
 
 	public void relocateLayer(String componentName, int index) {
 		try {

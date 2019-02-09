@@ -74,25 +74,6 @@ public class TestEntryy extends Game {
 				layer1.addLayerComponents("enemFive", enm5);
 				layer1.addLayerComponents("enemSix", enm6);
 				layer1.addLayerComponents("firstsprite", sp);
-				addKeyListener(new Control() {
-					// provisorischer controll versuch
-
-					@Override
-					public void keyPressed(KeyEvent e) {
-						dx++;
-						layer1.dx = dx;
-					}
-
-					@Override
-					public void keyReleased(KeyEvent e) {
-
-					}
-
-					@Override
-					public void keyTyped(KeyEvent e) {
-
-					}
-				});
 				loadScene("Zene1");
 				loop.start();
 			}
