@@ -11,8 +11,8 @@ public class Grid extends LayerComponent {
 	private int cellX, cellY;
 	private int cellCountX, cellCountY;
 	private Map map;
-	public int dx,dy;
-	public int dcx,dcy;
+	private int dx,dy;
+	private int dcx,dcy;
 
 	public Grid(int cellX, int cellY) {
 		this.cellX = cellX;
@@ -66,5 +66,38 @@ public class Grid extends LayerComponent {
 			//add update to optimized map movment
 		}
 	}
+
+	public int getDx() {
+		return dx;
+	}
+
+	public void setDx(int dx) {
+		this.dx = dx;
+	}
+
+	public int getDy() {
+		return dy;
+	}
+
+	public void setDy(int dy) {
+		this.dy = dy;
+	}
+
+	public int getDcx() {
+		return dcx;
+	}
+
+	public void setDcx(int dcx) {
+		this.dcx = dcx;
+	}
+
+	public int getDcy() {
+		return dcy;
+	}
+
+	public void setDcy(int dcy) {
+		this.dcy = dcy;
+	}
+	
 
 }

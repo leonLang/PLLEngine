@@ -13,9 +13,9 @@ import com.PLLEngine.Window.Window;
 public class Game extends Basic implements GameBase {
 
 	public static GameWindow gwindow;
-	public Map<String, Scene> SceneMap;
 	public static Scene currenScene;
 	public static double deltaX, deltaY;
+	private Map<String, Scene> SceneMap;
 	private Control controler;
 
 	public Game() {
@@ -75,7 +75,7 @@ public class Game extends Basic implements GameBase {
 	public void createGameWindow(String name) {
 		gwindow = new GameWindow(name);
 	}
-
+	//add = set
 	public void addScene(String sceneName, Scene scene) {
 		SceneMap.put(sceneName, scene);
 	}
@@ -83,6 +83,7 @@ public class Game extends Basic implements GameBase {
 	public Scene getScene(String sceneName) {
 		return SceneMap.get(sceneName);
 	}
+	
 	public void addDefaultController() {
 		this.gwindow.addKeyListener(controler);
 	}

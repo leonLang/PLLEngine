@@ -10,4 +10,5 @@ public class Button extends JButton{
 		this.setBounds(x, y, width, height);
 		this.setText(text);
 	}
+	
 }

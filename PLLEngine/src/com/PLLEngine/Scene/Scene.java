@@ -29,8 +29,8 @@ public class Scene extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		//repaint of window effects Scene as well
-		
+		// repaint of window effects Scene as well
+
 		drawLayer(g);
 
 	}
@@ -39,14 +39,23 @@ public class Scene extends JPanel {
 		Scenelayers.put(componentName, layer);
 		relocateLayer(componentName, index);
 	}
+
+	public void addJSceneComponents(JComponent component) {
+		add(component);
+	}
+
 	public Layer getLayer(String LayerName) {
 		try {
-		return Scenelayers.get(LayerName);
-		} catch(NullPointerException e) {
-			System.err.println("could not found Layer with name:" + LayerName + "\n" + e );
+			return Scenelayers.get(LayerName);
+		} catch (NullPointerException e) {
+			System.err.println("could not found Layer with name:" + LayerName + "\n" + e);
 			return null;
 		}
 	}
+	public int getLayerOrderLenght() {
+		return this.LayerOrder.length;
+	}
+	
 
 	public void relocateLayer(String componentName, int index) {
 		try {
@@ -55,10 +64,6 @@ public class Scene extends JPanel {
 			System.err.println(new ArrayIndexOutOfBoundsException());
 		}
 	}
-	public void addJSceneComponents(JComponent component) {
-		add(component);
-	}
-	
 
 	public void drawLayer(Graphics g) {
 		try {

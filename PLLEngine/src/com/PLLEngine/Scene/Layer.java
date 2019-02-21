@@ -12,7 +12,7 @@ import com.PLLEngine.Scene.layerComponents.LayerComponent;
 
 public class Layer {
 	
-	public int dx,dy;
+	private int dx,dy;
 	
 	
 	private Map<String, LayerComponent> LayerComponents;
@@ -28,4 +28,17 @@ public class Layer {
 			value.draw(g,dx,dy);
 		}
 	}
+	public int getDx() {
+		return dx;
+	}
+	public void setDx(int dx) {
+		this.dx = dx;
+	}
+	public int getDy() {
+		return dy;
+	}
+	public void setDy(int dy) {
+		this.dy = dy;
+	}
+	
 }
