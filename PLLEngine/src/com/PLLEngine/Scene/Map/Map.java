@@ -11,6 +11,8 @@ public class Map {
 	private RefrenceJson[] loadedsrc;
 	private int[][] map;
 	private int entryX, entryY;
+	private EventMap eMap;
+	private int[][] eventCoordinates;
 
 	public void loadMap() {
 		// Load all images for the refrecnes
@@ -22,9 +24,19 @@ public class Map {
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.err.println("Error while loading map.map");
 			}
+			try {
+				loadEvents();
+				
+			} catch(Exception e) {
+				System.err.println("Error while loading map.Event's");
+			}
+			
 		}).start();
+	}
+	public void loadEvents() {
+		this.eMap = new EventMap(eventCoordinates);
 	}
 
 	public String getRefrencePath() {
@@ -65,6 +77,14 @@ public class Map {
 
 	public void setEntryY(int entryY) {
 		this.entryY = entryY;
+	}
+
+	public EventMap geteMap() {
+		return eMap;
+	}
+
+	public void seteMap(EventMap eMap) {
+		this.eMap = eMap;
 	}
 
 }
