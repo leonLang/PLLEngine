@@ -9,4 +9,5 @@ public class EventMap {
 	public int[][] getEventCoordinates() {
 		return this.eventCoordinates;
 	}
+	
 }

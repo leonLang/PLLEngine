@@ -86,5 +86,12 @@ public class Map {
 	public void seteMap(EventMap eMap) {
 		this.eMap = eMap;
 	}
+	public int[][] getEventCoordinates() {
+		return eventCoordinates;
+	}
+	public void setEventCoordinates(int[][] eventCoordinates) {
+		this.eventCoordinates = eventCoordinates;
+	}
+	
 
 }
