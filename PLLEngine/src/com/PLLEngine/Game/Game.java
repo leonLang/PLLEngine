@@ -85,7 +85,11 @@ public class Game extends Basic implements GameBase {
 	}
 	
 	public void addDefaultController() {
-		this.gwindow.addKeyListener(controler);
+		try {
+			this.gwindow.addKeyListener(controler);
+		} catch(NullPointerException e) {
+			System.err.println("Could not add default controller because no window \n  is loaded yet");
+		}
 	}
 	public void loadScene(String scene) {
 		//try catch to avoid error when no scene is loading. Always fired when game starts

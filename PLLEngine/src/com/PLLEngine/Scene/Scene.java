@@ -52,6 +52,14 @@ public class Scene extends JPanel {
 			return null;
 		}
 	}
+	public String getLayerNameByIndex(int layerIndex) {
+		try {
+			return this.LayerOrder[layerIndex];
+		} catch (NullPointerException e) {
+			System.err.println("could not found Layer with index:" + layerIndex + "\n" + e);
+			return null;
+		}
+	}
 	public int getLayerOrderLenght() {
 		return this.LayerOrder.length;
 	}

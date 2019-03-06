@@ -20,6 +20,8 @@ public class TestEntryy extends Game {
 	public static TestEntryy entry;
 	public static GameLoop loop;
 	public static int dx, dy;
+	
+	private Player pl;
 
 	public static void main(String[] args) {
 		entry = new TestEntryy();
@@ -43,12 +45,14 @@ public class TestEntryy extends Game {
 			 * 
 			 * @see java.lang.Runnable#run()
 			 */
+			
 			public void run() {
 				createGameWindow("nam1");
 				// man sollte objecte die teil des Window sind auch immer erst danach erstellen
+				addDefaultController();
 				Layer layer1 = new Layer();
 				Grid grid1 = new Grid(32, 32);
-				Player pl = new Player(500, 300);
+				pl = new Player(500, 300);
 				Spritesheet sp = new Spritesheet(5, 4, "textures/br.png");
 				sp.setEntitiy(7, 100, 50, 20, 20);
 				sp.setEntitiy(5, 50, 100, 20, 20);
@@ -59,11 +63,10 @@ public class TestEntryy extends Game {
 				Enemy enm4 = new Enemy(400, 50);
 				Enemy enm5 = new Enemy(500, 50);
 				Enemy enm6 = new Enemy(800, 300);
-
 				addScene("Zene1", new Scene()); // Solange die Scene nicht geladen ist passiert nix
 				getScene("Zene1").LayerCount(4);
 				grid1.addMap("testmap.json");
-
+				
 				// namen mit zahlen hintendran scheinen nicht zu funktionierens
 				// bsp. name war enemy1
 
@@ -89,5 +92,25 @@ public class TestEntryy extends Game {
 	public void update() {
 		gwindow.repaint();
 
+	}
+	@Override
+	public void KeyPressed(KeyEvent e) {
+//		this.addScene("zene2", new Scene());
+//		this.loadScene("zene2");
+		Layer l = currenScene.getLayer(currenScene.getLayerNameByIndex(0));
+		l.setDx(l.getDx()+4);
+		
+	}
+
+	@Override
+	public void KeyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void KeyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
