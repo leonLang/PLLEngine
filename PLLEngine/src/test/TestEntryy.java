@@ -49,7 +49,10 @@ public class TestEntryy extends Game {
 				Layer layer1 = new Layer();
 				Grid grid1 = new Grid(32, 32);
 				Player pl = new Player(500, 300);
-				Spritesheet sp = new Spritesheet();
+				Spritesheet sp = new Spritesheet(5, 4, "textures/br.png");
+				sp.setEntitiy(7, 100, 50, 20, 20);
+				sp.setEntitiy(5, 50, 100, 20, 20);
+				sp.setEntitiy(5, 0, 100, 20, 20);
 				Enemy enm1 = new Enemy(100, 50);
 				Enemy enm2 = new Enemy(200, 50);
 				Enemy enm3 = new Enemy(300, 10);
