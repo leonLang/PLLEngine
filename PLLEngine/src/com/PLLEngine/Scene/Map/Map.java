@@ -13,6 +13,7 @@ public class Map {
 	private int entryX, entryY;
 	private EventMap eMap;
 	private int[][] eventCoordinates;
+	private boolean sprite;
 
 	public void loadMap() {
 		// Load all images for the refrecnes

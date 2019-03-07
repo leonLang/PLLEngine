@@ -17,6 +17,14 @@ public class Grid extends LayerComponent {
 	public Grid(int cellX, int cellY) {
 		this.cellX = cellX;
 		this.cellY = cellY;
+		defautlConstructor();
+	}
+	public Grid() {
+		this.cellX = 32;
+		this.cellY = 32;
+		defautlConstructor();
+	}
+	private void defautlConstructor() {
 		this.dcx = 0;
 		this.dcy = 0;
 		try {

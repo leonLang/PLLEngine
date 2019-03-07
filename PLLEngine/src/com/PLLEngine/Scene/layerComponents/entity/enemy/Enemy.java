@@ -1,6 +1,7 @@
 package com.PLLEngine.Scene.layerComponents.entity.enemy;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
 import com.PLLEngine.collision.CollThread;
@@ -8,6 +9,7 @@ import com.PLLEngine.collision.CollThread;
 public class Enemy extends Entitiy {
 	private static boolean richtungAll;
 	private boolean richtungOwn, once;
+	private BufferedImage sprite;
 	int x, y;
 	int width = 20;
 	int height = 20;
@@ -33,6 +35,8 @@ public class Enemy extends Entitiy {
 		cameraMovement(x, y, dx, dy);
 		synchronize();
 		setEntitiyNumber();
+		if(sprite != null)
+		g.drawImage(sprite, px, py, null);
 		g.drawRect(px, py, width, height);
 
 	}
@@ -63,6 +67,9 @@ public class Enemy extends Entitiy {
 	private void setEntitiyNumber() {
 		arrX[entityNumberOwn] = px;
 		arrY[entityNumberOwn] = py;
+	}
+	public void setSprite(BufferedImage br) {
+		this.sprite = br;
 	}
 
 }
