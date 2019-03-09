@@ -1,71 +1,92 @@
 package com.PLLEngine.Window;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-import com.PLLEngine.Scene.Scene;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Window extends JFrame {
+public class Window {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	protected String WindowName;
 	private Dimension screenSize;
-
-	public  int width;
-	public  int height;
 	private int x, y;
+	private GameWindow window;
+	// script data
+	private int width, height;
 
-	public Window() {
-		// set default values for JFrame aka GameWindow
-		initDefaultWindowSize();
-
-		this.setVisible(true);
-		this.setBounds(x, y, width, height);
-		this.setResizable(false);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//defaultWindowScene causes issues with the layer
-		//this.add(new defaultWindowScene());
+///////////////
+	//init is needed cause data first has to be loaded to act as paremeter
+	public void init() {
+		relocateWindow();
+		window = new GameWindow();
 	}
-
+	// Default size is 3/4 of screen size
+	//Methode is essential to center window
 	private void initDefaultWindowSize() {
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
+		if(width == 0) {
 		width = (int) (screenSize.getWidth() * 0.75);
 		height = (int) (screenSize.getHeight() * 0.75);
-		relocateWindow();
+		}
 
 	}
 
+	// essential to create window dimensions
 	public void relocateWindow() {
+		initDefaultWindowSize();
 		try {
-			x = (int) (screenSize.getWidth() -  width)  / 2;
+			x = (int) (screenSize.getWidth() - width) / 2;
 			y = (int) (screenSize.getHeight() - height) / 2;
 		} catch (NullPointerException e) {
 			System.err.println("screenSize has not been initialisiert");
 		}
 	}
 
-	
-	
-	@Deprecated
-	protected class defaultWindowScene extends Scene{
-
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		
-		public defaultWindowScene() {
-			this.setBackground(Color.WHITE);
-			this.add(new JLabel("This is the default WindowScene"));
+//GameWindow inherted in Window class to be able to use Json scripts(NOTE:issue with parent's class)
+	public class GameWindow extends JFrame {
+		public GameWindow() {
+			this.setVisible(true);
+			this.setResizable(false);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			// x, y, y,width, height of mainclass (Window)
+			this.setBounds(x, y, width, height);
 		}
-		
 	}
+
+	// script getter and setter
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	@JsonIgnore
+	public GameWindow getWindow() {
+		return window;
+	}
+
+	@JsonIgnore
+	public void setWindow(GameWindow window) {
+		this.window = window;
+	}
+	@JsonIgnore
+	public void setTitel(String titel) {
+		this.window.setTitle(titel);
+	}
+
 }

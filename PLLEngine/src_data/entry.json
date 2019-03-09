@@ -1,0 +1,10 @@
+{
+"_comment": "comment about the data goes here",
+"titel": "first game",
+"version": "1.0.2f",
+"spriteSize": 32,
+"window": {
+	"width": 200,
+	"height": 200
+	}
+}

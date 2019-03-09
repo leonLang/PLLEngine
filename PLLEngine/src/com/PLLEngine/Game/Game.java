@@ -12,11 +12,16 @@ import com.PLLEngine.Window.Window;
 
 public class Game extends Basic implements GameBase {
 
-	public static GameWindow gwindow;
+	public static Window gwindow;
 	public static Scene currenScene;
 	public static double deltaX, deltaY;
 	private Map<String, Scene> SceneMap;
 	private Control controler;
+	//Script data
+	private String _comment,titel,version;
+	private int spriteSize;
+	private Window window;
+	//////////
 
 	public Game() {
 		setup();
@@ -73,7 +78,7 @@ public class Game extends Basic implements GameBase {
 	}
 
 	public void createGameWindow(String name) {
-		gwindow = new GameWindow(name);
+		gwindow = new Window();
 	}
 	//add = set
 	public void addScene(String sceneName, Scene scene) {
@@ -121,15 +126,6 @@ public class Game extends Basic implements GameBase {
 
 	}
 
-	public class GameWindow extends Window {
-
-		private static final long serialVersionUID = 1L;
-
-		public GameWindow(String name) {
-			WindowName = name;
-			this.setTitle(name);
-		}
-	}
 	//adds the scene with layer
 	public void CScene(String SceneName, int LayerCount, Layer layer, String LayerName, int Layerindex) {
 		addScene(SceneName, new Scene());
@@ -154,4 +150,45 @@ public class Game extends Basic implements GameBase {
 		// TODO Auto-generated method stub
 		
 	}
+	//getter and setter for script data (JSON)
+	public String get_comment() {
+		return _comment;
+	}
+
+	public void set_comment(String _comment) {
+		this._comment = _comment;
+	}
+
+	public String getTitel() {
+		return titel;
+	}
+
+	public void setTitel(String titel) {
+		this.titel = titel;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public int getSpriteSize() {
+		return spriteSize;
+	}
+
+	public void setSpriteSize(int spriteSize) {
+		this.spriteSize = spriteSize;
+	}
+
+	public Window getWindow() {
+		return window;
+	}
+
+	public void setWindow(Window window) {
+		this.window = window;
+	}
+	
 }

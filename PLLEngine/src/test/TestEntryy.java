@@ -93,7 +93,7 @@ public class TestEntryy extends Game {
 
 	@Override
 	public void update() {
-		gwindow.repaint();
+		gwindow.getWindow().repaint();
 
 	}
 	@Override

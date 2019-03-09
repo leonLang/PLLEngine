@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import com.PLLEngine.Game.Game;
+import com.PLLEngine.Game.SchriptGame;
 import com.PLLEngine.Scene.Map.Map;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -25,5 +27,13 @@ public class JsonLoader {
 		ObjectMapper objectMapper = new ObjectMapper();
 		refrenceJson = objectMapper.readValue(jsonData, RefrenceJson[].class);
 		return refrenceJson;
+	}
+	public static SchriptGame startGame() throws IOException {
+		SchriptGame game;
+		String path = "src_data/entry.json";
+		byte[] jsonData = Files.readAllBytes(Paths.get(path));
+		ObjectMapper objectMapper = new ObjectMapper();
+		game = objectMapper.readValue(jsonData, SchriptGame.class);
+		return game;
 	}
 }
