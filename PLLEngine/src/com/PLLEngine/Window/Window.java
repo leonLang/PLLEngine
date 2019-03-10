@@ -50,8 +50,7 @@ public class Window {
 //GameWindow inherted in Window class to be able to use Json scripts(NOTE:issue with parent's class)
 	public class GameWindow extends JFrame {
 		public GameWindow() {
-			this.setVisible(true);
-			this.setResizable(false);
+			this.setResizable(true);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			// x, y, y,width, height of mainclass (Window)
 			this.setBounds(x, y, width, height);

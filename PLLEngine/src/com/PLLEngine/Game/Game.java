@@ -1,156 +1,33 @@
 package com.PLLEngine.Game;
 
 import java.awt.event.KeyEvent;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
 
-import com.PLLEngine.Basic.Basic;
 import com.PLLEngine.Control.Control;
-import com.PLLEngine.Scene.Layer;
 import com.PLLEngine.Scene.Scene;
 import com.PLLEngine.Window.Window;
+import com.PLLEngine.srcLoader.JsonLoader;
+import com.fasterxml.jackson.annotation.JsonView;
 
-public class Game extends Basic implements GameBase {
-
-	public static Window gwindow;
-	public static Scene currenScene;
-	public static double deltaX, deltaY;
-	private Map<String, Scene> SceneMap;
-	private Control controler;
-	//Script data
-	private String _comment,titel,version;
-	private int spriteSize;
+public class Game implements GameBase {
+	private String _comment, titel, version;
+	@JsonView(Window.class)
 	private Window window;
-	//////////
+	private Scene scene;
+	private String loadingScene;
+	private GameLoop loop;
+
+	private Control controller;
+	private boolean up, down, right, left;
 
 	public Game() {
 		setup();
-		preinit();
+		up = false;
+		down = false;
+		left = false;
+		right = false;
 	}
 
-	@Override
-	public void run() {
-		init();
-
-	}
-
-	@Override
-	public void setup() {
-		SceneMap = new HashMap<String, Scene>();
-		controler = new Control(this);
-	}
-
-	@Override
-	public void init() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void preinit() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Deprecated
-	@Override
-	public void lateupdate() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void draw() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void close() {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void createGameWindow(String name) {
-		gwindow = new Window();
-	}
-	//add = set
-	public void addScene(String sceneName, Scene scene) {
-		SceneMap.put(sceneName, scene);
-	}
-
-	public Scene getScene(String sceneName) {
-		return SceneMap.get(sceneName);
-	}
-	
-	public void addDefaultController() {
-		try {
-			this.gwindow.addKeyListener(controler);
-		} catch(NullPointerException e) {
-			System.err.println("Could not add default controller because no window \n  is loaded yet");
-		}
-	}
-	public void loadScene(String scene) {
-		//try catch to avoid error when no scene is loading. Always fired when game starts
-		try {
-		gwindow.remove(currenScene);		
-		} catch(Exception e) {
-			System.err.println("There is not Scene loaded at the moment to replace,\n ignore this message if printed at the start of execution\n");
-		}
-		currenScene = SceneMap.get(scene);
-		if (currenScene != null) {
-			try {
-				gwindow.add(currenScene);
-				gwindow.revalidate();	//without layout errors may appear
-				gwindow.requestFocus();	//without focus controll maynot work
-			} catch (NullPointerException e) {
-				System.err.println("Cant add scene too GameWindow because: \n" + e);
-			}
-		} else {
-			System.err.println("No Scene found with name of: \n" + scene);
-		}
-	}
-
-	public void addKeyListener(Control controler) {
-		try {
-			gwindow.addKeyListener(controler);
-		} catch (NullPointerException e) {
-			System.err.println("You cant add a control component without createing a Window first");
-		}
-
-	}
-
-	//adds the scene with layer
-	public void CScene(String SceneName, int LayerCount, Layer layer, String LayerName, int Layerindex) {
-		addScene(SceneName, new Scene());
-		getScene(SceneName).LayerCount(LayerCount);
-		getScene(SceneName).addLayer(LayerName, layer, Layerindex);
-	}
-
-	@Override
-	public void KeyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void KeyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void KeyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	//getter and setter for script data (JSON)
 	public String get_comment() {
 		return _comment;
 	}
@@ -175,14 +52,6 @@ public class Game extends Basic implements GameBase {
 		this.version = version;
 	}
 
-	public int getSpriteSize() {
-		return spriteSize;
-	}
-
-	public void setSpriteSize(int spriteSize) {
-		this.spriteSize = spriteSize;
-	}
-
 	public Window getWindow() {
 		return window;
 	}
@@ -190,5 +59,121 @@ public class Game extends Basic implements GameBase {
 	public void setWindow(Window window) {
 		this.window = window;
 	}
-	
+
+	public String getLoadingScene() {
+		return loadingScene;
+	}
+
+	public void setLoadingScene(String loadingScene) {
+		this.loadingScene = loadingScene;
+		try {
+			this.scene = JsonLoader.SceneLoader(loadingScene);
+		} catch (IOException e) {
+			System.err.println("error while loading scene");
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void setup() {
+		this.controller = new Control(this);
+		this.loop = new GameLoop(this);
+
+	}
+
+	@Override
+	public void init() {
+		// init GameWindow with given properties
+		window.init();
+		window.setTitel(this.titel + " - " + this.version);
+		window.getWindow().addKeyListener(controller);
+		window.getWindow().requestFocus();
+		if (this.scene != null) {
+			window.getWindow().add(this.scene);
+			this.scene.initScene();
+		}
+
+		window.getWindow().setVisible(true);
+		this.loop.start();
+	}
+
+	@Override
+	public void preinit() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void update() {
+		if (up) {
+			this.scene.getNonStrinWorld().moveUp(5);
+		} else if (down) {
+			this.scene.getNonStrinWorld().moveDown(5);
+		}
+		if (right) {
+			this.scene.getNonStrinWorld().moveRight(5);
+		} else if (left) {
+			this.scene.getNonStrinWorld().moveLeft(5);
+		}
+
+	}
+
+	@Override
+	public void lateupdate() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void draw() {
+		this.window.getWindow().repaint();
+
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void fluentKeying() {
+
+	}
+
+	@Override
+	public void KeyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			this.up = true;
+		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			this.down = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			this.right = true;
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			this.left = true;
+		}
+
+	}
+
+	@Override
+	public void KeyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			this.up = false;
+		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			this.down = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			this.right = false;
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			this.left = false;
+		}
+
+	}
+
+	@Override
+	public void KeyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

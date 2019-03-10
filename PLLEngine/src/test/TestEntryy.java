@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.SwingUtilities;
 
 import com.PLLEngine.Control.Control;
-import com.PLLEngine.Game.Game;
+import com.PLLEngine.Game.DepricatedGame;
 import com.PLLEngine.Game.GameLoop;
 import com.PLLEngine.Scene.Layer;
 import com.PLLEngine.Scene.Scene;
@@ -17,7 +17,7 @@ import com.PLLEngine.images.Spritesheet;
 import com.PLLEngine.images.SpritesheetP;
 import com.PLLEngine.srcLoader.JsonLoader;
 
-public class TestEntryy extends Game {
+public class TestEntryy extends DepricatedGame {
 	public static TestEntryy entry;
 	public static GameLoop loop;
 	public static int dx, dy;

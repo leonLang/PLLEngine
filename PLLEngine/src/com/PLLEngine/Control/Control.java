@@ -3,6 +3,7 @@ package com.PLLEngine.Control;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import com.PLLEngine.Game.DepricatedGame;
 import com.PLLEngine.Game.Game;
 
 public class Control implements KeyListener {

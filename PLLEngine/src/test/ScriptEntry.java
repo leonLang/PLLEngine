@@ -2,15 +2,15 @@ package test;
 
 import java.io.IOException;
 
-import com.PLLEngine.Game.SchriptGame;
+import com.PLLEngine.Game.Game;
 import com.PLLEngine.srcLoader.JsonLoader;
 
-public class Game {
+public class ScriptEntry {
 
 	public static void main(String[] args) throws IOException {
-		SchriptGame game = JsonLoader.startGame();
+		Game game = JsonLoader.startGame();
 		game.init();
 
 	}
 
-}
+} 

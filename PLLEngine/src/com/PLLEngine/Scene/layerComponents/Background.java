@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import com.PLLEngine.Game.Game;
+import com.PLLEngine.Game.DepricatedGame;
 import com.PLLEngine.srcLoader.SrcLoader;
 
 public class Background extends LayerComponent {
@@ -24,7 +24,7 @@ public class Background extends LayerComponent {
 	}
 
 	public void draw(Graphics g, int dx, int dy) {
-		g.drawImage(bImage, 0, 0, Game.gwindow.width, Game.gwindow.height, null);
+		g.drawImage(bImage, 0, 0, DepricatedGame.gwindow.width, DepricatedGame.gwindow.height, null);
 	}
 
 	public String getSrc() {
