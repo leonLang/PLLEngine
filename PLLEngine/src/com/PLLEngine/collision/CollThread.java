@@ -87,6 +87,27 @@ public class CollThread extends Thread {
 		} else {
 
 		}
+		if (cl.CollLinksP()) {
+			// j is the right and counter is the opposite
+			collRight[counter] = true;
+			collLeft[j] = true;
+		} else {
+
+		}
+		if (cl.CollUntenP()) {
+			// j is the right and counter is the opposite
+			collDown[counter] = true;
+			collUp[j] = true;
+		} else {
+
+		}
+		if (cl.CollObenP()) {
+			// j is the right and counter is the opposite
+			collUp[counter] = true;
+			collDown[j] = true;
+		} else {
+
+		}
 	}
 
 	private void setSynchronization(int counter) {
