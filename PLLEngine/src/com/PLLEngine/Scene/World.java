@@ -1,4 +1,4 @@
-package com.PLLEngine.Scene.Map;
+package com.PLLEngine.Scene;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -7,12 +7,13 @@ import java.io.IOException;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import com.PLLEngine.Scene.Map.EventMap;
 import com.PLLEngine.srcLoader.JsonLoader;
 import com.PLLEngine.srcLoader.RefrenceJson;
 import com.PLLEngine.srcLoader.SrcLoader;
 
 @SuppressWarnings("serial")
-public class World extends JPanel {
+public class World extends JPanel implements SceneComponentInterface{
 	private String refrencePath;
 	private RefrenceJson[] loadedsrc;
 	private int[][] map;
@@ -64,7 +65,7 @@ public class World extends JPanel {
 					 */
 					g.drawImage(loadedsrc[map[y + dcy][x + dcx]].getImg(), x * spriteSize + dx, y * spriteSize + dy,
 							spriteSize, spriteSize, null);
-					g.drawRect(x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize);
+					//g.drawRect(x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize);
 				} catch (Exception e) {
 				}
 			}

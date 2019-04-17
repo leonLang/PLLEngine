@@ -8,13 +8,14 @@ import com.PLLEngine.collision.CollThread;
 public class Player extends Entitiy {
 	private static boolean richtungAll;
 	private boolean richtungOwn, once;
-	int x, y;
-	int width = 50;
-	int height = 50;
+	private int x, y;
+	private int width = 32;
+	private int height = 32;
 
 	public Player(int startX, int startY) {
 		x = startX;
 		y = startY;
+
 		System.out.println(px);
 		if (!richtungAll) {
 			richtungAll = true;

@@ -5,11 +5,16 @@ import java.io.IOException;
 
 import com.PLLEngine.Control.Control;
 import com.PLLEngine.Scene.Scene;
+import com.PLLEngine.Scene.layerComponents.entity.player.Player;
 import com.PLLEngine.Window.Window;
 import com.PLLEngine.srcLoader.JsonLoader;
 import com.fasterxml.jackson.annotation.JsonView;
 
 public class Game implements GameBase {
+	/*
+	 * this Class normaly get's open with game start.
+	 * Parameter's and data are coming from "entry.json"
+	 */
 	private String _comment, titel, version;
 	@JsonView(Window.class)
 	private Window window;
@@ -19,6 +24,7 @@ public class Game implements GameBase {
 
 	private Control controller;
 	private boolean up, down, right, left;
+	
 
 	public Game() {
 		setup();
@@ -76,6 +82,7 @@ public class Game implements GameBase {
 
 	@Override
 	public void setup() {
+		//default setup
 		this.controller = new Control(this);
 		this.loop = new GameLoop(this);
 
@@ -84,6 +91,7 @@ public class Game implements GameBase {
 	@Override
 	public void init() {
 		// init GameWindow with given properties
+		//NOTE: window is just the "class above" the JFrame is a subclass of window -> getWindow()
 		window.init();
 		window.setTitel(this.titel + " - " + this.version);
 		window.getWindow().addKeyListener(controller);
@@ -102,18 +110,18 @@ public class Game implements GameBase {
 		// TODO Auto-generated method stub
 
 	}
-
+	//Look down to Key methodes for more information
 	@Override
 	public void update() {
 		if (up) {
-			this.scene.getNonStrinWorld().moveUp(5);
+			this.scene.getWorld().moveUp(5);
 		} else if (down) {
-			this.scene.getNonStrinWorld().moveDown(5);
+			this.scene.getWorld().moveDown(5);
 		}
 		if (right) {
-			this.scene.getNonStrinWorld().moveRight(5);
+			this.scene.getWorld().moveRight(5);
 		} else if (left) {
-			this.scene.getNonStrinWorld().moveLeft(5);
+			this.scene.getWorld().moveLeft(5);
 		}
 
 	}
@@ -140,6 +148,8 @@ public class Game implements GameBase {
 
 	}
 
+	// Default Key settings for fluent keypressing
+	// TODO vllt ändern und alle keys verfügbar machen
 	@Override
 	public void KeyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {

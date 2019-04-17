@@ -1,4 +1,5 @@
 {
-  "world": "world1.json",
-  "layers": ["layer1.json"]
+  "stringWorld": "world1.json",
+  "stringPlayer": [ "player.json" ],
+  "stringLayers":  ["layer1.json"]
 }

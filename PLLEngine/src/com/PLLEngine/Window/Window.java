@@ -19,7 +19,6 @@ public class Window {
 	// script data
 	private int width, height;
 
-///////////////
 	//init is needed cause data first has to be loaded to act as paremeter
 	public void init() {
 		relocateWindow();
@@ -50,7 +49,7 @@ public class Window {
 //GameWindow inherted in Window class to be able to use Json scripts(NOTE:issue with parent's class)
 	public class GameWindow extends JFrame {
 		public GameWindow() {
-			this.setResizable(true);
+			this.setResizable(false);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			// x, y, y,width, height of mainclass (Window)
 			this.setBounds(x, y, width, height);

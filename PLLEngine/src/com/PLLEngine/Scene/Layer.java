@@ -1,32 +1,34 @@
 package com.PLLEngine.Scene;
 
 import java.awt.Graphics;
-import java.util.HashMap;
-import java.util.Map;
+
 
 import javax.swing.JPanel;
 
 import com.PLLEngine.Scene.layerComponents.LayerComponent;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Layer extends JPanel{
+public class Layer extends JPanel implements SceneComponentInterface{
 
 	private int dx, dy;
-
-	private Map<String, LayerComponent> LayerComponents;
+	private LayerComponent[] components;
 
 	public Layer() {
-		LayerComponents = new HashMap<String, LayerComponent>();
 	}
-
-	public void addLayerComponents(String name, LayerComponent lComponent) {
-		LayerComponents.put(name, lComponent);
-	}
-
+	
 	public void draw(Graphics g) {
-		for (LayerComponent value : LayerComponents.values()) {
-			value.draw(g, dx, dy);
-		}
+		//for(int i = 0;i < components.length;i++) {
+			//components[i].draw(g, 0, 0);
+		//}
 	}
+//	 @JsonIgnore
+//		public LayerComponent[] getComponents() {
+//			return components;
+//		}
+//	@JsonIgnore
+//		public void setComponents(LayerComponent[] components) {
+//			this.components = components;
+//		}
 
 	public int getDx() {
 		return dx;
@@ -43,6 +45,5 @@ public class Layer extends JPanel{
 	public void setDy(int dy) {
 		this.dy = dy;
 	}
-
 
 }
