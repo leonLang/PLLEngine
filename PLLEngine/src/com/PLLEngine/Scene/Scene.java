@@ -6,7 +6,6 @@ import java.io.IOException;
 import javax.swing.JPanel;
 
 import com.PLLEngine.srcLoader.JsonLoader;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Scene extends JPanel {
 	/**
@@ -33,7 +32,11 @@ public class Scene extends JPanel {
 	}
 
 	public void initScene() {
+		try {
 		this.world.loadMap();
+		} catch(NullPointerException e) {
+			System.err.println("No World loaded -> NullPointerException");
+		}
 	}
 
 	public String getStringWorld() {
@@ -64,17 +67,23 @@ public class Scene extends JPanel {
 	public String[] getStringLayers() {
 		return stringLayers;
 	}
-
+/*
+ * Layer's note wokring at the moment
+ * NOTE: Java.swing exception (this.add(JComponent);)
+ * 
+ */
+	@Deprecated
 	public void setStringLayers(String[] StringLayers) {
 		this.stringLayers = StringLayers;
 		for (int i = 0; i < StringLayers.length; i++) {
 			try {
-				layers[i] = JsonLoader.LayerLoader(StringLayers[i]);
-				System.out.println("check");
-				this.add(layers[i]);
+				Layer l = JsonLoader.LayerLoader(StringLayers[i]);
+				//layers[i] = JsonLoader.LayerLoader(StringLayers[i]);
+				//this.add(l);
 				
 			} catch (IOException e) {
 				System.err.println("error while loading layer: " + StringLayers[i]);
+				e.printStackTrace();
 			}
 		}
 	}

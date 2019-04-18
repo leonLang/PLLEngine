@@ -103,6 +103,7 @@ public class Game implements GameBase {
 
 		window.getWindow().setVisible(true);
 		this.loop.start();
+
 	}
 
 	@Override

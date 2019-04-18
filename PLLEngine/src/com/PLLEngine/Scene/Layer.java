@@ -21,14 +21,14 @@ public class Layer extends JPanel implements SceneComponentInterface{
 			//components[i].draw(g, 0, 0);
 		//}
 	}
-//	 @JsonIgnore
-//		public LayerComponent[] getComponents() {
-//			return components;
-//		}
-//	@JsonIgnore
-//		public void setComponents(LayerComponent[] components) {
-//			this.components = components;
-//		}
+ @JsonIgnore
+	public LayerComponent[] getComponents() {
+		return components;
+	}
+@JsonIgnore
+	public void setComponents(LayerComponent[] components) {
+		this.components = components;
+	}
 
 	public int getDx() {
 		return dx;

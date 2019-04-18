@@ -1,6 +1,5 @@
 {
-  "world": "world1.json",
-  "player": [ "player1.json" ],
-  "layers": [ "layer1.json" ],
-  "gui": "interface.json"
+  "stringPlayer": [ "player.json" ],
+  "stringLayers": [ "layer1.json" ],
+  "stringGui":  "interface.json" 
 }
