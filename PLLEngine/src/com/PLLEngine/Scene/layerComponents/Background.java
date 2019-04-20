@@ -25,7 +25,7 @@ public class Background extends LayerComponents {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		w = (JFrame) this.getParent();
+	//	w = (JFrame) this.getParent();
 	}
 
 	public void draw(Graphics g, int dx, int dy) {

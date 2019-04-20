@@ -1,11 +1,11 @@
 package com.PLLEngine.Scene.layerComponents.entity;
 
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 
-import com.PLLEngine.Scene.layerComponents.LayerComponents;
+import com.PLLEngine.Scene.SceneComponentInterface;
 import com.PLLEngine.collision.CollThread;
 
-public class Entitiy extends LayerComponents {
+public class Entitiy implements SceneComponentInterface {
 	int x12 = 100;
 	public static int[] arrX = new int[100000];
 	public static int[] arrY = new int[100000];
@@ -29,9 +29,10 @@ public class Entitiy extends LayerComponents {
 		}
 	}
 
+	//Hier ist was ver‰ndert da dx und dy nicht mehr gebraucht werden und ich alles von Graphics g auf graphics2D ge‰ndert habe
+	//der unterschied ist gering und sollte nicht auffallen auﬂer mehr features
 	@Override
-	public void draw(Graphics g, int dx, int dy) {
-		System.out.println("hi");
+	public void draw(Graphics2D g) {
 		// TODO Auto-generated method stub
 		g.drawRect(100, 50, 300, 300);
 	}

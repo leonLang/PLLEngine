@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.io.IOException;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import com.PLLEngine.srcLoader.JsonLoader;
 
@@ -35,6 +36,10 @@ public class Scene extends JPanel {
 	public void initScene() {
 		try {
 			this.world.loadMap();
+			for(int i = 0;i < this.player.length;i++) {
+				this.player[i].setX(SwingUtilities.getWindowAncestor(this).getWidth()/2);
+			    this.player[i].setY(SwingUtilities.getWindowAncestor(this).getHeight()/2);
+			}
 		} catch (NullPointerException e) {
 			System.err.println("No World loaded -> NullPointerException");
 		}
@@ -75,7 +80,7 @@ public class Scene extends JPanel {
 		for (int i = 0; i < stringPlayer.length; i++) {
 			try {
 				this.player[i] = JsonLoader.playerLoader(stringPlayer[i]);
-				this.add(player[i]);
+
 			} catch (Exception e) {
 				System.err.println("error while loading player: " + stringPlayer[i]);
 				e.printStackTrace();
@@ -101,7 +106,6 @@ public class Scene extends JPanel {
 		for (int i = 0; i < stringLayers.length; i++) {
 			try {
 				layers[i] = JsonLoader.LayerLoader(stringLayers[i]);
-				this.add(layers[i]);
 
 			} catch (Exception e) {
 				System.err.println("error while loading layer: " + stringLayers[i]);

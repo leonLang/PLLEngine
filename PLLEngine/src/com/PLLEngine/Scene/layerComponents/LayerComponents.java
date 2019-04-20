@@ -4,6 +4,6 @@ import java.awt.Graphics;
 
 import javax.swing.JComponent;
 
-public abstract class LayerComponents extends JComponent{
+public abstract class LayerComponents {
 	public abstract void draw(Graphics g,int dx,int dy);
 }

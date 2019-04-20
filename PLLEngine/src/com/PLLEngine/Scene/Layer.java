@@ -5,10 +5,9 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import com.PLLEngine.Scene.layerComponents.LayerComponents;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings("serial")
-public class Layer extends JPanel implements SceneComponentInterface{
+public class Layer implements SceneComponentInterface{
 
 
 	private int dx, dy;
