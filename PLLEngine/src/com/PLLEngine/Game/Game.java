@@ -1,11 +1,9 @@
 package com.PLLEngine.Game;
 
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 
 import com.PLLEngine.Control.Control;
 import com.PLLEngine.Scene.Scene;
-import com.PLLEngine.Scene.layerComponents.entity.player.Player;
 import com.PLLEngine.Window.Window;
 import com.PLLEngine.srcLoader.JsonLoader;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -74,7 +72,7 @@ public class Game implements GameBase {
 		this.loadingScene = loadingScene;
 		try {
 			this.scene = JsonLoader.SceneLoader(loadingScene);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			System.err.println("error while loading scene");
 			e.printStackTrace();
 		}

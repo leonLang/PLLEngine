@@ -1,9 +1,8 @@
-package com.PLLEngine.Scene.layerComponents.entity.enemy;
+package com.PLLEngine.Scene.layerComponents.entity;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
 import com.PLLEngine.collision.CollThread;
 
 public class Enemy extends Entitiy {

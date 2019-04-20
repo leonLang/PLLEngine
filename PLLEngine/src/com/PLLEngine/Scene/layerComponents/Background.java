@@ -10,7 +10,7 @@ import com.PLLEngine.Game.DepricatedGame;
 import com.PLLEngine.Window.Window;
 import com.PLLEngine.srcLoader.SrcLoader;
 
-public class Background extends LayerComponent {
+public class Background extends LayerComponents {
 	private SrcLoader loader;
 	private String src;
 	private BufferedImage bImage;

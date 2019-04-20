@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import com.PLLEngine.Game.DepricatedGame;
 import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.GUI;
 import com.PLLEngine.Scene.Layer;
@@ -74,7 +73,7 @@ public class JsonLoader {
 
 	public static Player playerLoader(String playerPath) throws IOException {
 		Player player;
-		String path = "src_data/layer/" + playerPath;
+		String path = "src_data/player/" + playerPath;
 		byte[] jsonData = Files.readAllBytes(Paths.get(path));
 		ObjectMapper objectMapper = new ObjectMapper();
 		player = objectMapper.readValue(jsonData, Player.class);

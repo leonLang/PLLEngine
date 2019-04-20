@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import com.PLLEngine.Scene.layerComponents.LayerComponent;
+import com.PLLEngine.Scene.layerComponents.LayerComponents;
 import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
 
 public class Spritesheet {

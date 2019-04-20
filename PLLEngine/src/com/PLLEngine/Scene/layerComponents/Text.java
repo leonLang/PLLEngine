@@ -2,7 +2,7 @@ package com.PLLEngine.Scene.layerComponents;
 
 import java.awt.Graphics;
 
-public class Text extends LayerComponent {
+public class Text extends LayerComponents {
 	private String message;
 	private int x, y;
 

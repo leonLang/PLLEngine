@@ -1,6 +1,7 @@
 package com.PLLEngine.Scene;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.io.IOException;
 
 import javax.swing.JPanel;
@@ -33,8 +34,8 @@ public class Scene extends JPanel {
 
 	public void initScene() {
 		try {
-		this.world.loadMap();
-		} catch(NullPointerException e) {
+			this.world.loadMap();
+		} catch (NullPointerException e) {
 			System.err.println("No World loaded -> NullPointerException");
 		}
 	}
@@ -64,44 +65,49 @@ public class Scene extends JPanel {
 		this.world = world;
 	}
 
-	public String[] getStringLayers() {
-		return stringLayers;
-	}
-/*
- * Layer's note wokring at the moment
- * NOTE: Java.swing exception (this.add(JComponent);)
- * 
- */
-	@Deprecated
-	public void setStringLayers(String[] StringLayers) {
-		this.stringLayers = StringLayers;
-		for (int i = 0; i < StringLayers.length; i++) {
-			try {
-				Layer l = JsonLoader.LayerLoader(StringLayers[i]);
-				//layers[i] = JsonLoader.LayerLoader(StringLayers[i]);
-				//this.add(l);
-				
-			} catch (IOException e) {
-				System.err.println("error while loading layer: " + StringLayers[i]);
-				e.printStackTrace();
-			}
-		}
-	}
-
 	public String[] getStringPlayer() {
 		return stringPlayer;
 	}
-	public void setPlayers(String[] stringPlayer) {
+
+	public void setStringPlayer(String[] stringPlayer) {
 		this.stringPlayer = stringPlayer;
-		for (int i = 0; i < stringLayers.length; i++) {
+		this.player = new Player[stringPlayer.length];
+		for (int i = 0; i < stringPlayer.length; i++) {
 			try {
 				this.player[i] = JsonLoader.playerLoader(stringPlayer[i]);
 				this.add(player[i]);
-			} catch (IOException e) {
-				System.err.println("error while loading layer: " + stringLayers[i]);
+			} catch (Exception e) {
+				System.err.println("error while loading player: " + stringPlayer[i]);
+				e.printStackTrace();
 			}
 		}
 
+	}
+
+	/*
+	 * Layer's note wokring at the moment NOTE: Java.swing exception
+	 * (this.add(JComponent);)#
+	 * 
+	 * NOTE: fix by init array^^
+	 * 
+	 */
+	public String[] getStringLayers() {
+		return stringLayers;
+	}
+
+	public void setStringLayers(String[] stringLayers) {
+		this.stringLayers = stringLayers;
+		this.layers = new Layer[stringLayers.length];
+		for (int i = 0; i < stringLayers.length; i++) {
+			try {
+				layers[i] = JsonLoader.LayerLoader(stringLayers[i]);
+				this.add(layers[i]);
+
+			} catch (Exception e) {
+				System.err.println("error while loading layer: " + stringLayers[i]);
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public String getStringGui() {
@@ -123,11 +129,12 @@ public class Scene extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		// repaint of window effects Scene as well
-		draw(g);
+
+		draw((Graphics2D) g);
 
 	}
 
-	public void draw(Graphics g) {
+	public void draw(Graphics2D g) {
 		try {
 			this.world.draw(g);
 			for (int i = 0; i < stringPlayer.length; i++) {

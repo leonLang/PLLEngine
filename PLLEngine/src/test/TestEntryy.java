@@ -11,7 +11,7 @@ import com.PLLEngine.Scene.Layer;
 import com.PLLEngine.Scene.Scene;
 import com.PLLEngine.Scene.layerComponents.Background;
 import com.PLLEngine.Scene.layerComponents.Grid;
-import com.PLLEngine.Scene.layerComponents.entity.enemy.Enemy;
+import com.PLLEngine.Scene.layerComponents.entity.Enemy;
 import com.PLLEngine.Scene.layerComponents.entity.player.Player;
 import com.PLLEngine.images.Spritesheet;
 import com.PLLEngine.images.SpritesheetP;

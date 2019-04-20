@@ -2,10 +2,10 @@ package com.PLLEngine.Scene.layerComponents.entity;
 
 import java.awt.Graphics;
 
-import com.PLLEngine.Scene.layerComponents.LayerComponent;
+import com.PLLEngine.Scene.layerComponents.LayerComponents;
 import com.PLLEngine.collision.CollThread;
 
-public class Entitiy extends LayerComponent {
+public class Entitiy extends LayerComponents {
 	int x12 = 100;
 	public static int[] arrX = new int[100000];
 	public static int[] arrY = new int[100000];

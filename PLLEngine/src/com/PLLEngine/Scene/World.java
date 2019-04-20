@@ -1,7 +1,7 @@
 package com.PLLEngine.Scene;
 
 import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.io.IOException;
 
 import javax.swing.JPanel;
@@ -56,7 +56,7 @@ public class World extends JPanel implements SceneComponentInterface{
 		}).start();
 	}
 
-	public void draw(Graphics g) {
+	public void draw(Graphics2D g) {
 		for (int x = -1; x < cellCountX; x++) {
 			for (int y = -1; y < cellCountY; y++) {
 				try {

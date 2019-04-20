@@ -12,9 +12,9 @@ public class Player extends Entitiy {
 	private int width = 32;
 	private int height = 32;
 
-	public Player(int startX, int startY) {
-		x = startX;
-		y = startY;
+	public Player() {
+		x = 200;
+		y = 200;
 
 		System.out.println(px);
 		if (!richtungAll) {

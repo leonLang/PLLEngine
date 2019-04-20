@@ -1,33 +1,32 @@
 package com.PLLEngine.Scene;
 
-import java.awt.Graphics;
-
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import com.PLLEngine.Scene.layerComponents.LayerComponent;
+import com.PLLEngine.Scene.layerComponents.LayerComponents;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@SuppressWarnings("serial")
 public class Layer extends JPanel implements SceneComponentInterface{
 
+
 	private int dx, dy;
-	private LayerComponent[] components;
+	private LayerComponents[] component;
 
 	public Layer() {
 	}
 	
-	public void draw(Graphics g) {
+	public void draw(Graphics2D g) {
 		//for(int i = 0;i < components.length;i++) {
 			//components[i].draw(g, 0, 0);
 		//}
 	}
- @JsonIgnore
-	public LayerComponent[] getComponents() {
-		return components;
+	public LayerComponents[] getComponent() {
+		return component;
 	}
-@JsonIgnore
-	public void setComponents(LayerComponent[] components) {
-		this.components = components;
+	public void setComponents(LayerComponents[] components) {
+		this.component = components;
 	}
 
 	public int getDx() {
