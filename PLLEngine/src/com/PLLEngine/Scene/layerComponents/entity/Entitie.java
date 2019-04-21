@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import com.PLLEngine.Scene.SceneComponentInterface;
 import com.PLLEngine.collision.CollThread;
 
-public class Entitiy implements SceneComponentInterface {
+public class Entitie implements SceneComponentInterface {
 	int x12 = 100;
 	public static int[] arrX = new int[100000];
 	public static int[] arrY = new int[100000];
@@ -14,8 +14,11 @@ public class Entitiy implements SceneComponentInterface {
 	public int entityNumberOwn;
 	private static boolean onlyOnce = false;
 	public int px, py;
+	protected int dx,dy;
 
-	public Entitiy() {
+	public Entitie() {
+		dx = 0;
+		dy = 0;
 		// der player muss immer als erstes erstellt werden, dmait er array nummer 0
 		// ist.
 		entityNumberOwn = entityNumberAll;
@@ -41,5 +44,38 @@ public class Entitiy implements SceneComponentInterface {
 		px = x + dx;
 		py = y + dy;
 	}
+
+	public int getPx() {
+		return px;
+	}
+
+	public void setPx(int px) {
+		this.px = px;
+	}
+
+	public int getPy() {
+		return py;
+	}
+
+	public void setPy(int py) {
+		this.py = py;
+	}
+
+	public int getDx() {
+		return dx;
+	}
+
+	public void setDx(int dx) {
+		this.dx = dx;
+	}
+
+	public int getDy() {
+		return dy;
+	}
+
+	public void setDy(int dy) {
+		this.dy = dy;
+	}
+	
 
 }

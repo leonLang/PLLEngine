@@ -1,6 +1,6 @@
 package com.PLLEngine.collision;
 
-import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
+import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 
 public class CollThread extends Thread {
 
@@ -34,9 +34,9 @@ public class CollThread extends Thread {
 	private void enemyVSEnemy() {
 		int cntr = 1; // counter starts with 1 because 0 is the player
 		int counterPL = 0;
-		int amntObjcts = Entitiy.entityNumberAll;
-		int arrX[] = Entitiy.arrX;
-		int arrY[] = Entitiy.arrY;
+		int amntObjcts = Entitie.entityNumberAll;
+		int arrX[] = Entitie.arrX;
+		int arrY[] = Entitie.arrY;
 
 		compareAllObjekts(cntr, amntObjcts, arrX, arrY);
 
@@ -44,9 +44,9 @@ public class CollThread extends Thread {
 
 	private void playerVSEnemy() {
 		int counterPL = 0;
-		int amntObjcts = Entitiy.entityNumberAll;
-		int arrX[] = Entitiy.arrX;
-		int arrY[] = Entitiy.arrY;
+		int amntObjcts = Entitie.entityNumberAll;
+		int arrX[] = Entitie.arrX;
+		int arrY[] = Entitie.arrY;
 
 		comparePlayerToEnemy(counterPL, amntObjcts, arrX, arrY);
 
@@ -111,7 +111,7 @@ public class CollThread extends Thread {
 	}
 
 	private void setSynchronization(int counter) {
-		Entitiy.synchronize[counter] = true;
+		Entitie.synchronize[counter] = true;
 		// if the collision check is ready the enemys can move
 	}
 

@@ -1,15 +1,11 @@
 package com.PLLEngine.Scene;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.JPanel;
-
-import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
+import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.collision.CollThread;
 
-@SuppressWarnings("serial")
-public class Player extends Entitiy {
+public class Player extends Entitie {
 	
 	private static boolean richtungAll;
 	private boolean richtungOwn, once;
@@ -54,8 +50,8 @@ public class Player extends Entitiy {
 	}
 
 	private void synchronize() {
-		if (Entitiy.synchronize[entityNumberOwn]) {
-			Entitiy.synchronize[entityNumberOwn] = false;
+		if (Entitie.synchronize[entityNumberOwn]) {
+			Entitie.synchronize[entityNumberOwn] = false;
 			if (CollThread.collLeft[entityNumberOwn]) {
 
 			} else if (CollThread.collRight[entityNumberOwn]) {

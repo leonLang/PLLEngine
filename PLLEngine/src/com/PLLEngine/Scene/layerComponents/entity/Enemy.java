@@ -1,17 +1,18 @@
 package com.PLLEngine.Scene.layerComponents.entity;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import com.PLLEngine.collision.CollThread;
 
-public class Enemy extends Entitiy {
+public class Enemy extends Entitie {
 	private static boolean richtungAll;
 	private boolean richtungOwn, once;
 	private BufferedImage sprite;
-	int x, y;
-	int width = 20;
-	int height = 20;
+	private int x, y;
+	private int width = 20;
+	private int height = 20;
 
 	public Enemy(int startX, int startY) {
 		x = startX;
@@ -29,8 +30,10 @@ public class Enemy extends Entitiy {
 	}
 
 	@Override
-	public void draw(Graphics g, int dx, int dy) {
+	public void draw(Graphics2D g) {
 		// Initialize kamera Movement first or there could be problems
+		//siehe player -> cam movment
+		//ich würd das ganze dann aber von der world aus steuern 
 		cameraMovement(x, y, dx, dy);
 		synchronize();
 		setEntitiyNumber();
@@ -50,8 +53,8 @@ public class Enemy extends Entitiy {
 	}
 
 	private void synchronize() {
-		if (Entitiy.synchronize[entityNumberOwn]) {
-			Entitiy.synchronize[entityNumberOwn] = false;
+		if (Entitie.synchronize[entityNumberOwn]) {
+			Entitie.synchronize[entityNumberOwn] = false;
 			if (CollThread.collLeft[entityNumberOwn]) {
 
 			} else if (CollThread.collRight[entityNumberOwn]) {
@@ -70,5 +73,6 @@ public class Enemy extends Entitiy {
 	public void setSprite(BufferedImage br) {
 		this.sprite = br;
 	}
+
 
 }

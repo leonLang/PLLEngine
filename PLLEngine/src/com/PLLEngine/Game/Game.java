@@ -157,9 +157,12 @@ public class Game implements GameBase {
 			this.down = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			this.right = true;
-		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.left = true;
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			this.right = true;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_F12) {
+			//this.init();
 		}
 
 	}
@@ -172,9 +175,9 @@ public class Game implements GameBase {
 			this.down = false;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			this.right = false;
-		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.left = false;
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			this.right = false;
 		}
 
 	}

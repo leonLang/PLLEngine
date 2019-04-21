@@ -2,10 +2,10 @@ package com.PLLEngine.Scene.layerComponents.entity.player;
 
 import java.awt.Graphics;
 
-import com.PLLEngine.Scene.layerComponents.entity.Entitiy;
+import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.collision.CollThread;
 
-public class Player extends Entitiy {
+public class Player extends Entitie {
 	private static boolean richtungAll;
 	private boolean richtungOwn, once;
 	private int x, y;
@@ -48,8 +48,8 @@ public class Player extends Entitiy {
 	}
 
 	private void synchronize() {
-		if (Entitiy.synchronize[entityNumberOwn]) {
-			Entitiy.synchronize[entityNumberOwn] = false;
+		if (Entitie.synchronize[entityNumberOwn]) {
+			Entitie.synchronize[entityNumberOwn] = false;
 			if (CollThread.collLeft[entityNumberOwn]) {
 
 			} else if (CollThread.collRight[entityNumberOwn]) {
