@@ -10,7 +10,6 @@ import com.PLLEngine.Game.GameLoop;
 import com.PLLEngine.Scene.Layer;
 import com.PLLEngine.Scene.Scene;
 import com.PLLEngine.Scene.layerComponents.Background;
-import com.PLLEngine.Scene.layerComponents.Grid;
 import com.PLLEngine.Scene.layerComponents.entity.Enemy;
 import com.PLLEngine.Scene.layerComponents.entity.player.Player;
 import com.PLLEngine.images.Spritesheet;
@@ -35,7 +34,7 @@ public class TestEntryy extends DepricatedGame {
 		this.setWindowsLook();
 		dx = 0;
 		dy = 0;
-		loop = new GameLoop(this);
+		//loop = new GameLoop(this);
 	}
 
 	public void init() {
@@ -52,7 +51,7 @@ public class TestEntryy extends DepricatedGame {
 				// man sollte objecte die teil des Window sind auch immer erst danach erstellen
 				addDefaultController();
 				Layer layer1 = new Layer();
-				Grid grid1 = new Grid();
+			/*	Grid grid1 = new Grid();
 				pl = new Player(500, 300);
 				Spritesheet sp = new Spritesheet(5, 4, "textures/br.png");
 				SpritesheetP scp = new SpritesheetP( "textures/br.png");
@@ -84,7 +83,7 @@ public class TestEntryy extends DepricatedGame {
 				layer1.addLayerComponents("enemSix", enm6);
 				layer1.addLayerComponents("firstsprite", sp);
 				loadScene("Zene1");
-				loop.start();
+				loop.start();*/
 			}
 
 		});
@@ -100,8 +99,8 @@ public class TestEntryy extends DepricatedGame {
 	public void KeyPressed(KeyEvent e) {
 //		this.addScene("zene2", new Scene());
 //		this.loadScene("zene2");
-		Layer l = currenScene.getLayer(currenScene.getLayerNameByIndex(0));
-		l.setDx(l.getDx()+4);
+//		Layer l = currenScene.getLayer(currenScene.getLayerNameByIndex(0));
+//		l.setDx(l.getDx()+4);
 		
 	}
 
