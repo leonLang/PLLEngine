@@ -16,15 +16,6 @@ public class Player extends Entitie {
 		x = 0;
 		y = 0;
 
-		System.out.println(px);
-		if (!richtungAll) {
-			richtungAll = true;
-			richtungOwn = true;
-			once = true;
-		} else if (richtungAll) {
-			richtungAll = false;
-			once = true;
-		}
 
 	}
 
@@ -38,15 +29,6 @@ public class Player extends Entitie {
 		setEntitiyNumber();
 		g.drawRect(x, y, width, height);
 
-	}
-
-	private void enemyMovement() {
-
-		if (richtungOwn) {
-			x++;
-		} else {
-			x--;
-		}
 	}
 
 	private void synchronize() {
