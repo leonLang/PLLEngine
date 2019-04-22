@@ -1,6 +1,7 @@
 package com.PLLEngine.Scene.layerComponents.entity.player;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.collision.CollThread;
@@ -29,7 +30,8 @@ public class Player extends Entitie {
 	}
 
 	@Override
-	public void draw(Graphics g, int dx, int dy) {
+	public void draw(Graphics2D g) {
+		System.out.println("hjsjs");
 		// Initialize kamera Movement first or there could be problems
 		cameraMovement(x, y, dx, dy);
 		synchronize();

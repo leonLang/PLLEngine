@@ -59,7 +59,7 @@ public class CollThread extends Thread {
 	}
 
 	private void checkEnmyPlyrCollision(int forI, int arrX[], int arrY[]) {
-		Collision cl = new Collision(500, 300, 50, 50, arrX[forI], arrY[forI], 20, 20);
+		Collision cl = new Collision(400, 400, 32, 32, arrX[forI], arrY[forI], 32, 32);
 		if (cl.CollRechtsP()) {
 			collRight[forI] = true;
 		} else {

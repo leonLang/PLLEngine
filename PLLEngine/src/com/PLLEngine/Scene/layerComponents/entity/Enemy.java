@@ -17,7 +17,6 @@ public class Enemy extends Entitie {
 	public Enemy(int startX, int startY) {
 		x = startX;
 		y = startY;
-		System.out.println(px);
 		if (!richtungAll) {
 			richtungAll = true;
 			richtungOwn = true;
