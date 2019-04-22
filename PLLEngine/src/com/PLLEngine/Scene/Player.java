@@ -21,17 +21,13 @@ public class Player extends Entitie {
 
 	@Override
 	public void draw(Graphics2D g) {
-		// Initialize kamera Movement first or there could be problems
-		//Denk das cam Movment kann man auch anders noch machen ohne die dx,dy wwerte von graphics weil es ja auch 
-		//eher selten zum einssatz kommt wir wollten dem player ja zentral halten, oder?
-		//cameraMovement(x, y, dx, dy);
-		synchronize();
+		//synchronize();
 		setEntitiyNumber();
 		g.drawRect(x, y, width, height);
 
 	}
 
-	private void synchronize() {
+	/* private void synchronize() {
 		if (Entitie.synchronize[entityNumberOwn]) {
 			Entitie.synchronize[entityNumberOwn] = false;
 			if (CollThread.collLeft[entityNumberOwn]) {
@@ -43,12 +39,14 @@ public class Player extends Entitie {
 			}
 
 		}
-	}
+	}*/
+	//wird im späteren Verlauf gebraucht
 
 	private void setEntitiyNumber() {
 		arrX[entityNumberOwn] = px;
 		arrY[entityNumberOwn] = py;
 		// Player don't need this
+		// need to refactor a lot of code which used this, so I will remove it on a later point
 	}
 
 	public int getX() {
