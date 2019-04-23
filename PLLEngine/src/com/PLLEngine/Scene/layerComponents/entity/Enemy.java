@@ -30,8 +30,6 @@ public class Enemy extends Entitie {
 
 	@Override
 	public void draw(Graphics2D g) {
-		// Initialize kamera Movement first or there could be problems
-		//siehe player -> cam movment
 		//ich würd das ganze dann aber von der world aus steuern 
 		cameraMovement(x, y, dx, dy);
 		synchronize();

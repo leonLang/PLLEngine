@@ -15,14 +15,11 @@ public class Player extends Entitie {
 	public Player() {
 		x = 0;
 		y = 0;
-
-
 	}
 
 	@Override
 	public void draw(Graphics2D g) {
 		//synchronize();
-		setEntitiyNumber();
 		g.drawRect(x, y, width, height);
 
 	}
@@ -42,12 +39,6 @@ public class Player extends Entitie {
 	}*/
 	//wird im späteren Verlauf gebraucht
 
-	private void setEntitiyNumber() {
-		arrX[entityNumberOwn] = px;
-		arrY[entityNumberOwn] = py;
-		// Player don't need this
-		// need to refactor a lot of code which used this, so I will remove it on a later point
-	}
 
 	public int getX() {
 		return x;

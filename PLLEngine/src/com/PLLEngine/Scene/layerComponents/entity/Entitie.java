@@ -14,7 +14,7 @@ public class Entitie implements SceneComponentInterface {
 	public int entityNumberOwn;
 	private static boolean onlyOnce = false;
 	public int px, py;
-	protected int dx,dy;
+	protected int dx, dy;
 
 	public Entitie() {
 		dx = 0;
@@ -32,8 +32,9 @@ public class Entitie implements SceneComponentInterface {
 		}
 	}
 
-	//Hier ist was ver‰ndert da dx und dy nicht mehr gebraucht werden und ich alles von Graphics g auf graphics2D ge‰ndert habe
-	//der unterschied ist gering und sollte nicht auffallen auﬂer mehr features
+	// Hier ist was ver‰ndert da dx und dy nicht mehr gebraucht werden und ich alles
+	// von Graphics g auf graphics2D ge‰ndert habe
+	// der unterschied ist gering und sollte nicht auffallen auﬂer mehr features
 	@Override
 	public void draw(Graphics2D g) {
 		// TODO Auto-generated method stub
@@ -76,6 +77,5 @@ public class Entitie implements SceneComponentInterface {
 	public void setDy(int dy) {
 		this.dy = dy;
 	}
-	
 
 }

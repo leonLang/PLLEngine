@@ -32,7 +32,7 @@ public class CollThread extends Thread {
 	}
 
 	private void enemyVSEnemy() {
-		int cntr = 1; // counter starts with 1 because 0 is the player
+		int cntr = 0; // counter starts with 1 because 0 is the player
 		int counterPL = 0;
 		int amntObjcts = Entitie.entityNumberAll;
 		int arrX[] = Entitie.arrX;
