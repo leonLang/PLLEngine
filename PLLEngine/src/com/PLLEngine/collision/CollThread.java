@@ -16,7 +16,7 @@ public class CollThread extends Thread {
 
 	private void runAlways() {
 		while (0 == 0) {
-			playerVSEnemy();
+			//playerVSEnemy();
 			enemyVSEnemy();
 			stopForPerformance(10);
 		}

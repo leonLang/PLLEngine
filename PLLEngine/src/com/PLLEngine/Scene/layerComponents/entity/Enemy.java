@@ -15,6 +15,7 @@ public class Enemy extends Entitie {
 	private int width = 20;
 	private int height = 20;
 	private int wait = 0;
+	private boolean collision;
 	public Enemy(int startX, int startY) {
 		x = startX;
 		y = startY;
@@ -51,21 +52,17 @@ public class Enemy extends Entitie {
 		}
 	}
 	private void collisionCheck() {
-		CollEnemVSPlay cl = new CollEnemVSPlay(x, y, 20, 20);
+		// here you can define what should happen after Collision with Player is triggered
+		CollEnemVSPlay cl = new CollEnemVSPlay(px, py, 20, 20);
 		if(cl.getCollLinks()) {
-			
+			collision = true;
 		}
 		else if (cl.getCollRechts()) {
-			
+			collision = true;
 		}
 		else {
-			if (wait == 10000) {
-			enemyMovement();
-			wait = 0;
-			}
-			else {
-				wait++;
-			}
+			
+			
 		}
 	}
 	private void synchronize() {
@@ -76,7 +73,9 @@ public class Enemy extends Entitie {
 			} else if (CollThread.collRight[entityNumberOwn]) {
 
 			} else {
+				if (!collision) {
 				enemyMovement();
+				}
 			}
 
 		}
