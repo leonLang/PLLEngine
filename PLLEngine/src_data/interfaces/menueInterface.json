@@ -1,0 +1,30 @@
+{
+  "stringLayout": "BorderLayout",
+  "text": [
+    {
+      "text": "hello",
+      "align": "Last",
+      "width": 500,
+      "height": 100
+
+    }
+  ],
+  "button": [
+    {
+      "text": "nein",
+      "align": "Before",
+      "width": 500,
+      "height": 100,
+      "x": 5,
+      "y": 5
+    },
+    {
+      "text": "nein",
+      "align": "Last",
+      "width": 500,
+      "height": 100,
+      "x": 5,
+      "y": 5
+    }
+  ]
+}

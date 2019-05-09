@@ -7,11 +7,15 @@ import com.PLLEngine.Scene.Scene;
 import com.PLLEngine.Window.Window;
 import com.PLLEngine.srcLoader.JsonLoader;
 import com.fasterxml.jackson.annotation.JsonView;
-
+/**
+ * default Game class
+ * @author tromp
+ * 
+ */
 public class Game implements GameBase {
 	/*
-	 * this Class normaly get's open with game start.
-	 * Parameter's and data are coming from "entry.json"
+	 * this Class normaly get's open with game start. Parameter's and data are
+	 * coming from "entry.json"
 	 */
 	private String _comment, titel, version;
 	@JsonView(Window.class)
@@ -22,7 +26,6 @@ public class Game implements GameBase {
 
 	private Control controller;
 	private boolean up, down, right, left;
-	
 
 	public Game() {
 		setup();
@@ -80,7 +83,7 @@ public class Game implements GameBase {
 
 	@Override
 	public void setup() {
-		//default setup
+		// default setup
 		this.controller = new Control(this);
 		this.loop = new GameLoop(this);
 
@@ -89,7 +92,8 @@ public class Game implements GameBase {
 	@Override
 	public void init() {
 		// init GameWindow with given properties
-		//NOTE: window is just the "class above" the JFrame is a subclass of window -> getWindow()
+		// NOTE: window is just the "class above" the JFrame is a subclass of window ->
+		// getWindow()
 		window.init();
 		window.setTitel(this.titel + " - " + this.version);
 		window.getWindow().addKeyListener(controller);
@@ -109,20 +113,23 @@ public class Game implements GameBase {
 		// TODO Auto-generated method stub
 
 	}
-	//Look down to Key methodes for more information
+
+	// Look down to Key methodes for more information
+	//TODO  CHANGE
 	@Override
 	public void update() {
-		if (up) {
-			this.scene.getWorld().moveUp(5);
-		} else if (down) {
-			this.scene.getWorld().moveDown(5);
+		if (this.scene.getWorld() != null) {
+			if (up) {
+				this.scene.getWorld().moveUp(5);
+			} else if (down) {
+				this.scene.getWorld().moveDown(5);
+			}
+			if (right) {
+				this.scene.getWorld().moveRight(5);
+			} else if (left) {
+				this.scene.getWorld().moveLeft(5);
+			}
 		}
-		if (right) {
-			this.scene.getWorld().moveRight(5);
-		} else if (left) {
-			this.scene.getWorld().moveLeft(5);
-		}
-
 	}
 
 	@Override
@@ -134,7 +141,6 @@ public class Game implements GameBase {
 	@Override
 	public void draw() {
 		this.window.getWindow().repaint();
-
 	}
 
 	@Override
@@ -161,8 +167,8 @@ public class Game implements GameBase {
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.right = true;
 		}
-		if(e.getKeyCode() == KeyEvent.VK_F12) {
-			//this.init();
+		if (e.getKeyCode() == KeyEvent.VK_F12) {
+			// this.init();
 		}
 
 	}

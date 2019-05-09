@@ -5,8 +5,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.swing.JFrame;
-
-import com.PLLEngine.Game.DepricatedGame;
 import com.PLLEngine.Window.Window;
 import com.PLLEngine.srcLoader.SrcLoader;
 

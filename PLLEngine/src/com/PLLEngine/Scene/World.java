@@ -86,7 +86,7 @@ public class World extends JPanel implements SceneComponentInterface{
 	}
 
 	public void draw(Graphics2D g) {
-		for (int x = -1; x < cellCountX; x++) {
+		for (int x = -1; x < cellCountX+1; x++) {
 			for (int y = -1; y < cellCountY; y++) {
 				try {
 					/*

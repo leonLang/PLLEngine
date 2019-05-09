@@ -1,5 +1,4 @@
 {
-  "stringPlayer": [ "player.json" ],
   "stringLayers": [ "layer1.json" ],
-  "stringGui":  "interface.json" 
+  "stringGui":  "menueInterface.json" 
 }
