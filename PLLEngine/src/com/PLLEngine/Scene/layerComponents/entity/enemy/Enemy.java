@@ -9,6 +9,7 @@ import com.PLLEngine.collision.CollEnemVSPlay;
 import com.PLLEngine.collision.CollThread;
 
 public class Enemy extends Entitie {
+	Movement mv;
 	private static boolean richtungAll;
 	private boolean richtungOwn, once;
 	private BufferedImage sprite;
@@ -17,9 +18,11 @@ public class Enemy extends Entitie {
 	private int height = 20;
 	private int wait = 0;
 	private boolean collision;
+
 	public Enemy(int startX, int startY) {
 		x = startX;
 		y = startY;
+
 		if (!richtungAll) {
 			richtungAll = true;
 			richtungOwn = true;
@@ -28,44 +31,46 @@ public class Enemy extends Entitie {
 			richtungAll = false;
 			once = true;
 		}
+		mv = new Movement(richtungOwn);
 
 	}
 
 	@Override
 	public void draw(Graphics2D g) {
-		//ich würd das ganze dann aber von der world aus steuern 
+		// ich würd das ganze dann aber von der world aus steuern
+
 		cameraMovement(x, y, dx, dy);
 		collisionCheck();
 		synchronize();
 		setEntitiyNumber();
-		if(sprite != null)
-		g.drawImage(sprite, px, py, null);
+		if (sprite != null)
+			g.drawImage(sprite, px, py, null);
 		g.drawRect(px, py, width, height);
 
 	}
 
 	private void enemyMovement() {
+		mv.setX(x);
+		mv.setY(y);
+		mv.moveHim();
+		x = mv.getX();
+		y = mv.getY();
 
-		if (richtungOwn) {
-			x++;
-		} else {
-			x--;
-		}
 	}
+
 	private void collisionCheck() {
-		// here you can define what should happen after Collision with Player is triggered
+		// here you can define what should happen after Collision with Player is
+		// triggered
 		CollEnemVSPlay cl = new CollEnemVSPlay(px, py, 20, 20);
-		if(cl.getCollLinks()) {
+		if (cl.getCollLinks()) {
 			collision = true;
-		}
-		else if (cl.getCollRechts()) {
+		} else if (cl.getCollRechts()) {
 			collision = true;
-		}
-		else {
-			
-			
+		} else {
+
 		}
 	}
+
 	private void synchronize() {
 		if (Entitie.synchronize[entityNumberOwn]) {
 			Entitie.synchronize[entityNumberOwn] = false;
@@ -75,7 +80,7 @@ public class Enemy extends Entitie {
 
 			} else {
 				if (!collision) {
-				enemyMovement();
+					enemyMovement();
 				}
 			}
 
@@ -86,9 +91,9 @@ public class Enemy extends Entitie {
 		arrX[entityNumberOwn] = px;
 		arrY[entityNumberOwn] = py;
 	}
+
 	public void setSprite(BufferedImage br) {
 		this.sprite = br;
 	}
-
 
 }
