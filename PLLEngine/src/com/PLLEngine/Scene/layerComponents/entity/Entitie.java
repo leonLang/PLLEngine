@@ -7,9 +7,8 @@ import com.PLLEngine.collision.CollThread;
 
 public class Entitie implements SceneComponentInterface {
 	int x12 = 100;
-	public static int[] arrX = new int[100000];
-	public static int[] arrY = new int[100000];
-	public static int entityNumberAll;
+	public static int[] arrX = new int[1];
+	public static int[] arrY = new int[1];
 	public static boolean[] synchronize = new boolean[100000];
 	public int entityNumberOwn;
 	private static boolean onlyOnce = false;
@@ -21,9 +20,9 @@ public class Entitie implements SceneComponentInterface {
 		dy = 0;
 		// der player muss immer als erstes erstellt werden, dmait er array nummer 0
 		// ist.
-		entityNumberOwn = entityNumberAll;
-		entityNumberAll++;
-		System.out.println(entityNumberAll);
+		entityNumberOwn = arrX.length-1;
+		arrX = enlargeArraySize(arrX);
+		arrY = enlargeArraySize(arrY);
 		if (onlyOnce == false) {
 			System.out.println("einmal");
 			onlyOnce = true;
@@ -40,7 +39,12 @@ public class Entitie implements SceneComponentInterface {
 		// TODO Auto-generated method stub
 		g.drawRect(100, 50, 300, 300);
 	}
-
+	private int [] enlargeArraySize(int [] arrayN) {
+		int [] tmpA = new int [arrayN.length+1];
+		System.arraycopy(arrayN, 0, tmpA, 0, arrayN.length);
+		arrayN = tmpA;
+		return arrayN;
+	}
 	public void cameraMovement(int x, int y, int dx, int dy) {
 		px = x + dx;
 		py = y + dy;
