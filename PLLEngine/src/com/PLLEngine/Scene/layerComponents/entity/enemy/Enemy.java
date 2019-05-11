@@ -1,9 +1,10 @@
-package com.PLLEngine.Scene.layerComponents.entity;
+package com.PLLEngine.Scene.layerComponents.entity.enemy;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.collision.CollEnemVSPlay;
 import com.PLLEngine.collision.CollThread;
 

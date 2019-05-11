@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import com.PLLEngine.Scene.Map.EventMap;
-import com.PLLEngine.Scene.layerComponents.entity.Enemy;
+import com.PLLEngine.Scene.layerComponents.entity.enemy.Enemy;
 import com.PLLEngine.srcLoader.JsonLoader;
 import com.PLLEngine.srcLoader.RefrenceJson;
 import com.PLLEngine.srcLoader.SrcLoader;
