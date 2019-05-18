@@ -1,10 +1,12 @@
 package com.PLLEngine.Scene.layerComponents.entity.enemy;
 
 public class Health {
+	private int startLives;
 	private int lives;
 	private boolean deathStat;
 
 	public Health(int lives) {
+		this.startLives = lives;
 		this.lives = lives;
 	}
 
@@ -15,7 +17,10 @@ public class Health {
 	}
 
 	public void removeOneHeart() {
-		lives--;
+		if (lives >0) {
+			lives--;
+		}
+		
 	}
 
 	public void instantKill() {
@@ -29,5 +34,9 @@ public class Health {
 
 	public int getLives() {
 		return lives;
+	}
+	
+	public int getStartLives() {
+		return startLives;
 	}
 }

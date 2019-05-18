@@ -18,8 +18,10 @@ public class Enemy extends Entitie {
 	private int height = 20;
 	private int wait = 0;
 	private boolean collision;
+	private Health health;
 
 	public Enemy(int startX, int startY) {
+		health = new Health(3);
 		x = startX;
 		y = startY;
 
@@ -38,7 +40,7 @@ public class Enemy extends Entitie {
 	@Override
 	public void draw(Graphics2D g) {
 		// ich würd das ganze dann aber von der world aus steuern
-
+		controlHealth(g);
 		cameraMovement(x, y, dx, dy);
 		collisionCheck();
 		synchronize();
@@ -57,12 +59,17 @@ public class Enemy extends Entitie {
 		y = mv.getY();
 
 	}
-
+	private void controlHealth(Graphics2D g) {
+		g.drawRect(px, py-8, width, 5);
+		g.fillRect(px, py-8, width*(health.getLives()/health.getStartLives()), 5);
+		// If I don't do it with the ( the Rect wont be full because of rounding differences
+	}
 	private void collisionCheck() {
 		// here you can define what should happen after Collision with Player is
 		// triggered
 		CollEnemVSPlay cl = new CollEnemVSPlay(px, py, 20, 20);
 		if (cl.getCollLinks()) {
+			health.removeOneHeart();
 			collision = true;
 		} else if (cl.getCollRechts()) {
 			collision = true;
