@@ -168,7 +168,7 @@ public class Game implements GameBase {
 			this.right = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_F12) {
-			// this.init();
+			 //this.scene.initScene();
 		}
 
 	}

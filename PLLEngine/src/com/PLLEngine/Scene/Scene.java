@@ -32,7 +32,10 @@ public class Scene extends JPanel {
 	public Scene() {
 		this.setVisible(true);
 	}
-
+/**
+ * innit scene by loading map and setting dimensions for player position
+ * @throws NullpointerException
+ */
 	public void initScene() {
 		try {
 			this.world.loadMap();

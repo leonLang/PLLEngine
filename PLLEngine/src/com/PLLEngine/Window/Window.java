@@ -35,7 +35,7 @@ public class Window {
 
 	}
 
-	// essential to create window dimensions
+	/** essential to create window dimensions*/
 	public void relocateWindow() {
 		initDefaultWindowSize();
 		try {
@@ -46,7 +46,11 @@ public class Window {
 		}
 	}
 
-//GameWindow inherted in Window class to be able to use Json scripts(NOTE:issue with parent's class)
+/**GameWindow inherted in Window class to be able to use Json scripts(NOTE:issue with parent's class)
+ * 
+ * 
+ *
+ */
 	public class GameWindow extends JFrame {
 		public GameWindow() {
 			this.setResizable(false);

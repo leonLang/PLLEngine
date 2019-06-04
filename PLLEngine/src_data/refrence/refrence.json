@@ -19,5 +19,40 @@
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
+  },
+  {
+    "id": 4,
+    "path": "src_data/sprites/haus0.png",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
+  },
+  {
+    "id": 5,
+    "path": "src_data/sprites/haus1.png",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
+  },
+  {
+    "id": 6,
+    "path": "src_data/sprites/haus2.png",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
+  },
+  {
+    "id": 7,
+    "path": "src_data/sprites/haus3.png",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
+  },
+  {
+    "id": 8,
+    "path": "src_data/sprites/haus4.png",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
   }
 ]

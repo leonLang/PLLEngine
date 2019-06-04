@@ -17,13 +17,7 @@ public class Background extends LayerComponents {
 	public Background(String src) {
 		loader = new SrcLoader();
 		this.src = src;
-		try {
-			bImage = loader.Image(src);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	//	w = (JFrame) this.getParent();
+		bImage = loader.Image(src);
 	}
 
 	public void draw(Graphics g, int dx, int dy) {
