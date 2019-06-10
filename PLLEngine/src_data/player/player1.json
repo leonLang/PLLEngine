@@ -1,9 +1,9 @@
 {
   "width": "64",
   "height": "64",
-  "sLeft":["char1.png"],
-  "sRight":["char1.png"],
-  "sUp":["char3.png","char4.png"],
-  "sDown":["char1.png","char2.png"]
+  "sRight":["char05.png","char06.png","char05.png","char07.png"],
+  "sLeft":["char08.png","char09.png","char08.png","char10.png"],
+  "sUp":["char03.png","char04.png"],
+  "sDown":["char01.png","char02.png"]
   
 }

@@ -17,11 +17,13 @@ public class Player extends Entitie {
 	private String[] sRight, sLeft, sUp, sDown;
 	private BufferedImage[] right, left, up, down;
 	private boolean animationState;
+	private Thread movement;
+	private int movementstate;
 
 	public Player() {
 		x = 0;
 		y = 0;
-		img = SrcLoader.Image("char0.png");
+		img = SrcLoader.Image("char00.png");
 		animationState = true;
 	}
 
@@ -66,20 +68,26 @@ public class Player extends Entitie {
 	// wird im sp�teren Verlauf gebraucht
 
 	public void moveUp() {
+		this.movementstate = 0;
 		move(this.up, 100);
 	}
 
 	public void moveDown() {
+		this.movementstate = 1;
 
 		move(this.down, 100);
 
 	}
 
 	public void moveRight() {
+		this.movementstate = 2;
+
 		move(this.right, 100);
 	}
 
 	public void moveLeft() {
+		this.movementstate = 3;
+
 		move(this.left, 100);
 	}
 
@@ -91,10 +99,10 @@ public class Player extends Entitie {
 	 */
 	public void move(BufferedImage img[], int millis) {
 		if (animationState) {
-			new Thread(() -> {
+			movement = new Thread(() -> {
 				animationState = false;
-				
-				for (int i = 0;i < img.length;i++) {
+
+				for (int i = 0; i < img.length; i++) {
 					this.img = img[i];
 					try {
 						Thread.sleep(millis);
@@ -106,7 +114,8 @@ public class Player extends Entitie {
 
 				animationState = true;
 
-			}).start();
+			});
+			movement.start();
 		}
 	}
 
