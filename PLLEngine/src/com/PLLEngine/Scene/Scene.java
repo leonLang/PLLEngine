@@ -18,7 +18,7 @@ public class Scene extends JPanel {
 	private String stringWorld;
 	private World world;
 
-	// TODO Namen ändern ... vllt zu StringPlayer und player ist ja sosnst furchtbar
+	// TODO Namen ï¿½ndern ... vllt zu StringPlayer und player ist ja sosnst furchtbar
 
 	private String[] stringPlayer; // multiplayer?!
 	private Player[] player;
@@ -73,6 +73,10 @@ public class Scene extends JPanel {
 		this.world = world;
 	}
 
+	public Player getPlayer() {
+		return this.player[0];
+	}
+	
 	public String[] getStringPlayer() {
 		return stringPlayer;
 	}

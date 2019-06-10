@@ -121,13 +121,17 @@ public class Game implements GameBase {
 		if (this.scene.getWorld() != null) {
 			if (up) {
 				this.scene.getWorld().moveUp(5);
+				this.scene.getPlayer().moveUp();
 			} else if (down) {
 				this.scene.getWorld().moveDown(5);
+				this.scene.getPlayer().moveDown();
 			}
 			if (right) {
 				this.scene.getWorld().moveRight(5);
+				this.scene.getPlayer().moveRight();
 			} else if (left) {
 				this.scene.getWorld().moveLeft(5);
+				this.scene.getPlayer().moveLeft();
 			}
 		}
 	}
@@ -154,7 +158,7 @@ public class Game implements GameBase {
 	}
 
 	// Default Key settings for fluent keypressing
-	// TODO vllt ändern und alle keys verfügbar machen
+	// TODO vllt ï¿½ndern und alle keys verfï¿½gbar machen
 	@Override
 	public void KeyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
