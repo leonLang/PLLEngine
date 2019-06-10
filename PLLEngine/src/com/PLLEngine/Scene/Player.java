@@ -49,7 +49,9 @@ public class Player extends Entitie {
 	public void moveUp() {
 
 	}
-
+	/**
+	 * moves player indirectly with animation
+	 */
 	public void moveDown() {
 		if (animationState) {
 			new Thread(() -> {
@@ -68,6 +70,7 @@ public class Player extends Entitie {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 				animationState = true;
 
 			}).start();
