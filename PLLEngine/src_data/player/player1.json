@@ -1,4 +1,9 @@
 {
   "width": "64",
-  "height": "64"
+  "height": "64",
+  "sLeft":["char1.png"],
+  "sRight":["char1.png"],
+  "sUp":["char3.png","char4.png"],
+  "sDown":["char1.png","char2.png"]
+  
 }

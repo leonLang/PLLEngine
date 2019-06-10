@@ -13,16 +13,35 @@ public class Player extends Entitie {
 	private boolean richtungOwn, once;
 	private int x, y;
 	private int width, height;
-	private BufferedImage img, img1, img2;
+	private BufferedImage img;
+	private String[] sRight, sLeft, sUp, sDown;
+	private BufferedImage[] right, left, up, down;
 	private boolean animationState;
 
 	public Player() {
 		x = 0;
 		y = 0;
-		img1 = SrcLoader.Image("char1.png");
-		img2 = SrcLoader.Image("char2.png");
 		img = SrcLoader.Image("char0.png");
 		animationState = true;
+	}
+
+	public void initPlayer() {
+		right = new BufferedImage[this.sRight.length];
+		left = new BufferedImage[this.sLeft.length];
+		up = new BufferedImage[this.sUp.length];
+		down = new BufferedImage[this.sDown.length];
+		for (int i = 0; i < this.sRight.length; i++) {
+			this.right[i] = SrcLoader.Image(this.sRight[i]);
+		}
+		for (int i = 0; i < sLeft.length; i++) {
+			this.left[i] = SrcLoader.Image(sLeft[i]);
+		}
+		for (int i = 0; i < sUp.length; i++) {
+			this.up[i] = SrcLoader.Image(sUp[i]);
+		}
+		for (int i = 0; i < sDown.length; i++) {
+			this.down[i] = SrcLoader.Image(sDown[i]);
+		}
 	}
 
 	@Override
@@ -47,46 +66,48 @@ public class Player extends Entitie {
 	// wird im sp�teren Verlauf gebraucht
 
 	public void moveUp() {
+		move(this.up, 100);
+	}
+
+	public void moveDown() {
+
+		move(this.down, 100);
 
 	}
+
+	public void moveRight() {
+		move(this.right, 100);
+	}
+
+	public void moveLeft() {
+		move(this.left, 100);
+	}
+
 	/**
-	 * moves player indirectly with animation
+	 * millis is 100 by default but can/should be changed to 1Second/Spritenumber
+	 * 
+	 * @param img
+	 * @param millis
 	 */
-	public void moveDown() {
+	public void move(BufferedImage img[], int millis) {
 		if (animationState) {
 			new Thread(() -> {
 				animationState = false;
-				img = img1;
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				img = img2;
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 				
+				for (int i = 0;i < img.length;i++) {
+					this.img = img[i];
+					try {
+						Thread.sleep(millis);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+
 				animationState = true;
 
 			}).start();
 		}
-	}
-
-	public void moveRight() {
-
-	}
-
-	public void moveLeft() {
-
-	}
-
-	public void basicAnimation() {
-
 	}
 
 	public int getX() {
@@ -121,4 +142,36 @@ public class Player extends Entitie {
 		this.height = height;
 	}
 
+	public String[] getsRight() {
+		return sRight;
+	}
+
+	public void setsRight(String[] sRight) {
+		this.sRight = sRight;
+	}
+
+	public String[] getsLeft() {
+		return sLeft;
+	}
+
+	public void setsLeft(String[] sLeft) {
+		this.sLeft = sLeft;
+
+	}
+
+	public String[] getsUp() {
+		return sUp;
+	}
+
+	public void setsUp(String[] sUp) {
+		this.sUp = sUp;
+	}
+
+	public String[] getsDown() {
+		return sDown;
+	}
+
+	public void setsDown(String[] sDown) {
+		this.sDown = sDown;
+	}
 }

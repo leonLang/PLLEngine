@@ -42,6 +42,7 @@ public class Scene extends JPanel {
 			for(int i = 0;i < this.player.length;i++) {
 				this.player[i].setX(SwingUtilities.getWindowAncestor(this).getWidth()/2);
 			    this.player[i].setY(SwingUtilities.getWindowAncestor(this).getHeight()/2);
+			    this.player[i].initPlayer();
 			}
 		} catch (NullPointerException e) {
 			System.err.println("No World loaded -> NullPointerException");
