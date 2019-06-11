@@ -54,5 +54,12 @@
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
+  },
+    {
+    "id": 9,
+    "path": "src_data/sprites/trees/tree.png",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
   }
 ]
