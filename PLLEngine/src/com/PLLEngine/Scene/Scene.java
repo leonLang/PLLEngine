@@ -1,5 +1,6 @@
 package com.PLLEngine.Scene;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.IOException;
@@ -47,6 +48,7 @@ public class Scene extends JPanel {
 		} catch (NullPointerException e) {
 			System.err.println("No World loaded -> NullPointerException");
 		}
+		this.setBackground(Color.black);
 	}
 
 	public String getStringWorld() {

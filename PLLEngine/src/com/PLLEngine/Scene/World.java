@@ -1,5 +1,6 @@
 package com.PLLEngine.Scene;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class World extends JPanel implements SceneComponentInterface{
 	private RefrenceJson[] loadedsrc;
 	private Enemy[] enemysrc;
 	private int[][] map;
+	private int defaultTexture;
 	private int[][] eventCoordinates;
 	private int[][] enemies;
 	private int entryX, entryY;
@@ -52,6 +54,8 @@ public class World extends JPanel implements SceneComponentInterface{
 		this.dcy = 0;
 		this.dex = 0;
 		this.dey = 0;
+		this.setBackground(Color.BLACK);
+		
 		// Load all images for the refrences
 		new Thread(() -> {
 			try {
@@ -93,6 +97,12 @@ public class World extends JPanel implements SceneComponentInterface{
 					 * NOTE: do NOT mess with the numbers, wierd stuff will happen....
 					 */
 					//draw map NOTE: map data is drawen within the world class while other data get's drawn outside
+					//first draw, draws backgrounbd texture 
+					g.drawImage(
+							(loadedsrc[map[y + dcy][x + dcx]].getImg() == null)? null:loadedsrc[this.defaultTexture].getImg(),
+							x * spriteSize + dx, y * spriteSize + dy,
+							spriteSize, spriteSize, null);					
+					//second draw draws "builded" layer
 					g.drawImage(loadedsrc[map[y + dcy][x + dcx]].getImg(), x * spriteSize + dx, y * spriteSize + dy,
 							spriteSize, spriteSize, null);
 					//draw enemies
@@ -191,6 +201,15 @@ public class World extends JPanel implements SceneComponentInterface{
 
 	public void setMap(int[][] map) {
 		this.map = map;
+	}
+	
+
+	public int getDefaultTexture() {
+		return defaultTexture;
+	}
+
+	public void setDefaultTexture(int defaultTexture) {
+		this.defaultTexture = defaultTexture;
 	}
 
 	public int getEntryX() {

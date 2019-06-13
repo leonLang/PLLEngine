@@ -1,63 +1,70 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "path": "_sprite_1.png",
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
   },
   {
-    "id": 2,
+    "id": 1,
     "path": "_sprite_2.png",
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
   },
   {
-    "id": 3,
+    "id": 2,
     "path": "tree1.jpg",
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
   },
   {
-    "id": 4,
+    "id": 3,
     "path": "src_data/sprites/haus0.png",
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
   },
   {
-    "id": 5,
+    "id": 4,
     "path": "src_data/sprites/haus1.png",
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
   },
   {
-    "id": 6,
+    "id": 5,
     "path": "src_data/sprites/haus2.png",
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
   },
   {
-    "id": 7,
+    "id": 6,
     "path": "src_data/sprites/haus3.png",
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
   },
   {
-    "id": 8,
+    "id": 7,
     "path": "src_data/sprites/haus4.png",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
+  },
+  {
+    "id": 8,
+    "path": "src_data/sprites/tree.png",
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
   },
     {
     "id": 9,
-    "path": "src_data/sprites/trees/tree.png",
+    "path": "src_data/sprites/haus4.png",
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
