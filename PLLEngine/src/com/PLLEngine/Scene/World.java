@@ -2,7 +2,9 @@ package com.PLLEngine.Scene;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.swing.JPanel;
@@ -38,7 +40,7 @@ public class World extends JPanel implements SceneComponentInterface {
 	 * the amount of frames each frame calculates it's own proccesing data(image
 	 * data)
 	 */
-	//private int renderingThreads,currentThread;
+	// private int renderingThreads,currentThread;
 	// default delta with reset at cellCount
 	private int dx, dy;
 	// cell dx dcx = cellCount * dx
@@ -52,10 +54,9 @@ public class World extends JPanel implements SceneComponentInterface {
 		Dimension screenSize = SwingUtilities.getWindowAncestor(this.getParent()).getSize();
 		cellCountX = (int) (screenSize.getWidth() / spriteSize + 1);
 		cellCountY = (int) (screenSize.getHeight() / spriteSize + 1);
-		/*renderingThreads = 1;
-		 *if (cellCountX > 16 || cellCountY > 16) {
-		 *renderingThreads = renderingThreads * 2;
-		 *}
+		/*
+		 * renderingThreads = 1; if (cellCountX > 16 || cellCountY > 16) {
+		 * renderingThreads = renderingThreads * 2; }
 		 */
 		this.dx = 0;
 		this.dy = 0;
@@ -69,14 +70,31 @@ public class World extends JPanel implements SceneComponentInterface {
 		new Thread(() -> {
 			try {
 				loadedsrc = JsonLoader.loadRefrence(refrencePath);
-				if (this.spriteSheet == null)
-					for (int i = 0; i < loadedsrc.length; i++) {
-						loadedsrc[i].setImg(SrcLoader.Image(loadedsrc[i].getPath()));
-					}
-				else {
+				if (this.spriteSheet != null) {
 					SpritesheetP sh = new SpritesheetP(16, 16, this.spriteSheet);
 					for (int i = 0; i < loadedsrc.length; i++) {
-						loadedsrc[i].setImg(sh.getSprite(loadedsrc[i].getSpriteX(), loadedsrc[i].getSpriteY()));
+						if (loadedsrc[i].getConnector() != null) {
+							try {
+								BufferedImage img = new BufferedImage(spriteSize, spriteSize,
+										BufferedImage.TYPE_INT_RGB);
+								Graphics g = img.getGraphics();
+								for (int index = 0; index < loadedsrc[i].getConnector().length; index++) {
+									// very compact version ... somehow...
+									g.drawImage(loadedsrc[loadedsrc[i].getConnector()[index]].getImg(),
+									 (index < 2 ? 0 : 1) * this.spriteSize/2, ((index == 0 || index == 2) ? 0 : 1) * this.spriteSize/2,
+									 this.spriteSize/2,this.spriteSize/2,null);
+								}
+								loadedsrc[i].setImg(img);
+
+							} catch (Exception e) {
+								System.err.println("Can't load META_SPRITE check if required sprites are loaded");
+							}
+						} else {
+							if (loadedsrc[i].getPath() == null)
+								loadedsrc[i].setImg(sh.getSprite(loadedsrc[i].getSpriteX(), loadedsrc[i].getSpriteY()));
+							else
+								loadedsrc[i].setImg(SrcLoader.Image(loadedsrc[i].getPath()));
+						}
 					}
 				}
 			} catch (IOException e) {
@@ -106,17 +124,16 @@ public class World extends JPanel implements SceneComponentInterface {
 	}
 
 	public void draw(Graphics2D g) {
-		/*Gescheiterter versuch für multithreading redering
-		 * for (int i = 0; i < this.renderingThreads; i++) {
-			this.currentThread = i;
-			new Thread(() -> {
-				for (int x = -1+(cellCountX/renderingThreads)*currentThread; x < cellCountX/2+((cellCountX/2) *currentThread) + 1; x++) {
-					for (int y = -1+(cellCountY/renderingThreads)*currentThread; y < cellCountY/2+((cellCountY/2) *currentThread) + 1; y++) {
-						
-					}
-				}
-			}).start();
-		}*/
+		/*
+		 * Gescheiterter versuch für multithreading redering for (int i = 0; i <
+		 * this.renderingThreads; i++) { this.currentThread = i; new Thread(() -> { for
+		 * (int x = -1+(cellCountX/renderingThreads)*currentThread; x <
+		 * cellCountX/2+((cellCountX/2) *currentThread) + 1; x++) { for (int y =
+		 * -1+(cellCountY/renderingThreads)*currentThread; y <
+		 * cellCountY/2+((cellCountY/2) *currentThread) + 1; y++) {
+		 * 
+		 * } } }).start(); }
+		 */
 		for (int x = -1; x < cellCountX + 1; x++) {
 			for (int y = -1; y < cellCountY; y++) {
 				try {

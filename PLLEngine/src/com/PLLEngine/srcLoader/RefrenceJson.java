@@ -9,6 +9,7 @@ public class RefrenceJson {
 	private BufferedImage img;
 	private int spriteX;
 	private int spriteY;
+	private int[] connector;
 	
 	
 	public int getSpriteX() {
@@ -58,5 +59,14 @@ public class RefrenceJson {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public int[] getConnector() {
+		return connector;
+	}
+
+	public void setConnector(int[] connector) {
+		this.connector = connector;
+	}
+	
 
 }

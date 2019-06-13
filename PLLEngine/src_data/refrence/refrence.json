@@ -1,7 +1,6 @@
 [
   {
     "id": 0,
-    "path":"possibleimagepath",
     "spriteX": 0,
     "spriteY": 2,
     "collision": false
@@ -56,8 +55,13 @@
   },
     {
     "id": 9,
+    "path": "src_data/sprites/trees/tree.png",
     "spriteX": 0,
     "spriteY": 0,
     "collision": false
-  }
+  },
+    {"id": 10,
+    "collision": false,
+    "connector": [0,1,2,3]
+   }
 ]
