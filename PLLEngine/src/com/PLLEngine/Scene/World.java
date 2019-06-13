@@ -10,21 +10,19 @@ import javax.swing.SwingUtilities;
 
 import com.PLLEngine.Scene.Map.EventMap;
 import com.PLLEngine.Scene.layerComponents.entity.enemy.Enemy;
+import com.PLLEngine.images.SpritesheetP;
 import com.PLLEngine.srcLoader.JsonLoader;
 import com.PLLEngine.srcLoader.RefrenceJson;
 import com.PLLEngine.srcLoader.SrcLoader;
 
 @SuppressWarnings("serial")
-public class World extends JPanel implements SceneComponentInterface{
+public class World extends JPanel implements SceneComponentInterface {
 	/*
-	 * The World contains all data about world especially the map data itself
-	 * Render data Structure:
-	 * World
-	 * |_Map
-	 * |
-	 * |_Entites
+	 * The World contains all data about world especially the map data itself Render
+	 * data Structure: World |_Map | |_Entites
 	 */
 	private String refrencePath;
+	private String spriteSheet;
 	private RefrenceJson[] loadedsrc;
 	private Enemy[] enemysrc;
 	private int[][] map;
@@ -35,12 +33,18 @@ public class World extends JPanel implements SceneComponentInterface{
 	private EventMap eMap;
 	private int spriteSize;
 	private int cellCountX, cellCountY;
-	//default delta with reset at cellCount
+	/**
+	 * this number set#s the amount of Rendering Threads. The Screen is split into
+	 * the amount of frames each frame calculates it's own proccesing data(image
+	 * data)
+	 */
+	//private int renderingThreads,currentThread;
+	// default delta with reset at cellCount
 	private int dx, dy;
-	//cell dx dcx = cellCount * dx
+	// cell dx dcx = cellCount * dx
 	private int dcx, dcy;
-	//entity dex = dx with no reset
-	private int dex,dey;
+	// entity dex = dx with no reset
+	private int dex, dey;
 
 	public void loadMap() {
 		// World is getting rendern as big as the screen is
@@ -48,6 +52,11 @@ public class World extends JPanel implements SceneComponentInterface{
 		Dimension screenSize = SwingUtilities.getWindowAncestor(this.getParent()).getSize();
 		cellCountX = (int) (screenSize.getWidth() / spriteSize + 1);
 		cellCountY = (int) (screenSize.getHeight() / spriteSize + 1);
+		/*renderingThreads = 1;
+		 *if (cellCountX > 16 || cellCountY > 16) {
+		 *renderingThreads = renderingThreads * 2;
+		 *}
+		 */
 		this.dx = 0;
 		this.dy = 0;
 		this.dcx = 0;
@@ -55,13 +64,20 @@ public class World extends JPanel implements SceneComponentInterface{
 		this.dex = 0;
 		this.dey = 0;
 		this.setBackground(Color.BLACK);
-		
+
 		// Load all images for the refrences
 		new Thread(() -> {
 			try {
 				loadedsrc = JsonLoader.loadRefrence(refrencePath);
-				for (int i = 0; i < loadedsrc.length; i++) {
-					loadedsrc[i].setImg(SrcLoader.Image(loadedsrc[i].getPath()));
+				if (this.spriteSheet == null)
+					for (int i = 0; i < loadedsrc.length; i++) {
+						loadedsrc[i].setImg(SrcLoader.Image(loadedsrc[i].getPath()));
+					}
+				else {
+					SpritesheetP sh = new SpritesheetP(16, 16, this.spriteSheet);
+					for (int i = 0; i < loadedsrc.length; i++) {
+						loadedsrc[i].setImg(sh.getSprite(loadedsrc[i].getSpriteX(), loadedsrc[i].getSpriteY()));
+					}
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -75,46 +91,59 @@ public class World extends JPanel implements SceneComponentInterface{
 			}
 
 		}).start();
-		//Load all entitie refrences
-		new Thread(()->{
+		// Load all entitie refrences
+		new Thread(() -> {
 			try {
 				enemysrc = new Enemy[enemies.length];
-				for(int i = 0; i < enemysrc.length;i++) {
-					enemysrc[i] = new Enemy(enemies[i][0],enemies[i][1]);
+				for (int i = 0; i < enemysrc.length; i++) {
+					enemysrc[i] = new Enemy(enemies[i][0], enemies[i][1]);
 				}
-			} catch(Exception e) {
+			} catch (Exception e) {
 				System.err.println("Error while loading map.entities");
 			}
-			
+
 		}).start();
 	}
 
 	public void draw(Graphics2D g) {
-		for (int x = -1; x < cellCountX+1; x++) {
+		/*Gescheiterter versuch für multithreading redering
+		 * for (int i = 0; i < this.renderingThreads; i++) {
+			this.currentThread = i;
+			new Thread(() -> {
+				for (int x = -1+(cellCountX/renderingThreads)*currentThread; x < cellCountX/2+((cellCountX/2) *currentThread) + 1; x++) {
+					for (int y = -1+(cellCountY/renderingThreads)*currentThread; y < cellCountY/2+((cellCountY/2) *currentThread) + 1; y++) {
+						
+					}
+				}
+			}).start();
+		}*/
+		for (int x = -1; x < cellCountX + 1; x++) {
 			for (int y = -1; y < cellCountY; y++) {
 				try {
 					/*
 					 * NOTE: do NOT mess with the numbers, wierd stuff will happen....
 					 */
-					//draw map NOTE: map data is drawen within the world class while other data get's drawn outside
-					//first draw, draws backgrounbd texture 
+					/**
+					 * draw map NOTE: map data is drawen within the world class while other data
+					 * get's drawn outside first draw, draws backgrounbd texture
+					 **/
 					g.drawImage(
-							(loadedsrc[map[y + dcy][x + dcx]].getImg() == null)? null:loadedsrc[this.defaultTexture].getImg(),
-							x * spriteSize + dx, y * spriteSize + dy,
-							spriteSize, spriteSize, null);					
-					//second draw draws "builded" layer
+							(loadedsrc[map[y + dcy][x + dcx]].getImg() == null) ? null
+									: loadedsrc[this.defaultTexture].getImg(),
+							x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize, null);
+					// second draw draws "builded" layer
 					g.drawImage(loadedsrc[map[y + dcy][x + dcx]].getImg(), x * spriteSize + dx, y * spriteSize + dy,
 							spriteSize, spriteSize, null);
-					//draw enemies
-					for(int i = 0;i < enemysrc.length;i++) {
-						//enemysrc[i].cameraMovement(enemysrc[i].getPx(), enemysrc[i].getPy(), dx, dy);
+					// draw enemies
+					for (int i = 0; i < enemysrc.length; i++) {
+						// enemysrc[i].cameraMovement(enemysrc[i].getPx(), enemysrc[i].getPy(), dx, dy);
 						enemysrc[i].setDx(dex);
 						enemysrc[i].setDy(dey);
 						enemysrc[i].draw(g);
-						
+
 					}
-					
-					//g.drawRect(x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize);
+
+					// g.drawRect(x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize);
 				} catch (Exception e) {
 				}
 			}
@@ -167,6 +196,14 @@ public class World extends JPanel implements SceneComponentInterface{
 		this.update();
 	}
 
+	public String getSpriteSheet() {
+		return spriteSheet;
+	}
+
+	public void setSpriteSheet(String spriteSheet) {
+		this.spriteSheet = spriteSheet;
+	}
+
 	public int getSpriteSize() {
 		return spriteSize;
 	}
@@ -202,7 +239,6 @@ public class World extends JPanel implements SceneComponentInterface{
 	public void setMap(int[][] map) {
 		this.map = map;
 	}
-	
 
 	public int getDefaultTexture() {
 		return defaultTexture;
@@ -243,8 +279,6 @@ public class World extends JPanel implements SceneComponentInterface{
 	public void setEventCoordinates(int[][] eventCoordinates) {
 		this.eventCoordinates = eventCoordinates;
 	}
-	
-	
 
 	public int[][] getEnemies() {
 		return enemies;
@@ -254,7 +288,7 @@ public class World extends JPanel implements SceneComponentInterface{
 		this.enemies = enemies;
 	}
 
-	//cam getter and setter -> dx,dy
+	// cam getter and setter -> dx,dy
 	public int getDx() {
 		return dx;
 	}

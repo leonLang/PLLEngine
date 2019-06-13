@@ -15,6 +15,7 @@ public class Player extends Entitie {
 	private int width, height;
 	private BufferedImage img;
 	private String[] sRight, sLeft, sUp, sDown;
+	private String charSprite;
 	private BufferedImage[] right, left, up, down;
 	private boolean animationState;
 	private Thread movement;
@@ -183,4 +184,13 @@ public class Player extends Entitie {
 	public void setsDown(String[] sDown) {
 		this.sDown = sDown;
 	}
+
+	public String getCharSprite() {
+		return charSprite;
+	}
+
+	public void setCharSprite(String charSprite) {
+		this.charSprite = charSprite;
+	}
+	
 }

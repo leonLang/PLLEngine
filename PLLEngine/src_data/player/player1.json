@@ -1,6 +1,7 @@
 {
   "width": "64",
   "height": "64",
+  "charSprite": "src_data/sprites/player/char.png",
   "sRight":["char05.png","char06.png","char05.png","char07.png"],
   "sLeft":["char08.png","char09.png","char08.png","char10.png"],
   "sUp":["char03.png","char04.png"],

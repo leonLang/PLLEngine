@@ -33,17 +33,19 @@ public class Scene extends JPanel {
 	public Scene() {
 		this.setVisible(true);
 	}
-/**
- * innit scene by loading map and setting dimensions for player position
- * @throws NullpointerException
- */
+
+	/**
+	 * innit scene by loading map and setting dimensions for player position
+	 * 
+	 * @throws NullpointerException
+	 */
 	public void initScene() {
 		try {
 			this.world.loadMap();
-			for(int i = 0;i < this.player.length;i++) {
-				this.player[i].setX(SwingUtilities.getWindowAncestor(this).getWidth()/2);
-			    this.player[i].setY(SwingUtilities.getWindowAncestor(this).getHeight()/2);
-			    this.player[i].initPlayer();
+			for (int i = 0; i < this.player.length; i++) {
+				this.player[i].setX(SwingUtilities.getWindowAncestor(this).getWidth() / 2);
+				this.player[i].setY(SwingUtilities.getWindowAncestor(this).getHeight() / 2);
+				this.player[i].initPlayer();
 			}
 		} catch (NullPointerException e) {
 			System.err.println("No World loaded -> NullPointerException");
@@ -59,6 +61,8 @@ public class Scene extends JPanel {
 	public void setStringWorld(String world) {
 		this.stringWorld = world;
 		try {
+			if (this.world != null)
+				this.remove(this.world);
 			this.world = JsonLoader.loadWorld(world);
 			this.add(this.world);
 		} catch (IOException e) {
@@ -79,7 +83,7 @@ public class Scene extends JPanel {
 	public Player getPlayer() {
 		return this.player[0];
 	}
-	
+
 	public String[] getStringPlayer() {
 		return stringPlayer;
 	}
