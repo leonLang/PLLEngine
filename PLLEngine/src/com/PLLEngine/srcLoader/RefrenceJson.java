@@ -10,6 +10,7 @@ public class RefrenceJson {
 	private int spriteX;
 	private int spriteY;
 	private int[] connector;
+	private String _note;
 	
 	
 	public int getSpriteX() {
@@ -66,6 +67,14 @@ public class RefrenceJson {
 
 	public void setConnector(int[] connector) {
 		this.connector = connector;
+	}
+
+	public String get_note() {
+		return _note;
+	}
+
+	public void set_note(String _note) {
+		this._note = _note;
 	}
 	
 

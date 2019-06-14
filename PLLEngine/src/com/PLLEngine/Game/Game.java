@@ -26,6 +26,8 @@ public class Game implements GameBase {
 
 	private Control controller;
 	private boolean up, down, right, left;
+	
+	private int playerX,playerY;
 
 	public Game() {
 		setup();
@@ -171,8 +173,10 @@ public class Game implements GameBase {
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.right = true;
 		}
-		if (e.getKeyCode() == KeyEvent.VK_F12) {
-			 //this.scene.initScene();
+		if (e.getKeyCode() == KeyEvent.VK_0) {
+			 System.out.println(
+					 "X: " + (int)(this.scene.getWorld().getDcx()+(double)this.scene.getPlayer().getX()/(double)this.scene.getWorld().getSpriteSize()) +
+					 "Y: " + (int)(this.scene.getWorld().getDcy()+(double)this.scene.getPlayer().getY()/(double)this.scene.getWorld().getSpriteSize()));
 		}
 
 	}

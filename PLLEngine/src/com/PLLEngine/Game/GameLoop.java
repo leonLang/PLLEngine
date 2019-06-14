@@ -21,7 +21,7 @@ public class GameLoop extends Thread {
 
 			@Override
 			public void run() {
-				System.out.println(frames);
+				System.out.println(frames+" FPS");
 				frames = 0;
 			}
 			

@@ -1,4 +1,4 @@
-package com.PLLEngine.Scene.Map;
+package com.PLLEngine.Event;
 
 public class EventMap {
 	private int[][] eventCoordinates;

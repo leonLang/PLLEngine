@@ -10,7 +10,7 @@ import java.io.IOException;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import com.PLLEngine.Scene.Map.EventMap;
+import com.PLLEngine.Event.EventMap;
 import com.PLLEngine.Scene.layerComponents.entity.enemy.Enemy;
 import com.PLLEngine.images.SpritesheetP;
 import com.PLLEngine.srcLoader.JsonLoader;
@@ -48,7 +48,7 @@ public class World extends JPanel implements SceneComponentInterface {
 	// entity dex = dx with no reset
 	private int dex, dey;
 
-	public void loadMap() {
+	public void loadMap(int offsetX,int offsetY) {
 		// World is getting rendern as big as the screen is
 		// this methode is impoveable
 		Dimension screenSize = SwingUtilities.getWindowAncestor(this.getParent()).getSize();
@@ -58,12 +58,22 @@ public class World extends JPanel implements SceneComponentInterface {
 		 * renderingThreads = 1; if (cellCountX > 16 || cellCountY > 16) {
 		 * renderingThreads = renderingThreads * 2; }
 		 */
+		/**
+		 * dx&dy is by pixel's the offset to the starting location
+		 */
 		this.dx = 0;
 		this.dy = 0;
+		/**
+		 * dcx&dcy is by cell's the offset the starting location
+		 **/
 		this.dcx = 0;
 		this.dcy = 0;
+		/**
+		 * dey&dex is for enemies offset
+		 */
 		this.dex = 0;
 		this.dey = 0;
+
 		this.setBackground(Color.BLACK);
 
 		// Load all images for the refrences
@@ -73,6 +83,7 @@ public class World extends JPanel implements SceneComponentInterface {
 				if (this.spriteSheet != null) {
 					SpritesheetP sh = new SpritesheetP(16, 16, this.spriteSheet);
 					for (int i = 0; i < loadedsrc.length; i++) {
+						//// Conector
 						if (loadedsrc[i].getConnector() != null) {
 							try {
 								BufferedImage img = new BufferedImage(spriteSize, spriteSize,
@@ -81,14 +92,16 @@ public class World extends JPanel implements SceneComponentInterface {
 								for (int index = 0; index < loadedsrc[i].getConnector().length; index++) {
 									// very compact version ... somehow...
 									g.drawImage(loadedsrc[loadedsrc[i].getConnector()[index]].getImg(),
-									 (index < 2 ? 0 : 1) * this.spriteSize/2, ((index == 0 || index == 2) ? 0 : 1) * this.spriteSize/2,
-									 this.spriteSize/2,this.spriteSize/2,null);
+											(index < 2 ? 0 : 1) * this.spriteSize / 2,
+											((index == 0 || index == 2) ? 0 : 1) * this.spriteSize / 2,
+											this.spriteSize / 2, this.spriteSize / 2, null);
 								}
 								loadedsrc[i].setImg(img);
 
 							} catch (Exception e) {
 								System.err.println("Can't load META_SPRITE check if required sprites are loaded");
 							}
+							////////
 						} else {
 							if (loadedsrc[i].getPath() == null)
 								loadedsrc[i].setImg(sh.getSprite(loadedsrc[i].getSpriteX(), loadedsrc[i].getSpriteY()));
@@ -114,13 +127,15 @@ public class World extends JPanel implements SceneComponentInterface {
 			try {
 				enemysrc = new Enemy[enemies.length];
 				for (int i = 0; i < enemysrc.length; i++) {
-					enemysrc[i] = new Enemy(enemies[i][0], enemies[i][1]);
+					enemysrc[i] = new Enemy(enemies[i][0] * this.spriteSize, enemies[i][1] * this.spriteSize);
 				}
 			} catch (Exception e) {
 				System.err.println("Error while loading map.entities");
 			}
 
 		}).start();
+		this.dcx = this.entryX - offsetX;
+		this.dcy = this.entryY- offsetY;
 	}
 
 	public void draw(Graphics2D g) {
@@ -321,5 +336,22 @@ public class World extends JPanel implements SceneComponentInterface {
 	public void setDy(int dy) {
 		this.dy = dy;
 	}
+
+	public int getDcx() {
+		return dcx;
+	}
+
+	public void setDcx(int dcx) {
+		this.dcx = dcx;
+	}
+
+	public int getDcy() {
+		return dcy;
+	}
+
+	public void setDcy(int dcy) {
+		this.dcy = dcy;
+	}
+	
 
 }

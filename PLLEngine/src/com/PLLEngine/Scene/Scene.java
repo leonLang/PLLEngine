@@ -41,11 +41,12 @@ public class Scene extends JPanel {
 	 */
 	public void initScene() {
 		try {
-			this.world.loadMap();
 			for (int i = 0; i < this.player.length; i++) {
 				this.player[i].setX(SwingUtilities.getWindowAncestor(this).getWidth() / 2);
 				this.player[i].setY(SwingUtilities.getWindowAncestor(this).getHeight() / 2);
 				this.player[i].initPlayer();
+				this.world.loadMap((int)((double) this.player[0].getX()/(double) this.world.getSpriteSize()),(int)((double) this.player[0].getY()/(double) this.world.getSpriteSize()));
+
 			}
 		} catch (NullPointerException e) {
 			System.err.println("No World loaded -> NullPointerException");
