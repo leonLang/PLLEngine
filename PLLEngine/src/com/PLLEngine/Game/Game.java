@@ -4,11 +4,14 @@ import java.awt.event.KeyEvent;
 
 import com.PLLEngine.Control.Control;
 import com.PLLEngine.Scene.Scene;
+import com.PLLEngine.Scene.World;
 import com.PLLEngine.Window.Window;
 import com.PLLEngine.srcLoader.JsonLoader;
 import com.fasterxml.jackson.annotation.JsonView;
+
 /**
  * default Game class
+ * 
  * @author tromp
  * 
  */
@@ -23,11 +26,12 @@ public class Game implements GameBase {
 	private Scene scene;
 	private String loadingScene;
 	private GameLoop loop;
+	private World world;
 
 	private Control controller;
 	private boolean up, down, right, left;
-	
-	private int playerX,playerY;
+
+	private int playerX, playerY;
 
 	public Game() {
 		setup();
@@ -88,6 +92,7 @@ public class Game implements GameBase {
 		// default setup
 		this.controller = new Control(this);
 		this.loop = new GameLoop(this);
+		this.loop.start();
 
 	}
 
@@ -101,13 +106,14 @@ public class Game implements GameBase {
 		window.getWindow().addKeyListener(controller);
 		window.getWindow().requestFocus();
 		if (this.scene != null) {
+			System.out.println("check1");
 			window.getWindow().add(this.scene);
 			this.scene.initScene();
+			this.world = this.scene.getWorld();
+			this.loop.paused = false;
 		}
 
 		window.getWindow().setVisible(true);
-		this.loop.start();
-
 	}
 
 	@Override
@@ -117,7 +123,7 @@ public class Game implements GameBase {
 	}
 
 	// Look down to Key methodes for more information
-	//TODO  CHANGE
+	// TODO CHANGE
 	@Override
 	public void update() {
 		if (this.scene.getWorld() != null) {
@@ -134,6 +140,25 @@ public class Game implements GameBase {
 			} else if (left) {
 				this.scene.getWorld().moveLeft(5);
 				this.scene.getPlayer().moveLeft();
+			}
+			int i = this.scene.getWorld().eMap.getEventTrigger(this.world.offsetX + this.world.getDcx(),
+					this.world.offsetY + this.world.getDcy());
+			if (i != -1) {
+				switch(i) {
+				case 0:
+					this.world.setDcx(this.world.getDcx() + 10);
+					this.world.setDcy(this.world.getDcy() + 10);
+					break;
+				case 1:
+					this.loop.paused = true;
+					this.window.getWindow().remove(this.scene);
+					this.setLoadingScene("scene3.json");
+					this.init();
+					this.loop.paused = false;
+					break;
+					default:
+						
+				}
 			}
 		}
 	}
@@ -174,9 +199,11 @@ public class Game implements GameBase {
 			this.right = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_0) {
-			 System.out.println(
-					 "X: " + (int)(this.scene.getWorld().getDcx()+(double)this.scene.getPlayer().getX()/(double)this.scene.getWorld().getSpriteSize()) +
-					 "Y: " + (int)(this.scene.getWorld().getDcy()+(double)this.scene.getPlayer().getY()/(double)this.scene.getWorld().getSpriteSize()));
+			System.out.println("X: "
+					+ (int) (this.scene.getWorld().getDcx()
+							+ (double) this.scene.getPlayer().getX() / (double) this.scene.getWorld().getSpriteSize())
+					+ "Y: " + (int) (this.scene.getWorld().getDcy()
+							+ (double) this.scene.getPlayer().getY() / (double) this.scene.getWorld().getSpriteSize()));
 		}
 
 	}

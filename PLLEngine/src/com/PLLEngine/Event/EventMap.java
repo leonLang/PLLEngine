@@ -26,13 +26,16 @@ public class EventMap {
 		for(int i = 0;i < yArray;i++) {
 			if(this.eventCoordinates[i][0] > x+r && this.eventCoordinates[i][0] < x-r) {
 				if(this.eventCoordinates[i][1] > y+r && this.eventCoordinates[i][1] < y-r) {
-					return i;
+					return this.eventCoordinates[i][2];
 				}
 			}
 		}
 	return -1;	
 	}
 	public void triggerEvent(int i) {
-		System.err.println("no event found on position " + i);
+		switch(i) {
+		default:
+			
+		}
 	}
 }

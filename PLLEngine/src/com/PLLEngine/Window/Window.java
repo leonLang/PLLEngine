@@ -53,7 +53,7 @@ public class Window {
  */
 	public class GameWindow extends JFrame {
 		public GameWindow() {
-			this.setResizable(false);
+			this.setResizable(true);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			// x, y, y,width, height of mainclass (Window)
 			this.setBounds(x, y, width, height);
