@@ -50,7 +50,7 @@ public class World extends JPanel implements SceneComponentInterface {
 	// entity dex = dx with no reset
 	private int dex, dey;
 
-	public void loadMap(int offsetX, int offsetY) {
+	public void init(int offsetX, int offsetY) {
 		// World is getting rendern as big as the screen is
 		// this methode is impoveable
 		Dimension screenSize = SwingUtilities.getWindowAncestor(this.getParent()).getSize();

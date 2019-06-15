@@ -37,6 +37,13 @@ public class GameLoop extends Thread {
 		long timestamp;
 		long oldTimestamp;
 		while (running) {
+			if(paused)
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			while (!paused) {
 				frames++;
 				oldTimestamp = System.currentTimeMillis();

@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import com.PLLEngine.Game.Game;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Window {
@@ -12,6 +13,9 @@ public class Window {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	private Game game;
+
 	protected String WindowName;
 	private Dimension screenSize;
 	private int x, y;
@@ -19,23 +23,43 @@ public class Window {
 	// script data
 	private int width, height;
 
-	//init is needed cause data first has to be loaded to act as paremeter
-	public void init() {
-		relocateWindow();
-		window = new GameWindow();
+	// init is needed cause data first has to be loaded to act as paremeter
+	public void init(Game game) {
+		try {
+			this.game = game;
+			relocateWindow();
+			window = new GameWindow();
+			window.setTitle(game.getTitel() + " - " + game.getVersion());
+			window.addKeyListener(game.getController());
+			window.requestFocus();
+			window.add(game.getScene());
+		} catch (Exception e) {
+			System.err.println("Error while init game ");
+			e.printStackTrace();
+		}
 	}
+
+	public void afterInit() {
+		try {
+		window.setVisible(true);
+		} catch(Exception e) {
+			System.err.println("Error while afterInit game");
+			e.printStackTrace();
+		}
+	}
+
 	// Default size is 3/4 of screen size
-	//Methode is essential to center window
+	// Methode is essential to center window
 	private void initDefaultWindowSize() {
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		if(width == 0) {
-		width = (int) (screenSize.getWidth() * 0.75);
-		height = (int) (screenSize.getHeight() * 0.75);
+		if (width == 0) {
+			width = (int) (screenSize.getWidth() * 0.75);
+			height = (int) (screenSize.getHeight() * 0.75);
 		}
 
 	}
 
-	/** essential to create window dimensions*/
+	/** essential to create window dimensions */
 	public void relocateWindow() {
 		initDefaultWindowSize();
 		try {
@@ -46,11 +70,13 @@ public class Window {
 		}
 	}
 
-/**GameWindow inherted in Window class to be able to use Json scripts(NOTE:issue with parent's class)
- * 
- * 
- *
- */
+	/**
+	 * GameWindow inherted in Window class to be able to use Json scripts(NOTE:issue
+	 * with parent's class)
+	 * 
+	 * 
+	 *
+	 */
 	public class GameWindow extends JFrame {
 		public GameWindow() {
 			this.setResizable(true);
@@ -86,6 +112,7 @@ public class Window {
 	public void setWindow(GameWindow window) {
 		this.window = window;
 	}
+
 	@JsonIgnore
 	public void setTitel(String titel) {
 		this.window.setTitle(titel);

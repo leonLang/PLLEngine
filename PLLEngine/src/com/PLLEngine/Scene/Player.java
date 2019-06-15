@@ -3,11 +3,14 @@ package com.PLLEngine.Scene;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.collision.CollThread;
 import com.PLLEngine.srcLoader.SrcLoader;
 
 public class Player extends Entitie {
+	
+	private Game game;
 
 	private static boolean richtungAll;
 	private boolean richtungOwn, once;
@@ -22,13 +25,14 @@ public class Player extends Entitie {
 	private int movementstate;
 
 	public Player() {
-		x = 0;
-		y = 0;
 		img = SrcLoader.Image("char00.png");
 		animationState = true;
 	}
 
-	public void initPlayer() {
+	public void init(Game game) {
+		this.game = game;
+		this.x = game.getWindow().getWidth()/2;
+		this.y = game.getWindow().getHeight()/2;
 		right = new BufferedImage[this.sRight.length];
 		left = new BufferedImage[this.sLeft.length];
 		up = new BufferedImage[this.sUp.length];
@@ -50,8 +54,8 @@ public class Player extends Entitie {
 	@Override
 	public void draw(Graphics2D g) {
 		// synchronize();
-		g.drawRect(x, y, width, height);
-		g.drawImage(img, x, y, width, height, null);
+		g.drawRect(x - width/2, y-height/2, width, height);
+		g.drawImage(img,x - width/2, y-height/2, width, height, null);
 
 	}
 

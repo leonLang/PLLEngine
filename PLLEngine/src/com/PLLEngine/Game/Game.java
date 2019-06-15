@@ -21,17 +21,16 @@ public class Game implements GameBase {
 	 * coming from "entry.json"
 	 */
 	private String _comment, titel, version;
+	private String loadingScene;
+
 	@JsonView(Window.class)
 	private Window window;
 	private Scene scene;
-	private String loadingScene;
 	private GameLoop loop;
 	private World world;
 
 	private Control controller;
 	private boolean up, down, right, left;
-
-	private int playerX, playerY;
 
 	public Game() {
 		setup();
@@ -39,52 +38,6 @@ public class Game implements GameBase {
 		down = false;
 		left = false;
 		right = false;
-	}
-
-	public String get_comment() {
-		return _comment;
-	}
-
-	public void set_comment(String _comment) {
-		this._comment = _comment;
-	}
-
-	public String getTitel() {
-		return titel;
-	}
-
-	public void setTitel(String titel) {
-		this.titel = titel;
-	}
-
-	public String getVersion() {
-		return version;
-	}
-
-	public void setVersion(String version) {
-		this.version = version;
-	}
-
-	public Window getWindow() {
-		return window;
-	}
-
-	public void setWindow(Window window) {
-		this.window = window;
-	}
-
-	public String getLoadingScene() {
-		return loadingScene;
-	}
-
-	public void setLoadingScene(String loadingScene) {
-		this.loadingScene = loadingScene;
-		try {
-			this.scene = JsonLoader.SceneLoader(loadingScene);
-		} catch (Exception e) {
-			System.err.println("error while loading scene");
-			e.printStackTrace();
-		}
 	}
 
 	@Override
@@ -101,24 +54,15 @@ public class Game implements GameBase {
 		// init GameWindow with given properties
 		// NOTE: window is just the "class above" the JFrame is a subclass of window ->
 		// getWindow()
-		window.init();
-		window.setTitel(this.titel + " - " + this.version);
-		window.getWindow().addKeyListener(controller);
-		window.getWindow().requestFocus();
-		if (this.scene != null) {
-			System.out.println("check1");
-			window.getWindow().add(this.scene);
-			this.scene.initScene();
-			this.world = this.scene.getWorld();
-			this.loop.paused = false;
-		}
-
-		window.getWindow().setVisible(true);
+		this.window.init(this);
+		this.scene.init(this);
+		this.world = this.scene.getWorld();
+		this.loop.paused = false;
+		this.window.afterInit();
 	}
 
 	@Override
 	public void preinit() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -144,7 +88,7 @@ public class Game implements GameBase {
 			int i = this.scene.getWorld().eMap.getEventTrigger(this.world.offsetX + this.world.getDcx(),
 					this.world.offsetY + this.world.getDcy());
 			if (i != -1) {
-				switch(i) {
+				switch (i) {
 				case 0:
 					this.world.setDcx(this.world.getDcx() + 10);
 					this.world.setDcy(this.world.getDcy() + 10);
@@ -156,8 +100,8 @@ public class Game implements GameBase {
 					this.init();
 					this.loop.paused = false;
 					break;
-					default:
-						
+				default:
+
 				}
 			}
 		}
@@ -177,10 +121,6 @@ public class Game implements GameBase {
 	@Override
 	public void close() {
 		// TODO Auto-generated method stub
-
-	}
-
-	public void fluentKeying() {
 
 	}
 
@@ -228,5 +168,69 @@ public class Game implements GameBase {
 		// TODO Auto-generated method stub
 
 	}
+
+	public void setLoadingScene(String loadingScene) {
+		this.loadingScene = loadingScene;
+		try {
+			this.scene = JsonLoader.SceneLoader(loadingScene);
+		} catch (Exception e) {
+			System.err.println("error while loading scene");
+			e.printStackTrace();
+		}
+	}
+
+	public String get_comment() {
+		return _comment;
+	}
+
+	public void set_comment(String _comment) {
+		this._comment = _comment;
+	}
+
+	public String getTitel() {
+		return titel;
+	}
+
+	public void setTitel(String titel) {
+		this.titel = titel;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public Window getWindow() {
+		return window;
+	}
+
+	public void setWindow(Window window) {
+		this.window = window;
+	}
+
+	public String getLoadingScene() {
+		return loadingScene;
+	}
+
+	public Control getController() {
+		return controller;
+	}
+
+	public void setController(Control controller) {
+		this.controller = controller;
+	}
+
+	public Scene getScene() {
+		return scene;
+	}
+
+	public void setScene(Scene scene) {
+		this.scene = scene;
+	}
+	
+	
 
 }

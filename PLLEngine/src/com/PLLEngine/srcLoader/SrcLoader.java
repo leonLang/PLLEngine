@@ -21,7 +21,7 @@ public class SrcLoader {
 		} catch (IOException e){
 			try {
 				BufferedImage returnImage;
-				returnImage = ImageIO.read(new File("empty.png"));
+				returnImage = ImageIO.read(new File("src_data/empty.png"));
 				return returnImage;
 			} catch(IOException ex) {
 				System.err.println("Fatal error while loading backup sprite\n check file system ");
