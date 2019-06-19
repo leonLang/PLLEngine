@@ -30,8 +30,8 @@ public class Window {
 			relocateWindow();
 			window = new GameWindow();
 			window.setTitle(game.getTitel() + " - " + game.getVersion());
-			window.addKeyListener(game.getController());
-			window.requestFocus();
+			//window.addKeyListener(game.getController());
+			//window.requestFocus();
 			window.add(game.getScene());
 		} catch (Exception e) {
 			System.err.println("Error while init game ");

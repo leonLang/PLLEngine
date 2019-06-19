@@ -43,11 +43,8 @@ public class Scene extends JPanel {
 			this.loadPlayer();
 			this.loadWorld();
 			this.loadGui();
-//			this.player.setX(SwingUtilities.getWindowAncestor(this).getWidth() / 2);
-//			this.player.setY(SwingUtilities.getWindowAncestor(this).getHeight() / 2);
 			this.player.init(game);
-			this.world.init((int) ((double) this.player.getX() / (double) this.world.getSpriteSize()),
-					(int) ((double) this.player.getY() / (double) this.world.getSpriteSize()));
+			this.world.init(game);
 		} catch (Exception e) {
 			System.err.println("Error in scne init");
 			e.printStackTrace();

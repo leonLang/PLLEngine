@@ -1,6 +1,5 @@
 package com.PLLEngine.Scene;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -11,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import com.PLLEngine.Event.EventMap;
+import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.layerComponents.entity.enemy.Enemy;
 import com.PLLEngine.images.SpritesheetP;
 import com.PLLEngine.srcLoader.JsonLoader;
@@ -23,6 +23,8 @@ public class World extends JPanel implements SceneComponentInterface {
 	 * The World contains all data about world especially the map data itself Render
 	 * data Structure: World |_Map | |_Entites
 	 */
+
+	private Game game;
 	private String refrencePath;
 	private String spriteSheet;
 	private RefrenceJson[] loadedsrc;
@@ -50,16 +52,7 @@ public class World extends JPanel implements SceneComponentInterface {
 	// entity dex = dx with no reset
 	private int dex, dey;
 
-	public void init(int offsetX, int offsetY) {
-		// World is getting rendern as big as the screen is
-		// this methode is impoveable
-		Dimension screenSize = SwingUtilities.getWindowAncestor(this.getParent()).getSize();
-		cellCountX = (int) (screenSize.getWidth() / spriteSize + 1);
-		cellCountY = (int) (screenSize.getHeight() / spriteSize + 1);
-		/*
-		 * renderingThreads = 1; if (cellCountX > 16 || cellCountY > 16) {
-		 * renderingThreads = renderingThreads * 2; }
-		 */
+	public World() {
 		/**
 		 * dx&dy is by pixel's the offset to the starting location
 		 */
@@ -75,11 +68,50 @@ public class World extends JPanel implements SceneComponentInterface {
 		 */
 		this.dex = 0;
 		this.dey = 0;
+	}
 
-		this.setBackground(Color.BLACK);
+	public void init(Game game) {
+		this.game = game;
+		// World is getting rendern as big as the screen is
+		// this methode is impoveable
+		Dimension screenSize = SwingUtilities.getWindowAncestor(this.getParent()).getSize();
+		cellCountX = (int) (screenSize.getWidth() / spriteSize + 1);
+		cellCountY = (int) (screenSize.getHeight() / spriteSize + 1);
+		/*
+		 * renderingThreads = 1; if (cellCountX > 16 || cellCountY > 16) {
+		 * renderingThreads = renderingThreads * 2; }
+		 */
 
-		// Load all images for the refrences
+		this.loadRefrence();
 
+		this.loadEvents();
+
+		this.loadEnemies();
+
+		this.dcx = this.entryX - game.getScene().getPlayer().getxOnScreen() / this.spriteSize;
+		this.dcy = this.entryY - game.getScene().getPlayer().getyOnScreen() / this.spriteSize;
+	}
+
+	private void loadEnemies() {
+		try {
+			enemysrc = new Enemy[enemies.length];
+			for (int i = 0; i < enemysrc.length; i++) {
+				enemysrc[i] = new Enemy(enemies[i][0] * this.spriteSize, enemies[i][1] * this.spriteSize);
+			}
+		} catch (Exception e) {
+			System.err.println("Error while loading map.entities");
+		}
+	}
+
+	public void loadEvents() {
+		try {
+			this.eMap = new EventMap(eventCoordinates);
+		} catch (Exception e) {
+			System.err.println("Error while loading Event map");
+		}
+	}
+
+	private void loadRefrence() {
 		try {
 			loadedsrc = JsonLoader.loadRefrence(refrencePath);
 			if (this.spriteSheet != null) {
@@ -115,28 +147,6 @@ public class World extends JPanel implements SceneComponentInterface {
 			// TODO Auto-generated catch block
 			System.err.println("Error while loading map.map");
 		}
-		try {
-			loadEvents();
-
-		} catch (Exception e) {
-			System.err.println("Error while loading map.Event's");
-		}
-
-		// Load all entitie refrences
-
-		try {
-			enemysrc = new Enemy[enemies.length];
-			for (int i = 0; i < enemysrc.length; i++) {
-				enemysrc[i] = new Enemy(enemies[i][0] * this.spriteSize, enemies[i][1] * this.spriteSize);
-			}
-		} catch (Exception e) {
-			System.err.println("Error while loading map.entities");
-		}
-
-		this.offsetX = offsetX;
-		this.offsetY = offsetY;
-		this.dcx = this.entryX - offsetX;
-		this.dcy = this.entryY - offsetY;
 	}
 
 	public void draw(Graphics2D g) {
@@ -245,10 +255,6 @@ public class World extends JPanel implements SceneComponentInterface {
 
 	public void setSpriteSize(int spriteSize) {
 		this.spriteSize = spriteSize;
-	}
-
-	public void loadEvents() {
-		this.eMap = new EventMap(eventCoordinates);
 	}
 
 	public String getRefrencePath() {

@@ -1,25 +1,30 @@
 package com.PLLEngine.Scene;
 
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
+import com.PLLEngine.Control.Control;
 import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
-import com.PLLEngine.collision.CollThread;
 import com.PLLEngine.srcLoader.SrcLoader;
 
 public class Player extends Entitie {
-	
+
 	private Game game;
+	private Control controller;
 
 	private static boolean richtungAll;
 	private boolean richtungOwn, once;
-	private int x, y;
+	private int xOnScreen, yOnScreen;
 	private int width, height;
+
+	public int speed;
+	
+	private int x, y;
+	private boolean up, down, right, left;
 	private BufferedImage img;
-	private String[] sRight, sLeft, sUp, sDown;
 	private String charSprite;
-	private BufferedImage[] right, left, up, down;
 	private boolean animationState;
 	private Thread movement;
 	private int movementstate;
@@ -27,36 +32,41 @@ public class Player extends Entitie {
 	public Player() {
 		img = SrcLoader.Image("char00.png");
 		animationState = true;
+		
+		this.speed = 5;
+
+		this.controller = new Control(this);
 	}
 
 	public void init(Game game) {
 		this.game = game;
-		this.x = game.getWindow().getWidth()/2;
-		this.y = game.getWindow().getHeight()/2;
-		right = new BufferedImage[this.sRight.length];
-		left = new BufferedImage[this.sLeft.length];
-		up = new BufferedImage[this.sUp.length];
-		down = new BufferedImage[this.sDown.length];
-		for (int i = 0; i < this.sRight.length; i++) {
-			this.right[i] = SrcLoader.Image(this.sRight[i]);
-		}
-		for (int i = 0; i < sLeft.length; i++) {
-			this.left[i] = SrcLoader.Image(sLeft[i]);
-		}
-		for (int i = 0; i < sUp.length; i++) {
-			this.up[i] = SrcLoader.Image(sUp[i]);
-		}
-		for (int i = 0; i < sDown.length; i++) {
-			this.down[i] = SrcLoader.Image(sDown[i]);
-		}
+		this.xOnScreen = game.getWindow().getWidth() / 2;
+		this.yOnScreen = game.getWindow().getHeight() / 2;
+		this.game.getWindow().getWindow().addKeyListener(this.controller);
+		this.game.getWindow().getWindow().requestFocusInWindow();
+
 	}
 
 	@Override
 	public void draw(Graphics2D g) {
 		// synchronize();
-		g.drawRect(x - width/2, y-height/2, width, height);
-		g.drawImage(img,x - width/2, y-height/2, width, height, null);
+		g.drawRect(xOnScreen - width / 2, yOnScreen - height / 2, width, height);
+		g.drawImage(img, xOnScreen - width / 2, yOnScreen - height / 2, width, height, null);
 
+	}
+	public void update() {
+		if(up) {
+			this.moveUp();
+		}
+		if(down) {
+			this.moveDown();
+		}
+		if(left) {
+			this.moveLeft();
+		}
+		if(right) {
+			this.moveRight();
+		}
 	}
 
 	/*
@@ -72,28 +82,31 @@ public class Player extends Entitie {
 	 */
 	// wird im sp�teren Verlauf gebraucht
 
-	public void moveUp() {
+	private void moveUp() {
+		this.y += speed;
+		this.game.getScene().getWorld().moveUp(speed);
 		this.movementstate = 0;
-		move(this.up, 100);
 	}
 
-	public void moveDown() {
+	private void moveDown() {
+		this.y -= speed;
+		this.game.getScene().getWorld().moveDown(speed);
 		this.movementstate = 1;
 
-		move(this.down, 100);
-
 	}
 
-	public void moveRight() {
+	private void moveRight() {
+		this.x += speed;
+		this.game.getScene().getWorld().moveRight(speed);
 		this.movementstate = 2;
 
-		move(this.right, 100);
 	}
 
-	public void moveLeft() {
+	private void moveLeft() {
+		this.x -= speed;
+		this.game.getScene().getWorld().moveLeft(speed);
 		this.movementstate = 3;
 
-		move(this.left, 100);
 	}
 
 	/**
@@ -124,20 +137,54 @@ public class Player extends Entitie {
 		}
 	}
 
-	public int getX() {
-		return x;
+	public void KeyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			this.up = true;
+		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			this.down = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			this.left = true;
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			this.right = true;
+		}
+		if(e.getKeyCode()== KeyEvent.VK_0) {
+			System.out.println("X: " + -this.x/this.game.getScene().getWorld().getSpriteSize());
+			System.out.println("Y: " + -this.y/this.game.getScene().getWorld().getSpriteSize());
+		}
 	}
 
-	public void setX(int x) {
-		this.x = x;
+	public void KeyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			this.up = false;
+		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			this.down = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			this.left = false;
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			this.right = false;
+		}
 	}
 
-	public int getY() {
-		return y;
+	public void KeyTyped(KeyEvent e) {
+
 	}
 
-	public void setY(int y) {
-		this.y = y;
+	public int getxOnScreen() {
+		return xOnScreen;
+	}
+
+	public void setxOnScreen(int xOnScreen) {
+		this.xOnScreen = xOnScreen;
+	}
+
+	public int getyOnScreen() {
+		return yOnScreen;
+	}
+
+	public void setyOnScreen(int yOnScreen) {
+		this.yOnScreen = yOnScreen;
 	}
 
 	public int getWidth() {
@@ -156,39 +203,6 @@ public class Player extends Entitie {
 		this.height = height;
 	}
 
-	public String[] getsRight() {
-		return sRight;
-	}
-
-	public void setsRight(String[] sRight) {
-		this.sRight = sRight;
-	}
-
-	public String[] getsLeft() {
-		return sLeft;
-	}
-
-	public void setsLeft(String[] sLeft) {
-		this.sLeft = sLeft;
-
-	}
-
-	public String[] getsUp() {
-		return sUp;
-	}
-
-	public void setsUp(String[] sUp) {
-		this.sUp = sUp;
-	}
-
-	public String[] getsDown() {
-		return sDown;
-	}
-
-	public void setsDown(String[] sDown) {
-		this.sDown = sDown;
-	}
-
 	public String getCharSprite() {
 		return charSprite;
 	}
@@ -196,5 +210,22 @@ public class Player extends Entitie {
 	public void setCharSprite(String charSprite) {
 		this.charSprite = charSprite;
 	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
 	
+
 }

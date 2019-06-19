@@ -30,20 +30,14 @@ public class Game implements GameBase {
 	private World world;
 
 	private Control controller;
-	private boolean up, down, right, left;
-
 	public Game() {
 		setup();
-		up = false;
-		down = false;
-		left = false;
-		right = false;
 	}
 
 	@Override
 	public void setup() {
 		// default setup
-		this.controller = new Control(this);
+		//this.controller = new Control(this);
 		this.loop = new GameLoop(this);
 		this.loop.start();
 
@@ -71,27 +65,29 @@ public class Game implements GameBase {
 	@Override
 	public void update() {
 		if (this.scene.getWorld() != null) {
-			if (up) {
-				this.scene.getWorld().moveUp(5);
-				this.scene.getPlayer().moveUp();
-			} else if (down) {
-				this.scene.getWorld().moveDown(5);
-				this.scene.getPlayer().moveDown();
-			}
-			if (right) {
-				this.scene.getWorld().moveRight(5);
-				this.scene.getPlayer().moveRight();
-			} else if (left) {
-				this.scene.getWorld().moveLeft(5);
-				this.scene.getPlayer().moveLeft();
-			}
-			int i = this.scene.getWorld().eMap.getEventTrigger(this.world.offsetX + this.world.getDcx(),
-					this.world.offsetY + this.world.getDcy());
+			this.scene.getPlayer().update();
+//			if (up) {
+//				this.scene.getWorld().moveUp(5);
+//				this.scene.getPlayer().moveUp();
+//			} else if (down) {
+//				this.scene.getWorld().moveDown(5);
+//				this.scene.getPlayer().moveDown();
+//			}
+//			if (right) {
+//				this.scene.getWorld().moveRight(5);
+//				this.scene.getPlayer().moveRight();
+//			} else if (left) {
+//				this.scene.getWorld().moveLeft(5);
+//				this.scene.getPlayer().moveLeft();
+//			}
+			int i = this.scene.getWorld().eMap.getEventTrigger(-this.scene.getPlayer().getX()/this.scene.getWorld().getSpriteSize(),-this.scene.getPlayer().getY()/this.scene.getWorld().getSpriteSize());
 			if (i != -1) {
+				System.out.println("event check");
 				switch (i) {
 				case 0:
 					this.world.setDcx(this.world.getDcx() + 10);
 					this.world.setDcy(this.world.getDcy() + 10);
+					//this.scene.getPlayer().setX(this.);
 					break;
 				case 1:
 					this.loop.paused = true;
@@ -120,51 +116,6 @@ public class Game implements GameBase {
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-
-	}
-
-	// Default Key settings for fluent keypressing
-	// TODO vllt �ndern und alle keys verf�gbar machen
-	@Override
-	public void KeyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			this.up = true;
-		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			this.down = true;
-		}
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			this.left = true;
-		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			this.right = true;
-		}
-		if (e.getKeyCode() == KeyEvent.VK_0) {
-			System.out.println("X: "
-					+ (int) (this.scene.getWorld().getDcx()
-							+ (double) this.scene.getPlayer().getX() / (double) this.scene.getWorld().getSpriteSize())
-					+ "Y: " + (int) (this.scene.getWorld().getDcy()
-							+ (double) this.scene.getPlayer().getY() / (double) this.scene.getWorld().getSpriteSize()));
-		}
-
-	}
-
-	@Override
-	public void KeyReleased(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			this.up = false;
-		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			this.down = false;
-		}
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			this.left = false;
-		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			this.right = false;
-		}
-
-	}
-
-	@Override
-	public void KeyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}

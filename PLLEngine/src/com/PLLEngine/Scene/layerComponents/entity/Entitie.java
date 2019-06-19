@@ -31,9 +31,9 @@ public class Entitie implements SceneComponentInterface {
 		}
 	}
 
-	// Hier ist was verändert da dx und dy nicht mehr gebraucht werden und ich alles
-	// von Graphics g auf graphics2D geändert habe
-	// der unterschied ist gering und sollte nicht auffallen außer mehr features
+	// Hier ist was verï¿½ndert da dx und dy nicht mehr gebraucht werden und ich alles
+	// von Graphics g auf graphics2D geï¿½ndert habe
+	// der unterschied ist gering und sollte nicht auffallen auï¿½er mehr features
 	@Override
 	public void draw(Graphics2D g) {
 		// TODO Auto-generated method stub

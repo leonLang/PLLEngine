@@ -12,6 +12,7 @@ public class EventMap {
 		return this.eventCoordinates;
 	}
 	public int getEventTrigger(int x,int y) {
+		System.out.println(x + "/"+ y);
 		for(int i = 0;i < yArray;i++) {
 			if(this.eventCoordinates[i][0]== x) {
 				if(this.eventCoordinates[i][1]== y) {

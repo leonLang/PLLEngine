@@ -19,10 +19,5 @@ public interface GameBase {
 
 	public void close();
 
-	public void KeyPressed(KeyEvent e);
-
-	public void KeyReleased(KeyEvent e);
-
-	public void KeyTyped(KeyEvent e);
 
 }

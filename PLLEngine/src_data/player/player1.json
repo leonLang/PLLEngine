@@ -1,10 +1,5 @@
 {
   "width": "64",
-  "height": "64",
-  "charSprite": "src_data/sprites/player/charsrc_data/player/png",
-  "sRight":["src_data/player/char05src_data/player/png","src_data/player/char06src_data/player/png","src_data/player/char05src_data/player/png","src_data/player/char07src_data/player/png"],
-  "sLeft":["src_data/player/char08src_data/player/png","src_data/player/char09src_data/player/png","src_data/player/char08src_data/player/png","src_data/player/char10src_data/player/png"],
-  "sUp":["src_data/player/char03src_data/player/png","src_data/player/char04src_data/player/png"],
-  "sDown":["src_data/player/char01src_data/player/png","src_data/player/char02src_data/player/png"]
+  "height": "64"
   
 }
