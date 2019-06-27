@@ -6,12 +6,8 @@ import java.awt.Graphics2D;
 import java.io.IOException;
 
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import com.PLLEngine.Game.Game;
 import com.PLLEngine.srcLoader.JsonLoader;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 public class Scene extends JPanel {
 	/**
@@ -45,6 +41,8 @@ public class Scene extends JPanel {
 			this.loadGui();
 			this.player.init(game);
 			this.world.init(game);
+			this.player.setX(this.world.offsetX);
+			this.player.setY(this.world.offsetY);
 		} catch (Exception e) {
 			System.err.println("Error in scne init");
 			e.printStackTrace();
@@ -65,6 +63,9 @@ public class Scene extends JPanel {
 		} catch (NullPointerException e) {
 
 		}
+	}
+	public void sceneDel() {
+		this.game.getWindow().getWindow().removeKeyListener(this.player.getController());
 	}
 
 	private void loadPlayer() throws IOException {

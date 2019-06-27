@@ -2,6 +2,7 @@ package com.PLLEngine.Scene.layerComponents.entity.enemy;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
@@ -54,7 +55,7 @@ public class Enemy extends Entitie {
 	private void enemyMovement() {
 		mv.setX(x);
 		mv.setY(y);
-		mv.moveHim();
+		mv.normalMovement(entityNumberOwn);
 		x = mv.getX();
 		y = mv.getY();
 
@@ -79,15 +80,17 @@ public class Enemy extends Entitie {
 	}
 
 	private void synchronize() {
+		
 		if (Entitie.synchronize[entityNumberOwn]) {
 			Entitie.synchronize[entityNumberOwn] = false;
+			enemyMovement();
 			if (CollThread.collLeft[entityNumberOwn]) {
 
 			} else if (CollThread.collRight[entityNumberOwn]) {
 
 			} else {
 				if (!collision) {
-					enemyMovement();
+					//enemyMovement();
 				}
 			}
 

@@ -90,6 +90,9 @@ public class World extends JPanel implements SceneComponentInterface {
 
 		this.dcx = this.entryX - game.getScene().getPlayer().getxOnScreen() / this.spriteSize;
 		this.dcy = this.entryY - game.getScene().getPlayer().getyOnScreen() / this.spriteSize;
+		
+		this.dex = this.entryX + game.getScene().getPlayer().getxOnScreen();
+		this.dey = this.entryY + game.getScene().getPlayer().getyOnScreen();
 	}
 
 	private void loadEnemies() {
@@ -362,4 +365,22 @@ public class World extends JPanel implements SceneComponentInterface {
 		this.dcy = dcy;
 	}
 
+	public int getDex() {
+		return dex;
+	}
+
+	public void setDex(int dex) {
+		this.dex = dex;
+	}
+
+	public int getDey() {
+		return dey;
+	}
+
+	public void setDey(int dey) {
+		this.dey = dey;
+	}
+
+	
+	
 }

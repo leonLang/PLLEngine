@@ -3,8 +3,8 @@ package com.PLLEngine.collision;
 public class CollEnemVSPlay {
 	private int xPlayer = 600;
 	private int yPlayer = 400;
-	private int widthPlayer = 32;
-	private int heightPlayer = 32;
+	private int widthPlayer = 64;
+	private int heightPlayer = 64;
 	private Collision cl;
 	private boolean onlyOneShouldActivate;
 	//Test

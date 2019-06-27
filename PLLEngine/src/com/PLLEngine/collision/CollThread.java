@@ -16,7 +16,7 @@ public class CollThread extends Thread {
 
 	private void runAlways() {
 		while (0 == 0) {
-			//playerVSEnemy();
+			// playerVSEnemy();
 			enemyVSEnemy();
 			stopForPerformance(10);
 		}
@@ -42,30 +42,26 @@ public class CollThread extends Thread {
 
 	}
 
-	private void playerVSEnemy() {
-		int counterPL = 0;
-		int amntObjcts = Entitie.arrX.length;
-		int arrX[] = Entitie.arrX;
-		int arrY[] = Entitie.arrY;
+	/*
+	 * private void playerVSEnemy() { int counterPL = 0; int amntObjcts =
+	 * Entitie.arrX.length; int arrX[] = Entitie.arrX; int arrY[] = Entitie.arrY;
+	 * 
+	 * comparePlayerToEnemy(counterPL, amntObjcts, arrX, arrY);
+	 * 
+	 * }
+	 */
 
-		comparePlayerToEnemy(counterPL, amntObjcts, arrX, arrY);
-
-	}
-
-	private void comparePlayerToEnemy(int counterPL, int amountObjects, int arrX[], int arrY[]) {
-		for (int i = counterPL; i < amountObjects; i++) {
-			checkEnmyPlyrCollision(i, arrX, arrY);
-		}
-	}
-
-	private void checkEnmyPlyrCollision(int forI, int arrX[], int arrY[]) {
-		Collision cl = new Collision(400, 400, 32, 32, arrX[forI], arrY[forI], 32, 32);
-		if (cl.CollRechtsP()) {
-			collRight[forI] = true;
-		} else {
-
-		}
-	}
+	/*
+	 * private void comparePlayerToEnemy(int counterPL, int amountObjects, int
+	 * arrX[], int arrY[]) { for (int i = counterPL; i < amountObjects; i++) {
+	 * checkEnmyPlyrCollision(i, arrX, arrY); } }
+	 * 
+	 * private void checkEnmyPlyrCollision(int forI, int arrX[], int arrY[]) {
+	 * Collision cl = new Collision(400, 400, 32, 32, arrX[forI], arrY[forI], 32,
+	 * 32); if (cl.CollRechtsP()) { collRight[forI] = true; } else {
+	 * 
+	 * } }
+	 */
 
 	private void compareAllObjekts(int counter, int amountObjects, int arrX[], int arrY[]) {
 		// combines two for to check each avaible option if there is any Collision.
@@ -85,28 +81,24 @@ public class CollThread extends Thread {
 			collLeft[counter] = true;
 			collRight[j] = true;
 		} else {
-
 		}
 		if (cl.CollLinksP()) {
 			// j is the right and counter is the opposite
 			collRight[counter] = true;
 			collLeft[j] = true;
 		} else {
-
 		}
 		if (cl.CollUntenP()) {
 			// j is the right and counter is the opposite
 			collDown[counter] = true;
 			collUp[j] = true;
 		} else {
-
 		}
 		if (cl.CollObenP()) {
 			// j is the right and counter is the opposite
 			collUp[counter] = true;
 			collDown[j] = true;
 		} else {
-
 		}
 	}
 
