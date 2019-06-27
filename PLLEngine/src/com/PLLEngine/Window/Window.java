@@ -24,14 +24,18 @@ public class Window {
 	private int width, height;
 
 	// init is needed cause data first has to be loaded to act as paremeter
+	public Window() {
+	}
+
 	public void init(Game game) {
 		try {
+			if (window == null)
+				window = new GameWindow();
 			this.game = game;
 			relocateWindow();
-			window = new GameWindow();
 			window.setTitle(game.getTitel() + " - " + game.getVersion());
-			//window.addKeyListener(game.getController());
-			//window.requestFocus();
+			// window.addKeyListener(game.getController());
+			// window.requestFocus();
 			window.add(game.getScene());
 		} catch (Exception e) {
 			System.err.println("Error while init game ");
@@ -41,8 +45,8 @@ public class Window {
 
 	public void afterInit() {
 		try {
-		window.setVisible(true);
-		} catch(Exception e) {
+			window.setVisible(true);
+		} catch (Exception e) {
 			System.err.println("Error while afterInit game");
 			e.printStackTrace();
 		}

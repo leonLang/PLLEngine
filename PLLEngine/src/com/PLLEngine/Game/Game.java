@@ -1,8 +1,7 @@
 package com.PLLEngine.Game;
 
-import java.awt.event.KeyEvent;
-
 import com.PLLEngine.Control.Control;
+import com.PLLEngine.Scene.Player;
 import com.PLLEngine.Scene.Scene;
 import com.PLLEngine.Scene.World;
 import com.PLLEngine.Window.Window;
@@ -27,9 +26,10 @@ public class Game implements GameBase {
 	private Window window;
 	private Scene scene;
 	private GameLoop loop;
-	private World world;
 
 	private Control controller;
+	private CoordinateSystem cs;
+
 	public Game() {
 		setup();
 	}
@@ -37,7 +37,8 @@ public class Game implements GameBase {
 	@Override
 	public void setup() {
 		// default setup
-		//this.controller = new Control(this);
+		// this.controller = new Control(this);
+		//this.cs = new CoordinateSystem(this);
 		this.loop = new GameLoop(this);
 		this.loop.start();
 
@@ -50,7 +51,6 @@ public class Game implements GameBase {
 		// getWindow()
 		this.window.init(this);
 		this.scene.init(this);
-		this.world = this.scene.getWorld();
 		this.loop.paused = false;
 		this.window.afterInit();
 	}
@@ -80,18 +80,29 @@ public class Game implements GameBase {
 //				this.scene.getWorld().moveLeft(5);
 //				this.scene.getPlayer().moveLeft();
 //			}
-			int i = this.scene.getWorld().eMap.getEventTrigger(-this.scene.getPlayer().getX()/this.scene.getWorld().getSpriteSize(),-this.scene.getPlayer().getY()/this.scene.getWorld().getSpriteSize());
+			int i = this.scene.getWorld().eMap.getEventTrigger(
+					-this.scene.getPlayer().getX() / this.scene.getWorld().getSpriteSize(),
+					-this.scene.getPlayer().getY() / this.scene.getWorld().getSpriteSize());
 			if (i != -1) {
-				System.out.println("event check");
 				switch (i) {
 				case 0:
-					this.world.setDcx(this.world.getDcx() + 10);
-					this.world.setDcy(this.world.getDcy() + 10);
-					//this.scene.getPlayer().setX(this.);
+					/*
+					 * Working -> Coordinate class transfer 
+					 */
+					this.scene.getWorld().setDcx(this.scene.getWorld().getDcx()+10);
+					this.scene.getWorld().setDcy(this.scene.getWorld().getDcy()+10);
+					
+					this.scene.getWorld().setDex(this.scene.getWorld().getDex()-10 * this.scene.getWorld().getSpriteSize());
+					this.scene.getWorld().setDey(this.scene.getWorld().getDey()-10 * this.scene.getWorld().getSpriteSize());
+
+					
+					this.scene.getPlayer().setX(this.scene.getPlayer().getX() - 10 * this.scene.getWorld().getSpriteSize());
+					this.scene.getPlayer().setY(this.scene.getPlayer().getY() - 10 * this.scene.getWorld().getSpriteSize());
 					break;
 				case 1:
 					this.loop.paused = true;
 					this.window.getWindow().remove(this.scene);
+					this.scene.sceneDel();
 					this.setLoadingScene("scene3.json");
 					this.init();
 					this.loop.paused = false;
@@ -118,6 +129,17 @@ public class Game implements GameBase {
 	public void close() {
 		// TODO Auto-generated method stub
 
+	}
+
+	private final class CoordinateSystem {
+		private Game g;
+		private Player p;
+		private World w;
+		public CoordinateSystem(Game g) {
+			this.g = g;
+			this.p = g.getScene().getPlayer();
+			this.w = g.getScene().getWorld();
+		}
 	}
 
 	public void setLoadingScene(String loadingScene) {
@@ -181,7 +203,5 @@ public class Game implements GameBase {
 	public void setScene(Scene scene) {
 		this.scene = scene;
 	}
-	
-	
 
 }

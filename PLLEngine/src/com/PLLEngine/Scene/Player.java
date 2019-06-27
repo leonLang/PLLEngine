@@ -3,7 +3,6 @@ package com.PLLEngine.Scene;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-
 import com.PLLEngine.Control.Control;
 import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
@@ -226,6 +225,11 @@ public class Player extends Entitie {
 	public void setY(int y) {
 		this.y = y;
 	}
+
+	public Control getController() {
+		return controller;
+	}
+	
 	
 
 }
