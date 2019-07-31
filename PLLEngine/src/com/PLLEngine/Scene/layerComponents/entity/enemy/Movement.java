@@ -89,7 +89,6 @@ public class Movement {
 		}
 	}
 
-	
 	private int moveUp(int entityNumberOwn) {
 		if (CollThread.collUp[entityNumberOwn]) {
 			CollThread.collUp[entityNumberOwn] = false;
