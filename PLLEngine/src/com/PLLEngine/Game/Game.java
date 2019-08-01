@@ -84,6 +84,7 @@ public class Game implements GameBase {
 					-this.scene.getPlayer().getX() / this.scene.getWorld().getSpriteSize(),
 					-this.scene.getPlayer().getY() / this.scene.getWorld().getSpriteSize());
 			if (i != -1) {
+				System.out.println("Event triggered\nEvent ID: " + i);
 				switch (i) {
 				case 0:
 					/*
@@ -103,7 +104,9 @@ public class Game implements GameBase {
 					this.loop.paused = true;
 					this.window.getWindow().remove(this.scene);
 					this.scene.sceneDel();
-					this.setLoadingScene("scene3.json");
+					System.out.println("ID Check: " + this.scene.getWorld().geteMap().getMapID());
+					System.out.println("World with ID:" + this.scene.getWorld().geteMap().getMapID() + "loaded");
+					this.setLoadingScene("scene" + this.scene.getWorld().geteMap().getMapID() + ".json");
 					this.init();
 					this.loop.paused = false;
 					break;

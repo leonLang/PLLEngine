@@ -114,7 +114,7 @@ public class World extends JPanel implements SceneComponentInterface {
 		}
 	}
 
-	private void loadRefrence() {
+	protected void loadRefrence() {
 		try {
 			loadedsrc = JsonLoader.loadRefrence(refrencePath);
 			if (this.spriteSheet != null) {
@@ -154,6 +154,7 @@ public class World extends JPanel implements SceneComponentInterface {
 
 	public void draw(Graphics2D g) {
 		/*
+		 * NOTE: synchonise?
 		 * Gescheiterter versuch für multithreading redering for (int i = 0; i <
 		 * this.renderingThreads; i++) { this.currentThread = i; new Thread(() -> { for
 		 * (int x = -1+(cellCountX/renderingThreads)*currentThread; x <
