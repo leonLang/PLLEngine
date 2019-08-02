@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.collision.CollEnemVSPlay;
+import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
 
 public class Enemy extends Entitie {
@@ -40,6 +41,9 @@ public class Enemy extends Entitie {
 
 	@Override
 	public void draw(Graphics2D g) {
+		/*for (int i = 0; i < CollObject.x.length; i++) {
+			System.out.println(CollObject.x[i]);
+		}*/
 		// ich würd das ganze dann aber von der world aus steuern
 		controlHealth(g);
 		cameraMovement(x, y, dx, dy);
@@ -60,11 +64,14 @@ public class Enemy extends Entitie {
 		y = mv.getY();
 
 	}
+
 	private void controlHealth(Graphics2D g) {
-		g.drawRect(px, py-8, width, 5);
-		g.fillRect(px, py-8, width*(health.getLives()/health.getStartLives()), 5);
-		// If I don't do it with the ( the Rect wont be full because of rounding differences
+		g.drawRect(px, py - 8, width, 5);
+		g.fillRect(px, py - 8, width * (health.getLives() / health.getStartLives()), 5);
+		// If I don't do it with the ( the Rect wont be full because of rounding
+		// differences
 	}
+
 	private void collisionCheck() {
 		// here you can define what should happen after Collision with Player is
 		// triggered
@@ -80,19 +87,17 @@ public class Enemy extends Entitie {
 	}
 
 	private void synchronize() {
-		
+
 		if (Entitie.synchronize[entityNumberOwn]) {
 			Entitie.synchronize[entityNumberOwn] = false;
 			enemyMovement();
-			if (CollThread.collLeft[entityNumberOwn]) {
-
-			} else if (CollThread.collRight[entityNumberOwn]) {
-
-			} else {
-				if (!collision) {
-					//enemyMovement();
-				}
-			}
+			/*
+			 * if (CollThread.collLeft[entityNumberOwn]) {
+			 * 
+			 * } else if (CollThread.collRight[entityNumberOwn]) {
+			 * 
+			 * } else { if (!collision) { //enemyMovement(); } }
+			 */
 
 		}
 	}

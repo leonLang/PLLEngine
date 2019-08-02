@@ -40,7 +40,7 @@
     "path": "src_data/sprites/trees/tree.png",
     "spriteX": 0,
     "spriteY": 0,
-    "collision": false
+    "collision": true
   },
   {
     "id": 7,

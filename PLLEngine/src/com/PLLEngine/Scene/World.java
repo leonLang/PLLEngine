@@ -12,6 +12,7 @@ import javax.swing.SwingUtilities;
 import com.PLLEngine.Event.EventMap;
 import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.layerComponents.entity.enemy.Enemy;
+import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.images.SpritesheetP;
 import com.PLLEngine.srcLoader.JsonLoader;
 import com.PLLEngine.srcLoader.RefrenceJson;
@@ -23,7 +24,8 @@ public class World extends JPanel implements SceneComponentInterface {
 	 * The World contains all data about world especially the map data itself Render
 	 * data Structure: World |_Map | |_Entites
 	 */
-
+	private boolean once = true; // Variable by Leon
+	private CollObject cO = new CollObject(); // Va by Leon
 	private Game game;
 	private String refrencePath;
 	private String spriteSheet;
@@ -90,7 +92,7 @@ public class World extends JPanel implements SceneComponentInterface {
 
 		this.dcx = this.entryX - game.getScene().getPlayer().getxOnScreen() / this.spriteSize;
 		this.dcy = this.entryY - game.getScene().getPlayer().getyOnScreen() / this.spriteSize;
-		
+
 		this.dex = this.entryX + game.getScene().getPlayer().getxOnScreen();
 		this.dey = this.entryY + game.getScene().getPlayer().getyOnScreen();
 	}
@@ -154,11 +156,10 @@ public class World extends JPanel implements SceneComponentInterface {
 
 	public void draw(Graphics2D g) {
 		/*
-		 * NOTE: synchonise?
-		 * Gescheiterter versuch für multithreading redering for (int i = 0; i <
-		 * this.renderingThreads; i++) { this.currentThread = i; new Thread(() -> { for
-		 * (int x = -1+(cellCountX/renderingThreads)*currentThread; x <
-		 * cellCountX/2+((cellCountX/2) *currentThread) + 1; x++) { for (int y =
+		 * NOTE: synchonise? Gescheiterter versuch für multithreading redering for (int
+		 * i = 0; i < this.renderingThreads; i++) { this.currentThread = i; new
+		 * Thread(() -> { for (int x = -1+(cellCountX/renderingThreads)*currentThread; x
+		 * < cellCountX/2+((cellCountX/2) *currentThread) + 1; x++) { for (int y =
 		 * -1+(cellCountY/renderingThreads)*currentThread; y <
 		 * cellCountY/2+((cellCountY/2) *currentThread) + 1; y++) {
 		 * 
@@ -190,11 +191,22 @@ public class World extends JPanel implements SceneComponentInterface {
 
 					}
 
+					// Beginn Code by Leon
+					boolean collisionO = loadedsrc[map[y + dcy][x + dcx]].isCollision();
+					int xO = loadedsrc[map[y + dcy][x + dcx]].getSpriteX();
+					int yO = loadedsrc[map[y + dcy][x + dcx]].getSpriteY();
+					System.out.println(loadedsrc[map[y + dcy][x + dcx]].getSpriteY());
+					cO.safeDatas(collisionO, xO, yO, once);
+					// End Code by Leon
+
 					// g.drawRect(x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize);
 				} catch (Exception e) {
 				}
 			}
 		}
+		once = false; // Variable by Leon
+		// I don't know what happens if you change to another world. Have to try it out
+		// later
 	}
 
 	public void update() {
@@ -382,6 +394,4 @@ public class World extends JPanel implements SceneComponentInterface {
 		this.dey = dey;
 	}
 
-	
-	
 }
