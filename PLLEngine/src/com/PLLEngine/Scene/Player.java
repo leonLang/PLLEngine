@@ -151,6 +151,9 @@ public class Player extends Entitie {
 			System.out.println("X: " + -this.x/this.game.getScene().getWorld().getSpriteSize());
 			System.out.println("Y: " + -this.y/this.game.getScene().getWorld().getSpriteSize());
 		}
+		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+			meleAttack();
+		}
 	}
 
 	public void KeyReleased(KeyEvent e) {
@@ -170,6 +173,13 @@ public class Player extends Entitie {
 
 	}
 
+	public void meleAttack() {
+		
+	}
+	public void rangeAttack() {
+		
+	}
+	
 	public int getxOnScreen() {
 		return xOnScreen;
 	}
