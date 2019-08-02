@@ -192,13 +192,18 @@ public class World extends JPanel implements SceneComponentInterface {
 					}
 
 					// Beginn Code by Leon
-					boolean collisionO = loadedsrc[map[y + dcy][x + dcx]].isCollision();
+					//System.out.println(y);
+					boolean collisionO = loadedsrc[map[6 + dcy][11 + dcx]].isCollision();
 //					int xO = loadedsrc[map[y + dcy][x + dcx]].getSpriteX();
 //					int yO = loadedsrc[map[y + dcy][x + dcx]].getSpriteY();
 					int xO = x + dcx;
 					int yO = y + dcy;
-					System.out.println(loadedsrc[map[y + dcy][x + dcx]].getSpriteY());
-					cO.safeDatas(collisionO, xO, yO, once);
+					//System.out.println("hi");
+					if (once) {
+						//System.out.println("hi");
+						//System.out.println(collisionO);
+					}
+					//cO.safeDatas(collisionO, xO, yO, once);
 					// End Code by Leon
 
 					// g.drawRect(x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize);
