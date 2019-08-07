@@ -27,8 +27,8 @@ public class CollObject {
 
 	public void updateDatas(int dx, int dy) {
 		for (int i = 0; i < CollObject.x.length; i++) {
-			CollObject.x[i] = CollObject.startX[i] + dx;
-			CollObject.y[i] = CollObject.startY[i];
+			CollObject.x[i] = CollObject.startX[i] + dx - 30;
+			CollObject.y[i] = CollObject.startY[i] + dy;
 		}
 	}
 
