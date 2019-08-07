@@ -3,9 +3,11 @@ package com.PLLEngine.Scene.layerComponents.entity;
 import java.awt.Graphics2D;
 
 import com.PLLEngine.Scene.SceneComponentInterface;
+import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
 
 public class Entitie implements SceneComponentInterface {
+	CollObject cO = new CollObject();
 	int x12 = 100;
 	public static int[] arrX = new int[1];
 	public static int[] arrY = new int[1];
@@ -46,6 +48,7 @@ public class Entitie implements SceneComponentInterface {
 		return arrayN;
 	}
 	public void cameraMovement(int x, int y, int dx, int dy) {
+		cO.updateDatas(dx, dy);
 		px = x + dx;
 		py = y + dy;
 	}

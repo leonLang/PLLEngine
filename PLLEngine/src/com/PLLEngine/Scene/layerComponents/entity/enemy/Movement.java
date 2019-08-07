@@ -2,6 +2,7 @@ package com.PLLEngine.Scene.layerComponents.entity.enemy;
 
 import java.util.Random;
 
+import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
 
 public class Movement {
@@ -11,6 +12,7 @@ public class Movement {
 	private int y = 0;
 	private boolean richtungOwn;
 	private Random rn = new Random();
+	private CollObject cO = new CollObject();
 
 	public Movement(boolean richtungOwn) {
 		this.richtungOwn = richtungOwn;
@@ -44,7 +46,6 @@ public class Movement {
 			break;
 
 		default:
-			System.out.println("hi");
 			break;
 		}
 	}
@@ -60,7 +61,7 @@ public class Movement {
 	}
 
 	private int moveRight(int entityNumberOwn) {
-		if (CollThread.collRight[entityNumberOwn]) {
+		if (CollThread.collRight[entityNumberOwn] || cO.checkCollisionFromObjectsWithEnemie(entityNumberOwn) == 1) {
 			CollThread.collRight[entityNumberOwn] = false;
 			direction = 1; // Enemie moves now in the opposite direction
 			return 1; // this prevents that two Enemies Stick together
@@ -70,7 +71,7 @@ public class Movement {
 	}
 
 	private int moveLeft(int entityNumberOwn) {
-		if (CollThread.collLeft[entityNumberOwn]) {
+		if (CollThread.collLeft[entityNumberOwn] || cO.checkCollisionFromObjectsWithEnemie(entityNumberOwn) == 2) {
 			CollThread.collLeft[entityNumberOwn] = false;
 			direction = 0;
 			return -1;
@@ -80,7 +81,7 @@ public class Movement {
 	}
 
 	private int moveDown(int entityNumberOwn) {
-		if (CollThread.collDown[entityNumberOwn]) {
+		if (CollThread.collDown[entityNumberOwn] || cO.checkCollisionFromObjectsWithEnemie(entityNumberOwn) == 4) {
 			CollThread.collDown[entityNumberOwn] = false;
 			direction = 2;
 			return -1;
@@ -90,7 +91,7 @@ public class Movement {
 	}
 
 	private int moveUp(int entityNumberOwn) {
-		if (CollThread.collUp[entityNumberOwn]) {
+		if (CollThread.collUp[entityNumberOwn] || cO.checkCollisionFromObjectsWithEnemie(entityNumberOwn) == 3) {
 			CollThread.collUp[entityNumberOwn] = false;
 			direction = 3;
 			return 1;

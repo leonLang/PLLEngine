@@ -24,7 +24,6 @@ public class World extends JPanel implements SceneComponentInterface {
 	 * The World contains all data about world especially the map data itself Render
 	 * data Structure: World |_Map | |_Entites
 	 */
-	private boolean once = true; // Variable by Leon
 	private CollObject cO = new CollObject(); // Va by Leon
 	private Game game;
 	private String refrencePath;
@@ -148,6 +147,8 @@ public class World extends JPanel implements SceneComponentInterface {
 					}
 				}
 			}
+			setObjectCollision(); // Leon
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.err.println("Error while loading map.map");
@@ -191,27 +192,12 @@ public class World extends JPanel implements SceneComponentInterface {
 
 					}
 
-					// Beginn Code by Leon
-					//System.out.println(y);
-					boolean collisionO = loadedsrc[map[6 + dcy][11 + dcx]].isCollision();
-//					int xO = loadedsrc[map[y + dcy][x + dcx]].getSpriteX();
-//					int yO = loadedsrc[map[y + dcy][x + dcx]].getSpriteY();
-					int xO = x + dcx;
-					int yO = y + dcy;
-					//System.out.println("hi");
-					if (once) {
-						//System.out.println("hi");
-						//System.out.println(collisionO);
-					}
-					//cO.safeDatas(collisionO, xO, yO, once);
-					// End Code by Leon
-
 					// g.drawRect(x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize);
 				} catch (Exception e) {
 				}
 			}
 		}
-		once = false; // Variable by Leon
+		// System.out.println(CollObject.x[0]);
 		// I don't know what happens if you change to another world. Have to try it out
 		// later
 	}
@@ -237,6 +223,18 @@ public class World extends JPanel implements SceneComponentInterface {
 		}
 		// events
 
+	}
+
+	private void setObjectCollision() {
+		// Beginn Code by Leon
+
+		for (int rowX = 0; rowX < 48; rowX++) {
+			for (int rowY = 0; rowY < 27; rowY++) {
+				boolean collisionO = loadedsrc[map[rowY][rowX]].isCollision();
+				cO.setDatas(collisionO, rowX, rowY, dx, dy);
+			}
+		}
+		// End Code by Leon
 	}
 
 	public void moveUp(int px) {

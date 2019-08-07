@@ -41,9 +41,10 @@ public class Enemy extends Entitie {
 
 	@Override
 	public void draw(Graphics2D g) {
-		/*for (int i = 0; i < CollObject.x.length; i++) {
-			System.out.println(CollObject.x[i]);
-		}*/
+		/*
+		 * for (int i = 0; i < CollObject.x.length; i++) {
+		 * System.out.println(CollObject.x[i]); }
+		 */
 		// ich würd das ganze dann aber von der world aus steuern
 		controlHealth(g);
 		cameraMovement(x, y, dx, dy);
@@ -110,5 +111,7 @@ public class Enemy extends Entitie {
 	public void setSprite(BufferedImage br) {
 		this.sprite = br;
 	}
+
+	
 
 }
