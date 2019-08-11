@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
+import com.PLLEngine.collision.CollWorld;
 
 public class Movement {
 	private int nCounter = 0;
@@ -12,9 +13,12 @@ public class Movement {
 	private int y = 0;
 	private boolean richtungOwn;
 	private Random rn = new Random();
-	private CollObject cO = new CollObject();
+	private CollObject cO = new CollObject(32, 32);
+	private CollWorld cW = new CollWorld(32, 32);
+	private int dx;
+	private int dy;
 
-	public Movement(boolean richtungOwn) {
+	public Movement(boolean richtungOwn, int dx, int dy) {
 		this.richtungOwn = richtungOwn;
 	}
 
@@ -61,7 +65,10 @@ public class Movement {
 	}
 
 	private int moveRight(int entityNumberOwn) {
-		if (CollThread.collRight[entityNumberOwn] || cO.checkCollisionFromObjectsWithEnemie(entityNumberOwn) == 1) {
+		int xE = Enemy.arrX[entityNumberOwn];
+		int yE = Enemy.arrY[entityNumberOwn];
+		if (CollThread.collRight[entityNumberOwn] || cO.checkCollisionFromObjects(xE, yE) == 1
+				|| cW.collisionRight(dx, dy, xE, yE)) {
 			CollThread.collRight[entityNumberOwn] = false;
 			direction = 1; // Enemie moves now in the opposite direction
 			return 1; // this prevents that two Enemies Stick together
@@ -71,7 +78,10 @@ public class Movement {
 	}
 
 	private int moveLeft(int entityNumberOwn) {
-		if (CollThread.collLeft[entityNumberOwn] || cO.checkCollisionFromObjectsWithEnemie(entityNumberOwn) == 2) {
+		int xE = Enemy.arrX[entityNumberOwn];
+		int yE = Enemy.arrY[entityNumberOwn];
+		if (CollThread.collLeft[entityNumberOwn] || cO.checkCollisionFromObjects(xE, yE) == 2
+				|| cW.collisionLeft(dx, dy, xE, yE)) {
 			CollThread.collLeft[entityNumberOwn] = false;
 			direction = 0;
 			return -1;
@@ -81,7 +91,10 @@ public class Movement {
 	}
 
 	private int moveDown(int entityNumberOwn) {
-		if (CollThread.collDown[entityNumberOwn] || cO.checkCollisionFromObjectsWithEnemie(entityNumberOwn) == 4) {
+		int xE = Enemy.arrX[entityNumberOwn];
+		int yE = Enemy.arrY[entityNumberOwn];
+		if (CollThread.collDown[entityNumberOwn] || cO.checkCollisionFromObjects(xE, yE) == 3
+				|| cW.collisionDown(dx, dy, xE, yE)) {
 			CollThread.collDown[entityNumberOwn] = false;
 			direction = 2;
 			return -1;
@@ -91,7 +104,10 @@ public class Movement {
 	}
 
 	private int moveUp(int entityNumberOwn) {
-		if (CollThread.collUp[entityNumberOwn] || cO.checkCollisionFromObjectsWithEnemie(entityNumberOwn) == 3) {
+		int xE = Enemy.arrX[entityNumberOwn];
+		int yE = Enemy.arrY[entityNumberOwn];
+		if (CollThread.collUp[entityNumberOwn] || cO.checkCollisionFromObjects(xE, yE) == 4
+				|| cW.collisionUp(dx, dy, xE, yE)) {
 			CollThread.collUp[entityNumberOwn] = false;
 			direction = 3;
 			return 1;
@@ -117,5 +133,21 @@ public class Movement {
 	public int getY() {
 		return y;
 
+	}
+
+	public int getDx() {
+		return dx;
+	}
+
+	public void setDx(int dx) {
+		this.dx = dx;
+	}
+
+	public int getDy() {
+		return dy;
+	}
+
+	public void setDy(int dy) {
+		this.dy = dy;
 	}
 }

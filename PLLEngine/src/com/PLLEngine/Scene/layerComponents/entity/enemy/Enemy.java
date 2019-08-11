@@ -35,7 +35,7 @@ public class Enemy extends Entitie {
 			richtungAll = false;
 			once = true;
 		}
-		mv = new Movement(richtungOwn);
+		mv = new Movement(richtungOwn, dx, dy);
 
 	}
 
@@ -60,6 +60,8 @@ public class Enemy extends Entitie {
 	private void enemyMovement() {
 		mv.setX(x);
 		mv.setY(y);
+		mv.setDx(dx);
+		mv.setDy(dy);
 		mv.normalMovement(entityNumberOwn);
 		x = mv.getX();
 		y = mv.getY();
@@ -111,7 +113,5 @@ public class Enemy extends Entitie {
 	public void setSprite(BufferedImage br) {
 		this.sprite = br;
 	}
-
-	
 
 }

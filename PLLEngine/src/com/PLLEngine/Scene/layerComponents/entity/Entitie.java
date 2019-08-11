@@ -7,7 +7,7 @@ import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
 
 public class Entitie implements SceneComponentInterface {
-	CollObject cO = new CollObject();
+	CollObject cO = new CollObject(32,32);
 	int x12 = 100;
 	public static int[] arrX = new int[1];
 	public static int[] arrY = new int[1];

@@ -24,7 +24,7 @@ public class World extends JPanel implements SceneComponentInterface {
 	 * The World contains all data about world especially the map data itself Render
 	 * data Structure: World |_Map | |_Entites
 	 */
-	private CollObject cO = new CollObject(); // Va by Leon
+	private CollObject cO = new CollObject(32, 32); // Va by Leon
 	private Game game;
 	private String refrencePath;
 	private String spriteSheet;
@@ -227,7 +227,8 @@ public class World extends JPanel implements SceneComponentInterface {
 
 	private void setObjectCollision() {
 		// Beginn Code by Leon
-
+		// The World has 48 Blocks in X Direction with size 64
+		// The World has 27 Blocks in Y direction with size 64
 		for (int rowX = 0; rowX < 48; rowX++) {
 			for (int rowY = 0; rowY < 27; rowY++) {
 				boolean collisionO = loadedsrc[map[rowY][rowX]].isCollision();

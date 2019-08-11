@@ -10,9 +10,12 @@ public class CollObject {
 	private int width = 64;
 	private int heigth = 64;
 	private int counter = 0;
+	private int entityWidth;
+	private int entityHeigth;
 
-	public CollObject() {
-
+	public CollObject(int entityWidth, int entityHeight) {
+		this.entityWidth = entityWidth;
+		this.entityHeigth = entityHeight;
 	}
 
 	public void setDatas(boolean collision, int rowX, int rowY, int dcx, int dcy) {
@@ -28,7 +31,7 @@ public class CollObject {
 	public void updateDatas(int dx, int dy) {
 		for (int i = 0; i < CollObject.x.length; i++) {
 			CollObject.x[i] = CollObject.startX[i] + dx - 30;
-			CollObject.y[i] = CollObject.startY[i] + dy;
+			CollObject.y[i] = CollObject.startY[i] + dy - 20;
 		}
 	}
 
@@ -48,30 +51,26 @@ public class CollObject {
 		return arrayO;
 	}
 
-	public int checkCollisionFromObjectsWithEnemie(int enemieNumber) {
+	public int checkCollisionFromObjects(int entityX, int entityY) {
 		// if return == 0 then there is no collision
 		// if return == 1 then the collision is right
 		// if return == 2 then the collision is left
 		// if return == 3 then the collision is up
 		// if return == 4 then the collision is down
 
-		int enemieWidth = 32;
-		int enemieHeight = 32;
-		// System.out.println(CollObject.x[0]);
 		for (int i = 0; i < CollObject.x.length; i++) {
 
-			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], width, heigth, Entitie.arrX[enemieNumber],
-					Entitie.arrY[enemieNumber], enemieWidth, enemieHeight);
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], width, heigth, entityX, entityY, entityWidth,
+					entityHeigth);
 
 			// System.out.println(Entitie.arrX[enemieNumber]);
-			if (cl.CollRechts()) {
-				System.out.println("Heii");
+			if (cl.CollRechtsP()) {
 				return 1;
-			} else if (cl.CollLinks()) {
+			} else if (cl.CollLinksP()) {
 				return 2;
-			} else if (cl.CollOben()) {
+			} else if (cl.CollObenP()) {
 				return 3;
-			} else if (cl.CollUnten()) {
+			} else if (cl.CollUntenP()) {
 				return 4;
 			} else {
 			}
