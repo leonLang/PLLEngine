@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import com.PLLEngine.Control.Control;
 import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
+import com.PLLEngine.Scene.layerComponents.entity.Shot;
 import com.PLLEngine.srcLoader.SrcLoader;
 
 public class Player extends Entitie {
@@ -27,6 +28,7 @@ public class Player extends Entitie {
 	private boolean animationState;
 	private Thread movement;
 	private int movementstate;
+	private int attackState;
 
 	public Player() {
 		img = SrcLoader.Image("char00.png");
@@ -43,6 +45,7 @@ public class Player extends Entitie {
 		this.yOnScreen = game.getWindow().getHeight() / 2;
 		this.game.getWindow().getWindow().addKeyListener(this.controller);
 		this.game.getWindow().getWindow().requestFocusInWindow();
+		this.attackState = 1;
 
 	}
 
@@ -152,7 +155,19 @@ public class Player extends Entitie {
 			System.out.println("Y: " + -this.y/this.game.getScene().getWorld().getSpriteSize());
 		}
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+			if(this.attackState == 0) {
 			meleAttack();
+			} else if(this.attackState == 1) {
+				rangeAttack();
+			}
+		}
+		if(e.getKeyCode() == KeyEvent.VK_SHIFT) {
+			if(this.attackState == 1) {
+				this.attackState = 0;
+			} else if(this.attackState== 0) {
+				this.attackState = 1;
+			}
+			System.out.println("Attack state of player changed to:" + this.attackState);
 		}
 	}
 
@@ -177,7 +192,8 @@ public class Player extends Entitie {
 		
 	}
 	public void rangeAttack() {
-		
+		System.out.println("say hello");
+		new Shot(x,y);
 	}
 	
 	public int getxOnScreen() {
