@@ -1,8 +1,8 @@
 package com.PLLEngine.collision;
 
 public class CollEnemVSPlay {
-	private int xPlayer = 600;
-	private int yPlayer = 400;
+	private int xPlayer = 560;
+	private int yPlayer = 362;
 	private int widthPlayer = 64;
 	private int heightPlayer = 64;
 	private Collision cl;

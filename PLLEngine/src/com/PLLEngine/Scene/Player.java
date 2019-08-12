@@ -6,6 +6,8 @@ import java.awt.image.BufferedImage;
 import com.PLLEngine.Control.Control;
 import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
+import com.PLLEngine.collision.CollObject;
+import com.PLLEngine.collision.CollWorld;
 import com.PLLEngine.srcLoader.SrcLoader;
 
 public class Player extends Entitie {
@@ -19,7 +21,7 @@ public class Player extends Entitie {
 	private int width, height;
 
 	public int speed;
-	
+
 	private int x, y;
 	private boolean up, down, right, left;
 	private BufferedImage img;
@@ -28,10 +30,13 @@ public class Player extends Entitie {
 	private Thread movement;
 	private int movementstate;
 
+	private CollObject cO = new CollObject(64, 64); // Leon
+	private CollWorld cW = new CollWorld(64, 64); // Leon
+
 	public Player() {
 		img = SrcLoader.Image("char00.png");
 		animationState = true;
-		
+
 		this.speed = 5;
 
 		this.controller = new Control(this);
@@ -53,17 +58,18 @@ public class Player extends Entitie {
 		g.drawImage(img, xOnScreen - width / 2, yOnScreen - height / 2, width, height, null);
 
 	}
+
 	public void update() {
-		if(up) {
+		if (up) {
 			this.moveUp();
 		}
-		if(down) {
+		if (down) {
 			this.moveDown();
 		}
-		if(left) {
+		if (left) {
 			this.moveLeft();
 		}
-		if(right) {
+		if (right) {
 			this.moveRight();
 		}
 	}
@@ -82,30 +88,40 @@ public class Player extends Entitie {
 	// wird im sp�teren Verlauf gebraucht
 
 	private void moveUp() {
-		this.y += speed;
-		this.game.getScene().getWorld().moveUp(speed);
-		this.movementstate = 0;
+		if (cO.checkCollisionFromObjects(560, 362) == 4) { // Leon
+		} else {
+			this.y += speed;
+			this.game.getScene().getWorld().moveUp(speed);
+			this.movementstate = 0;
+		} // Leon
+
 	}
 
 	private void moveDown() {
-		this.y -= speed;
-		this.game.getScene().getWorld().moveDown(speed);
-		this.movementstate = 1;
-
+		if (cO.checkCollisionFromObjects(560, 362) == 3) { // Leon
+		} else {
+			this.y -= speed;
+			this.game.getScene().getWorld().moveDown(speed);
+			this.movementstate = 1;
+		}
 	}
 
 	private void moveRight() {
-		this.x += speed;
-		this.game.getScene().getWorld().moveRight(speed);
-		this.movementstate = 2;
-
+		if (cO.checkCollisionFromObjects(560, 362) == 1) { // Leon
+		} else {
+			this.x += speed;
+			this.game.getScene().getWorld().moveRight(speed);
+			this.movementstate = 2;
+		}
 	}
 
 	private void moveLeft() {
-		this.x -= speed;
-		this.game.getScene().getWorld().moveLeft(speed);
-		this.movementstate = 3;
-
+		if (cO.checkCollisionFromObjects(560, 362) == 2) { // Leon
+		} else {
+			this.x -= speed;
+			this.game.getScene().getWorld().moveLeft(speed);
+			this.movementstate = 3;
+		}
 	}
 
 	/**
@@ -147,11 +163,11 @@ public class Player extends Entitie {
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.right = true;
 		}
-		if(e.getKeyCode()== KeyEvent.VK_0) {
-			System.out.println("X: " + -this.x/this.game.getScene().getWorld().getSpriteSize());
-			System.out.println("Y: " + -this.y/this.game.getScene().getWorld().getSpriteSize());
+		if (e.getKeyCode() == KeyEvent.VK_0) {
+			System.out.println("X: " + -this.x / this.game.getScene().getWorld().getSpriteSize());
+			System.out.println("Y: " + -this.y / this.game.getScene().getWorld().getSpriteSize());
 		}
-		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			meleAttack();
 		}
 	}
@@ -174,12 +190,13 @@ public class Player extends Entitie {
 	}
 
 	public void meleAttack() {
-		
+
 	}
+
 	public void rangeAttack() {
-		
+
 	}
-	
+
 	public int getxOnScreen() {
 		return xOnScreen;
 	}
@@ -239,7 +256,5 @@ public class Player extends Entitie {
 	public Control getController() {
 		return controller;
 	}
-	
-	
 
 }
