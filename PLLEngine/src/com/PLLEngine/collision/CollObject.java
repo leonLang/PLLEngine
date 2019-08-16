@@ -122,21 +122,16 @@ public class CollObject {
 			if (cl.Coll1()) {
 				// return 5; // for the player because he doesn't need to know if he is right
 				// left up or down
-				System.out.println("jetzt");
 			}
 			// System.out.println(Entitie.arrX[enemieNumber]);
 			if (cl.CollRechtsP()) {
-				System.out.println(1);
 				return 1;
 
 			} else if (cl.CollLinksP()) {
-				System.out.println(2);
 				return 2;
 			} else if (cl.CollObenP()) {
-				System.out.println(3);
 				return 3;
 			} else if (cl.CollUntenP()) {
-				System.out.println(4);
 				return 4;
 			} else {
 			}

@@ -94,7 +94,6 @@ public class Player extends Entitie {
 
 	private void moveUp() {
 		if (cO.checkCollisionFromObjectsDown(playerX, playerY)) { // Leon
-			System.out.println(4);
 
 		} else {
 			this.y += speed;
@@ -106,7 +105,6 @@ public class Player extends Entitie {
 
 	private void moveDown() {
 		if (cO.checkCollisionFromObjectsUp(playerX, playerY)) { // Leon
-			System.out.println(3);
 
 		} else {
 			this.y -= speed;
@@ -117,7 +115,6 @@ public class Player extends Entitie {
 
 	private void moveRight() {
 		if (cO.checkCollisionFromObjectsRight(playerX, playerY)) { // Leon
-			System.out.println(1);
 
 		} else {
 			this.x += speed;
@@ -129,7 +126,6 @@ public class Player extends Entitie {
 	private void moveLeft() {
 
 		if (cO.checkCollisionFromObjectsLeft(playerX, playerY)) { // Leon
-			System.out.println(2);
 		} else {
 			this.x -= speed;
 			this.game.getScene().getWorld().moveLeft(speed);
