@@ -51,7 +51,64 @@ public class CollObject {
 		return arrayO;
 	}
 
+	public boolean checkCollisionFromObjectsRight(int entityX, int entityY) {
+
+		for (int i = 0; i < CollObject.x.length; i++) {
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, entityWidth,
+					entityHeigth);
+			// System.out.println(Entitie.arrX[enemieNumber]);
+			if (cl.CollRechtsP()) {
+				return true;
+
+			}
+		}
+		return false;
+	}
+
+	public boolean checkCollisionFromObjectsLeft(int entityX, int entityY) {
+
+		for (int i = 0; i < CollObject.x.length; i++) {
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, entityWidth,
+					entityHeigth);
+			// System.out.println(Entitie.arrX[enemieNumber]);
+			if (cl.CollLinksP()) {
+				return true;
+
+			}
+		}
+		return false;
+	}
+
+	public boolean checkCollisionFromObjectsUp(int entityX, int entityY) {
+
+		for (int i = 0; i < CollObject.x.length; i++) {
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, entityWidth,
+					entityHeigth);
+			// System.out.println(Entitie.arrX[enemieNumber]);
+			if (cl.CollObenP()) {
+				return true;
+
+			}
+		}
+		return false;
+	}
+
+	public boolean checkCollisionFromObjectsDown(int entityX, int entityY) {
+
+		for (int i = 0; i < CollObject.x.length; i++) {
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, entityWidth,
+					entityHeigth);
+			// System.out.println(Entitie.arrX[enemieNumber]);
+			if (cl.CollUntenP()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public int checkCollisionFromObjects(int entityX, int entityY) {
+		// You can't use this for the Player because there can be two states where he
+		// has a collision left and down
 		// if return == 0 then there is no collision
 		// if return == 1 then the collision is right
 		// if return == 2 then the collision is left
@@ -62,15 +119,24 @@ public class CollObject {
 
 			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], width, heigth, entityX, entityY, entityWidth,
 					entityHeigth);
-
+			if (cl.Coll1()) {
+				// return 5; // for the player because he doesn't need to know if he is right
+				// left up or down
+				System.out.println("jetzt");
+			}
 			// System.out.println(Entitie.arrX[enemieNumber]);
 			if (cl.CollRechtsP()) {
+				System.out.println(1);
 				return 1;
+
 			} else if (cl.CollLinksP()) {
+				System.out.println(2);
 				return 2;
 			} else if (cl.CollObenP()) {
+				System.out.println(3);
 				return 3;
 			} else if (cl.CollUntenP()) {
+				System.out.println(4);
 				return 4;
 			} else {
 			}
