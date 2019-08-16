@@ -35,12 +35,13 @@ public class Player extends Entitie {
 
 	private CollObject cO = new CollObject(64, 64); // Leon
 	private CollWorld cW = new CollWorld(64, 64); // Leon
-
+	private int playerX = 560; //Leon
+	private int playerY = 364; //LEon
 	public Player() {
 		img = SrcLoader.Image("char00.png");
 		animationState = true;
 
-		this.speed = 5;
+		this.speed = 4;
 
 		this.controller = new Control(this);
 	}
@@ -92,7 +93,9 @@ public class Player extends Entitie {
 	// wird im sp�teren Verlauf gebraucht
 
 	private void moveUp() {
-		if (cO.checkCollisionFromObjects(560, 362) == 4) { // Leon
+		if (cO.checkCollisionFromObjectsDown(playerX, playerY)) { // Leon
+			System.out.println(4);
+
 		} else {
 			this.y += speed;
 			this.game.getScene().getWorld().moveUp(speed);
@@ -102,7 +105,9 @@ public class Player extends Entitie {
 	}
 
 	private void moveDown() {
-		if (cO.checkCollisionFromObjects(560, 362) == 3) { // Leon
+		if (cO.checkCollisionFromObjectsUp(playerX, playerY)) { // Leon
+			System.out.println(3);
+
 		} else {
 			this.y -= speed;
 			this.game.getScene().getWorld().moveDown(speed);
@@ -111,7 +116,9 @@ public class Player extends Entitie {
 	}
 
 	private void moveRight() {
-		if (cO.checkCollisionFromObjects(560, 362) == 1) { // Leon
+		if (cO.checkCollisionFromObjectsRight(playerX, playerY)) { // Leon
+			System.out.println(1);
+
 		} else {
 			this.x += speed;
 			this.game.getScene().getWorld().moveRight(speed);
@@ -120,7 +127,9 @@ public class Player extends Entitie {
 	}
 
 	private void moveLeft() {
-		if (cO.checkCollisionFromObjects(560, 362) == 2) { // Leon
+
+		if (cO.checkCollisionFromObjectsLeft(playerX, playerY)) { // Leon
+			System.out.println(2);
 		} else {
 			this.x -= speed;
 			this.game.getScene().getWorld().moveLeft(speed);
@@ -173,21 +182,22 @@ public class Player extends Entitie {
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-			if(this.attackState == 0) {
-			meleAttack();
-			} else if(this.attackState == 1) {
-				rangeAttack();
+			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+				if (this.attackState == 0) {
+					meleAttack();
+				} else if (this.attackState == 1) {
+					rangeAttack();
+				}
+			}
+			if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+				if (this.attackState == 1) {
+					this.attackState = 0;
+				} else if (this.attackState == 0) {
+					this.attackState = 1;
+				}
+				System.out.println("Attack state of player changed to:" + this.attackState);
 			}
 		}
-		if(e.getKeyCode() == KeyEvent.VK_SHIFT) {
-			if(this.attackState == 1) {
-				this.attackState = 0;
-			} else if(this.attackState== 0) {
-				this.attackState = 1;
-			}
-			System.out.println("Attack state of player changed to:" + this.attackState);
-		}}
 	}
 
 	public void KeyReleased(KeyEvent e) {
@@ -214,7 +224,7 @@ public class Player extends Entitie {
 	public void rangeAttack() {
 
 		System.out.println("say hello");
-		new Shot(x,y);
+		new Shot(x, y);
 	}
 
 	public int getxOnScreen() {
