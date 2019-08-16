@@ -41,7 +41,7 @@ public class Player extends Entitie {
 		img = SrcLoader.Image("char00.png");
 		animationState = true;
 
-		this.speed = 4;
+		this.speed = 4; //don't change it to 5 this will couse errors with collision
 
 		this.controller = new Control(this);
 	}
