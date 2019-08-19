@@ -1,8 +1,8 @@
 {
   "refrencePath": "refrence.json",
   "spriteSize": 64,
-  "entryX": 0,
-  "entryY": 0,
+  "entryX": 5,
+  "entryY": 7,
   "defaultTexture": 19,
   "spriteSheet":"src_data/sprites/e.png",
   "map": [

@@ -54,8 +54,10 @@ public class World extends JPanel implements SceneComponentInterface {
 	private int dex, dey;
 
 	public World() {
+		System.out.println(new String());
 		/**
 		 * dx&dy is by pixel's the offset to the starting location
+		 *
 		 */
 		this.dx = 0;
 		this.dy = 0;
@@ -92,8 +94,8 @@ public class World extends JPanel implements SceneComponentInterface {
 		this.dcx = this.entryX - game.getScene().getPlayer().getxOnScreen() / this.spriteSize;
 		this.dcy = this.entryY - game.getScene().getPlayer().getyOnScreen() / this.spriteSize;
 
-		this.dex = this.entryX + game.getScene().getPlayer().getxOnScreen();
-		this.dey = this.entryY + game.getScene().getPlayer().getyOnScreen();
+		this.dex =  game.getScene().getPlayer().getxOnScreen() - (this.entryX * this.spriteSize);
+		this.dey =  game.getScene().getPlayer().getyOnScreen( )- (this.entryY * this.spriteSize);
 	}
 
 	private void loadEnemies() {
