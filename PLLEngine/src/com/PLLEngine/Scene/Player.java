@@ -35,13 +35,14 @@ public class Player extends Entitie {
 
 	private CollObject cO = new CollObject(64, 64); // Leon
 	private CollWorld cW = new CollWorld(64, 64); // Leon
-	private int playerX = 560; //Leon
-	private int playerY = 364; //LEon
+	private int playerX = 560; // Leon
+	private int playerY = 364; // LEon
+
 	public Player() {
 		img = SrcLoader.Image("char00.png");
 		animationState = true;
 
-		this.speed = 1; //don't change it to 5 this will couse errors with collision
+		this.speed = 4; // don't change it to 5 this will couse errors with collision
 
 		this.controller = new Control(this);
 	}
@@ -53,7 +54,6 @@ public class Player extends Entitie {
 		this.game.getWindow().getWindow().addKeyListener(this.controller);
 		this.game.getWindow().getWindow().requestFocusInWindow();
 		this.attackState = 1;
-	    
 
 	}
 
@@ -94,43 +94,49 @@ public class Player extends Entitie {
 	// wird im sp�teren Verlauf gebraucht
 
 	private void moveUp() {
-		if (cO.checkCollisionFromObjectsDown(playerX, playerY)) { // Leon
+		for (int i = 0; i <= speed; i++) {
+			if (cO.checkCollisionFromObjectsDown(playerX + i, playerY + i)) { // Leon
 
-		} else {
-			this.y += speed;
-			this.game.getScene().getWorld().moveUp(speed);
-			this.movementstate = 0;
-		} // Leon
-
+			} else {
+				this.y += 1;
+				this.game.getScene().getWorld().moveUp(1);
+				this.movementstate = 0;
+			} // Leon
+		}
 	}
 
 	private void moveDown() {
-		if (cO.checkCollisionFromObjectsUp(playerX, playerY)) { // Leon
+		for (int i = 0; i <= speed; i++) {
+			if (cO.checkCollisionFromObjectsUp(playerX + i, playerY + i)) { // Leon
 
-		} else {
-			this.y -= speed;
-			this.game.getScene().getWorld().moveDown(speed);
-			this.movementstate = 1;
+			} else {
+				this.y -= 1;
+				this.game.getScene().getWorld().moveDown(1);
+				this.movementstate = 1;
+			}
 		}
 	}
 
 	private void moveRight() {
-		if (cO.checkCollisionFromObjectsRight(playerX, playerY)) { // Leon
+		for (int i = 0; i <= speed; i++) {
+			if (cO.checkCollisionFromObjectsRight(playerX + i, playerY + i)) { // Leon
 
-		} else {
-			this.x += speed;
-			this.game.getScene().getWorld().moveRight(speed);
-			this.movementstate = 2;
+			} else {
+				this.x += 1;
+				this.game.getScene().getWorld().moveRight(1);
+				this.movementstate = 2;
+			}
 		}
 	}
 
 	private void moveLeft() {
-
-		if (cO.checkCollisionFromObjectsLeft(playerX, playerY)) { // Leon
-		} else {
-			this.x -= speed;
-			this.game.getScene().getWorld().moveLeft(speed);
-			this.movementstate = 3;
+		for (int i = 0; i <= speed; i++) {
+			if (cO.checkCollisionFromObjectsLeft(playerX + i, playerY + i)) { // Leon
+			} else {
+				this.x -= 1;
+				this.game.getScene().getWorld().moveLeft(1);
+				this.movementstate = 3;
+			}
 		}
 	}
 
