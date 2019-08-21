@@ -21,6 +21,9 @@ public class Enemy extends Entitie {
 	private int wait = 0;
 	private boolean collision;
 	private Health health;
+	private int counterAttack;
+	private int timerAttack = 0;
+	private boolean fromUpToDown;
 
 	public Enemy(int startX, int startY) {
 		health = new Health(3);
@@ -45,7 +48,6 @@ public class Enemy extends Entitie {
 		 * for (int i = 0; i < CollObject.x.length; i++) {
 		 * System.out.println(CollObject.x[i]); }
 		 */
-		// ich würd das ganze dann aber von der world aus steuern
 		controlHealth(g);
 		cameraMovement(x, y, dx, dy);
 		collisionCheck();
@@ -54,6 +56,27 @@ public class Enemy extends Entitie {
 		if (sprite != null)
 			g.drawImage(sprite, px, py, null);
 		g.drawRect(px, py, width, height);
+
+		timerAttack++;
+		if (counterAttack >= 10) {
+			fromUpToDown = true;
+		}
+		if (counterAttack <= 0) {
+			fromUpToDown = false;
+		}
+		if (fromUpToDown == true) {
+			if (timerAttack >= 100) {
+			counterAttack--;
+			timerAttack =0;
+			}
+			g.drawRect(px +30 + counterAttack, py + 40 - counterAttack * 2, 2, 2);
+		} else {
+			if (timerAttack >= 100) {
+			counterAttack++;
+			timerAttack = 0;
+			}
+			g.drawRect(px + 30 + counterAttack, py + counterAttack * 2, 2, 2);
+		}
 
 	}
 
