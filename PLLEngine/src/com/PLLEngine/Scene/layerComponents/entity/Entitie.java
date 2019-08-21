@@ -20,8 +20,6 @@ public class Entitie implements SceneComponentInterface {
 	public Entitie() {
 		dx = 0;
 		dy = 0;
-		// der player muss immer als erstes erstellt werden, dmait er array nummer 0
-		// ist.
 		entityNumberOwn = arrX.length-1;
 		arrX = enlargeArraySize(arrX);
 		arrY = enlargeArraySize(arrY);
@@ -32,10 +30,6 @@ public class Entitie implements SceneComponentInterface {
 			cT.start();
 		}
 	}
-
-	// Hier ist was ver�ndert da dx und dy nicht mehr gebraucht werden und ich alles
-	// von Graphics g auf graphics2D ge�ndert habe
-	// der unterschied ist gering und sollte nicht auffallen au�er mehr features
 	@Override
 	public void draw(Graphics2D g) {
 		// TODO Auto-generated method stub
