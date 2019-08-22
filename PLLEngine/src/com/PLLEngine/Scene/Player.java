@@ -37,6 +37,7 @@ public class Player extends Entitie {
 	private CollWorld cW = new CollWorld(64, 64); // Leon
 	private int playerX = 560; // Leon
 	private int playerY = 364; // LEon
+	private Shot[] shot = new Shot[10];
 
 	public Player() {
 		img = SrcLoader.Image("char00.png");
@@ -45,6 +46,10 @@ public class Player extends Entitie {
 		this.speed = 4; // don't change it to 5 this will couse errors with collision
 
 		this.controller = new Control(this);
+
+		for (int i = 0; i < shot.length; i++) {
+			shot[i] = new Shot(500);
+		}
 	}
 
 	public void init(Game game) {
@@ -60,6 +65,10 @@ public class Player extends Entitie {
 	@Override
 	public void draw(Graphics2D g) {
 		// synchronize();
+		for (int i = 0; i < shot.length; i++) {
+			shot[i].drawShot(g);
+		}
+
 		g.drawRect(xOnScreen - width / 2, yOnScreen - height / 2, width, height);
 		g.drawImage(img, xOnScreen - width / 2, yOnScreen - height / 2, width, height, null);
 
@@ -213,6 +222,14 @@ public class Player extends Entitie {
 			this.left = false;
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.right = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_A) {
+			for (int i = 0; i < shot.length; i++) {
+				if (!shot[i].shotIsFired) {
+					shot[i].addShot();
+					i = shot.length + 1;
+				}
+			}
 		}
 	}
 

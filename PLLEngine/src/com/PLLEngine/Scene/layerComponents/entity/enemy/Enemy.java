@@ -47,7 +47,7 @@ public class Enemy extends Entitie {
 		 * for (int i = 0; i < CollObject.x.length; i++) {
 		 * System.out.println(CollObject.x[i]); }
 		 */
-		shot.drawShot(g, px, py);
+		//shot.drawShot(g, px, py);
 		controlHealth(g);
 		cameraMovement(x, y, dx, dy);
 		collisionCheck();
