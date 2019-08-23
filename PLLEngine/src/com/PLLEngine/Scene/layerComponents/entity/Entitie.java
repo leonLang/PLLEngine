@@ -7,10 +7,13 @@ import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
 
 public class Entitie implements SceneComponentInterface {
-	CollObject cO = new CollObject(32,32);
+	CollObject cO = new CollObject(32, 32);
 	int x12 = 100;
 	public static int[] arrX = new int[1];
 	public static int[] arrY = new int[1];
+	public static int[] arrHealth = new int[1];
+	public static int dxAll;
+	public static int dyAll;
 	public static boolean[] synchronize = new boolean[100000];
 	public int entityNumberOwn;
 	private static boolean onlyOnce = false;
@@ -20,9 +23,12 @@ public class Entitie implements SceneComponentInterface {
 	public Entitie() {
 		dx = 0;
 		dy = 0;
-		entityNumberOwn = arrX.length-1;
+		entityNumberOwn = arrX.length - 1;
 		arrX = enlargeArraySize(arrX);
 		arrY = enlargeArraySize(arrY);
+		arrHealth[arrHealth.length - 1] = 3;
+		arrHealth = enlargeArraySize(arrHealth);
+
 		if (onlyOnce == false) {
 			System.out.println("einmal");
 			onlyOnce = true;
@@ -30,17 +36,20 @@ public class Entitie implements SceneComponentInterface {
 			cT.start();
 		}
 	}
+
 	@Override
 	public void draw(Graphics2D g) {
 		// TODO Auto-generated method stub
 		g.drawRect(100, 50, 300, 300);
 	}
-	private int [] enlargeArraySize(int [] arrayN) {
-		int [] tmpA = new int [arrayN.length+1];
+
+	private int[] enlargeArraySize(int[] arrayN) {
+		int[] tmpA = new int[arrayN.length + 1];
 		System.arraycopy(arrayN, 0, tmpA, 0, arrayN.length);
 		arrayN = tmpA;
 		return arrayN;
 	}
+
 	public void cameraMovement(int x, int y, int dx, int dy) {
 		cO.updateDatas(dx, dy);
 		px = x + dx;
@@ -68,6 +77,7 @@ public class Entitie implements SceneComponentInterface {
 	}
 
 	public void setDx(int dx) {
+		Entitie.dxAll = dx;
 		this.dx = dx;
 	}
 
@@ -76,6 +86,7 @@ public class Entitie implements SceneComponentInterface {
 	}
 
 	public void setDy(int dy) {
+		Entitie.dyAll = dy;
 		this.dy = dy;
 	}
 

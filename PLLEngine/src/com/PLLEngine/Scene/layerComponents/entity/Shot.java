@@ -11,6 +11,8 @@ public class Shot {
 	private int shotTime;
 	public boolean shotIsFired; // The number of shots specifie the number of avaible shots in the field
 	private int shotMove;
+	private int useX;
+	private int useY;
 
 	/**
 	 * 
@@ -29,13 +31,22 @@ public class Shot {
 		this.y = y;
 	}
 
-	public void drawShot(Graphics2D g) {
+	public void drawShot(Graphics2D g, int startX, int startY) {
 		// Collision needs to be done by the enemie;
+
 		if (shotIsFired == true) {
-			shotMove = shotMove + 2;
-			g.drawRect(30 + shotMove, 40, 20, 20);
+			if (useX == 0 && useY == 0) {
+				System.out.println("once");
+				useX = startX; // this is needed because startX and startY mustn't change after the shot is
+								// created
+				useY = startY;
+			}
+			shotMove = shotMove + 4;
+			g.drawRect(useX + shotMove + Entitie.dxAll, useY + Entitie.dyAll, 13, 13);
 		}
 		if (shotMove >= 500) {
+			useX = 0;
+			useY = 0;
 			shotIsFired = false;
 			shotMove = 0;
 		}

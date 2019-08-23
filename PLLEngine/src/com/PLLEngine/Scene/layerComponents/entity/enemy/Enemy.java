@@ -52,7 +52,7 @@ public class Enemy extends Entitie {
 		cameraMovement(x, y, dx, dy);
 		collisionCheck();
 		synchronize();
-		setEntitiyNumber();
+		setEntitiyPosition();
 		if (sprite != null)
 			g.drawImage(sprite, px, py, null);
 		g.drawRect(px, py, width, height);
@@ -74,7 +74,7 @@ public class Enemy extends Entitie {
 
 	private void controlHealth(Graphics2D g) {
 		g.drawRect(px, py - 8, width, 5);
-		g.fillRect(px, py - 8, width * (health.getLives() / health.getStartLives()), 5);
+		g.fillRect(px, py - 8, width * (Entitie.arrHealth[entityNumberOwn] / health.getStartLives()), 5);
 		// If I don't do it with the ( the Rect wont be full because of rounding
 		// differences
 	}
@@ -109,7 +109,7 @@ public class Enemy extends Entitie {
 		}
 	}
 
-	private void setEntitiyNumber() {
+	private void setEntitiyPosition() {
 		arrX[entityNumberOwn] = px;
 		arrY[entityNumberOwn] = py;
 	}
