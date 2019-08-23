@@ -22,7 +22,7 @@ public class Enemy extends Entitie {
 	private int wait = 0;
 	private boolean collision;
 	private Health health;
-	private Shot shot = new Shot(10,10);
+	private Shot shot = new Shot(10, 10);
 
 	public Enemy(int startX, int startY) {
 		health = new Health(3);
@@ -47,17 +47,22 @@ public class Enemy extends Entitie {
 		 * for (int i = 0; i < CollObject.x.length; i++) {
 		 * System.out.println(CollObject.x[i]); }
 		 */
-		//shot.drawShot(g, px, py);
-		controlHealth(g);
-		cameraMovement(x, y, dx, dy);
-		collisionCheck();
-		synchronize();
-		setEntitiyPosition();
-		if (sprite != null)
-			g.drawImage(sprite, px, py, null);
-		g.drawRect(px, py, width, height);
+		// shot.drawShot(g, px, py);
+		if (Entitie.arrHealth[entityNumberOwn] > 0) {
+			controlHealth(g);
+			cameraMovement(x, y, dx, dy);
+			collisionCheck();
+			synchronize();
+			setEntitiyPosition();
+			if (sprite != null)
+				g.drawImage(sprite, px, py, null);
+			g.drawRect(px, py, width, height);
 
-		
+		}
+		else {
+			Entitie.arrX[entityNumberOwn] = -100;
+			Entitie.arrY[entityNumberOwn] = -100;
+		}
 
 	}
 
@@ -74,7 +79,7 @@ public class Enemy extends Entitie {
 
 	private void controlHealth(Graphics2D g) {
 		g.drawRect(px, py - 8, width, 5);
-		g.fillRect(px, py - 8, width * (Entitie.arrHealth[entityNumberOwn] / health.getStartLives()), 5);
+		g.fillRect(px, py - 8, width * Entitie.arrHealth[entityNumberOwn] / health.getStartLives(), 5);
 		// If I don't do it with the ( the Rect wont be full because of rounding
 		// differences
 	}

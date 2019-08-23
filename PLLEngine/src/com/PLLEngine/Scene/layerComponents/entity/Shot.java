@@ -4,6 +4,8 @@ import java.awt.Graphics2D;
 
 import java.util.Date;
 
+import com.PLLEngine.collision.ShotCollision;
+
 public class Shot {
 	private int x, y;
 
@@ -13,6 +15,7 @@ public class Shot {
 	private int shotMove;
 	private int useX;
 	private int useY;
+	private ShotCollision sC = new ShotCollision();
 
 	/**
 	 * 
@@ -41,8 +44,17 @@ public class Shot {
 								// created
 				useY = startY;
 			}
+			int xShot = useX + shotMove + Entitie.dxAll;
+			int yShot = useY + Entitie.dyAll;
+			int widthShot = 13;
+			int heightShot = 13;
+			int enemieShotNumber = sC.shotFromPlayer(xShot, yShot, widthShot, heightShot, 32, 32);
+			if (enemieShotNumber != -1) {
+				Entitie.arrHealth[enemieShotNumber]--;
+				shotMove = 1000;
+			}
 			shotMove = shotMove + 4;
-			g.drawRect(useX + shotMove + Entitie.dxAll, useY + Entitie.dyAll, 13, 13);
+			g.drawRect(xShot, yShot, widthShot, heightShot);
 		}
 		if (shotMove >= 500) {
 			useX = 0;
