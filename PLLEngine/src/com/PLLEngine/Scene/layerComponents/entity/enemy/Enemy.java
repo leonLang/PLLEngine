@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
+import com.PLLEngine.Scene.layerComponents.entity.PassiveEntitie;
 import com.PLLEngine.Scene.layerComponents.entity.Shot;
 import com.PLLEngine.collision.CollEnemVSPlay;
 import com.PLLEngine.collision.CollObject;
@@ -23,6 +24,7 @@ public class Enemy extends Entitie {
 	private boolean collision;
 	private Health health;
 	private Shot shot = new Shot(10, 10);
+	PassiveEntitie pV;
 
 	public Enemy(int startX, int startY) {
 		health = new Health(3);
@@ -58,8 +60,7 @@ public class Enemy extends Entitie {
 				g.drawImage(sprite, px, py, null);
 			g.drawRect(px, py, width, height);
 
-		}
-		else {
+		} else {
 			Entitie.arrX[entityNumberOwn] = -100;
 			Entitie.arrY[entityNumberOwn] = -100;
 		}
