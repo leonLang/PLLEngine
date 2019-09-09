@@ -78,7 +78,7 @@ public class Shot {
 
 			g.drawRect(xShot, yShot, widthShot, heightShot);
 		}
-		if (shotMoveUp >= 500 || shotMoveDown >= 500 || shotMoveLeft >= 500 || shotMoveRight >= 500) {
+		if (shotMoveUp <= -500 || shotMoveDown >= 500 || shotMoveLeft <= -500 || shotMoveRight >= 500) {
 			useX = 0;
 			useY = 0;
 			shotIsFired = false;

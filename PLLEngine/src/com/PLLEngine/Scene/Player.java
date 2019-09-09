@@ -49,7 +49,7 @@ public class Player extends Entitie {
 		this.controller = new Control(this);
 
 		for (int i = 0; i < shot.length; i++) {
-			shot[i] = new Shot(500);
+			shot[i] = new Shot(200);
 		}
 	}
 
