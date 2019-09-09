@@ -2,9 +2,7 @@ package com.PLLEngine.Scene.layerComponents.entity;
 
 //Leon
 import java.awt.Graphics2D;
-
 import java.util.Date;
-
 import com.PLLEngine.collision.ShotCollision;
 
 public class Shot {
@@ -47,7 +45,7 @@ public class Shot {
 				useY = startY;
 			}
 			int xShot = useX + shotMoveLeft + shotMoveRight + Entitie.dxAll;
-			int yShot = useY + shotMoveDown + shotMoveUp +Entitie.dyAll;
+			int yShot = useY + shotMoveDown + shotMoveUp + Entitie.dyAll;
 			int widthShot = 13;
 			int heightShot = 13;
 			int enemieShotNumber = sC.shotFromPlayer(xShot, yShot, widthShot, heightShot, 32, 32);

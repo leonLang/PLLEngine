@@ -1,4 +1,5 @@
 package com.PLLEngine.Scene.layerComponents.entity.enemy;
+
 //Leon
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,8 +27,8 @@ public class Enemy extends Entitie {
 	private Shot shot = new Shot(10, 10);
 	PassiveEntitie pV;
 
-	public Enemy(int startX, int startY) {
-		health = new Health(3);
+	public Enemy(int startX, int startY, int healthE) {
+		health = new Health(healthE);
 		x = startX;
 		y = startY;
 

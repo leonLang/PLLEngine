@@ -72,6 +72,8 @@ public class Player extends Entitie {
 
 		g.drawRect(xOnScreen - width / 2, yOnScreen - height / 2, width, height);
 		g.drawImage(img, xOnScreen - width / 2, yOnScreen - height / 2, width, height, null);
+		
+		//Start Code Leon
 
 	}
 
