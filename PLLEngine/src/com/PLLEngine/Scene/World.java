@@ -230,6 +230,7 @@ public class World extends JPanel implements SceneComponentInterface {
 	}
 
 	private void setObjectCollision() {
+		System.out.println("check");
 		// Beginn Code by Leon
 		// The World has 48 Blocks in X Direction with size 64
 		// The World has 27 Blocks in Y direction with size 64
