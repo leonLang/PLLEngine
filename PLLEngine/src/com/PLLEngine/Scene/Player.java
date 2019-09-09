@@ -1,6 +1,7 @@
 //peter
 package com.PLLEngine.Scene;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -11,6 +12,7 @@ import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollWorld;
 import com.PLLEngine.Scene.layerComponents.entity.Shot;
+import com.PLLEngine.Scene.layerComponents.entity.enemy.Health;
 import com.PLLEngine.srcLoader.SrcLoader;
 
 public class Player extends Entitie {
@@ -38,6 +40,7 @@ public class Player extends Entitie {
 	private CollWorld cW = new CollWorld(64, 64); // Leon
 	private int playerX = 560; // Leon
 	private int playerY = 364; // LEon
+	private Health health = new Health(10); // Leon
 	private Shot[] shot = new Shot[10];
 
 	public Player() {
@@ -72,8 +75,12 @@ public class Player extends Entitie {
 
 		g.drawRect(xOnScreen - width / 2, yOnScreen - height / 2, width, height);
 		g.drawImage(img, xOnScreen - width / 2, yOnScreen - height / 2, width, height, null);
-		
-		//Start Code Leon
+
+		// Start Code Leon
+		g.drawRect(568, 360, 64, 4);
+		g.setColor(Color.gray);
+		g.fillRect(568, 360, 64 * health.getLives() / health.getStartLives(), 4);
+		// End Code Leon
 
 	}
 
