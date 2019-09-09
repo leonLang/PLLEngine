@@ -1,17 +1,19 @@
 {
-  "refrencePath": "house.json",
+  "refrencePath": "refrence.json",
   "spriteSize": 64,
   "entryX": 0,
   "entryY": 0,
   "defaultTexture": 19,
   "spriteSheet": "src_data/sprites/e.png",
   "map": [
-    []
+    [ 19, 19 ],
+    [ 19, 19 ],
+    [ 19, 19 ]
   ],
   "eventCoordinates": [
-    [ 7, 5, 0 ],
-    [ 10, 10, 1, 3 ]
+    [ 0, 2, 1, 3 ]
   ],
   "enemies": [
-
+    [ -100, -100, 0, 5]
   ]
+}
