@@ -224,14 +224,41 @@ public class Player extends Entitie {
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.right = false;
 		}
+		// Leon Code Start
 		if (e.getKeyCode() == KeyEvent.VK_A) {
 			for (int i = 0; i < shot.length; i++) {
 				if (!shot[i].shotIsFired) {
-					shot[i].addShot();
+					shot[i].addShot(0);
 					i = shot.length + 1;
 				}
 			}
 		}
+		if (e.getKeyCode() == KeyEvent.VK_W) {
+			for (int i = 0; i < shot.length; i++) {
+				if (!shot[i].shotIsFired) {
+					shot[i].addShot(2);
+					i = shot.length + 1;
+				}
+			}
+		}
+		if (e.getKeyCode() == KeyEvent.VK_S) {
+			for (int i = 0; i < shot.length; i++) {
+				if (!shot[i].shotIsFired) {
+					shot[i].addShot(3);
+					i = shot.length + 1;
+				}
+			}
+		}
+		if (e.getKeyCode() == KeyEvent.VK_D) {
+			for (int i = 0; i < shot.length; i++) {
+				if (!shot[i].shotIsFired) {
+					shot[i].addShot(1);
+					i = shot.length + 1;
+				}
+			}
+		}
+
+		// Leon Code End
 	}
 
 	public void KeyTyped(KeyEvent e) {

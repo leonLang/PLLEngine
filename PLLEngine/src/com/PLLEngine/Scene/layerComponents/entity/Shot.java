@@ -1,4 +1,5 @@
 package com.PLLEngine.Scene.layerComponents.entity;
+
 //Leon
 import java.awt.Graphics2D;
 
@@ -12,9 +13,10 @@ public class Shot {
 	public static long timeToWait;
 	private int shotTime;
 	public boolean shotIsFired; // The number of shots specifie the number of avaible shots in the field
-	private int shotMove;
+	private int shotMoveLeft, shotMoveRight, shotMoveUp, shotMoveDown;
 	private int useX;
 	private int useY;
+	private int direction;
 	private ShotCollision sC = new ShotCollision();
 
 	/**
@@ -44,28 +46,56 @@ public class Shot {
 								// created
 				useY = startY;
 			}
-			int xShot = useX + shotMove + Entitie.dxAll;
-			int yShot = useY + Entitie.dyAll;
+			int xShot = useX + shotMoveLeft + shotMoveRight + Entitie.dxAll;
+			int yShot = useY + shotMoveDown + shotMoveUp +Entitie.dyAll;
 			int widthShot = 13;
 			int heightShot = 13;
 			int enemieShotNumber = sC.shotFromPlayer(xShot, yShot, widthShot, heightShot, 32, 32);
 			if (enemieShotNumber != -1) {
 				Entitie.arrHealth[enemieShotNumber]--;
-				shotMove = 1000;
+				shotMoveLeft = 1000;
+				shotMoveRight = 1000;
+				shotMoveUp = 1000;
+				shotMoveDown = 1000;
 			}
-			shotMove = shotMove + 4;
+			switch (direction) {
+			case 0:
+				shotMoveLeft = shotMoveLeft - 4;
+				break;
+			case 1:
+				shotMoveRight = shotMoveRight + 4;
+				break;
+			case 2:
+				shotMoveUp = shotMoveUp - 4;
+				break;
+			case 3:
+				shotMoveDown = shotMoveDown + 4;
+				break;
+
+			default:
+				break;
+			}
+
 			g.drawRect(xShot, yShot, widthShot, heightShot);
 		}
-		if (shotMove >= 500) {
+		if (shotMoveUp >= 500 || shotMoveDown >= 500 || shotMoveLeft >= 500 || shotMoveRight >= 500) {
 			useX = 0;
 			useY = 0;
 			shotIsFired = false;
-			shotMove = 0;
+			shotMoveDown = 0;
+			shotMoveUp = 0;
+			shotMoveLeft = 0;
+			shotMoveRight = 0;
 		}
 	}
 
-	public void addShot() {
+	public void addShot(int direction) {
+		// direction 0 == left
+		// direction 1 == right
+		// direction 2 == up
+		// direction 3 == down
 		Date dt = new Date();
+		this.direction = direction;
 		System.out.println(Shot.timeToWait);
 		System.out.println(dt.getTime());
 		if (dt.getTime() > Shot.timeToWait) {
