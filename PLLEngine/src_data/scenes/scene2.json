@@ -1,4 +1,4 @@
 {
-  "stringLayers": [ "layer1.json" ],
-  "stringGui":  "menueInterface.json" 
+  "menue":  true,
+  "stringGui": "menueInterface.json"
 }

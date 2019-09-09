@@ -1,3 +1,4 @@
+//peter
 package com.PLLEngine.Game;
 
 import com.PLLEngine.Control.Control;
@@ -47,7 +48,7 @@ public class Game implements GameBase {
 	@Override
 	public void init() {
 		// init GameWindow with given properties
-		// NOTE: window is just the "class above" the JFrame is a subclass of window ->
+		// NOTE: window is just the "class above". The JFrame itself is a subclass of window ->
 		// getWindow()
 		this.window.init(this);
 		this.scene.init(this);

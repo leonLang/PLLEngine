@@ -1,6 +1,6 @@
+//peter
 package com.PLLEngine.Game;
 
-import java.awt.event.KeyEvent;
 
 public interface GameBase {
 

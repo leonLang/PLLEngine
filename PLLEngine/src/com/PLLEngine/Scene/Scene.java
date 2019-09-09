@@ -1,3 +1,4 @@
+//peter
 package com.PLLEngine.Scene;
 
 import java.awt.Color;
@@ -27,6 +28,8 @@ public class Scene extends JPanel {
 
 	private String stringGui;
 	private GUI gui;
+	
+	private boolean menue = false;
 
 	public Scene() {
 		this.setVisible(true);
@@ -36,15 +39,19 @@ public class Scene extends JPanel {
 		try {
 			this.game = game;
 			this.setBackground(Color.black);
+			if(!menue) {
 			this.loadPlayer();
 			this.loadWorld();
+			}
 			this.loadGui();
+			if(!menue) {
 			this.player.init(game);
 			this.world.init(game);
 			this.player.setX(this.world.offsetX);
 			this.player.setY(this.world.offsetY);
+			}
 		} catch (Exception e) {
-			System.err.println("Error in scne init");
+			System.err.println("Error in scene init");
 			e.printStackTrace();
 		}
 	}
@@ -118,6 +125,15 @@ public class Scene extends JPanel {
 	public void setStringGui(String stringGui) {
 		this.stringGui = stringGui;
 
+	}
+	
+
+	public boolean isMenue() {
+		return menue;
+	}
+
+	public void setMenue(boolean menue) {
+		this.menue = menue;
 	}
 
 	@Override

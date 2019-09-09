@@ -1,3 +1,4 @@
+//peter
 package com.PLLEngine.Scene;
 
 import java.awt.BorderLayout;
@@ -63,6 +64,7 @@ public class GUI extends JPanel implements SceneComponentInterface {
 		for (int i = 0; i < button.length; i++) {
 			buttons[i] = new JButton();
 			buttons[i].setText(button[i].getText());
+			buttons[i].addac
 			switch (this.stringLayout) {
 			case "BorderLayout":
 				this.setPreferredSize(new Dimension(button[i].getWidth(),button[i].getHeight()));
