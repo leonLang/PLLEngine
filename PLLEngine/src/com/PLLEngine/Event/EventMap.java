@@ -29,7 +29,7 @@ public class EventMap {
 	return -1;	
 	}
 	public int getMapID() {
-		return this.eventCoordinates[index][3];
+		return this.index;
 	}
 	//same but with a range within the target
 	public int getEventTrigger(int x,int y,int r) {

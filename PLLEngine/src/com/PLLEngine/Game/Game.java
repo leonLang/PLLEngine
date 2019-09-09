@@ -86,32 +86,33 @@ public class Game implements GameBase {
 					-this.scene.getPlayer().getX() / this.scene.getWorld().getSpriteSize(),
 					-this.scene.getPlayer().getY() / this.scene.getWorld().getSpriteSize());
 			if (i != -1) {
+				int[][] offset = this.scene.getWorld().eMap.getEventCoordinates();
 				System.out.println("Event triggered\nEvent ID: " + i);
 				switch (i) {
 				case 0:
 					/*
 					 * Working -> Coordinate class transfer
 					 */
-					this.scene.getWorld().setDcx(this.scene.getWorld().getDcx() + 10);
-					this.scene.getWorld().setDcy(this.scene.getWorld().getDcy() + 10);
+					this.scene.getWorld().setDcx(this.scene.getWorld().getDcx() + offset[this.scene.getWorld().eMap.getMapID()][3]);
+					this.scene.getWorld().setDcy(this.scene.getWorld().getDcy() + offset[this.scene.getWorld().eMap.getMapID()][4]);
 
 					this.scene.getWorld()
-							.setDex(this.scene.getWorld().getDex() - 10 * this.scene.getWorld().getSpriteSize());
+							.setDex(this.scene.getWorld().getDex() - offset[this.scene.getWorld().eMap.getMapID()][3] * this.scene.getWorld().getSpriteSize());
 					this.scene.getWorld()
-							.setDey(this.scene.getWorld().getDey() - 10 * this.scene.getWorld().getSpriteSize());
+							.setDey(this.scene.getWorld().getDey() - offset[this.scene.getWorld().eMap.getMapID()][4] * this.scene.getWorld().getSpriteSize());
 
 					this.scene.getPlayer()
-							.setX(this.scene.getPlayer().getX() - 10 * this.scene.getWorld().getSpriteSize());
+							.setX(this.scene.getPlayer().getX() - offset[this.scene.getWorld().eMap.getMapID()][3] * this.scene.getWorld().getSpriteSize());
 					this.scene.getPlayer()
-							.setY(this.scene.getPlayer().getY() - 10 * this.scene.getWorld().getSpriteSize());
+							.setY(this.scene.getPlayer().getY() - offset[this.scene.getWorld().eMap.getMapID()][4] * this.scene.getWorld().getSpriteSize());
 					break;
 				case 1:
 					this.loop.paused = true;
 					this.window.getWindow().remove(this.scene);
 					this.scene.sceneDel();
-					System.out.println("ID Check: " + this.scene.getWorld().geteMap().getMapID());
-					System.out.println("World with ID:" + this.scene.getWorld().geteMap().getMapID() + "loaded");
-					this.setLoadingScene("scene" + this.scene.getWorld().geteMap().getMapID() + ".json");
+					System.out.println("ID Check: " + offset[this.scene.getWorld().eMap.getMapID()][3]);
+					System.out.println("World with ID:" + offset[this.scene.getWorld().eMap.getMapID()][3] + "loaded");
+					this.setLoadingScene("scene" + offset[this.scene.getWorld().eMap.getMapID()][3] + ".json");
 					this.init();
 					this.loop.paused = false;
 					break;
