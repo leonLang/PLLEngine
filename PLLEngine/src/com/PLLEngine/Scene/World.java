@@ -103,7 +103,11 @@ public class World extends JPanel implements SceneComponentInterface {
 		try {
 			enemysrc = new Enemy[enemies.length];
 			for (int i = 0; i < enemysrc.length; i++) {
+<<<<<<< HEAD
 				enemysrc[i] = new Enemy(enemies[i][0] * this.spriteSize, enemies[i][1] * this.spriteSize, enemies[i][3]);
+=======
+				enemysrc[i] = new Enemy(enemies[i][0] * this.spriteSize, enemies[i][1] * this.spriteSize, 6);
+>>>>>>> branch 'master' of https://github.com/leonLang/PLLEngine.git
 			}
 		} catch (Exception e) {
 			System.err.println("Error while loading map.entities");

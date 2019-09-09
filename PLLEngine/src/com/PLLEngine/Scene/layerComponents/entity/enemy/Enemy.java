@@ -29,6 +29,7 @@ public class Enemy extends Entitie {
 
 	public Enemy(int startX, int startY, int healthE) {
 		health = new Health(healthE);
+		Entitie.arrHealth[entityNumberOwn] = healthE;
 		x = startX;
 		y = startY;
 
