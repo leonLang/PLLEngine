@@ -47,8 +47,8 @@ public class Scene extends JPanel {
 			if(!menue) {
 			this.player.init(game);
 			this.world.init(game);
-			this.player.setX(this.world.offsetX);
-			this.player.setY(this.world.offsetY);
+			this.player.setX(-this.world.getEntryX()*this.world.getSpriteSize());
+			this.player.setY(-this.world.getEntryY()*this.world.getSpriteSize());
 			}
 		} catch (Exception e) {
 			System.err.println("Error in scene init");
