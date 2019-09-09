@@ -321,6 +321,7 @@ public class Player extends Entitie {
 
 	public void setX(int x) {
 		this.x = x;
+		System.out.println(this.x);
 	}
 
 	public int getY() {

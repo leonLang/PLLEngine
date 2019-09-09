@@ -39,7 +39,7 @@ public class Game implements GameBase {
 	public void setup() {
 		// default setup
 		// this.controller = new Control(this);
-		//this.cs = new CoordinateSystem(this);
+		// this.cs = new CoordinateSystem(this);
 		this.loop = new GameLoop(this);
 		this.loop.start();
 
@@ -48,7 +48,8 @@ public class Game implements GameBase {
 	@Override
 	public void init() {
 		// init GameWindow with given properties
-		// NOTE: window is just the "class above". The JFrame itself is a subclass of window ->
+		// NOTE: window is just the "class above". The JFrame itself is a subclass of
+		// window ->
 		// getWindow()
 		this.window.init(this);
 		this.scene.init(this);
@@ -89,17 +90,20 @@ public class Game implements GameBase {
 				switch (i) {
 				case 0:
 					/*
-					 * Working -> Coordinate class transfer 
+					 * Working -> Coordinate class transfer
 					 */
-					this.scene.getWorld().setDcx(this.scene.getWorld().getDcx()+10);
-					this.scene.getWorld().setDcy(this.scene.getWorld().getDcy()+10);
-					
-					this.scene.getWorld().setDex(this.scene.getWorld().getDex()-10 * this.scene.getWorld().getSpriteSize());
-					this.scene.getWorld().setDey(this.scene.getWorld().getDey()-10 * this.scene.getWorld().getSpriteSize());
+					this.scene.getWorld().setDcx(this.scene.getWorld().getDcx() + 10);
+					this.scene.getWorld().setDcy(this.scene.getWorld().getDcy() + 10);
 
-					
-					this.scene.getPlayer().setX(this.scene.getPlayer().getX() - 10 * this.scene.getWorld().getSpriteSize());
-					this.scene.getPlayer().setY(this.scene.getPlayer().getY() - 10 * this.scene.getWorld().getSpriteSize());
+					this.scene.getWorld()
+							.setDex(this.scene.getWorld().getDex() - 10 * this.scene.getWorld().getSpriteSize());
+					this.scene.getWorld()
+							.setDey(this.scene.getWorld().getDey() - 10 * this.scene.getWorld().getSpriteSize());
+
+					this.scene.getPlayer()
+							.setX(this.scene.getPlayer().getX() - 10 * this.scene.getWorld().getSpriteSize());
+					this.scene.getPlayer()
+							.setY(this.scene.getPlayer().getY() - 10 * this.scene.getWorld().getSpriteSize());
 					break;
 				case 1:
 					this.loop.paused = true;
@@ -139,6 +143,7 @@ public class Game implements GameBase {
 		private Game g;
 		private Player p;
 		private World w;
+
 		public CoordinateSystem(Game g) {
 			this.g = g;
 			this.p = g.getScene().getPlayer();

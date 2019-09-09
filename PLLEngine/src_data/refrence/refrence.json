@@ -116,7 +116,7 @@
   },
   {
     "id": 20,
-    "collision": true,
+    "collision": false,
     "spriteX": 32,
     "spriteY": 14
   },
