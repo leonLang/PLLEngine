@@ -95,15 +95,16 @@ public class World extends JPanel implements SceneComponentInterface {
 		this.dcx = this.entryX - game.getScene().getPlayer().getxOnScreen() / this.spriteSize;
 		this.dcy = this.entryY - game.getScene().getPlayer().getyOnScreen() / this.spriteSize;
 
-		this.dex =  game.getScene().getPlayer().getxOnScreen() - (this.entryX * this.spriteSize);
-		this.dey =  game.getScene().getPlayer().getyOnScreen( )- (this.entryY * this.spriteSize);
+		this.dex = game.getScene().getPlayer().getxOnScreen() - (this.entryX * this.spriteSize);
+		this.dey = game.getScene().getPlayer().getyOnScreen() - (this.entryY * this.spriteSize);
 	}
 
 	private void loadEnemies() {
 		try {
 			enemysrc = new Enemy[enemies.length];
 			for (int i = 0; i < enemysrc.length; i++) {
-				enemysrc[i] = new Enemy(enemies[i][0] * this.spriteSize, enemies[i][1] * this.spriteSize, enemies[i][3]);
+				enemysrc[i] = new Enemy(enemies[i][0] * this.spriteSize, enemies[i][1] * this.spriteSize,
+						enemies[i][3]);
 			}
 		} catch (Exception e) {
 			System.err.println("Error while loading map.entities");
@@ -232,8 +233,8 @@ public class World extends JPanel implements SceneComponentInterface {
 		// Beginn Code by Leon
 		// The World has 48 Blocks in X Direction with size 64
 		// The World has 27 Blocks in Y direction with size 64
-		for (int rowX = 0; rowX < 48; rowX++) {
-			for (int rowY = 0; rowY < 27; rowY++) {
+		for (int rowY = 0; rowY < map.length; rowY++) {
+			for (int rowX = 0; rowX < map[rowY].length; rowX++) {
 				boolean collisionO = loadedsrc[map[rowY][rowX]].isCollision();
 				cO.setDatas(collisionO, rowX, rowY, dx, dy);
 			}
