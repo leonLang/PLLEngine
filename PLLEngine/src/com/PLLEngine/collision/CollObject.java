@@ -27,6 +27,13 @@ public class CollObject {
 
 		}
 	}
+	
+	public void resetDatas() {
+		startX = new int[0];
+		startY = new int[0];
+		x = new int[0];
+		y = new int[0];
+	}
 
 	public void updateDatas(int dx, int dy) {
 		for (int i = 0; i < CollObject.x.length; i++) {
