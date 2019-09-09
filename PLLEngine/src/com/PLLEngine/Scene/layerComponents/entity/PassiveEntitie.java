@@ -1,5 +1,5 @@
 package com.PLLEngine.Scene.layerComponents.entity;
-
+//Leon
 import java.awt.Graphics2D;
 
 public class PassiveEntitie extends Entitie {
