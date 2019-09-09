@@ -15,7 +15,6 @@ import com.PLLEngine.srcLoader.SrcLoader;
 
 public class Player extends Entitie {
 
-	
 	private Game game;
 	private Control controller;
 
