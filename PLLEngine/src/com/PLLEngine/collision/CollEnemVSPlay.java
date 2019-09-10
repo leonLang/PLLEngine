@@ -7,7 +7,6 @@ public class CollEnemVSPlay {
 	private int widthPlayer = 64;
 	private int heightPlayer = 64;
 	private Collision cl;
-	private boolean onlyOneShouldActivate;
 
 	// Test
 	public CollEnemVSPlay(int xEnemie, int yEnemie, int widthEnemie, int heightEnemie) {

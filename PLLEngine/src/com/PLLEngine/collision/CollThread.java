@@ -17,7 +17,8 @@ public class CollThread extends Thread {
 	}
 
 	private void runAlways() {
-		while (0 == 0) {
+		int schleife = 1;
+		while (schleife == 1) {
 			// playerVSEnemy();
 			this.enemyVSEnemy();
 			this.stopForPerformance(10);
@@ -35,7 +36,6 @@ public class CollThread extends Thread {
 
 	private void enemyVSEnemy() {
 		int cntr = 0; // counter starts with 1 because 0 is the player
-		int counterPL = 0;
 		int amntObjcts = Entitie.arrX.length;
 		int arrX[] = Entitie.arrX;
 		int arrY[] = Entitie.arrY;

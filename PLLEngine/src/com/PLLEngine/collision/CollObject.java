@@ -7,7 +7,6 @@ public class CollObject {
 	public static int y[] = new int[0];
 	private int width = 64;
 	private int heigth = 64;
-	private int counter = 0;
 	private int entityWidth;
 	private int entityHeigth;
 
