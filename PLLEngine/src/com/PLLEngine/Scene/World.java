@@ -190,13 +190,6 @@ public class World extends JPanel implements SceneComponentInterface {
 					g.drawImage(loadedsrc[map[y + dcy][x + dcx]].getImg(), x * spriteSize + dx, y * spriteSize + dy,
 							spriteSize, spriteSize, null);
 					// draw enemies
-					for (int i = 0; i < enemysrc.length; i++) {
-						// enemysrc[i].cameraMovement(enemysrc[i].getPx(), enemysrc[i].getPy(), dx, dy);
-						enemysrc[i].setDx(dex);
-						enemysrc[i].setDy(dey);
-						enemysrc[i].draw(g);
-
-					}
 
 					// g.drawRect(x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize);
 				} catch (Exception e) {
@@ -212,6 +205,13 @@ public class World extends JPanel implements SceneComponentInterface {
 		// System.out.println(CollObject.x[0]);
 		// I don't know what happens if you change to another world. Have to try it out
 		// later
+		for (int i = 0; i < enemysrc.length; i++) {
+			// enemysrc[i].cameraMovement(enemysrc[i].getPx(), enemysrc[i].getPy(), dx, dy);
+			enemysrc[i].setDx(dex);
+			enemysrc[i].setDy(dey);
+			enemysrc[i].draw(g);
+
+		}
 	}
 
 	public void update() {
