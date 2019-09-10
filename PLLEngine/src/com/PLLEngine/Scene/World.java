@@ -242,7 +242,6 @@ public class World extends JPanel implements SceneComponentInterface {
 		// The World has 48 Blocks in X Direction with size 64
 		// The World has 27 Blocks in Y direction with size 64
 		Entitie.resetEnemies();
-
 		cO.resetDatas();
 		for (int rowY = 0; rowY < map.length; rowY++) {
 			for (int rowX = 0; rowX < map[rowY].length; rowX++) {
