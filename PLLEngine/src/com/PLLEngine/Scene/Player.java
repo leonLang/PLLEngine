@@ -35,12 +35,15 @@ public class Player extends Entitie {
 	private int movementstate;
 	private int attackState;
 
-	private CollObject cO = new CollObject(64, 64); // Leon
-	private CollWorld cW = new CollWorld(64, 64); // Leon
-	private int playerX = 560; // Leon
-	private int playerY = 364; // LEon
-	private Health health = new Health(10); // Leon
+	// Leon Code Start
+	private CollObject cO = new CollObject(64, 64);
+	private CollWorld cW = new CollWorld(64, 64);
+	private int playerX = 560;
+	private int playerY = 364;
+	private Health health = new Health(10);
 	private Shot[] shot = new Shot[10];
+	public static int lives;
+	// Leon Code End
 
 	public Player() {
 		img = SrcLoader.Image("char00.png");
@@ -62,23 +65,24 @@ public class Player extends Entitie {
 		this.game.getWindow().getWindow().addKeyListener(this.controller);
 		this.game.getWindow().getWindow().requestFocusInWindow();
 		this.attackState = 1;
+		lives = health.getLives(); // Leon
 
 	}
 
 	@Override
 	public void draw(Graphics2D g) {
-		// synchronize();
+		// synchronize();	
 		for (int i = 0; i < shot.length; i++) {
 			shot[i].drawShot(g, 560 - Entitie.dxAll, 364 - Entitie.dyAll);
 		}
-
+		g.setColor(Color.gray);
 		g.drawRect(xOnScreen - width / 2, yOnScreen - height / 2, width, height);
 		g.drawImage(img, xOnScreen - width / 2, yOnScreen - height / 2, width, height, null);
 
 		// Start Code Leon
 		g.drawRect(568, 360, 64, 4);
-		g.setColor(Color.gray);
-		g.fillRect(568, 360, 64 * health.getLives() / health.getStartLives(), 4);
+		
+		g.fillRect(568, 360, 64 * lives / health.getStartLives(), 4);
 		// End Code Leon
 
 	}

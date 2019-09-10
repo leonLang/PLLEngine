@@ -1,5 +1,6 @@
 package com.PLLEngine.Scene.layerComponents.entity.enemy;
 
+import java.awt.Color;
 //Leon
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,6 +10,7 @@ import java.awt.image.BufferedImage;
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.Scene.layerComponents.entity.PassiveEntitie;
 import com.PLLEngine.Scene.layerComponents.entity.Shot;
+import com.PLLEngine.Scene.layerComponents.entity.ShotEn;
 import com.PLLEngine.collision.CollEnemVSPlay;
 import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
@@ -26,7 +28,8 @@ public class Enemy extends Entitie {
 	private Health health;
 	private Shot shot = new Shot(10, 10);
 	PassiveEntitie pV;
-
+	ShotEn sE = new ShotEn();
+	private int xSmile, ySmile;
 	public Enemy(int startX, int startY, int healthE) {
 		health = new Health(healthE);
 		Entitie.arrHealth[entityNumberOwn] = healthE;
@@ -61,11 +64,21 @@ public class Enemy extends Entitie {
 			if (sprite != null)
 				g.drawImage(sprite, px, py, null);
 			g.drawRect(px, py, width, height);
+			g.drawOval(px + 6, py + 2, 7, 7);
+			
+			
+			for (int i = 0; i < 5; i++) {
+				g.drawRect(6, 15, 3, 3);
+				xSmile++;
+				ySmile++;
+			}
 
 		} else {
 			Entitie.arrX[entityNumberOwn] = -100;
 			Entitie.arrY[entityNumberOwn] = -100;
 		}
+		
+		sE.drawShots(g, Entitie.arrX[entityNumberOwn], Entitie.arrY[entityNumberOwn]);
 
 	}
 
@@ -81,8 +94,10 @@ public class Enemy extends Entitie {
 	}
 
 	private void controlHealth(Graphics2D g) {
-		g.drawRect(px, py - 8, width, 5);
-		g.fillRect(px, py - 8, width * Entitie.arrHealth[entityNumberOwn] / health.getStartLives(), 5);
+		g.setColor(Color.DARK_GRAY);
+		g.drawRect(px, py - 4, width, 2);
+		g.fillRect(px, py - 4, width * Entitie.arrHealth[entityNumberOwn] / health.getStartLives(), 2);
+		g.setColor(Color.black);
 		// If I don't do it with the ( the Rect wont be full because of rounding
 		// differences
 	}
