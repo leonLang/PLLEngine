@@ -37,8 +37,8 @@ public class Player extends Entitie {
 	private int attackState;
 
 	// Leon Code Start
-	private CollObject cO = new CollObject(62, 62);
-	private CollWorld cW = new CollWorld(62, 62);
+	private CollObject cO = new CollObject(58, 58);
+	private CollWorld cW = new CollWorld(58, 58);
 	private int playerX = 560;
 	private int playerY = 364;
 	private Health health = new Health(10);

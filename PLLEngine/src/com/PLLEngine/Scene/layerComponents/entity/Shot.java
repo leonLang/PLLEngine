@@ -77,7 +77,7 @@ public class Shot {
 			g.fillOval(xShot, yShot, widthShot, heightShot);
 			g.drawOval(xShot, yShot, widthShot, heightShot);
 			g.setColor(Color.black);
-			//g.drawRect(xShot, yShot, widthShot, heightShot);
+			// g.drawRect(xShot, yShot, widthShot, heightShot);
 		}
 		if (shotMoveUp <= -500 || shotMoveDown >= 500 || shotMoveLeft <= -500 || shotMoveRight >= 500) {
 			useX = 0;
