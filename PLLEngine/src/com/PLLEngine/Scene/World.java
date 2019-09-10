@@ -33,6 +33,7 @@ public class World extends JPanel implements SceneComponentInterface {
 	private Enemy[] enemysrc;
 	private int[][] map;
 	private int defaultTexture;
+	private int defaultTextureCover;
 	private int[][] eventCoordinates;
 	private int[][] enemies;
 	private int entryX, entryY;
@@ -198,6 +199,12 @@ public class World extends JPanel implements SceneComponentInterface {
 
 					// g.drawRect(x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize);
 				} catch (Exception e) {
+					g.drawImage(
+							(loadedsrc[this.defaultTexture].getImg()),
+							x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize, null);
+					g.drawImage(
+							(loadedsrc[this.defaultTextureCover].getImg()),
+							x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize, null);
 				}
 			}
 		}
@@ -233,9 +240,9 @@ public class World extends JPanel implements SceneComponentInterface {
 		// Beginn Code by Leon
 		// The World has 48 Blocks in X Direction with size 64
 		// The World has 27 Blocks in Y direction with size 64
+		cO.resetDatas();
 		for (int rowY = 0; rowY < map.length; rowY++) {
 			for (int rowX = 0; rowX < map[rowY].length; rowX++) {
-				cO.resetDatas();
 				boolean collisionO = loadedsrc[map[rowY][rowX]].isCollision();
 				cO.setDatas(collisionO, rowX, rowY, dx, dy);
 			}
@@ -314,6 +321,15 @@ public class World extends JPanel implements SceneComponentInterface {
 
 	public void setDefaultTexture(int defaultTexture) {
 		this.defaultTexture = defaultTexture;
+	}
+
+	
+	public int getDefaultTextureCover() {
+		return defaultTextureCover;
+	}
+
+	public void setDefaultTextureCover(int defaultTextureCover) {
+		this.defaultTextureCover = defaultTextureCover;
 	}
 
 	public int getEntryX() {
