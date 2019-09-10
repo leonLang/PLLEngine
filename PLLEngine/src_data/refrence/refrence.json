@@ -293,5 +293,48 @@
     "collision": true,
     "spriteX": 33,
     "spriteY": 9
+  },
+  {
+    "id": 50,
+    "path": "src_data/rest.png",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
+  },
+  {
+    "id": 51,
+    "collision": true,
+    "spriteX": 12,
+    "spriteY": 19
+  },
+  {
+    "id": 52,
+    "collision": true,
+    "spriteX": 13,
+    "spriteY": 19
+  },
+  {
+    "id": 53,
+    "collision": true,
+    "spriteX": 12,
+    "spriteY": 20
+  },
+  {
+    "id": 54,
+    "collision": true,
+    "spriteX": 13,
+    "spriteY": 20
+  },
+  {
+    "id": 55,
+    "collision": true,
+    "spriteX": 14,
+    "spriteY": 20
+  },
+  {
+    "id": 56,
+    "collision": true,
+    "spriteX": 14,
+    "spriteY": 19
   }
 ]
