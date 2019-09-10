@@ -38,36 +38,36 @@ public class Shot {
 	public void drawShot(Graphics2D g, int startX, int startY) {
 		// Collision needs to be done by the enemie;
 
-		if (shotIsFired == true) {
-			if (useX == 0 && useY == 0) {
-				useX = startX; // this is needed because startX and startY mustn't change after the shot is
+		if (this.shotIsFired == true) {
+			if (this.useX == 0 && this.useY == 0) {
+				this.useX = startX; // this is needed because startX and startY mustn't change after the shot is
 								// created
-				useY = startY;
+				this.useY = startY;
 			}
-			int xShot = useX + shotMoveLeft + shotMoveRight + Entitie.dxAll;
-			int yShot = useY + shotMoveDown + shotMoveUp + Entitie.dyAll;
+			int xShot = this.useX + this.shotMoveLeft + this.shotMoveRight + Entitie.dxAll;
+			int yShot = this.useY + this.shotMoveDown + this.shotMoveUp + Entitie.dyAll;
 			int widthShot = 13;
 			int heightShot = 13;
-			int enemieShotNumber = sC.shotFromPlayer(xShot, yShot, widthShot, heightShot, 32, 32);
+			int enemieShotNumber = this.sC.shotFromPlayer(xShot, yShot, widthShot, heightShot, 32, 32);
 			if (enemieShotNumber != -1) {
 				Entitie.arrHealth[enemieShotNumber]--;
-				shotMoveLeft = 1000;
-				shotMoveRight = 1000;
-				shotMoveUp = 1000;
-				shotMoveDown = 1000;
+				this.shotMoveLeft = 1000;
+				this.shotMoveRight = 1000;
+				this.shotMoveUp = 1000;
+				this.shotMoveDown = 1000;
 			}
-			switch (direction) {
+			switch (this.direction) {
 			case 0:
-				shotMoveLeft = shotMoveLeft - 4;
+				this.shotMoveLeft = this.shotMoveLeft - 4;
 				break;
 			case 1:
-				shotMoveRight = shotMoveRight + 4;
+				this.shotMoveRight = this.shotMoveRight + 4;
 				break;
 			case 2:
-				shotMoveUp = shotMoveUp - 4;
+				this.shotMoveUp = this.shotMoveUp - 4;
 				break;
 			case 3:
-				shotMoveDown = shotMoveDown + 4;
+				this.shotMoveDown = this.shotMoveDown + 4;
 				break;
 
 			default:
@@ -79,14 +79,14 @@ public class Shot {
 			g.setColor(Color.black);
 			// g.drawRect(xShot, yShot, widthShot, heightShot);
 		}
-		if (shotMoveUp <= -500 || shotMoveDown >= 500 || shotMoveLeft <= -500 || shotMoveRight >= 500) {
-			useX = 0;
-			useY = 0;
-			shotIsFired = false;
-			shotMoveDown = 0;
-			shotMoveUp = 0;
-			shotMoveLeft = 0;
-			shotMoveRight = 0;
+		if (this.shotMoveUp <= -500 || this.shotMoveDown >= 500 || this.shotMoveLeft <= -500 || this.shotMoveRight >= 500) {
+			this.useX = 0;
+			this.useY = 0;
+			this.shotIsFired = false;
+			this.shotMoveDown = 0;
+			this.shotMoveUp = 0;
+			this.shotMoveLeft = 0;
+			this.shotMoveRight = 0;
 		}
 	}
 
@@ -98,8 +98,8 @@ public class Shot {
 		Date dt = new Date();
 		this.direction = direction;
 		if (dt.getTime() > Shot.timeToWait) {
-			Shot.timeToWait = dt.getTime() + shotTime;
-			shotIsFired = true;
+			Shot.timeToWait = dt.getTime() + this.shotTime;
+			this.shotIsFired = true;
 		}
 	}
 

@@ -21,13 +21,13 @@ public class Entitie implements SceneComponentInterface {
 	protected int dx, dy;
 
 	public Entitie() {
-		dx = 0;
-		dy = 0;
-		entityNumberOwn = arrX.length - 1;
-		arrX = enlargeArraySize(arrX);
-		arrY = enlargeArraySize(arrY);
+		this.dx = 0;
+		this.dy = 0;
+		this.entityNumberOwn = arrX.length - 1;
+		arrX = this.enlargeArraySize(arrX);
+		arrY = this.enlargeArraySize(arrY);
 		arrHealth[arrHealth.length - 1] = 3;
-		arrHealth = enlargeArraySize(arrHealth);
+		arrHealth = this.enlargeArraySize(arrHealth);
 
 		if (onlyOnce == false) {
 			System.out.println("einmal");
@@ -57,13 +57,13 @@ public class Entitie implements SceneComponentInterface {
 	}
 
 	public void cameraMovement(int x, int y, int dx, int dy) {
-		cO.updateDatas(dx, dy);
-		px = x + dx;
-		py = y + dy;
+		this.cO.updateDatas(dx, dy);
+		this.px = x + dx;
+		this.py = y + dy;
 	}
 
 	public int getPx() {
-		return px;
+		return this.px;
 	}
 
 	public void setPx(int px) {
@@ -71,7 +71,7 @@ public class Entitie implements SceneComponentInterface {
 	}
 
 	public int getPy() {
-		return py;
+		return this.py;
 	}
 
 	public void setPy(int py) {
@@ -79,7 +79,7 @@ public class Entitie implements SceneComponentInterface {
 	}
 
 	public int getDx() {
-		return dx;
+		return this.dx;
 	}
 
 	public void setDx(int dx) {
@@ -88,7 +88,7 @@ public class Entitie implements SceneComponentInterface {
 	}
 
 	public int getDy() {
-		return dy;
+		return this.dy;
 	}
 
 	public void setDy(int dy) {

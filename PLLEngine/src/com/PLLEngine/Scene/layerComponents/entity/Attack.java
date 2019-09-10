@@ -19,25 +19,25 @@ public class Attack {
 	}
 
 	public void drawAttack(Graphics2D g, int px, int py) {
-		timerAttack++;
-		if (counterAttack >= 10) {
-			fromUpToDown = true;
+		this.timerAttack++;
+		if (this.counterAttack >= 10) {
+			this.fromUpToDown = true;
 		}
-		if (counterAttack <= 0) {
-			fromUpToDown = false;
+		if (this.counterAttack <= 0) {
+			this.fromUpToDown = false;
 		}
-		if (fromUpToDown == true) {
-			if (timerAttack >= 100) {
-				counterAttack--;
-				timerAttack = 0;
+		if (this.fromUpToDown == true) {
+			if (this.timerAttack >= 100) {
+				this.counterAttack--;
+				this.timerAttack = 0;
 			}
-			g.drawRect(px + 30 + counterAttack, py + 40 - counterAttack * 2, 2, 2);
+			g.drawRect(px + 30 + this.counterAttack, py + 40 - this.counterAttack * 2, 2, 2);
 		} else {
-			if (timerAttack >= 100) {
-				counterAttack++;
-				timerAttack = 0;
+			if (this.timerAttack >= 100) {
+				this.counterAttack++;
+				this.timerAttack = 0;
 			}
-			g.drawRect(px + 30 + counterAttack, py + counterAttack * 2, 2, 2);
+			g.drawRect(px + 30 + this.counterAttack, py + this.counterAttack * 2, 2, 2);
 		}
 
 	}

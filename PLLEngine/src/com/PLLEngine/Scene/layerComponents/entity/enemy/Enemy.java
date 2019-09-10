@@ -1,10 +1,7 @@
 package com.PLLEngine.Scene.layerComponents.entity.enemy;
 
 import java.awt.Color;
-//Leon
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
@@ -12,8 +9,6 @@ import com.PLLEngine.Scene.layerComponents.entity.PassiveEntitie;
 import com.PLLEngine.Scene.layerComponents.entity.Shot;
 import com.PLLEngine.Scene.layerComponents.entity.ShotEn;
 import com.PLLEngine.collision.CollEnemVSPlay;
-import com.PLLEngine.collision.CollObject;
-import com.PLLEngine.collision.CollThread;
 
 public class Enemy extends Entitie {
 	Movement mv;
@@ -31,21 +26,21 @@ public class Enemy extends Entitie {
 	ShotEn sE = new ShotEn();
 	private int xSmile, ySmile;
 	public Enemy(int startX, int startY, int healthE) {
-		health = new Health(healthE);
-		Entitie.arrHealth[entityNumberOwn] = healthE;
-		x = startX;
-		y = startY;
+		this.health = new Health(healthE);
+		Entitie.arrHealth[this.entityNumberOwn] = healthE;
+		this.x = startX;
+		this.y = startY;
 
 		
 		if (!richtungAll) {
 			richtungAll = true;
-			richtungOwn = true;
-			once = true;
+			this.richtungOwn = true;
+			this.once = true;
 		} else if (richtungAll) {
 			richtungAll = false;
-			once = true;
+			this.once = true;
 		}
-		mv = new Movement(richtungOwn, dx, dy);
+		this.mv = new Movement(this.richtungOwn, this.dx, this.dy);
 
 	}
 
@@ -56,16 +51,16 @@ public class Enemy extends Entitie {
 		 * System.out.println(CollObject.x[i]); }
 		 */
 		// shot.drawShot(g, px, py);
-		if (Entitie.arrHealth[entityNumberOwn] > 0) {
-			controlHealth(g);
-			cameraMovement(x, y, dx, dy);
-			collisionCheck();
-			synchronize();
-			setEntitiyPosition();
-			if (sprite != null)
-				g.drawImage(sprite, px, py, null);
-			g.drawRect(px, py, width, height);
-			g.drawOval(px + 6, py + 2, 7, 7);
+		if (Entitie.arrHealth[this.entityNumberOwn] > 0) {
+			this.controlHealth(g);
+			this.cameraMovement(this.x, this.y, this.dx, this.dy);
+			this.collisionCheck();
+			this.synchronize();
+			this.setEntitiyPosition();
+			if (this.sprite != null)
+				g.drawImage(this.sprite, this.px, this.py, null);
+			g.drawRect(this.px, this.py, this.width, this.height);
+			g.drawOval(this.px + 6, this.py + 2, 7, 7);
 			
 			
 			/*for (int i = 0; i < 5; i++) {
@@ -75,29 +70,29 @@ public class Enemy extends Entitie {
 			}*/
 
 		} else {
-			Entitie.arrX[entityNumberOwn] = -10000;
-			Entitie.arrY[entityNumberOwn] = -10000;
+			Entitie.arrX[this.entityNumberOwn] = -10000;
+			Entitie.arrY[this.entityNumberOwn] = -10000;
 		}
 		
-		sE.drawShots(g, Entitie.arrX[entityNumberOwn], Entitie.arrY[entityNumberOwn]);
+		this.sE.drawShots(g, Entitie.arrX[this.entityNumberOwn], Entitie.arrY[this.entityNumberOwn]);
 
 	}
 
 	private void enemyMovement() {
-		mv.setX(x);
-		mv.setY(y);
-		mv.setDx(dx);
-		mv.setDy(dy);
-		mv.normalMovement(entityNumberOwn);
-		x = mv.getX();
-		y = mv.getY();
+		this.mv.setX(this.x);
+		this.mv.setY(this.y);
+		this.mv.setDx(this.dx);
+		this.mv.setDy(this.dy);
+		this.mv.normalMovement(this.entityNumberOwn);
+		this.x = this.mv.getX();
+		this.y = this.mv.getY();
 
 	}
 
 	private void controlHealth(Graphics2D g) {
 		g.setColor(Color.DARK_GRAY);
-		g.drawRect(px, py - 4, width, 2);
-		g.fillRect(px, py - 4, width * Entitie.arrHealth[entityNumberOwn] / health.getStartLives(), 2);
+		g.drawRect(this.px, this.py - 4, this.width, 2);
+		g.fillRect(this.px, this.py - 4, this.width * Entitie.arrHealth[this.entityNumberOwn] / this.health.getStartLives(), 2);
 		g.setColor(Color.black);
 		// If I don't do it with the ( the Rect wont be full because of rounding
 		// differences
@@ -106,12 +101,12 @@ public class Enemy extends Entitie {
 	private void collisionCheck() {
 		// here you can define what should happen after Collision with Player is
 		// triggered
-		CollEnemVSPlay cl = new CollEnemVSPlay(px, py, 20, 20);
+		CollEnemVSPlay cl = new CollEnemVSPlay(this.px, this.py, 20, 20);
 		if (cl.getCollLinks()) {
-			health.removeOneHeart();
-			collision = true;
+			this.health.removeOneHeart();
+			this.collision = true;
 		} else if (cl.getCollRechts()) {
-			collision = true;
+			this.collision = true;
 		} else {
 
 		}
@@ -119,9 +114,9 @@ public class Enemy extends Entitie {
 
 	private void synchronize() {
 
-		if (Entitie.synchronize[entityNumberOwn]) {
-			Entitie.synchronize[entityNumberOwn] = false;
-			enemyMovement();
+		if (Entitie.synchronize[this.entityNumberOwn]) {
+			Entitie.synchronize[this.entityNumberOwn] = false;
+			this.enemyMovement();
 			/*
 			 * if (CollThread.collLeft[entityNumberOwn]) {
 			 * 
@@ -134,8 +129,8 @@ public class Enemy extends Entitie {
 	}
 
 	private void setEntitiyPosition() {
-		arrX[entityNumberOwn] = px;
-		arrY[entityNumberOwn] = py;
+		arrX[this.entityNumberOwn] = this.px;
+		arrY[this.entityNumberOwn] = this.py;
 	}
 
 	public void setSprite(BufferedImage br) {

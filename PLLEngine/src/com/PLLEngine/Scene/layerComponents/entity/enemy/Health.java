@@ -11,32 +11,32 @@ public class Health {
 	}
 
 	private void death() {
-		if (lives >= 0) {
-			deathStat = true;
+		if (this.lives >= 0) {
+			this.deathStat = true;
 		}
 	}
 
 	public void removeOneHeart() {
-		if (lives >0) {
-			lives--;
+		if (this.lives >0) {
+			this.lives--;
 		}
 		
 	}
 
 	public void instantKill() {
-		lives = 0;
+		this.lives = 0;
 	}
 
 	public boolean isDeath() {
-		death();
-		return deathStat;
+		this.death();
+		return this.deathStat;
 	}
 
 	public int getLives() {
-		return lives;
+		return this.lives;
 	}
 	
 	public int getStartLives() {
-		return startLives;
+		return this.startLives;
 	}
 }

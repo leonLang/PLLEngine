@@ -31,25 +31,25 @@ public class ShotEn {
 			this.enemieX = enemieX - Entitie.dxAll;
 			this.enemieY = enemieY - Entitie.dyAll;
 			// And I can use it to calculate the direction in the beginning of the Shot;
-			direction(enemieX, enemieY);
+			this.direction(enemieX, enemieY);
 			Random rn = new Random();
-			randomNumber = rn.nextInt(500);
-			randomBall = rn.nextInt(5);
-			currentDate = dt.getTime();
+			this.randomNumber = rn.nextInt(500);
+			this.randomBall = rn.nextInt(5);
+			this.currentDate = dt.getTime();
 		}
-		if (reduceSpeed + currentDate <= dt.getTime()) {
+		if (this.reduceSpeed + this.currentDate <= dt.getTime()) {
 
-			currentDate = dt.getTime();
-			shotMoveX = shotMoveX + shotMoveXSpeed;
-			shotMoveY = shotMoveY + shotMoveYSpeed;
-			reset++;
+			this.currentDate = dt.getTime();
+			this.shotMoveX = this.shotMoveX + this.shotMoveXSpeed;
+			this.shotMoveY = this.shotMoveY + this.shotMoveYSpeed;
+			this.reset++;
 		}
 		int widthShot = 13;
 		int heightShot = 13;
-		int xShot = this.enemieX + shotMoveX / 100 + Entitie.dxAll;
-		int yShot = this.enemieY + shotMoveY / 100 + Entitie.dyAll;
+		int xShot = this.enemieX + this.shotMoveX / 100 + Entitie.dxAll;
+		int yShot = this.enemieY + this.shotMoveY / 100 + Entitie.dyAll;
 
-		switch (randomBall) {
+		switch (this.randomBall) {
 		case 0:
 			g.setColor(Color.black);
 			break;
@@ -73,9 +73,9 @@ public class ShotEn {
 		g.drawOval(xShot, yShot, widthShot, heightShot);
 		g.fillOval(xShot, yShot, widthShot, heightShot);
 		g.setColor(Color.black);
-		aC = new AttackCollision(xShot, yShot, widthShot, heightShot);
+		this.aC = new AttackCollision(xShot, yShot, widthShot, heightShot);
 
-		if (aC.seeIfCollisionWithPlayer()) {
+		if (this.aC.seeIfCollisionWithPlayer()) {
 			this.enemieX = 0;
 			this.enemieY = 0;
 			this.shotMoveX = 0;
@@ -83,34 +83,34 @@ public class ShotEn {
 
 			Player.lives--;
 		}
-		resetShot(randomNumber);
+		this.resetShot(this.randomNumber);
 
 	}
 
 	public void resetShot(int resetTimer) {
-		if (reset >= resetTimer) {
+		if (this.reset >= resetTimer) {
 			this.enemieX = 0;
 			this.enemieY = 0;
 			this.shotMoveX = 0;
 			this.shotMoveY = 0;
-			reset = 0;
+			this.reset = 0;
 		}
 	}
 
 	public void direction(int enemieX, int enemieY) {
 
-		float xByYDivided = (float) directionX(enemieX) / (float) directionY(enemieY);
-		float yByXDivided = (float) directionY(enemieY) / (float) directionX(enemieX);
+		float xByYDivided = (float) this.directionX(enemieX) / (float) this.directionY(enemieY);
+		float yByXDivided = (float) this.directionY(enemieY) / (float) this.directionX(enemieX);
 		float xFloat;
 		float yFloat;
 		if (xByYDivided >= 1 || xByYDivided <= -1) {
-			shotMoveYSpeed = 100;
+			this.shotMoveYSpeed = 100;
 			xFloat = 100 * yByXDivided;
-			shotMoveXSpeed = (int) xFloat;
+			this.shotMoveXSpeed = (int) xFloat;
 		} else {
-			shotMoveXSpeed = 100;
+			this.shotMoveXSpeed = 100;
 			yFloat = 100 * xByYDivided;
-			shotMoveYSpeed = (int) yFloat;
+			this.shotMoveYSpeed = (int) yFloat;
 		}
 	}
 

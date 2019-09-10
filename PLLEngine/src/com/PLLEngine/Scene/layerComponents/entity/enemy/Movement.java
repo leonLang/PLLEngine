@@ -2,6 +2,7 @@ package com.PLLEngine.Scene.layerComponents.entity.enemy;
 //Leon
 import java.util.Random;
 
+import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
 import com.PLLEngine.collision.CollWorld;
@@ -23,30 +24,30 @@ public class Movement {
 	}
 
 	public void moveHim() {
-		if (!richtungOwn) {
-			x--;
+		if (!this.richtungOwn) {
+			this.x--;
 		} else {
-			x++;
+			this.x++;
 		}
 	}
 
 	public void normalMovement(int entityNumberOwn) {
-		direction = moveInDirectionSpecificTimes();
-		switch (direction) {
+		this.direction = this.moveInDirectionSpecificTimes();
+		switch (this.direction) {
 		case 0:
-			x = x + moveRight(entityNumberOwn);
+			this.x = this.x + this.moveRight(entityNumberOwn);
 			break;
 
 		case 1:
-			x = x + moveLeft(entityNumberOwn);
+			this.x = this.x + this.moveLeft(entityNumberOwn);
 			break;
 
 		case 2:
-			y = y + moveUp(entityNumberOwn);
+			this.y = this.y + this.moveUp(entityNumberOwn);
 			break;
 
 		case 3:
-			y = y + moveDown(entityNumberOwn);
+			this.y = this.y + this.moveDown(entityNumberOwn);
 			break;
 
 		default:
@@ -55,22 +56,22 @@ public class Movement {
 	}
 
 	private int moveInDirectionSpecificTimes() {
-		nCounter--;
-		if (nCounter <= 0) {
-			nCounter = rn.nextInt(100);
-			direction = rn.nextInt(4);
+		this.nCounter--;
+		if (this.nCounter <= 0) {
+			this.nCounter = this.rn.nextInt(100);
+			this.direction = this.rn.nextInt(4);
 
 		}
-		return direction;
+		return this.direction;
 	}
 
 	private int moveRight(int entityNumberOwn) {
-		int xE = Enemy.arrX[entityNumberOwn];
-		int yE = Enemy.arrY[entityNumberOwn];
-		if (CollThread.collRight[entityNumberOwn] || cO.checkCollisionFromObjects(xE, yE) == 1
-				|| cW.collisionRight(dx, dy, xE, yE)) {
+		int xE = Entitie.arrX[entityNumberOwn];
+		int yE = Entitie.arrY[entityNumberOwn];
+		if (CollThread.collRight[entityNumberOwn] || this.cO.checkCollisionFromObjects(xE, yE) == 1
+				|| this.cW.collisionRight(this.dx, this.dy, xE, yE)) {
 			CollThread.collRight[entityNumberOwn] = false;
-			direction = 1; // Enemie moves now in the opposite direction
+			this.direction = 1; // Enemie moves now in the opposite direction
 			return 1; // this prevents that two Enemies Stick together
 		} else {
 			return -1;
@@ -78,12 +79,12 @@ public class Movement {
 	}
 
 	private int moveLeft(int entityNumberOwn) {
-		int xE = Enemy.arrX[entityNumberOwn];
-		int yE = Enemy.arrY[entityNumberOwn];
-		if (CollThread.collLeft[entityNumberOwn] || cO.checkCollisionFromObjects(xE, yE) == 2
-				|| cW.collisionLeft(dx, dy, xE, yE)) {
+		int xE = Entitie.arrX[entityNumberOwn];
+		int yE = Entitie.arrY[entityNumberOwn];
+		if (CollThread.collLeft[entityNumberOwn] || this.cO.checkCollisionFromObjects(xE, yE) == 2
+				|| this.cW.collisionLeft(this.dx, this.dy, xE, yE)) {
 			CollThread.collLeft[entityNumberOwn] = false;
-			direction = 0;
+			this.direction = 0;
 			return -1;
 		} else {
 			return 1;
@@ -91,12 +92,12 @@ public class Movement {
 	}
 
 	private int moveDown(int entityNumberOwn) {
-		int xE = Enemy.arrX[entityNumberOwn];
-		int yE = Enemy.arrY[entityNumberOwn];
-		if (CollThread.collDown[entityNumberOwn] || cO.checkCollisionFromObjects(xE, yE) == 3
-				|| cW.collisionDown(dx, dy, xE, yE)) {
+		int xE = Entitie.arrX[entityNumberOwn];
+		int yE = Entitie.arrY[entityNumberOwn];
+		if (CollThread.collDown[entityNumberOwn] || this.cO.checkCollisionFromObjects(xE, yE) == 3
+				|| this.cW.collisionDown(this.dx, this.dy, xE, yE)) {
 			CollThread.collDown[entityNumberOwn] = false;
-			direction = 2;
+			this.direction = 2;
 			return -1;
 		} else {
 			return 1;
@@ -104,12 +105,12 @@ public class Movement {
 	}
 
 	private int moveUp(int entityNumberOwn) {
-		int xE = Enemy.arrX[entityNumberOwn];
-		int yE = Enemy.arrY[entityNumberOwn];
-		if (CollThread.collUp[entityNumberOwn] || cO.checkCollisionFromObjects(xE, yE) == 4
-				|| cW.collisionUp(dx, dy, xE, yE)) {
+		int xE = Entitie.arrX[entityNumberOwn];
+		int yE = Entitie.arrY[entityNumberOwn];
+		if (CollThread.collUp[entityNumberOwn] || this.cO.checkCollisionFromObjects(xE, yE) == 4
+				|| this.cW.collisionUp(this.dx, this.dy, xE, yE)) {
 			CollThread.collUp[entityNumberOwn] = false;
-			direction = 3;
+			this.direction = 3;
 			return 1;
 		} else {
 			return -1;
@@ -126,17 +127,17 @@ public class Movement {
 	}
 
 	public int getX() {
-		return x;
+		return this.x;
 
 	}
 
 	public int getY() {
-		return y;
+		return this.y;
 
 	}
 
 	public int getDx() {
-		return dx;
+		return this.dx;
 	}
 
 	public void setDx(int dx) {
@@ -144,7 +145,7 @@ public class Movement {
 	}
 
 	public int getDy() {
-		return dy;
+		return this.dy;
 	}
 
 	public void setDy(int dy) {
