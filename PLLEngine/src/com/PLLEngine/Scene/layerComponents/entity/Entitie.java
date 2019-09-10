@@ -15,7 +15,7 @@ public class Entitie implements SceneComponentInterface {
 	public static int[] arrHealth = new int[1];
 	public static int dxAll;
 	public static int dyAll;
-	public static boolean[] synchronize = new boolean[100000];
+	public static boolean[] synchronize = new boolean[1];
 	public int entityNumberOwn;
 	private static boolean onlyOnce = false;
 	public int px, py;
@@ -27,6 +27,7 @@ public class Entitie implements SceneComponentInterface {
 		this.entityNumberOwn = arrX.length - 1;
 		arrX = this.enlargeArraySize(arrX);
 		arrY = this.enlargeArraySize(arrY);
+		synchronize = this.enlargeBooleanSize(synchronize);
 		arrHealth[arrHealth.length - 1] = 3;
 		arrHealth = this.enlargeArraySize(arrHealth);
 
@@ -55,6 +56,13 @@ public class Entitie implements SceneComponentInterface {
 		System.arraycopy(arrayN, 0, tmpA, 0, arrayN.length);
 		arrayN = tmpA;
 		return arrayN;
+	}
+
+	private boolean[] enlargeBooleanSize(boolean[] arrayB) {
+		boolean[] tmpA = new boolean[arrayB.length + 1];
+		System.arraycopy(arrayB, 0, tmpA, 0, arrayB.length);
+		arrayB = tmpA;
+		return arrayB;
 	}
 
 	public void cameraMovement(int x, int y, int dx, int dy) {

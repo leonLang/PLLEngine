@@ -65,13 +65,11 @@ public class Enemy extends Entitie {
 			/*
 			 * for (int i = 0; i < 5; i++) { g.drawRect(6, 15, 3, 3); xSmile++; ySmile++; }
 			 */
-
+			this.sE.drawShots(g, Entitie.arrX[this.entityNumberOwn], Entitie.arrY[this.entityNumberOwn]);
 		} else {
-			Entitie.arrX[this.entityNumberOwn] = -10000;
+			Entitie.arrX[this.entityNumberOwn] = -10000; // teleport the player offscreen to remove it
 			Entitie.arrY[this.entityNumberOwn] = -10000;
 		}
-
-		this.sE.drawShots(g, Entitie.arrX[this.entityNumberOwn], Entitie.arrY[this.entityNumberOwn]);
 
 	}
 
