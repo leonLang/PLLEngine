@@ -117,12 +117,12 @@ public class ShotEn {
 	public int directionX(int enemieX) {
 		// the direction is placed so that the Enemie shoots in the direction of the
 		// Player
-		int playerX = 560;
+		int playerX = 590;
 		return enemieX - playerX;
 	}
 
 	public int directionY(int enemieY) {
-		int playerY = 340;
+		int playerY = 390;
 		return enemieY - playerY;
 	}
 }
