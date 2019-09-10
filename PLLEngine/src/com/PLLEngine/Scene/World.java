@@ -12,9 +12,10 @@ import javax.swing.SwingUtilities;
 
 import com.PLLEngine.Event.EventMap;
 import com.PLLEngine.Game.Game;
+import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.Scene.layerComponents.entity.enemy.Enemy;
 import com.PLLEngine.collision.CollObject;
-import com.PLLEngine.images.SpritesheetP;
+import com.PLLEngine.images.Spritesheet;
 import com.PLLEngine.srcLoader.JsonLoader;
 import com.PLLEngine.srcLoader.RefrenceJson;
 import com.PLLEngine.srcLoader.SrcLoader;
@@ -123,7 +124,7 @@ public class World extends JPanel implements SceneComponentInterface {
 		try {
 			loadedsrc = JsonLoader.loadRefrence(refrencePath);
 			if (this.spriteSheet != null) {
-				SpritesheetP sh = new SpritesheetP(16, 16, this.spriteSheet);
+				Spritesheet sh = new Spritesheet(16, 16, this.spriteSheet);
 				for (int i = 0; i < loadedsrc.length; i++) {
 					//// Conector
 					if (loadedsrc[i].getConnector() != null) {
@@ -233,9 +234,10 @@ public class World extends JPanel implements SceneComponentInterface {
 		// Beginn Code by Leon
 		// The World has 48 Blocks in X Direction with size 64
 		// The World has 27 Blocks in Y direction with size 64
+		Entitie.resetEnemies();
+		cO.resetDatas();
 		for (int rowY = 0; rowY < map.length; rowY++) {
 			for (int rowX = 0; rowX < map[rowY].length; rowX++) {
-				cO.resetDatas();
 				boolean collisionO = loadedsrc[map[rowY][rowX]].isCollision();
 				cO.setDatas(collisionO, rowX, rowY, dx, dy);
 			}

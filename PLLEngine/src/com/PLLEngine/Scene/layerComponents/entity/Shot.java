@@ -36,24 +36,30 @@ public class Shot {
 
 	public void drawShot(Graphics2D g, int startX, int startY) {
 		// Collision needs to be done by the enemie;
-
 		if (shotIsFired == true) {
 			if (useX == 0 && useY == 0) {
-				System.out.println("once");
 				useX = startX; // this is needed because startX and startY mustn't change after the shot is
 								// created
 				useY = startY;
+				shotMoveLeft = 0;
+				shotMoveRight = 0;
+				shotMoveUp = 0;
+				shotMoveDown = 0;
 			}
-			int xShot = useX + shotMoveLeft + shotMoveRight + Entitie.dxAll;
+			/*System.out.println("UseX" + useX);
+			System.out.println("Right" + shotMoveRight);
+			System.out.println("left" + shotMoveLeft);
+			System.out.println("dxALl" + Entitie.dxAll); */
+			int xShot = useX + shotMoveLeft + shotMoveRight + Entitie.dxAll;;
 			int yShot = useY + shotMoveDown + shotMoveUp + Entitie.dyAll;
 			int widthShot = 13;
 			int heightShot = 13;
 			int enemieShotNumber = sC.shotFromPlayer(xShot, yShot, widthShot, heightShot, 32, 32);
 			if (enemieShotNumber != -1) {
 				Entitie.arrHealth[enemieShotNumber]--;
-				shotMoveLeft = 1000;
+				shotMoveLeft = -1000;
 				shotMoveRight = 1000;
-				shotMoveUp = 1000;
+				shotMoveUp = -1000;
 				shotMoveDown = 1000;
 			}
 			switch (direction) {
@@ -94,13 +100,9 @@ public class Shot {
 		// direction 3 == down
 		Date dt = new Date();
 		this.direction = direction;
-		System.out.println(Shot.timeToWait);
-		System.out.println(dt.getTime());
 		if (dt.getTime() > Shot.timeToWait) {
 			Shot.timeToWait = dt.getTime() + shotTime;
-			System.out.println(shotTime);
 			shotIsFired = true;
-			System.out.println("klappt");
 		}
 	}
 
