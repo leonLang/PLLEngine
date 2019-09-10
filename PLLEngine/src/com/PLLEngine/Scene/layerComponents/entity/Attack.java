@@ -11,14 +11,6 @@ public class Attack {
 	public Attack() {
 	}
 
-	public void attackFromPlayer() {
-
-	}
-
-	public void attackFromEnemie() {
-
-	}
-
 	public void drawAttack(Graphics2D g, int px, int py) {
 		this.timerAttack++;
 		if (this.counterAttack >= 10) {
