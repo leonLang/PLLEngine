@@ -40,7 +40,6 @@ public class Shot {
 
 		if (shotIsFired == true) {
 			if (useX == 0 && useY == 0) {
-				System.out.println("once");
 				useX = startX; // this is needed because startX and startY mustn't change after the shot is
 								// created
 				useY = startY;
@@ -98,13 +97,9 @@ public class Shot {
 		// direction 3 == down
 		Date dt = new Date();
 		this.direction = direction;
-		System.out.println(Shot.timeToWait);
-		System.out.println(dt.getTime());
 		if (dt.getTime() > Shot.timeToWait) {
 			Shot.timeToWait = dt.getTime() + shotTime;
-			System.out.println(shotTime);
 			shotIsFired = true;
-			System.out.println("klappt");
 		}
 	}
 
