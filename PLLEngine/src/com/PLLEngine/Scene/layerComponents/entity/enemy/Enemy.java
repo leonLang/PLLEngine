@@ -68,11 +68,11 @@ public class Enemy extends Entitie {
 			g.drawOval(px + 6, py + 2, 7, 7);
 			
 			
-			for (int i = 0; i < 5; i++) {
+			/*for (int i = 0; i < 5; i++) {
 				g.drawRect(6, 15, 3, 3);
 				xSmile++;
 				ySmile++;
-			}
+			}*/
 
 		} else {
 			Entitie.arrX[entityNumberOwn] = -10000;
