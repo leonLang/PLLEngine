@@ -21,10 +21,8 @@ public class Enemy extends Entitie {
 	private int wait = 0;
 	private boolean collision;
 	private Health health;
-	private Shot shot = new Shot(10, 10);
 	PassiveEntitie pV;
 	ShotEn sE = new ShotEn();
-	private int xSmile, ySmile;
 
 	public Enemy(int startX, int startY, int healthE) {
 		this.health = new Health(healthE);

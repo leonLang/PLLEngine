@@ -8,18 +8,18 @@ import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
 
 public class Entitie implements SceneComponentInterface {
-	CollObject cO = new CollObject(32, 32);
-	int x12 = 100;
+
 	public static int[] arrX = new int[1];
 	public static int[] arrY = new int[1];
 	public static int[] arrHealth = new int[1];
+	public static boolean[] synchronize = new boolean[1];
 	public static int dxAll;
 	public static int dyAll;
-	public static boolean[] synchronize = new boolean[1];
-	public int entityNumberOwn;
-	private static boolean onlyOnce = false;
-	public int px, py;
+	protected int entityNumberOwn;
+	protected int px, py;
 	protected int dx, dy;
+	private static boolean onlyOnce = false;
+	private CollObject cO = new CollObject(32, 32);
 
 	public Entitie() {
 		this.dx = 0;
@@ -32,7 +32,6 @@ public class Entitie implements SceneComponentInterface {
 		arrHealth = this.enlargeArraySize(arrHealth);
 
 		if (onlyOnce == false) {
-			System.out.println("einmal");
 			onlyOnce = true;
 			CollThread cT = new CollThread();
 			cT.start();
