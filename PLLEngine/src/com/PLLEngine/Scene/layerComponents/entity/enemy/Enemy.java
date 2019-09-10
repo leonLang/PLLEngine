@@ -6,20 +6,17 @@ import java.awt.image.BufferedImage;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.Scene.layerComponents.entity.PassiveEntitie;
-import com.PLLEngine.Scene.layerComponents.entity.Shot;
 import com.PLLEngine.Scene.layerComponents.entity.ShotEn;
 import com.PLLEngine.collision.CollEnemVSPlay;
 
 public class Enemy extends Entitie {
 	Movement mv;
 	private static boolean richtungAll;
-	private boolean richtungOwn, once;
+	private boolean richtungOwn;
 	private BufferedImage sprite;
 	private int x, y;
 	private int width = 20;
 	private int height = 20;
-	private int wait = 0;
-	private boolean collision;
 	private Health health;
 	PassiveEntitie pV;
 	ShotEn sE = new ShotEn();
@@ -33,10 +30,8 @@ public class Enemy extends Entitie {
 		if (!richtungAll) {
 			richtungAll = true;
 			this.richtungOwn = true;
-			this.once = true;
 		} else if (richtungAll) {
 			richtungAll = false;
-			this.once = true;
 		}
 		this.mv = new Movement(this.richtungOwn, this.dx, this.dy);
 
@@ -98,9 +93,7 @@ public class Enemy extends Entitie {
 		CollEnemVSPlay cl = new CollEnemVSPlay(this.px, this.py, 20, 20);
 		if (cl.getCollLinks()) {
 			this.health.removeOneHeart();
-			this.collision = true;
 		} else if (cl.getCollRechts()) {
-			this.collision = true;
 		} else {
 
 		}

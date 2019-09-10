@@ -7,7 +7,6 @@ import java.util.Date;
 import com.PLLEngine.collision.ShotCollision;
 
 public class Shot {
-	private int x, y;
 
 	public static long timeToWait;
 	private int shotTime;
@@ -29,11 +28,6 @@ public class Shot {
 		// This Shot is for the pressed Button
 	}
 
-	public Shot(int x, int y) {
-		// System.out.println("nicht da");
-		this.x = x;
-		this.y = y;
-	}
 
 	public void drawShot(Graphics2D g, int startX, int startY) {
 		// Collision needs to be done by the enemie;

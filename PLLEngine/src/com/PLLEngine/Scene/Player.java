@@ -72,7 +72,7 @@ public class Player extends Entitie {
 
 	@Override
 	public void draw(Graphics2D g) {
-		// synchronize();	
+		// synchronize();
 		for (int i = 0; i < shot.length; i++) {
 			shot[i].drawShot(g, 560 - Entitie.dxAll, 364 - Entitie.dyAll);
 		}
@@ -83,10 +83,9 @@ public class Player extends Entitie {
 		// Start Code Leon
 		g.drawRect(568, 360, 64, 4);
 		if (lives <= 0) {
-			
-		}
-		else {
-		g.fillRect(568, 360, 64 * lives / health.getStartLives(), 4);
+
+		} else {
+			g.fillRect(568, 360, 64 * lives / health.getStartLives(), 4);
 		}
 		// End Code Leon
 
@@ -289,7 +288,7 @@ public class Player extends Entitie {
 	public void rangeAttack() {
 
 		System.out.println("say hello");
-		new Shot(x, y);
+		new Shot(100);
 	}
 
 	public int getxOnScreen() {
