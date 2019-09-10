@@ -42,6 +42,12 @@ public class Entitie implements SceneComponentInterface {
 		// TODO Auto-generated method stub
 		g.drawRect(100, 50, 300, 300);
 	}
+	
+	public static void resetEnemies() {
+		arrX = new int[1];
+		arrY = new int[1];
+		arrHealth = new int[1];
+	}
 
 	private int[] enlargeArraySize(int[] arrayN) {
 		int[] tmpA = new int[arrayN.length + 1];

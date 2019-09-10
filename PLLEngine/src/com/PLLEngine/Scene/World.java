@@ -241,10 +241,8 @@ public class World extends JPanel implements SceneComponentInterface {
 		// Beginn Code by Leon
 		// The World has 48 Blocks in X Direction with size 64
 		// The World has 27 Blocks in Y direction with size 64
-<<<<<<< HEAD
-=======
 		Entitie.resetEnemies();
->>>>>>> branch 'master' of https://github.com/leonLang/PLLEngine.git
+
 		cO.resetDatas();
 		for (int rowY = 0; rowY < map.length; rowY++) {
 			for (int rowX = 0; rowX < map[rowY].length; rowX++) {
