@@ -82,8 +82,12 @@ public class Player extends Entitie {
 
 		// Start Code Leon
 		g.drawRect(568, 360, 64, 4);
-		
+		if (lives <= 0) {
+			
+		}
+		else {
 		g.fillRect(568, 360, 64 * lives / health.getStartLives(), 4);
+		}
 		// End Code Leon
 
 	}
