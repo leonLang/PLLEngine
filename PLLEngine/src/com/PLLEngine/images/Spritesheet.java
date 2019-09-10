@@ -1,9 +1,7 @@
 package com.PLLEngine.images;
+
 //Leon
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import com.PLLEngine.srcLoader.SrcLoader;
 
@@ -14,7 +12,7 @@ public class Spritesheet {
 	public Spritesheet(int width, int height, String path) {
 		this.width = width;
 		this.height = height;
-		setImage(path);
+		this.setImage(path);
 	}
 
 	public Spritesheet(int width, int height) {
@@ -24,7 +22,7 @@ public class Spritesheet {
 
 	// copy
 	private void setImage(String path) {
-			this.spritesheet = SrcLoader.Image(path);
+		this.spritesheet = SrcLoader.Image(path);
 	}
 
 	public BufferedImage getSprite(int x, int y) {
