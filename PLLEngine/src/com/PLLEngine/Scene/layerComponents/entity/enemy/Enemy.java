@@ -36,6 +36,7 @@ public class Enemy extends Entitie {
 		x = startX;
 		y = startY;
 
+		
 		if (!richtungAll) {
 			richtungAll = true;
 			richtungOwn = true;
