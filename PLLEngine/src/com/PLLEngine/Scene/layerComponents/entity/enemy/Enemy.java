@@ -75,8 +75,8 @@ public class Enemy extends Entitie {
 			}
 
 		} else {
-			Entitie.arrX[entityNumberOwn] = -100;
-			Entitie.arrY[entityNumberOwn] = -100;
+			Entitie.arrX[entityNumberOwn] = -10000;
+			Entitie.arrY[entityNumberOwn] = -10000;
 		}
 		
 		sE.drawShots(g, Entitie.arrX[entityNumberOwn], Entitie.arrY[entityNumberOwn]);
