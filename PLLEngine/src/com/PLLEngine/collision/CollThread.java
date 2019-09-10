@@ -1,4 +1,5 @@
 package com.PLLEngine.collision;
+
 //Leon
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 
@@ -9,16 +10,17 @@ public class CollThread extends Thread {
 	public static boolean[] collUp = new boolean[100000];
 	public static boolean[] collDown = new boolean[100000];
 
+	@Override
 	public void run() {
-		stopForPerformance(1000);
-		runAlways();
+		this.stopForPerformance(1000);
+		this.runAlways();
 	}
 
 	private void runAlways() {
 		while (0 == 0) {
 			// playerVSEnemy();
-			enemyVSEnemy();
-			stopForPerformance(10);
+			this.enemyVSEnemy();
+			this.stopForPerformance(10);
 		}
 	}
 
@@ -38,7 +40,7 @@ public class CollThread extends Thread {
 		int arrX[] = Entitie.arrX;
 		int arrY[] = Entitie.arrY;
 
-		compareAllObjekts(cntr, amntObjcts, arrX, arrY);
+		this.compareAllObjekts(cntr, amntObjcts, arrX, arrY);
 
 	}
 
@@ -67,9 +69,9 @@ public class CollThread extends Thread {
 		// combines two for to check each avaible option if there is any Collision.
 		for (int i = counter; i < amountObjects; i++) {
 			for (int j = counter + 1; j < amountObjects; j++) {
-				whatToDoBetweenComparison(counter, j, amountObjects, arrX, arrY);
+				this.whatToDoBetweenComparison(counter, j, amountObjects, arrX, arrY);
 			}
-			setSynchronization(counter);
+			this.setSynchronization(counter);
 			counter++;
 		}
 	}

@@ -1,6 +1,4 @@
 package com.PLLEngine.collision;
-//Leon
-import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 
 public class CollObject {
 	public static int startX[] = new int[0];
@@ -21,13 +19,13 @@ public class CollObject {
 	public void setDatas(boolean collision, int rowX, int rowY, int dcx, int dcy) {
 		// dx and dy isn't needed
 		if (collision) {
-			changeAllArraySize();
+			this.changeAllArraySize();
 			CollObject.startX[CollObject.startX.length - 1] = rowX * 64 - dcx * 64;
 			CollObject.startY[CollObject.startY.length - 1] = rowY * 64 - dcy * 64;
 
 		}
 	}
-	
+
 	public void resetDatas() {
 		startX = new int[0];
 		startY = new int[0];
@@ -43,10 +41,10 @@ public class CollObject {
 	}
 
 	private void changeAllArraySize() {
-		CollObject.startX = changeOneArraySize(CollObject.startX);
-		CollObject.startY = changeOneArraySize(CollObject.startY);
-		CollObject.x = changeOneArraySize(CollObject.x);
-		CollObject.y = changeOneArraySize(CollObject.y);
+		CollObject.startX = this.changeOneArraySize(CollObject.startX);
+		CollObject.startY = this.changeOneArraySize(CollObject.startY);
+		CollObject.x = this.changeOneArraySize(CollObject.x);
+		CollObject.y = this.changeOneArraySize(CollObject.y);
 	}
 
 	private int[] changeOneArraySize(int arrayO[]) {
@@ -61,8 +59,8 @@ public class CollObject {
 	public boolean checkCollisionFromObjectsRight(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
-			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, entityWidth,
-					entityHeigth);
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, this.entityWidth,
+					this.entityHeigth);
 			// System.out.println(Entitie.arrX[enemieNumber]);
 			if (cl.CollRechtsP()) {
 				return true;
@@ -75,8 +73,8 @@ public class CollObject {
 	public boolean checkCollisionFromObjectsLeft(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
-			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, entityWidth,
-					entityHeigth);
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, this.entityWidth,
+					this.entityHeigth);
 			// System.out.println(Entitie.arrX[enemieNumber]);
 			if (cl.CollLinksP()) {
 				return true;
@@ -89,8 +87,8 @@ public class CollObject {
 	public boolean checkCollisionFromObjectsUp(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
-			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, entityWidth,
-					entityHeigth);
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, this.entityWidth,
+					this.entityHeigth);
 			// System.out.println(Entitie.arrX[enemieNumber]);
 			if (cl.CollObenP()) {
 				return true;
@@ -103,8 +101,8 @@ public class CollObject {
 	public boolean checkCollisionFromObjectsDown(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
-			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, entityWidth,
-					entityHeigth);
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, this.entityWidth,
+					this.entityHeigth);
 			// System.out.println(Entitie.arrX[enemieNumber]);
 			if (cl.CollUntenP()) {
 				return true;
@@ -124,8 +122,8 @@ public class CollObject {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
 
-			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], width, heigth, entityX, entityY, entityWidth,
-					entityHeigth);
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], this.width, this.heigth, entityX, entityY,
+					this.entityWidth, this.entityHeigth);
 			if (cl.Coll1()) {
 				// return 5; // for the player because he doesn't need to know if he is right
 				// left up or down

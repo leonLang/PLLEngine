@@ -1,4 +1,5 @@
 package com.PLLEngine.collision;
+
 //Leon
 public class Collision {
 
@@ -18,8 +19,8 @@ public class Collision {
 	}
 
 	public boolean CollOben() {
-		if (Obj1Y + Obj1Height >= Obj2Y && Obj2Y + Obj2Height - 1 >= Obj1Y && Obj1X + Obj1Width - 1 >= Obj2X
-				&& Obj2X + Obj2Width - 1 >= Obj1X) {
+		if (this.Obj1Y + this.Obj1Height >= this.Obj2Y && this.Obj2Y + this.Obj2Height - 1 >= this.Obj1Y
+				&& this.Obj1X + this.Obj1Width - 1 >= this.Obj2X && this.Obj2X + this.Obj2Width - 1 >= this.Obj1X) {
 			return true;
 		} else {
 			return false;
@@ -29,8 +30,8 @@ public class Collision {
 
 	public boolean CollUnten() {
 
-		if (Obj1Y + Obj1Height - 1 >= Obj2Y && Obj2Y + Obj2Height >= Obj1Y && Obj1X + Obj1Width - 1 >= Obj2X
-				&& Obj2X + Obj2Width - 1 >= Obj1X) {
+		if (this.Obj1Y + this.Obj1Height - 1 >= this.Obj2Y && this.Obj2Y + this.Obj2Height >= this.Obj1Y
+				&& this.Obj1X + this.Obj1Width - 1 >= this.Obj2X && this.Obj2X + this.Obj2Width - 1 >= this.Obj1X) {
 			return true;
 		} else {
 			return false;
@@ -39,8 +40,8 @@ public class Collision {
 	}
 
 	public boolean CollLinks() {
-		if (Obj1Y + Obj1Height - 1 >= Obj2Y && Obj2Y + Obj2Height - 1 >= Obj1Y && Obj1X + Obj1Width >= Obj2X
-				&& Obj2X + Obj2Width - 1 >= Obj1X) {
+		if (this.Obj1Y + this.Obj1Height - 1 >= this.Obj2Y && this.Obj2Y + this.Obj2Height - 1 >= this.Obj1Y
+				&& this.Obj1X + this.Obj1Width >= this.Obj2X && this.Obj2X + this.Obj2Width - 1 >= this.Obj1X) {
 			return true;
 		} else {
 			return false;
@@ -49,8 +50,8 @@ public class Collision {
 	}
 
 	public boolean CollRechts() {
-		if (Obj1Y + Obj1Height - 1 >= Obj2Y && Obj2Y + Obj2Height - 1 >= Obj1Y && Obj1X + Obj1Width - 1 >= Obj2X
-				&& Obj2X + Obj2Width >= Obj1X) {
+		if (this.Obj1Y + this.Obj1Height - 1 >= this.Obj2Y && this.Obj2Y + this.Obj2Height - 1 >= this.Obj1Y
+				&& this.Obj1X + this.Obj1Width - 1 >= this.Obj2X && this.Obj2X + this.Obj2Width >= this.Obj1X) {
 			return true;
 		} else {
 			return false;
@@ -59,8 +60,8 @@ public class Collision {
 	}
 
 	public boolean CollUntenP() {
-		if (Obj1Y + Obj1Height + 5 >= Obj2Y && Obj2Y + Obj2Height - 1 >= Obj1Y && Obj1X + Obj1Width - 1 >= Obj2X
-				&& Obj2X + Obj2Width - 1 >= Obj1X) {
+		if (this.Obj1Y + this.Obj1Height + 5 >= this.Obj2Y && this.Obj2Y + this.Obj2Height - 1 >= this.Obj1Y
+				&& this.Obj1X + this.Obj1Width - 1 >= this.Obj2X && this.Obj2X + this.Obj2Width - 1 >= this.Obj1X) {
 			return true;
 		} else {
 			return false;
@@ -69,8 +70,8 @@ public class Collision {
 	}
 
 	public boolean CollObenP() {
-		if (Obj1Y + Obj1Height - 1 >= Obj2Y && Obj2Y + Obj2Height + 5 >= Obj1Y && Obj1X + Obj1Width - 1 >= Obj2X
-				&& Obj2X + Obj2Width - 1 >= Obj1X) {
+		if (this.Obj1Y + this.Obj1Height - 1 >= this.Obj2Y && this.Obj2Y + this.Obj2Height + 5 >= this.Obj1Y
+				&& this.Obj1X + this.Obj1Width - 1 >= this.Obj2X && this.Obj2X + this.Obj2Width - 1 >= this.Obj1X) {
 			return true;
 		} else {
 			return false;
@@ -79,8 +80,8 @@ public class Collision {
 	}
 
 	public boolean CollRechtsP() {
-		if (Obj1Y + Obj1Height - 1 >= Obj2Y && Obj2Y + Obj2Height - 1 >= Obj1Y && Obj1X + Obj1Width + 2 >= Obj2X
-				&& Obj2X + Obj2Width - 1 >= Obj1X) {
+		if (this.Obj1Y + this.Obj1Height - 1 >= this.Obj2Y && this.Obj2Y + this.Obj2Height - 1 >= this.Obj1Y
+				&& this.Obj1X + this.Obj1Width + 2 >= this.Obj2X && this.Obj2X + this.Obj2Width - 1 >= this.Obj1X) {
 			return true;
 		} else {
 			return false;
@@ -89,8 +90,8 @@ public class Collision {
 	}
 
 	public boolean CollLinksP() {
-		if (Obj1Y + Obj1Height - 1 >= Obj2Y && Obj2Y + Obj2Height - 1 >= Obj1Y && Obj1X + Obj1Width - 1 >= Obj2X
-				&& Obj2X + Obj2Width + 2 >= Obj1X) {
+		if (this.Obj1Y + this.Obj1Height - 1 >= this.Obj2Y && this.Obj2Y + this.Obj2Height - 1 >= this.Obj1Y
+				&& this.Obj1X + this.Obj1Width - 1 >= this.Obj2X && this.Obj2X + this.Obj2Width + 2 >= this.Obj1X) {
 			return true;
 		} else {
 			return false;
@@ -99,8 +100,8 @@ public class Collision {
 	}
 
 	public boolean Coll1() {
-		if (this.Obj1Y + Obj1Height >= Obj2Y && Obj2Y + Obj2Height >= Obj1Y && Obj1X + Obj1Width >= Obj2X
-				&& Obj2X + Obj2Width >= Obj1X) {
+		if (this.Obj1Y + this.Obj1Height >= this.Obj2Y && this.Obj2Y + this.Obj2Height >= this.Obj1Y
+				&& this.Obj1X + this.Obj1Width >= this.Obj2X && this.Obj2X + this.Obj2Width >= this.Obj1X) {
 			return true;
 		} else {
 			return false;

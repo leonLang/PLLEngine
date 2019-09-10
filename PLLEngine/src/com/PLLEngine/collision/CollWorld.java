@@ -1,4 +1,5 @@
 package com.PLLEngine.collision;
+
 //Leon
 public class CollWorld {
 
@@ -20,10 +21,10 @@ public class CollWorld {
 	}
 
 	public boolean collisionRight(int dx, int dy, int entityX, int entityY) {
-		int startX = dx + worldSizeX; // I need the WorldSize to move he box to the end of the Border
+		int startX = dx + this.worldSizeX; // I need the WorldSize to move he box to the end of the Border
 		int startY = dy;
-		Collision cl = new Collision(startX, startY, worldSizeX, worldSizeY, entityX, entityY, entityWidth,
-				entityHeigth);
+		Collision cl = new Collision(startX, startY, this.worldSizeX, this.worldSizeY, entityX, entityY,
+				this.entityWidth, this.entityHeigth);
 		if (cl.CollRechtsP()) {
 			return true;
 		} else {
@@ -32,12 +33,12 @@ public class CollWorld {
 	}
 
 	public boolean collisionLeft(int dx, int dy, int entityX, int entityY) {
-		int startX = dx - worldSizeX;
+		int startX = dx - this.worldSizeX;
 		// The WorldSize needs to be Subtracted because the Box is created into the
 		// right direction
 		int startY = dy;
-		Collision cl = new Collision(startX, startY, worldSizeX, worldSizeY, entityX, entityY, entityWidth,
-				entityHeigth);
+		Collision cl = new Collision(startX, startY, this.worldSizeX, this.worldSizeY, entityX, entityY,
+				this.entityWidth, this.entityHeigth);
 		if (cl.CollLinksP()) {
 			return true;
 		} else {
@@ -47,9 +48,9 @@ public class CollWorld {
 
 	public boolean collisionUp(int dx, int dy, int entityX, int entityY) {
 		int startX = dx;
-		int startY = dy - worldSizeY;
-		Collision cl = new Collision(startX, startY, worldSizeX, worldSizeY, entityX, entityY, entityWidth,
-				entityHeigth);
+		int startY = dy - this.worldSizeY;
+		Collision cl = new Collision(startX, startY, this.worldSizeX, this.worldSizeY, entityX, entityY,
+				this.entityWidth, this.entityHeigth);
 
 		if (cl.CollUntenP()) {
 			return true;
@@ -61,9 +62,9 @@ public class CollWorld {
 	public boolean collisionDown(int dx, int dy, int entityX, int entityY) {
 
 		int startX = dx;
-		int startY = worldSizeY + dy;
-		Collision cl = new Collision(startX, startY, worldSizeX, worldSizeY, entityX, entityY, entityWidth,
-				entityHeigth);
+		int startY = this.worldSizeY + dy;
+		Collision cl = new Collision(startX, startY, this.worldSizeX, this.worldSizeY, entityX, entityY,
+				this.entityWidth, this.entityHeigth);
 		if (cl.CollObenP()) {
 			return true;
 		} else {
