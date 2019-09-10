@@ -13,7 +13,6 @@ public class ShotCollision {
 			Collision cl = new Collision(xShot, yShot, widthShot, heightShot, Entitie.arrX[i], Entitie.arrY[i],
 					widthEnemie, heightEnemie);
 			if (cl.Coll1()) {
-				System.out.println(i);
 				return i;
 			}
 		}

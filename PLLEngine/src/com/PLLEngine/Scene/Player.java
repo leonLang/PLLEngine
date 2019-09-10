@@ -20,6 +20,7 @@ public class Player extends Entitie {
 	private Game game;
 	private Control controller;
 
+	private static boolean richtungAll;
 	private boolean richtungOwn, once;
 	private int xOnScreen, yOnScreen;
 	private int width, height;
@@ -240,10 +241,8 @@ public class Player extends Entitie {
 		if (e.getKeyCode() == KeyEvent.VK_A) {
 			for (int i = 0; i < shot.length; i++) {
 				if (!shot[i].shotIsFired) {
-					System.out.println("One Shot");
-					shot[i] = new Shot(200);
 					shot[i].addShot(0);
-					i = shot.length + 1; // to stop the for
+					i = shot.length + 1;
 				}
 			}
 		}
