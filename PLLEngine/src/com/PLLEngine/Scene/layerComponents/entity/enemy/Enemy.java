@@ -25,13 +25,13 @@ public class Enemy extends Entitie {
 	PassiveEntitie pV;
 	ShotEn sE = new ShotEn();
 	private int xSmile, ySmile;
+
 	public Enemy(int startX, int startY, int healthE) {
 		this.health = new Health(healthE);
 		Entitie.arrHealth[this.entityNumberOwn] = healthE;
 		this.x = startX;
 		this.y = startY;
 
-		
 		if (!richtungAll) {
 			richtungAll = true;
 			this.richtungOwn = true;
@@ -61,19 +61,16 @@ public class Enemy extends Entitie {
 				g.drawImage(this.sprite, this.px, this.py, null);
 			g.drawRect(this.px, this.py, this.width, this.height);
 			g.drawOval(this.px + 6, this.py + 2, 7, 7);
-			
-			
-			/*for (int i = 0; i < 5; i++) {
-				g.drawRect(6, 15, 3, 3);
-				xSmile++;
-				ySmile++;
-			}*/
+
+			/*
+			 * for (int i = 0; i < 5; i++) { g.drawRect(6, 15, 3, 3); xSmile++; ySmile++; }
+			 */
 
 		} else {
 			Entitie.arrX[this.entityNumberOwn] = -10000;
 			Entitie.arrY[this.entityNumberOwn] = -10000;
 		}
-		
+
 		this.sE.drawShots(g, Entitie.arrX[this.entityNumberOwn], Entitie.arrY[this.entityNumberOwn]);
 
 	}
@@ -92,7 +89,8 @@ public class Enemy extends Entitie {
 	private void controlHealth(Graphics2D g) {
 		g.setColor(Color.DARK_GRAY);
 		g.drawRect(this.px, this.py - 4, this.width, 2);
-		g.fillRect(this.px, this.py - 4, this.width * Entitie.arrHealth[this.entityNumberOwn] / this.health.getStartLives(), 2);
+		g.fillRect(this.px, this.py - 4,
+				this.width * Entitie.arrHealth[this.entityNumberOwn] / this.health.getStartLives(), 2);
 		g.setColor(Color.black);
 		// If I don't do it with the ( the Rect wont be full because of rounding
 		// differences

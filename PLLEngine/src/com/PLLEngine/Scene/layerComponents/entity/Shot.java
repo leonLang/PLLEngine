@@ -41,7 +41,7 @@ public class Shot {
 		if (this.shotIsFired == true) {
 			if (this.useX == 0 && this.useY == 0) {
 				this.useX = startX; // this is needed because startX and startY mustn't change after the shot is
-								// created
+				// created
 				this.useY = startY;
 			}
 			int xShot = this.useX + this.shotMoveLeft + this.shotMoveRight + Entitie.dxAll;
@@ -79,7 +79,8 @@ public class Shot {
 			g.setColor(Color.black);
 			// g.drawRect(xShot, yShot, widthShot, heightShot);
 		}
-		if (this.shotMoveUp <= -500 || this.shotMoveDown >= 500 || this.shotMoveLeft <= -500 || this.shotMoveRight >= 500) {
+		if (this.shotMoveUp <= -500 || this.shotMoveDown >= 500 || this.shotMoveLeft <= -500
+				|| this.shotMoveRight >= 500) {
 			this.useX = 0;
 			this.useY = 0;
 			this.shotIsFired = false;

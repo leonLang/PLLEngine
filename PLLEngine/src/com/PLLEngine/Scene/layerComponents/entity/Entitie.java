@@ -1,4 +1,5 @@
 package com.PLLEngine.Scene.layerComponents.entity;
+
 //Leon
 import java.awt.Graphics2D;
 
@@ -42,7 +43,7 @@ public class Entitie implements SceneComponentInterface {
 		// TODO Auto-generated method stub
 		g.drawRect(100, 50, 300, 300);
 	}
-	
+
 	public static void resetEnemies() {
 		arrX = new int[1];
 		arrY = new int[1];

@@ -1,4 +1,5 @@
 package com.PLLEngine.Scene.layerComponents.entity.enemy;
+
 //Leon
 public class Health {
 	private int startLives;
@@ -17,10 +18,10 @@ public class Health {
 	}
 
 	public void removeOneHeart() {
-		if (this.lives >0) {
+		if (this.lives > 0) {
 			this.lives--;
 		}
-		
+
 	}
 
 	public void instantKill() {
@@ -35,7 +36,7 @@ public class Health {
 	public int getLives() {
 		return this.lives;
 	}
-	
+
 	public int getStartLives() {
 		return this.startLives;
 	}
