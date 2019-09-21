@@ -193,12 +193,10 @@ public class World extends JPanel implements SceneComponentInterface {
 
 					// g.drawRect(x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize);
 				} catch (Exception e) {
-					g.drawImage(
-							(loadedsrc[this.defaultTexture].getImg()),
-							x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize, null);
-					g.drawImage(
-							(loadedsrc[this.defaultTextureCover].getImg()),
-							x * spriteSize + dx, y * spriteSize + dy, spriteSize, spriteSize, null);
+					g.drawImage((loadedsrc[this.defaultTexture].getImg()), x * spriteSize + dx, y * spriteSize + dy,
+							spriteSize, spriteSize, null);
+					g.drawImage((loadedsrc[this.defaultTextureCover].getImg()), x * spriteSize + dx,
+							y * spriteSize + dy, spriteSize, spriteSize, null);
 				}
 			}
 		}
@@ -325,7 +323,6 @@ public class World extends JPanel implements SceneComponentInterface {
 		this.defaultTexture = defaultTexture;
 	}
 
-	
 	public int getDefaultTextureCover() {
 		return defaultTextureCover;
 	}
