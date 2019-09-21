@@ -10,7 +10,7 @@ import com.PLLEngine.Scene.layerComponents.entity.ShotEn;
 import com.PLLEngine.collision.CollEnemVSPlay;
 
 public class Enemy extends Entitie {
-	Movement mv;
+	private Movement mv;
 	private static boolean richtungAll;
 	private boolean richtungOwn;
 	private BufferedImage sprite;
@@ -18,8 +18,8 @@ public class Enemy extends Entitie {
 	private int width = 20;
 	private int height = 20;
 	private Health health;
-	PassiveEntitie pV;
-	ShotEn sE = new ShotEn();
+	private PassiveEntitie pV;
+	private ShotEn sE = new ShotEn();
 
 	public Enemy(int startX, int startY, int healthE) {
 		this.health = new Health(healthE);

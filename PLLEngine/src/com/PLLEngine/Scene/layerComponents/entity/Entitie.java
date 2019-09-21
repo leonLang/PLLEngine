@@ -78,15 +78,19 @@ public class Entitie implements SceneComponentInterface {
 	public static void setArrX(int arrX, int number) {
 		Entitie.arrX[number] = arrX;
 	}
+
 	public static int getArrXLength() {
 		return arrX.length;
 	}
+
 	public static int[] getArrXArray() {
 		return arrX;
 	}
+
 	public static int getArrY(int number) {
 		return arrY[number];
 	}
+
 	public static int[] getArrYArray() {
 		return arrY;
 	}
@@ -119,7 +123,6 @@ public class Entitie implements SceneComponentInterface {
 		return dyAll;
 	}
 
-
 	public int getDx() {
 		return this.dx;
 	}
@@ -128,6 +131,7 @@ public class Entitie implements SceneComponentInterface {
 		Entitie.dxAll = dx;
 		this.dx = dx;
 	}
+
 	public int getDy() {
 		return this.dy;
 	}

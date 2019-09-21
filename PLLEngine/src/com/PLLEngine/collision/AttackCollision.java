@@ -19,7 +19,8 @@ public class AttackCollision {
 	}
 
 	public boolean seeIfCollisionWithPlayer() {
-		Collision co = new Collision(this.xShot, this.yShot, this.widthShot, this.heightShot, this.xPlayer, this.yPlayer, this.widthPlayer, this.heightPlayer);
+		Collision co = new Collision(this.xShot, this.yShot, this.widthShot, this.heightShot, this.xPlayer,
+				this.yPlayer, this.widthPlayer, this.heightPlayer);
 		return co.Coll1();
 	}
 }
