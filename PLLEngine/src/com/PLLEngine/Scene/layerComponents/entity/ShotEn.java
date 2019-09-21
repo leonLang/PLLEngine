@@ -81,7 +81,7 @@ public class ShotEn {
 			this.shotMoveX = 0;
 			this.shotMoveY = 0;
 
-			Player.lives--;
+			Player.setLives(Player.getLives() - 1);
 		}
 		this.resetShot(this.randomNumber);
 

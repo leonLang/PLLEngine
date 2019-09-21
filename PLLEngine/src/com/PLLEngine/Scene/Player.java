@@ -43,7 +43,7 @@ public class Player extends Entitie {
 	private int playerY = 364;
 	private Health health = new Health(10);
 	private Shot[] shot = new Shot[10];
-	public static int lives;
+	private static int lives;
 	// Leon Code End
 
 	public Player() {
@@ -350,6 +350,14 @@ public class Player extends Entitie {
 
 	public Control getController() {
 		return controller;
+	}
+
+	public static int getLives() {
+		return lives;
+	}
+
+	public static void setLives(int lives) {
+		Player.lives = lives;
 	}
 
 }
