@@ -5,10 +5,10 @@ import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 
 public class CollThread extends Thread {
 
-	public static boolean[] collLeft = new boolean[100000];
-	public static boolean[] collRight = new boolean[100000];
-	public static boolean[] collUp = new boolean[100000];
-	public static boolean[] collDown = new boolean[100000];
+	private static boolean[] collLeft = new boolean[100000];
+	private static boolean[] collRight = new boolean[100000];
+	private static boolean[] collUp = new boolean[100000];
+	private static boolean[] collDown = new boolean[100000];
 
 	@Override
 	public void run() {
@@ -36,9 +36,9 @@ public class CollThread extends Thread {
 
 	private void enemyVSEnemy() {
 		int cntr = 0; // counter starts with 1 because 0 is the player
-		int amntObjcts = Entitie.arrX.length;
-		int arrX[] = Entitie.arrX;
-		int arrY[] = Entitie.arrY;
+		int amntObjcts = Entitie.getArrXLength();
+		int arrX[] = Entitie.getArrXArray();
+		int arrY[] = Entitie.getArrYArray();
 
 		this.compareAllObjekts(cntr, amntObjcts, arrX, arrY);
 
@@ -105,8 +105,40 @@ public class CollThread extends Thread {
 	}
 
 	private void setSynchronization(int counter) {
-		Entitie.synchronize[counter] = true;
+		Entitie.setSynchronize(true, counter);
 		// if the collision check is ready the enemys can move
+	}
+
+	public static boolean getCollLeft(int number) {
+		return collLeft[number];
+	}
+
+	public static boolean getCollRight(int number) {
+		return collRight[number];
+	}
+
+	public static boolean getCollUp(int number) {
+		return collUp[number];
+	}
+
+	public static boolean getCollDown(int number) {
+		return collDown[number];
+	}
+
+	public static void setCollLeft(boolean collLeft, int number) {
+		CollThread.collLeft[number] = collLeft;
+	}
+
+	public static void setCollRight(boolean collRight, int number) {
+		CollThread.collRight[number] = collRight;
+	}
+
+	public static void setCollUp(boolean collUp, int number) {
+		CollThread.collUp[number] = collUp;
+	}
+
+	public static void setCollDown(boolean collDown, int number) {
+		CollThread.collDown[number] = collDown;
 	}
 
 }

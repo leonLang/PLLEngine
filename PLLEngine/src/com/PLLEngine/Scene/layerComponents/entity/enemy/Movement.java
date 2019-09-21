@@ -67,11 +67,11 @@ public class Movement {
 	}
 
 	private int moveRight(int entityNumberOwn) {
-		int xE = Entitie.arrX[entityNumberOwn];
-		int yE = Entitie.arrY[entityNumberOwn];
-		if (CollThread.collRight[entityNumberOwn] || this.cO.checkCollisionFromObjects(xE, yE) == 1
+		int xE = Entitie.getArrX(entityNumberOwn);
+		int yE = Entitie.getArrY(entityNumberOwn);
+		if (CollThread.getCollRight(entityNumberOwn) || this.cO.checkCollisionFromObjects(xE, yE) == 1
 				|| this.cW.collisionRight(this.dx, this.dy, xE, yE)) {
-			CollThread.collRight[entityNumberOwn] = false;
+			CollThread.setCollRight(false, entityNumberOwn);
 			this.direction = 1; // Enemie moves now in the opposite direction
 			return 1; // this prevents that two Enemies Stick together
 		} else {
@@ -80,11 +80,11 @@ public class Movement {
 	}
 
 	private int moveLeft(int entityNumberOwn) {
-		int xE = Entitie.arrX[entityNumberOwn];
-		int yE = Entitie.arrY[entityNumberOwn];
-		if (CollThread.collLeft[entityNumberOwn] || this.cO.checkCollisionFromObjects(xE, yE) == 2
+		int xE = Entitie.getArrX(entityNumberOwn);
+		int yE = Entitie.getArrY(entityNumberOwn);
+		if (CollThread.getCollLeft(entityNumberOwn) || this.cO.checkCollisionFromObjects(xE, yE) == 2
 				|| this.cW.collisionLeft(this.dx, this.dy, xE, yE)) {
-			CollThread.collLeft[entityNumberOwn] = false;
+			CollThread.setCollLeft(false, entityNumberOwn);
 			this.direction = 0;
 			return -1;
 		} else {
@@ -93,11 +93,11 @@ public class Movement {
 	}
 
 	private int moveDown(int entityNumberOwn) {
-		int xE = Entitie.arrX[entityNumberOwn];
-		int yE = Entitie.arrY[entityNumberOwn];
-		if (CollThread.collDown[entityNumberOwn] || this.cO.checkCollisionFromObjects(xE, yE) == 3
+		int xE = Entitie.getArrX(entityNumberOwn);
+		int yE = Entitie.getArrY(entityNumberOwn);
+		if (CollThread.getCollDown(entityNumberOwn) || this.cO.checkCollisionFromObjects(xE, yE) == 3
 				|| this.cW.collisionDown(this.dx, this.dy, xE, yE)) {
-			CollThread.collDown[entityNumberOwn] = false;
+			CollThread.setCollDown(false, entityNumberOwn);
 			this.direction = 2;
 			return -1;
 		} else {
@@ -106,11 +106,11 @@ public class Movement {
 	}
 
 	private int moveUp(int entityNumberOwn) {
-		int xE = Entitie.arrX[entityNumberOwn];
-		int yE = Entitie.arrY[entityNumberOwn];
-		if (CollThread.collUp[entityNumberOwn] || this.cO.checkCollisionFromObjects(xE, yE) == 4
+		int xE = Entitie.getArrX(entityNumberOwn);
+		int yE = Entitie.getArrY(entityNumberOwn);
+		if (CollThread.getCollUp(entityNumberOwn) || this.cO.checkCollisionFromObjects(xE, yE) == 4
 				|| this.cW.collisionUp(this.dx, this.dy, xE, yE)) {
-			CollThread.collUp[entityNumberOwn] = false;
+			CollThread.setCollUp(false, entityNumberOwn);
 			this.direction = 3;
 			return 1;
 		} else {

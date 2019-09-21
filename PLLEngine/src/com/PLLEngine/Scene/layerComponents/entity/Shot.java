@@ -38,13 +38,13 @@ public class Shot {
 				// created
 				this.useY = startY;
 			}
-			int xShot = this.useX + this.shotMoveLeft + this.shotMoveRight + Entitie.dxAll;
-			int yShot = this.useY + this.shotMoveDown + this.shotMoveUp + Entitie.dyAll;
+			int xShot = this.useX + this.shotMoveLeft + this.shotMoveRight + Entitie.getDxAll();
+			int yShot = this.useY + this.shotMoveDown + this.shotMoveUp + Entitie.getDyAll();
 			int widthShot = 13;
 			int heightShot = 13;
 			int enemieShotNumber = this.sC.shotFromPlayer(xShot, yShot, widthShot, heightShot, 32, 32);
 			if (enemieShotNumber != -1) {
-				Entitie.arrHealth[enemieShotNumber]--;
+				Entitie.setArrHealth(Entitie.getArrHealth(enemieShotNumber) - 1,enemieShotNumber);
 				this.shotMoveLeft = 1000;
 				this.shotMoveRight = 1000;
 				this.shotMoveUp = 1000;

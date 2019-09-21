@@ -74,7 +74,7 @@ public class Player extends Entitie {
 	public void draw(Graphics2D g) {
 		// synchronize();
 		for (int i = 0; i < shot.length; i++) {
-			shot[i].drawShot(g, 560 - Entitie.dxAll, 364 - Entitie.dyAll);
+			shot[i].drawShot(g, 560 - Entitie.getDxAll(), 364 - Entitie.getDyAll());
 		}
 		g.setColor(Color.gray);
 		g.drawRect(xOnScreen - width / 2, yOnScreen - height / 2, width, height);

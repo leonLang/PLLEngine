@@ -9,12 +9,13 @@ import com.PLLEngine.collision.CollThread;
 
 public class Entitie implements SceneComponentInterface {
 
-	public static int[] arrX = new int[1];
-	public static int[] arrY = new int[1];
-	public static int[] arrHealth = new int[1];
-	public static boolean[] synchronize = new boolean[1];
-	public static int dxAll;
-	public static int dyAll;
+	private static int[] arrX = new int[1];
+	private static int[] arrY = new int[1];
+	private static int[] arrHealth = new int[1];
+	private static boolean[] synchronize = new boolean[1];
+	private static int dxAll;
+	private static int dyAll;
+
 	protected int entityNumberOwn;
 	protected int px, py;
 	protected int dx, dy;
@@ -70,37 +71,67 @@ public class Entitie implements SceneComponentInterface {
 		this.py = y + dy;
 	}
 
-	public int getPx() {
-		return this.px;
+	public static int getArrX(int number) {
+		return arrX[number];
 	}
 
-	public void setPx(int px) {
-		this.px = px;
+	public static void setArrX(int arrX, int number) {
+		Entitie.arrX[number] = arrX;
+	}
+	public static int getArrXLength() {
+		return arrX.length;
+	}
+	public static int[] getArrXArray() {
+		return arrX;
+	}
+	public static int getArrY(int number) {
+		return arrY[number];
+	}
+	public static int[] getArrYArray() {
+		return arrY;
 	}
 
-	public int getPy() {
-		return this.py;
+	public static void setArrY(int arrY, int number) {
+		Entitie.arrY[number] = arrY;
 	}
 
-	public void setPy(int py) {
-		this.py = py;
+	public static int getArrHealth(int number) {
+		return arrHealth[number];
+	}
+
+	public static void setArrHealth(int arrHealth, int number) {
+		Entitie.arrHealth[number] = arrHealth;
+	}
+
+	public static boolean getSynchronize(int number) {
+		return synchronize[number];
+	}
+
+	public static void setSynchronize(boolean synchronize, int number) {
+		Entitie.synchronize[number] = synchronize;
+	}
+
+	public static int getDxAll() {
+		return dxAll;
+	}
+
+	public static int getDyAll() {
+		return dyAll;
 	}
 
 	public int getDx() {
-		return this.dx;
+		return dx;
 	}
 
 	public void setDx(int dx) {
-		Entitie.dxAll = dx;
 		this.dx = dx;
 	}
 
 	public int getDy() {
-		return this.dy;
+		return dy;
 	}
 
 	public void setDy(int dy) {
-		Entitie.dyAll = dy;
 		this.dy = dy;
 	}
 

@@ -1,10 +1,10 @@
 package com.PLLEngine.collision;
 
 public class CollObject {
-	public static int startX[] = new int[0];
-	public static int startY[] = new int[0];
-	public static int x[] = new int[0];
-	public static int y[] = new int[0];
+	private static int x[] = new int[0];
+	private static int y[] = new int[0];
+	private static int startX[] = new int[0];
+	private static int startY[] = new int[0];
 	private int width = 64;
 	private int heigth = 64;
 	private int entityWidth;

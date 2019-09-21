@@ -21,7 +21,7 @@ public class PassiveEntitie extends Entitie {
 
 	@Override
 	public void draw(Graphics2D g) {
-		g.drawRect(this.startXP + Entitie.dxAll, this.startYP + Entitie.dyAll, this.width, this.height);
-		g.drawString(this.dialog, this.startXD + Entitie.dxAll, this.startYD + Entitie.dyAll);
+		g.drawRect(this.startXP + Entitie.getDxAll(), this.startYP + Entitie.getDyAll(), this.width, this.height);
+		g.drawString(this.dialog, this.startXD + Entitie.getDxAll(), this.startYD + Entitie.getDyAll());
 	}
 }

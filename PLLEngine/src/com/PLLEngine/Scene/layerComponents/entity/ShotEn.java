@@ -28,8 +28,8 @@ public class ShotEn {
 			// I only need the enemieX in the beginning because if I use it afterwards it
 			// uses the Enemie Movement aswell which looks kinda bad.
 
-			this.enemieX = enemieX - Entitie.dxAll;
-			this.enemieY = enemieY - Entitie.dyAll;
+			this.enemieX = enemieX - Entitie.getDxAll();
+			this.enemieY = enemieY - Entitie.getDyAll();
 			// And I can use it to calculate the direction in the beginning of the Shot;
 			this.direction(enemieX, enemieY);
 			Random rn = new Random();
@@ -46,8 +46,8 @@ public class ShotEn {
 		}
 		int widthShot = 13;
 		int heightShot = 13;
-		int xShot = this.enemieX + this.shotMoveX / 100 + Entitie.dxAll;
-		int yShot = this.enemieY + this.shotMoveY / 100 + Entitie.dyAll;
+		int xShot = this.enemieX + this.shotMoveX / 100 + Entitie.getDxAll();
+		int yShot = this.enemieY + this.shotMoveY / 100 + Entitie.getDyAll();
 
 		switch (this.randomBall) {
 		case 0:

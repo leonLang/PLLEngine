@@ -23,7 +23,7 @@ public class Enemy extends Entitie {
 
 	public Enemy(int startX, int startY, int healthE) {
 		this.health = new Health(healthE);
-		Entitie.arrHealth[this.entityNumberOwn] = healthE;
+		Entitie.setArrHealth(healthE, this.entityNumberOwn);
 		this.x = startX;
 		this.y = startY;
 
@@ -44,7 +44,7 @@ public class Enemy extends Entitie {
 		 * System.out.println(CollObject.x[i]); }
 		 */
 		// shot.drawShot(g, px, py);
-		if (Entitie.arrHealth[this.entityNumberOwn] > 0) {
+		if (Entitie.getArrHealth(this.entityNumberOwn) > 0) {
 			this.controlHealth(g);
 			this.cameraMovement(this.x, this.y, this.dx, this.dy);
 			this.collisionCheck();
@@ -58,10 +58,10 @@ public class Enemy extends Entitie {
 			/*
 			 * for (int i = 0; i < 5; i++) { g.drawRect(6, 15, 3, 3); xSmile++; ySmile++; }
 			 */
-			this.sE.drawShots(g, Entitie.arrX[this.entityNumberOwn], Entitie.arrY[this.entityNumberOwn]);
+			this.sE.drawShots(g, Entitie.getArrX(this.entityNumberOwn), Entitie.getArrY(this.entityNumberOwn));
 		} else {
-			Entitie.arrX[this.entityNumberOwn] = -10000; // teleport the player offscreen to remove it
-			Entitie.arrY[this.entityNumberOwn] = -10000;
+			Entitie.setArrX(-10000, this.entityNumberOwn); // teleport the player offscreen to remove it
+			Entitie.setArrY(-10000, this.entityNumberOwn);
 		}
 
 	}
@@ -81,7 +81,7 @@ public class Enemy extends Entitie {
 		g.setColor(Color.DARK_GRAY);
 		g.drawRect(this.px, this.py - 4, this.width, 2);
 		g.fillRect(this.px, this.py - 4,
-				this.width * Entitie.arrHealth[this.entityNumberOwn] / this.health.getStartLives(), 2);
+				this.width * Entitie.getArrHealth(this.entityNumberOwn) / this.health.getStartLives(), 2);
 		g.setColor(Color.black);
 		// If I don't do it with the ( the Rect wont be full because of rounding
 		// differences
@@ -101,8 +101,8 @@ public class Enemy extends Entitie {
 
 	private void synchronize() {
 
-		if (Entitie.synchronize[this.entityNumberOwn]) {
-			Entitie.synchronize[this.entityNumberOwn] = false;
+		if (Entitie.getSynchronize(this.entityNumberOwn)) {
+			Entitie.setSynchronize(false, this.entityNumberOwn);
 			this.enemyMovement();
 			/*
 			 * if (CollThread.collLeft[entityNumberOwn]) {
@@ -116,8 +116,8 @@ public class Enemy extends Entitie {
 	}
 
 	private void setEntitiyPosition() {
-		arrX[this.entityNumberOwn] = this.px;
-		arrY[this.entityNumberOwn] = this.py;
+		setArrX(this.px, this.entityNumberOwn);
+		setArrY(this.py, this.entityNumberOwn);
 	}
 
 	public void setSprite(BufferedImage br) {

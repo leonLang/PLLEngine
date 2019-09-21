@@ -9,9 +9,9 @@ public class ShotCollision {
 	}
 
 	public int shotFromPlayer(int xShot, int yShot, int widthShot, int heightShot, int widthEnemie, int heightEnemie) {
-		for (int i = 0; i < Entitie.arrX.length; i++) {
+		for (int i = 0; i < Entitie.getArrXLength(); i++) {
 
-			Collision cl = new Collision(xShot, yShot, widthShot, heightShot, Entitie.arrX[i], Entitie.arrY[i],
+			Collision cl = new Collision(xShot, yShot, widthShot, heightShot, Entitie.getArrX(i), Entitie.getArrY(i),
 					widthEnemie, heightEnemie);
 			if (cl.Coll1()) {
 				return i;
