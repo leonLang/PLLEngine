@@ -58,7 +58,12 @@ public class Enemy extends Entitie {
 			this.controlHealth(g);
 			drawBody(g);
 			drawEyes(g);
-			drawSmile(g);
+
+			if (health.getStartLives() / 2 < Entitie.getArrHealth(entityNumberOwn)) {
+				drawSmile(g);
+			} else {
+				drawUnhappySmile(g);
+			}
 
 			this.sE.drawShots(g, Entitie.getArrX(this.entityNumberOwn), Entitie.getArrY(this.entityNumberOwn));
 		} else {
@@ -90,7 +95,13 @@ public class Enemy extends Entitie {
 	}
 
 	private void drawEyes(Graphics2D g) {
-		g.setColor(Color.RED);
+		
+		if (health.getStartLives() / 2 < Entitie.getArrHealth(entityNumberOwn)) {
+			g.setColor(Color.orange);
+		} else {
+			g.setColor(Color.RED);
+		}
+		
 
 		// Left eye
 		g.drawOval(this.px + 2, this.py + 2, 5, 5);
@@ -103,7 +114,7 @@ public class Enemy extends Entitie {
 	}
 
 	private void drawSmile(Graphics2D g) {
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < 11; i++) {
 			if (ySmile < 6) {
 				g.drawRect(this.px + 3 + xSmile, this.py + 11 + ySmile, 2, 2);
 			}
@@ -111,6 +122,21 @@ public class Enemy extends Entitie {
 			ySmile++;
 			if (ySmile >= 6) {
 				g.drawRect(this.px + 2 + xSmile, this.py + 8 - ySmile + 14, 2, 2);
+			}
+		}
+		xSmile = 0;
+		ySmile = 0;
+	}
+
+	private void drawUnhappySmile(Graphics2D g) {
+		for (int i = 0; i < 11; i++) {
+			if (ySmile < 6) {
+				g.drawRect(this.px + 3 + xSmile, this.py + 16 - ySmile, 2, 2);
+			}
+			xSmile++;
+			ySmile++;
+			if (ySmile >= 6) {
+				g.drawRect(this.px + 2 + xSmile, this.py + 8 + ySmile - 3, 2, 2);
 			}
 		}
 		xSmile = 0;
