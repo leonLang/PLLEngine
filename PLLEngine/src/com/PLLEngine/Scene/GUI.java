@@ -17,6 +17,10 @@ import com.PLLEngine.Scene.layerComponents.Text;
 
 @SuppressWarnings("serial")
 public class GUI extends JPanel implements SceneComponentInterface {
+	/*
+	 * kann zur erstellung eines Menü's oder ähnlichem genutz werden, wird allerdings NICHT im game implementiert,
+	 *  die datei world2.json enthält eine vorlage
+	 */
 
 	private Text[] text;
 	private JLabel[] labels;

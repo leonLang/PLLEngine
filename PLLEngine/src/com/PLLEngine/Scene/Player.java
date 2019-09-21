@@ -20,8 +20,6 @@ public class Player extends Entitie {
 	private Game game;
 	private Control controller;
 
-	private static boolean richtungAll;
-	private boolean richtungOwn, once;
 	private int xOnScreen, yOnScreen;
 	private int width, height;
 

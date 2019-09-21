@@ -1,0 +1,76 @@
+[
+  {
+    "id": 0,
+    "spriteX": 0,
+    "spriteY": 2,
+    "collision": false
+  },
+  {
+    "id": 1,
+    "path": "src_data/rest.png",
+    "spriteX": 0,
+    "spriteY": 0,
+    "collision": false
+  },
+  {
+    "id": 2,
+    "collision": true,
+    "spriteX": 14,
+    "spriteY": 24
+  },
+  {
+    "id": 3,
+    "collision": true,
+    "spriteX": 15,
+    "spriteY": 24
+  },
+  {
+    "id": 4,
+    "collision": true,
+    "spriteX": 11,
+    "spriteY": 24
+  },
+  {
+    "id": 5,
+    "collision": false,
+    "spriteX": 14,
+    "spriteY": 25
+  },
+  {
+    "id": 6,
+    "collision": true,
+    "spriteX": 15,
+    "spriteY": 25
+  },
+  {
+    "id": 7,
+    "collision": true,
+    "spriteX": 11,
+    "spriteY": 25
+  },
+  {
+    "id": 8,
+    "collision": true,
+    "spriteX": 11,
+    "spriteY": 26
+  },
+  {
+    "id": 9,
+    "collision": true,
+    "spriteX": 14,
+    "spriteY": 26
+  },
+  {
+    "id": 10,
+    "collision": true,
+    "spriteX": 15,
+    "spriteY": 26
+  },
+  {
+    "id": 11,
+    "collision": false,
+    "spriteX": 10,
+    "spriteY": 17
+  }
+
+]

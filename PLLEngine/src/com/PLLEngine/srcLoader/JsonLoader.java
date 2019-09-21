@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 
 import com.PLLEngine.Game.Game;
 import com.PLLEngine.Scene.GUI;
-import com.PLLEngine.Scene.Layer;
 import com.PLLEngine.Scene.Player;
 import com.PLLEngine.Scene.Scene;
 import com.PLLEngine.Scene.World;
@@ -54,14 +53,6 @@ public class JsonLoader {
 		return scene;
 	}
 
-	public static Layer LayerLoader(String layerPath) throws IOException {
-		Layer layer;
-		String path = "src_data/layer/" + layerPath;
-		byte[] jsonData = Files.readAllBytes(Paths.get(path));
-		ObjectMapper objectMapper = new ObjectMapper();
-		layer = objectMapper.readValue(jsonData, Layer.class);
-		return layer;
-	}
 
 	public static GUI InterfaceLoader(String GUIPath) throws IOException {
 		GUI gui;
