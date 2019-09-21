@@ -4,10 +4,10 @@ package com.PLLEngine.Scene.layerComponents.entity;
 import java.awt.Graphics2D;
 
 public class PassiveEntitie extends Entitie {
-	int startXP, startYP; // Passive Entitie X and Y
-	int startXD, startYD; // Dialog X and Y
-	int width, height;
-	String dialog;
+	private int startXP, startYP; // Passive Entitie X and Y
+	private int startXD, startYD; // Dialog X and Y
+	private int width, height;
+	private String dialog;
 
 	public PassiveEntitie(int startXP, int startYP, int width, int height, int startXD, int startYD, String dialog) {
 		this.startXP = startXP;

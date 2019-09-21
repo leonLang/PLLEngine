@@ -119,20 +119,21 @@ public class Entitie implements SceneComponentInterface {
 		return dyAll;
 	}
 
+
 	public int getDx() {
-		return dx;
+		return this.dx;
 	}
 
 	public void setDx(int dx) {
+		Entitie.dxAll = dx;
 		this.dx = dx;
 	}
-
 	public int getDy() {
-		return dy;
+		return this.dy;
 	}
 
 	public void setDy(int dy) {
+		Entitie.dyAll = dy;
 		this.dy = dy;
 	}
-
 }
