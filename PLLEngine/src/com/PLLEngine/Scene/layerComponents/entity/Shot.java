@@ -68,8 +68,10 @@ public class Shot {
 				break;
 			}
 			g.setColor(Color.cyan);
+
 			g.fillOval(xShot, yShot, widthShot, heightShot);
 			g.drawOval(xShot, yShot, widthShot, heightShot);
+
 			g.setColor(Color.black);
 			// g.drawRect(xShot, yShot, widthShot, heightShot);
 		}

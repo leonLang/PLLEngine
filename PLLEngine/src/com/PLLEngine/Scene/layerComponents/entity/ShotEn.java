@@ -69,7 +69,6 @@ public class ShotEn {
 		default:
 			break;
 		}
-
 		g.drawOval(xShot, yShot, widthShot, heightShot);
 		g.fillOval(xShot, yShot, widthShot, heightShot);
 		g.setColor(Color.black);
