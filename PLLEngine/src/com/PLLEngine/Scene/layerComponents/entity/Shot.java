@@ -8,13 +8,12 @@ import com.PLLEngine.collision.ShotCollision;
 
 public class Shot {
 
-	public static long timeToWait;
+	private static long timeToWait;
 	private int shotTime;
 	private boolean shotIsFired; // The number of shots specifie the number of avaible shots in the field
 	private int shotMoveLeft, shotMoveRight, shotMoveUp, shotMoveDown;
 	private int useX;
 	private int useY;
-
 
 	private int direction;
 	private ShotCollision sC = new ShotCollision();
@@ -29,7 +28,6 @@ public class Shot {
 		// timeToWait = dt.getTime();
 		// This Shot is for the pressed Button
 	}
-
 
 	public void drawShot(Graphics2D g, int startX, int startY) {
 		// Collision needs to be done by the enemie;
@@ -46,7 +44,7 @@ public class Shot {
 			int heightShot = 13;
 			int enemieShotNumber = this.sC.shotFromPlayer(xShot, yShot, widthShot, heightShot, 32, 32);
 			if (enemieShotNumber != -1) {
-				Entitie.setArrHealth(Entitie.getArrHealth(enemieShotNumber) - 1,enemieShotNumber);
+				Entitie.setArrHealth(Entitie.getArrHealth(enemieShotNumber) - 1, enemieShotNumber);
 				this.shotMoveLeft = 1000;
 				this.shotMoveRight = 1000;
 				this.shotMoveUp = 1000;
@@ -104,6 +102,7 @@ public class Shot {
 		// remove the Shot as true after an specific time
 		return false;
 	}
+
 	public boolean getShotIsFired() {
 		return shotIsFired;
 	}

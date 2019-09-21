@@ -15,8 +15,8 @@ public class ShotEn {
 	private long currentDate;
 	private int enemieX = 0, enemieY = 0;
 	private int reset;
-	AttackCollision aC;
-	int randomNumber, randomBall;
+	private AttackCollision aC;
+	private int randomNumber, randomBall;
 
 	public ShotEn() {
 
