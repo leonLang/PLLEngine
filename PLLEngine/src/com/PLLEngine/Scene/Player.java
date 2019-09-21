@@ -243,7 +243,7 @@ public class Player extends Entitie {
 		// Leon Code Start
 		if (e.getKeyCode() == KeyEvent.VK_A) {
 			for (int i = 0; i < shot.length; i++) {
-				if (!shot[i].shotIsFired) {
+				if (!shot[i].getShotIsFired()) {
 					shot[i].addShot(0);
 					i = shot.length + 1;
 				}
@@ -251,7 +251,7 @@ public class Player extends Entitie {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_W) {
 			for (int i = 0; i < shot.length; i++) {
-				if (!shot[i].shotIsFired) {
+				if (!shot[i].getShotIsFired()) {
 					shot[i].addShot(2);
 					i = shot.length + 1;
 				}
@@ -259,7 +259,7 @@ public class Player extends Entitie {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_S) {
 			for (int i = 0; i < shot.length; i++) {
-				if (!shot[i].shotIsFired) {
+				if (!shot[i].getShotIsFired()) {
 					shot[i].addShot(3);
 					i = shot.length + 1;
 				}
@@ -267,7 +267,7 @@ public class Player extends Entitie {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			for (int i = 0; i < shot.length; i++) {
-				if (!shot[i].shotIsFired) {
+				if (!shot[i].getShotIsFired()) {
 					shot[i].addShot(1);
 					i = shot.length + 1;
 				}

@@ -10,10 +10,12 @@ public class Shot {
 
 	public static long timeToWait;
 	private int shotTime;
-	public boolean shotIsFired; // The number of shots specifie the number of avaible shots in the field
+	private boolean shotIsFired; // The number of shots specifie the number of avaible shots in the field
 	private int shotMoveLeft, shotMoveRight, shotMoveUp, shotMoveDown;
 	private int useX;
 	private int useY;
+
+
 	private int direction;
 	private ShotCollision sC = new ShotCollision();
 
@@ -101,6 +103,9 @@ public class Shot {
 	public boolean removeShot() {
 		// remove the Shot as true after an specific time
 		return false;
+	}
+	public boolean getShotIsFired() {
+		return shotIsFired;
 	}
 
 }
