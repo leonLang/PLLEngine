@@ -3,6 +3,7 @@ package com.PLLEngine.Scene.layerComponents.entity.enemy;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.Scene.layerComponents.entity.PassiveEntitie;
@@ -20,8 +21,12 @@ public class Enemy extends Entitie {
 	private Health health;
 	private PassiveEntitie pV;
 	private ShotEn sE = new ShotEn();
+	private int xSmile, ySmile;
+	private int randomColor;
 
 	public Enemy(int startX, int startY, int healthE) {
+		Random random = new Random();
+		randomColor = random.nextInt(3);
 		this.health = new Health(healthE);
 		Entitie.setArrHealth(healthE, this.entityNumberOwn);
 		this.x = startX;
@@ -45,25 +50,71 @@ public class Enemy extends Entitie {
 		 */
 		// shot.drawShot(g, px, py);
 		if (Entitie.getArrHealth(this.entityNumberOwn) > 0) {
-			this.controlHealth(g);
+
 			this.cameraMovement(this.x, this.y, this.dx, this.dy);
 			this.collisionCheck();
 			this.synchronize();
 			this.setEntitiyPosition();
-			if (this.sprite != null)
-				g.drawImage(this.sprite, this.px, this.py, null);
-			g.drawRect(this.px, this.py, this.width, this.height);
-			g.drawOval(this.px + 6, this.py + 2, 7, 7);
+			this.controlHealth(g);
+			drawBody(g);
+			drawEyes(g);
+			drawSmile(g);
 
-			/*
-			 * for (int i = 0; i < 5; i++) { g.drawRect(6, 15, 3, 3); xSmile++; ySmile++; }
-			 */
 			this.sE.drawShots(g, Entitie.getArrX(this.entityNumberOwn), Entitie.getArrY(this.entityNumberOwn));
 		} else {
 			Entitie.setArrX(-10000, this.entityNumberOwn); // teleport the player offscreen to remove it
 			Entitie.setArrY(-10000, this.entityNumberOwn);
 		}
 
+	}
+
+	private void drawBody(Graphics2D g) {
+
+		switch (randomColor) {
+		case 0:
+			g.setColor(Color.LIGHT_GRAY);
+			break;
+		case 1:
+			g.setColor(Color.GRAY);
+			break;
+		case 2:
+			g.setColor(Color.WHITE);
+			break;
+
+		default:
+			break;
+		}
+
+		g.drawRect(this.px, this.py, this.width, this.height);
+		g.fillRect(this.px, this.py, this.width, this.height);
+	}
+
+	private void drawEyes(Graphics2D g) {
+		g.setColor(Color.RED);
+
+		// Left eye
+		g.drawOval(this.px + 2, this.py + 2, 5, 5);
+		g.fillOval(this.px + 2, this.py + 2, 5, 5);
+
+		// Right eye
+		g.drawOval(this.px + 12, this.py + 2, 5, 5);
+		g.fillOval(this.px + 12, this.py + 2, 5, 5);
+		g.setColor(Color.black);
+	}
+
+	private void drawSmile(Graphics2D g) {
+		for (int i = 0; i < 12; i++) {
+			if (ySmile < 6) {
+				g.drawRect(this.px + 3 + xSmile, this.py + 11 + ySmile, 2, 2);
+			}
+			xSmile++;
+			ySmile++;
+			if (ySmile >= 6) {
+				g.drawRect(this.px + 2 + xSmile, this.py + 8 - ySmile + 14, 2, 2);
+			}
+		}
+		xSmile = 0;
+		ySmile = 0;
 	}
 
 	private void enemyMovement() {
