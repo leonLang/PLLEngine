@@ -58,7 +58,7 @@ public class CollObject {
 	public boolean checkCollisionFromObjectsRight(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
-			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, this.entityWidth,
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 62, 62, entityX, entityY, this.entityWidth,
 					this.entityHeigth);
 			// System.out.println(Entitie.arrX[enemieNumber]);
 			if (cl.CollRechtsP()) {
@@ -72,7 +72,7 @@ public class CollObject {
 	public boolean checkCollisionFromObjectsLeft(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
-			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, this.entityWidth,
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 62, 62, entityX, entityY, this.entityWidth,
 					this.entityHeigth);
 			// System.out.println(Entitie.arrX[enemieNumber]);
 			if (cl.CollLinksP()) {
@@ -86,7 +86,7 @@ public class CollObject {
 	public boolean checkCollisionFromObjectsUp(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
-			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, this.entityWidth,
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 62, 62, entityX, entityY, this.entityWidth,
 					this.entityHeigth);
 			// System.out.println(Entitie.arrX[enemieNumber]);
 			if (cl.CollObenP()) {
@@ -100,7 +100,7 @@ public class CollObject {
 	public boolean checkCollisionFromObjectsDown(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
-			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 64, 64, entityX, entityY, this.entityWidth,
+			Collision cl = new Collision(CollObject.x[i], CollObject.y[i], 62, 62, entityX, entityY, this.entityWidth,
 					this.entityHeigth);
 			// System.out.println(Entitie.arrX[enemieNumber]);
 			if (cl.CollUntenP()) {
