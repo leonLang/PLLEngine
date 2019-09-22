@@ -1,6 +1,5 @@
 package com.PLLEngine.Scene.layerComponents.entity.enemy;
 
-//Leon
 import java.util.Random;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
@@ -8,30 +7,23 @@ import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
 import com.PLLEngine.collision.CollWorld;
 
+/** Written by Leon **/
+/** This Class manages the movement of the enemies. **/
 public class Movement {
 	private int nCounter = 0;
 	private int direction;
 	private int x = 0;
 	private int y = 0;
-	private boolean richtungOwn;
 	private Random rn = new Random();
 	private CollObject cO = new CollObject(32, 32);
 	private CollWorld cW = new CollWorld(32, 32);
 	private int dx;
 	private int dy;
 
-	public Movement(boolean richtungOwn, int dx, int dy) {
-		this.richtungOwn = richtungOwn;
+	public Movement(int dx, int dy) {
 	}
 
-	public void moveHim() {
-		if (!this.richtungOwn) {
-			this.x--;
-		} else {
-			this.x++;
-		}
-	}
-
+	/** Let the Enemie move in 4 directions **/
 	public void normalMovement(int entityNumberOwn) {
 		this.direction = this.moveInDirectionSpecificTimes();
 		switch (this.direction) {

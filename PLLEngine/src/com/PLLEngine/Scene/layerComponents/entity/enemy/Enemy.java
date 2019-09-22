@@ -7,6 +7,7 @@ import java.util.Random;
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 import com.PLLEngine.Scene.layerComponents.entity.ShotEn;
 
+/** Written by Leon **/
 public class Enemy extends Entitie {
 	private Movement mv;
 	private static boolean richtungAll;
@@ -19,6 +20,7 @@ public class Enemy extends Entitie {
 	private int xSmile, ySmile;
 	private int randomColor;
 
+	/** define the Health and the Start Koordinates **/
 	public Enemy(int startX, int startY, int healthE) {
 		Random random = new Random();
 		randomColor = random.nextInt(3);
@@ -33,17 +35,13 @@ public class Enemy extends Entitie {
 		} else if (richtungAll) {
 			richtungAll = false;
 		}
-		this.mv = new Movement(this.richtungOwn, this.dx, this.dy);
+		this.mv = new Movement(this.dx, this.dy);
 
 	}
 
+	/** draw and manage the enemie **/
 	@Override
 	public void draw(Graphics2D g) {
-		/*
-		 * for (int i = 0; i < CollObject.x.length; i++) {
-		 * System.out.println(CollObject.x[i]); }
-		 */
-		// shot.drawShot(g, px, py);
 		if (Entitie.getArrHealth(this.entityNumberOwn) > 0) {
 
 			this.cameraMovement(this.x, this.y, this.dx, this.dy);

@@ -8,6 +8,8 @@ import java.util.Random;
 import com.PLLEngine.Scene.Player;
 import com.PLLEngine.collision.AttackCollision;
 
+/** written by Leon **/
+/** Shot from Enemies **/
 public class ShotEn {
 	private int shotMoveXSpeed, shotMoveYSpeed; // has to be divided by 100
 	private int shotMoveX, shotMoveY;
@@ -17,26 +19,17 @@ public class ShotEn {
 	private int reset;
 	private AttackCollision aC;
 	private int randomNumber, randomBall;
+	private Date dt;
 
 	public ShotEn() {
 
 	}
 
+	/** draw and manage the enemieShots **/
 	public void drawShots(Graphics2D g, int enemieX, int enemieY) {
-		Date dt = new Date();
-		if (this.enemieX == 0) {
-			// I only need the enemieX in the beginning because if I use it afterwards it
-			// uses the Enemie Movement aswell which looks kinda bad.
+		dt = new Date();
+		inTheBeginning(enemieX, enemieY);
 
-			this.enemieX = enemieX - Entitie.getDxAll();
-			this.enemieY = enemieY - Entitie.getDyAll();
-			// And I can use it to calculate the direction in the beginning of the Shot;
-			this.direction(enemieX, enemieY);
-			Random rn = new Random();
-			this.randomNumber = rn.nextInt(500);
-			this.randomBall = rn.nextInt(5);
-			this.currentDate = dt.getTime();
-		}
 		if (this.reduceSpeed + this.currentDate <= dt.getTime()) {
 
 			this.currentDate = dt.getTime();
@@ -49,6 +42,16 @@ public class ShotEn {
 		int xShot = this.enemieX + this.shotMoveX / 100 + Entitie.getDxAll();
 		int yShot = this.enemieY + this.shotMoveY / 100 + Entitie.getDyAll();
 
+		setColors(g);
+		g.drawOval(xShot, yShot, widthShot, heightShot);
+		g.fillOval(xShot, yShot, widthShot, heightShot);
+		g.setColor(Color.black);
+		setCollision(xShot, yShot, widthShot, heightShot);
+		this.resetShot(this.randomNumber);
+
+	}
+
+	private void setColors(Graphics2D g) {
 		switch (this.randomBall) {
 		case 0:
 			g.setColor(Color.black);
@@ -69,9 +72,9 @@ public class ShotEn {
 		default:
 			break;
 		}
-		g.drawOval(xShot, yShot, widthShot, heightShot);
-		g.fillOval(xShot, yShot, widthShot, heightShot);
-		g.setColor(Color.black);
+	}
+
+	private void setCollision(int xShot, int yShot, int widthShot, int heightShot) {
 		this.aC = new AttackCollision(xShot, yShot, widthShot, heightShot);
 
 		if (this.aC.seeIfCollisionWithPlayer()) {
@@ -82,11 +85,27 @@ public class ShotEn {
 
 			Player.setLives(Player.getLives() - 1);
 		}
-		this.resetShot(this.randomNumber);
+	}
+
+	private void inTheBeginning(int enemieX, int enemieY) {
+		if (this.enemieX == 0) {
+			// I only need the enemieX in the beginning because if I use it afterwards it
+			// uses the Enemie Movement aswell which looks kinda bad.
+
+			this.enemieX = enemieX - Entitie.getDxAll();
+			this.enemieY = enemieY - Entitie.getDyAll();
+			// And I can use it to calculate the direction in the beginning of the Shot;
+			this.direction(enemieX, enemieY);
+			Random rn = new Random();
+			this.randomNumber = rn.nextInt(500);
+			this.randomBall = rn.nextInt(5);
+			this.currentDate = dt.getTime();
+		}
 
 	}
 
-	public void resetShot(int resetTimer) {
+	private void resetShot(int resetTimer) {
+		// use this if you want to remove the Shot
 		if (this.reset >= resetTimer) {
 			this.enemieX = 0;
 			this.enemieY = 0;
@@ -96,31 +115,45 @@ public class ShotEn {
 		}
 	}
 
-	public void direction(int enemieX, int enemieY) {
+	private void direction(int enemieX, int enemieY) {
+		// this specifies the Direction according to the position of the Enemie
 
 		float xByYDivided = (float) this.directionX(enemieX) / (float) this.directionY(enemieY);
 		float yByXDivided = (float) this.directionY(enemieY) / (float) this.directionX(enemieX);
 		float xFloat;
 		float yFloat;
-		if (xByYDivided >= 1 || xByYDivided <= -1) {
-			this.shotMoveYSpeed = 100;
-			xFloat = 100 * yByXDivided;
+		if (xByYDivided >= 1) {
+			xFloat = 100;
 			this.shotMoveXSpeed = (int) xFloat;
-		} else {
-			this.shotMoveXSpeed = 100;
-			yFloat = 100 * xByYDivided;
+			yFloat = 100 * yByXDivided;
+			this.shotMoveYSpeed = (int) yFloat;
+		} else if (xByYDivided <= -1) {
+			xFloat = 100;
+			this.shotMoveXSpeed = (int) xFloat;
+			yFloat = 100 * yByXDivided;
+			this.shotMoveYSpeed = (int) yFloat;
+
+		} else if (yByXDivided >= 1) {
+			xFloat = 100 * xByYDivided;
+			this.shotMoveXSpeed = (int) xFloat;
+			yFloat = 100;
+			this.shotMoveYSpeed = (int) yFloat;
+		} else if (yByXDivided <= -1) {
+			xFloat = -100 * xByYDivided;
+			this.shotMoveXSpeed = (int) xFloat;
+			yFloat = -100;
 			this.shotMoveYSpeed = (int) yFloat;
 		}
 	}
 
-	public int directionX(int enemieX) {
+	private int directionX(int enemieX) {
 		// the direction is placed so that the Enemie shoots in the direction of the
 		// Player
 		int playerX = 590;
 		return enemieX - playerX;
 	}
 
-	public int directionY(int enemieY) {
+	private int directionY(int enemieY) {
 		int playerY = 390;
 		return enemieY - playerY;
 	}
@@ -162,4 +195,8 @@ public class ShotEn {
  * directionX(enemieX);
  * 
  * } } }
+ * 
+ * 
+ * 
+ * 
  */

@@ -16,7 +16,7 @@ public class Shot {
 	private int shotMoveLeft, shotMoveRight, shotMoveUp, shotMoveDown;
 	private int useX;
 	private int useY;
-
+	private int xShot, yShot, widthShot, heightShot;
 	private int direction;
 	private ShotCollision sC = new ShotCollision();
 
@@ -26,52 +26,20 @@ public class Shot {
 	 **/
 	public Shot(int shotTime) {
 		this.shotTime = shotTime;
-		// Date dt = new Date();
-		// timeToWait = dt.getTime();
-		// This Shot is for the pressed Button
 	}
 
+	/** draws and manages the Shot **/
 	public void drawShot(Graphics2D g, int startX, int startY) {
 		// Collision needs to be done by the enemie;
-
 		if (this.shotIsFired == true) {
 			OnceafterCreation(startX, startY);
-			int xShot = this.useX + this.shotMoveLeft + this.shotMoveRight + Entitie.getDxAll();
-			int yShot = this.useY + this.shotMoveDown + this.shotMoveUp + Entitie.getDyAll();
-			int widthShot = 13;
-			int heightShot = 13;
-			int enemieShotNumber = this.sC.shotFromPlayer(xShot, yShot, widthShot, heightShot, 32, 32);
-			if (enemieShotNumber != -1) {
-				Entitie.setArrHealth(Entitie.getArrHealth(enemieShotNumber) - 1, enemieShotNumber);
-				this.shotMoveLeft = 1000;
-				this.shotMoveRight = 1000;
-				this.shotMoveUp = 1000;
-				this.shotMoveDown = 1000;
-			}
-			switch (this.direction) {
-			case 0:
-				this.shotMoveLeft = this.shotMoveLeft - 4;
-				break;
-			case 1:
-				this.shotMoveRight = this.shotMoveRight + 4;
-				break;
-			case 2:
-				this.shotMoveUp = this.shotMoveUp - 4;
-				break;
-			case 3:
-				this.shotMoveDown = this.shotMoveDown + 4;
-				break;
+			addVariablesAndremoveShotInClass();
+			moveShot();
 
-			default:
-				break;
-			}
 			g.setColor(Color.cyan);
-
 			g.fillOval(xShot, yShot, widthShot, heightShot);
 			g.drawOval(xShot, yShot, widthShot, heightShot);
-
 			g.setColor(Color.black);
-			// g.drawRect(xShot, yShot, widthShot, heightShot);
 		}
 		if (this.shotMoveUp <= -500 || this.shotMoveDown >= 500 || this.shotMoveLeft <= -500
 				|| this.shotMoveRight >= 500) {
@@ -93,6 +61,41 @@ public class Shot {
 		if (this.useX == 0 && this.useY == 0) {
 			this.useX = startX;
 			this.useY = startY;
+		}
+	}
+
+	private void addVariablesAndremoveShotInClass() {
+		xShot = this.useX + this.shotMoveLeft + this.shotMoveRight + Entitie.getDxAll();
+		yShot = this.useY + this.shotMoveDown + this.shotMoveUp + Entitie.getDyAll();
+		widthShot = 13;
+		heightShot = 13;
+		int enemieShotNumber = this.sC.shotFromPlayer(xShot, yShot, widthShot, heightShot, 32, 32);
+		if (enemieShotNumber != -1) {
+			Entitie.setArrHealth(Entitie.getArrHealth(enemieShotNumber) - 1, enemieShotNumber);
+			this.shotMoveLeft = 1000;
+			this.shotMoveRight = 1000;
+			this.shotMoveUp = 1000;
+			this.shotMoveDown = 1000;
+		}
+	}
+
+	private void moveShot() {
+		switch (this.direction) {
+		case 0:
+			this.shotMoveLeft = this.shotMoveLeft - 4;
+			break;
+		case 1:
+			this.shotMoveRight = this.shotMoveRight + 4;
+			break;
+		case 2:
+			this.shotMoveUp = this.shotMoveUp - 4;
+			break;
+		case 3:
+			this.shotMoveDown = this.shotMoveDown + 4;
+			break;
+
+		default:
+			break;
 		}
 	}
 
