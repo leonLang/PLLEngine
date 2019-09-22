@@ -1,9 +1,8 @@
 package com.PLLEngine.collision;
 
-/** Written by Leon **/
 /**
- * This is the Collision from my last Game and it is the fundament for all the
- * other Collisions
+ * Written by Leon. This is the Collision from my last Game and it is the
+ * fundament for all the other Collisions
  **/
 public class Collision {
 	private int Obj1Y, Obj1X, Obj1Width, Obj1Height, Obj2X, Obj2Y, Obj2Width, Obj2Height = 0;

@@ -10,8 +10,6 @@ import com.PLLEngine.Scene.layerComponents.entity.ShotEn;
 /** Written by Leon **/
 public class Enemy extends Entitie {
 	private Movement mv;
-	private static boolean richtungAll;
-	private boolean richtungOwn;
 	private int x, y;
 	private int width = 20;
 	private int height = 20;
@@ -28,13 +26,6 @@ public class Enemy extends Entitie {
 		Entitie.setArrHealth(healthE, this.entityNumberOwn);
 		this.x = startX;
 		this.y = startY;
-
-		if (!richtungAll) {
-			richtungAll = true;
-			this.richtungOwn = true;
-		} else if (richtungAll) {
-			richtungAll = false;
-		}
 		this.mv = new Movement(this.dx, this.dy);
 
 	}
@@ -156,18 +147,9 @@ public class Enemy extends Entitie {
 	}
 
 	private void synchronize() {
-
 		if (Entitie.getSynchronize(this.entityNumberOwn)) {
 			Entitie.setSynchronize(false, this.entityNumberOwn);
 			this.enemyMovement();
-			/*
-			 * if (CollThread.collLeft[entityNumberOwn]) {
-			 * 
-			 * } else if (CollThread.collRight[entityNumberOwn]) {
-			 * 
-			 * } else { if (!collision) { //enemyMovement(); } }
-			 */
-
 		}
 	}
 

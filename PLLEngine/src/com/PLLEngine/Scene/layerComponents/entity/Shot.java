@@ -6,8 +6,9 @@ import java.awt.Graphics2D;
 import java.util.Date;
 import com.PLLEngine.collision.ShotCollision;
 
-/** Written by Leon **/
-/** used for the Player Shots **/
+/**
+ * Written by Leon. used for the Player Shots
+ **/
 public class Shot {
 
 	private static long timeToWait;

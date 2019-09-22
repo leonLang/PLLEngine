@@ -1,7 +1,8 @@
 package com.PLLEngine.collision;
 
-/** Written by Leon **/
-/** This Class prevents the Enemie from fleeing outside the Map **/
+/**
+ * Written by Leon. This Class prevents the Enemie from fleeing outside the Map
+ **/
 public class CollWorld {
 
 	private int worldSizeX = 48 * 64; // The World has 48 Blocks in X Direction with size 64

@@ -6,8 +6,9 @@ import com.PLLEngine.Scene.SceneComponentInterface;
 import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
 
-/** Written by Leon **/
-/** Builds the Fundation for my Enemies **/
+/**
+ * Written by Leon. Builds the Fundation for my Enemies
+ **/
 public class Entitie implements SceneComponentInterface {
 
 	private static int[] arrX = new int[1];

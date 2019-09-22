@@ -4,8 +4,7 @@ import java.awt.image.BufferedImage;
 
 import com.PLLEngine.srcLoader.SrcLoader;
 
-/** Written by Leon **/
-/** creates the images for our game **/
+/** Written by Leon. creates the images for our game **/
 public class Spritesheet {
 	private BufferedImage spritesheet;
 	private int width, height;

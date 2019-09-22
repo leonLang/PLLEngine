@@ -2,9 +2,10 @@ package com.PLLEngine.Scene.layerComponents.entity;
 
 import java.awt.Graphics2D;
 
-/** Written by Leon **/
-/** If you want to have an Entitie which can't do anything and doesn't interact **/
-/** Currently not used **/
+/**
+ * Written by Leon. If you want to have an Entitie which can't do anything and
+ * doesn't interact. Currently not used
+ **/
 public class PassiveEntitie extends Entitie {
 	private int startXP, startYP; // Passive Entitie X and Y
 	private int startXD, startYD; // Dialog X and Y

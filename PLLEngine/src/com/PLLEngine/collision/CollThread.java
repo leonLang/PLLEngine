@@ -2,8 +2,9 @@ package com.PLLEngine.collision;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 
-/** Written by Leon. **/
-/** Uses another Thread for extra Performance **/
+/**
+ * Written by Leon. Uses another Thread for extra Performance
+ **/
 
 public class CollThread extends Thread {
 

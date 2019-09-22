@@ -8,8 +8,7 @@ import java.util.Random;
 import com.PLLEngine.Scene.Player;
 import com.PLLEngine.collision.AttackCollision;
 
-/** written by Leon **/
-/** Shot from Enemies **/
+/** written by Leon. Shot from Enemies **/
 public class ShotEn {
 	private int shotMoveXSpeed, shotMoveYSpeed; // has to be divided by 100
 	private int shotMoveX, shotMoveY;

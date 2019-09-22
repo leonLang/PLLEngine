@@ -7,8 +7,7 @@ import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
 import com.PLLEngine.collision.CollWorld;
 
-/** Written by Leon **/
-/** This Class manages the movement of the enemies. **/
+/** Written by Leon. This Class manages the movement of the enemies. **/
 public class Movement {
 	private int nCounter = 0;
 	private int direction;
