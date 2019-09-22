@@ -1,10 +1,11 @@
 package com.PLLEngine.images;
 
-//Leon
 import java.awt.image.BufferedImage;
 
 import com.PLLEngine.srcLoader.SrcLoader;
 
+/** Written by Leon **/
+/** creates the images for our game **/
 public class Spritesheet {
 	private BufferedImage spritesheet;
 	private int width, height;
@@ -12,19 +13,10 @@ public class Spritesheet {
 	public Spritesheet(int width, int height, String path) {
 		this.width = width;
 		this.height = height;
-		this.setImage(path);
-	}
-
-	public Spritesheet(int width, int height) {
-		this.width = width;
-		this.height = height;
-	}
-
-	// copy
-	private void setImage(String path) {
 		this.spritesheet = SrcLoader.Image(path);
 	}
 
+	/** this uses a small part of your spritesheet as a new image **/
 	public BufferedImage getSprite(int x, int y) {
 		if (this.spritesheet.getWidth() < x * this.width) {
 			System.err.println("x out of bounds");

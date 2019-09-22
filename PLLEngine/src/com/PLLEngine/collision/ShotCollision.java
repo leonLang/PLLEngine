@@ -1,6 +1,6 @@
 package com.PLLEngine.collision;
 
-//Leon
+/** Written by Leon **/
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 
 public class ShotCollision {
@@ -8,6 +8,10 @@ public class ShotCollision {
 
 	}
 
+	/**
+	 * Checks if the Enemie is hitted by a Shot from the Player. Needs current
+	 * Coordinates from Enemie and Shot
+	 **/
 	public int shotFromPlayer(int xShot, int yShot, int widthShot, int heightShot, int widthEnemie, int heightEnemie) {
 		for (int i = 0; i < Entitie.getArrXLength(); i++) {
 
@@ -18,9 +22,5 @@ public class ShotCollision {
 			}
 		}
 		return -1;
-	}
-
-	public void shotFromEnemie() {
-
 	}
 }

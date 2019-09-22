@@ -1,25 +1,26 @@
 package com.PLLEngine.Scene.layerComponents.entity;
 
-//Leon
 import java.awt.Graphics2D;
 
 import com.PLLEngine.Scene.SceneComponentInterface;
 import com.PLLEngine.collision.CollObject;
 import com.PLLEngine.collision.CollThread;
 
+/** Written by Leon **/
+/** Builds the Fundation for my Enemies **/
 public class Entitie implements SceneComponentInterface {
 
 	private static int[] arrX = new int[1];
 	private static int[] arrY = new int[1];
 	private static int[] arrHealth = new int[1];
-	private static boolean[] synchronize = new boolean[1];
-	private static int dxAll;
-	private static int dyAll;
+	private static boolean[] synchronize = new boolean[1]; // to synchronize with the EnemieCollisionThread
+	private static int dxAll; // shows you x camera movement
+	private static int dyAll; // shows you y camera movement
 
-	protected int entityNumberOwn;
+	protected int entityNumberOwn; // use this to give each Enemie a Number
 	protected int px, py;
 	protected int dx, dy;
-	private static boolean onlyOnce = false;
+	private static boolean onlyOnce = false; // only create one new Thread
 	private CollObject cO = new CollObject(32, 32);
 
 	public Entitie() {
@@ -45,6 +46,7 @@ public class Entitie implements SceneComponentInterface {
 		g.drawRect(100, 50, 300, 300);
 	}
 
+	/** reset the Enemies if a new World is created **/
 	public static void resetEnemies() {
 		arrX = new int[1];
 		arrY = new int[1];
@@ -65,36 +67,44 @@ public class Entitie implements SceneComponentInterface {
 		return arrayB;
 	}
 
+	/** this creates the cameraMovement **/
 	public void cameraMovement(int x, int y, int dx, int dy) {
 		this.cO.updateDatas(dx, dy);
 		this.px = x + dx;
 		this.py = y + dy;
 	}
 
+	/** get one value from the X Array **/
 	public static int getArrX(int number) {
 		return arrX[number];
 	}
 
+	/** set one value for the X Array **/
 	public static void setArrX(int arrX, int number) {
 		Entitie.arrX[number] = arrX;
 	}
 
+	/** get the length from the X Array **/
 	public static int getArrXLength() {
 		return arrX.length;
 	}
 
+	/** get the whole X Array **/
 	public static int[] getArrXArray() {
 		return arrX;
 	}
 
+	/** get one Value from ArrY **/
 	public static int getArrY(int number) {
 		return arrY[number];
 	}
 
+	/** get the whole Y Array **/
 	public static int[] getArrYArray() {
 		return arrY;
 	}
 
+	/** set one Value for Y Array **/
 	public static void setArrY(int arrY, int number) {
 		Entitie.arrY[number] = arrY;
 	}
@@ -115,10 +125,12 @@ public class Entitie implements SceneComponentInterface {
 		Entitie.synchronize[number] = synchronize;
 	}
 
+	/** get the x camera Movement **/
 	public static int getDxAll() {
 		return dxAll;
 	}
 
+	/** get the y camera Movement **/
 	public static int getDyAll() {
 		return dyAll;
 	}

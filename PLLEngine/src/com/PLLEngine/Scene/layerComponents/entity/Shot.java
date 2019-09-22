@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 import java.util.Date;
 import com.PLLEngine.collision.ShotCollision;
 
+/** Written by Leon **/
+/** used for the Player Shots **/
 public class Shot {
 
 	private static long timeToWait;
@@ -19,9 +21,9 @@ public class Shot {
 	private ShotCollision sC = new ShotCollision();
 
 	/**
-	 * 
-	 * @param shotTime Use milliseconds for the shotTime
-	 */
+	 * define how long it should be after you can fire another shot. Use
+	 * milliseconds for the shotTime
+	 **/
 	public Shot(int shotTime) {
 		this.shotTime = shotTime;
 		// Date dt = new Date();
@@ -33,11 +35,7 @@ public class Shot {
 		// Collision needs to be done by the enemie;
 
 		if (this.shotIsFired == true) {
-			if (this.useX == 0 && this.useY == 0) {
-				this.useX = startX; // this is needed because startX and startY mustn't change after the shot is
-				// created
-				this.useY = startY;
-			}
+			OnceafterCreation(startX, startY);
 			int xShot = this.useX + this.shotMoveLeft + this.shotMoveRight + Entitie.getDxAll();
 			int yShot = this.useY + this.shotMoveDown + this.shotMoveUp + Entitie.getDyAll();
 			int widthShot = 13;
@@ -87,6 +85,18 @@ public class Shot {
 		}
 	}
 
+	/**
+	 * this is needed because startX and startY mustn't change after the shot is
+	 * created
+	 **/
+	private void OnceafterCreation(int startX, int startY) {
+		if (this.useX == 0 && this.useY == 0) {
+			this.useX = startX;
+			this.useY = startY;
+		}
+	}
+
+	/** adds a new Shot to the drawer **/
 	public void addShot(int direction) {
 		// direction 0 == left
 		// direction 1 == right
@@ -100,11 +110,13 @@ public class Shot {
 		}
 	}
 
+	/** removes an existing Shot **/
 	public boolean removeShot() {
 		// remove the Shot as true after an specific time
 		return false;
 	}
 
+	/** if you want to know if the shot is fired or not **/
 	public boolean getShotIsFired() {
 		return shotIsFired;
 	}
