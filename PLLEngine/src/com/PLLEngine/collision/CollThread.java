@@ -8,10 +8,12 @@ import com.PLLEngine.Scene.layerComponents.entity.Entitie;
 
 public class CollThread extends Thread {
 
-	private static boolean[] collLeft = new boolean[100000];
-	private static boolean[] collRight = new boolean[100000];
-	private static boolean[] collUp = new boolean[100000];
-	private static boolean[] collDown = new boolean[100000];
+	private static boolean[] collLeft = new boolean[500]; // This sets a Limit of 500 Enemies which can be compared.
+															// Anythin more than that would be too much for this
+															// Programm
+	private static boolean[] collRight = new boolean[500];
+	private static boolean[] collUp = new boolean[500];
+	private static boolean[] collDown = new boolean[500];
 
 	/** this let's the Thread run forever but with stops between for performance **/
 	@Override
