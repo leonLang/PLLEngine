@@ -1,5 +1,6 @@
 package com.PLLEngine.collision;
 
+/** Written by Leon **/
 public class CollObject {
 	private static int x[] = new int[0];
 	private static int y[] = new int[0];
@@ -10,11 +11,13 @@ public class CollObject {
 	private int entityWidth;
 	private int entityHeigth;
 
+	/** This Class Checks the Collision with Objects **/
 	public CollObject(int entityWidth, int entityHeight) {
 		this.entityWidth = entityWidth;
 		this.entityHeigth = entityHeight;
 	}
 
+	/** this should be called when the Objects are created **/
 	public void setDatas(boolean collision, int rowX, int rowY, int dcx, int dcy) {
 		// dx and dy isn't needed
 		if (collision) {
@@ -25,6 +28,7 @@ public class CollObject {
 		}
 	}
 
+	/** If a new Game is started all Arrays should reset **/
 	public void resetDatas() {
 		startX = new int[0];
 		startY = new int[0];
@@ -32,6 +36,10 @@ public class CollObject {
 		y = new int[0];
 	}
 
+	/**
+	 * To Update the Datas it needs the changed x and y. This Method should be used
+	 * every update
+	 **/
 	public void updateDatas(int dx, int dy) {
 		for (int i = 0; i < CollObject.x.length; i++) {
 			CollObject.x[i] = CollObject.startX[i] + dx - 30;
@@ -55,6 +63,9 @@ public class CollObject {
 		return arrayO;
 	}
 
+	/**
+	 * Returns True, if any Object has a Collision with the Enemie from the Right
+	 **/
 	public boolean checkCollisionFromObjectsRight(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
@@ -69,6 +80,9 @@ public class CollObject {
 		return false;
 	}
 
+	/**
+	 * Returns True, if any Object has a Collision with the Enemie from the Left
+	 **/
 	public boolean checkCollisionFromObjectsLeft(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
@@ -83,6 +97,9 @@ public class CollObject {
 		return false;
 	}
 
+	/**
+	 * Returns True, if any Object has a Collision with the Enemie from Above
+	 **/
 	public boolean checkCollisionFromObjectsUp(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
@@ -97,6 +114,9 @@ public class CollObject {
 		return false;
 	}
 
+	/**
+	 * Returns True, if any Object has a Collision with the Enemie from Under
+	 **/
 	public boolean checkCollisionFromObjectsDown(int entityX, int entityY) {
 
 		for (int i = 0; i < CollObject.x.length; i++) {
@@ -110,6 +130,7 @@ public class CollObject {
 		return false;
 	}
 
+	/** Not longer usable because of Errors in some cases **/
 	public int checkCollisionFromObjects(int entityX, int entityY) {
 		// You can't use this for the Player because there can be two states where he
 		// has a collision left and down

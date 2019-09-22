@@ -2,24 +2,19 @@ package com.PLLEngine.Scene.layerComponents.entity.enemy;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import com.PLLEngine.Scene.layerComponents.entity.Entitie;
-import com.PLLEngine.Scene.layerComponents.entity.PassiveEntitie;
 import com.PLLEngine.Scene.layerComponents.entity.ShotEn;
-import com.PLLEngine.collision.CollEnemVSPlay;
 
 public class Enemy extends Entitie {
 	private Movement mv;
 	private static boolean richtungAll;
 	private boolean richtungOwn;
-	private BufferedImage sprite;
 	private int x, y;
 	private int width = 20;
 	private int height = 20;
 	private Health health;
-	private PassiveEntitie pV;
 	private ShotEn sE = new ShotEn();
 	private int xSmile, ySmile;
 	private int randomColor;
@@ -52,7 +47,6 @@ public class Enemy extends Entitie {
 		if (Entitie.getArrHealth(this.entityNumberOwn) > 0) {
 
 			this.cameraMovement(this.x, this.y, this.dx, this.dy);
-			this.collisionCheck();
 			this.synchronize();
 			this.setEntitiyPosition();
 			this.controlHealth(g);
@@ -95,13 +89,12 @@ public class Enemy extends Entitie {
 	}
 
 	private void drawEyes(Graphics2D g) {
-		
+
 		if (health.getStartLives() / 2 < Entitie.getArrHealth(entityNumberOwn)) {
 			g.setColor(Color.orange);
 		} else {
 			g.setColor(Color.RED);
 		}
-		
 
 		// Left eye
 		g.drawOval(this.px + 2, this.py + 2, 5, 5);
@@ -164,18 +157,6 @@ public class Enemy extends Entitie {
 		// differences
 	}
 
-	private void collisionCheck() {
-		// here you can define what should happen after Collision with Player is
-		// triggered
-		CollEnemVSPlay cl = new CollEnemVSPlay(this.px, this.py, 20, 20);
-		if (cl.getCollLinks()) {
-			this.health.removeOneHeart();
-		} else if (cl.getCollRechts()) {
-		} else {
-
-		}
-	}
-
 	private void synchronize() {
 
 		if (Entitie.getSynchronize(this.entityNumberOwn)) {
@@ -195,10 +176,6 @@ public class Enemy extends Entitie {
 	private void setEntitiyPosition() {
 		setArrX(this.px, this.entityNumberOwn);
 		setArrY(this.py, this.entityNumberOwn);
-	}
-
-	public void setSprite(BufferedImage br) {
-		this.sprite = br;
 	}
 
 }
