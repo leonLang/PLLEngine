@@ -121,6 +121,10 @@ public class Game implements GameBase {
 				}
 			}
 		}
+		if(this.scene.getPlayer().getLives() <= 0) {
+			System.err.println("Player ist dead game over");
+			System.exit(0);
+		}
 	}
 
 	@Override

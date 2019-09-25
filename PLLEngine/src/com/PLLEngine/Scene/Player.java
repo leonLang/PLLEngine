@@ -75,7 +75,7 @@ public class Player extends Entitie {
 			shot[i].drawShot(g, 560 - Entitie.getDxAll(), 364 - Entitie.getDyAll());
 		}
 		g.setColor(Color.gray);
-		g.drawRect(xOnScreen - width / 2, yOnScreen - height / 2, width, height);
+		//g.drawRect(xOnScreen - width / 2, yOnScreen - height / 2, width, height);
 		g.drawImage(img, xOnScreen - width / 2, yOnScreen - height / 2, width, height, null);
 
 		// Start Code Leon
