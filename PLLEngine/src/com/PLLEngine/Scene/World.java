@@ -127,7 +127,7 @@ public class World extends JPanel implements SceneComponentInterface {
 			if (this.spriteSheet != null) {
 				Spritesheet sh = new Spritesheet(16, 16, this.spriteSheet);
 				for (int i = 0; i < loadedsrc.length; i++) {
-					//// Conector
+					//// Conector , if more sprites on a single block are needed
 					if (loadedsrc[i].getConnector() != null) {
 						try {
 							BufferedImage img = new BufferedImage(spriteSize, spriteSize, BufferedImage.TYPE_INT_RGB);
@@ -202,7 +202,7 @@ public class World extends JPanel implements SceneComponentInterface {
 		}
 		// System.out.println(CollObject.x[0]);
 		// I don't know what happens if you change to another world. Have to try it out
-		// later
+		// later v2.1.7
 		for (int i = 0; i < enemysrc.length; i++) {
 			// enemysrc[i].cameraMovement(enemysrc[i].getPx(), enemysrc[i].getPy(), dx, dy);
 			enemysrc[i].setDx(dex);
